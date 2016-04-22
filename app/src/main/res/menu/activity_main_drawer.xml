@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/nav_aboutusG" android:checkableBehavior="all">
+        <item
+            android:id="@+id/nav_aboutus"
+            android:title="About 50k" />
+    </group>
+    <group android:id="@+id/nav_portfolioG" android:checkableBehavior="all">
+        <item
+            android:id="@+id/nav_portfolio"
+            android:title="Portfolio" />
+    </group>
+    <group android:id="@+id/nav_50keventsG" android:checkableBehavior="all">
+        <item
+            android:id="@+id/nav_50kevents"
+            android:title="50k Events" />
+    </group>
+    <group android:id="@+id/nav_50kinvestorsG" android:checkableBehavior="all">
+        <item
+            android:id="@+id/nav_50kinvestors"
+            android:title="50k Investors" />
+    </group>
+    <group android:id="@+id/nav_blogG" android:checkableBehavior="all">
+        <item
+            android:id="@+id/nav_blog"
+            android:title="Blog" />
+    </group>
+
+
+
+
+
+</menu>
