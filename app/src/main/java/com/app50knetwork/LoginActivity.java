@@ -35,6 +35,7 @@ import in.wavelabs.startersdk.ConnectionAPI.NBOSCallback;
 import in.wavelabs.startersdk.ConnectionAPI.SocialApi;
 import in.wavelabs.startersdk.DataModel.member.NewMemberApiModel;
 import in.wavelabs.startersdk.DataModel.validation.ValidationMessagesApiModel;
+import in.wavelabs.startersdk.Utils.Prefrences;
 import retrofit2.Response;
 
 /**
@@ -142,6 +143,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             @Override
             public void onSuccess(Response<NewMemberApiModel> response) {
+
+               Prefrences.setAccessToken(LoginActivity.this,"Bearer "+ response.body().getToken().getAccess_token());
 
             }
 
