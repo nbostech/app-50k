@@ -1,5 +1,6 @@
 package in.wavelabs.startersdk.ConnectionAPI;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -97,8 +98,9 @@ public class SocialApi {
 
         }
 
-    public static void socialLogin(final Context context, final Fragment fragment, final String service, final NBOSCallback nbosCallback) {
-        String clientToken = Prefrences.getAccessToken(context);
+    public static void socialLogin(final Context context, final Activity fragment, final String service, final NBOSCallback nbosCallback) {
+        String clientToken = Prefrences.getClientToken(context);
+
         Call<SocialLogin> call = StarterClient.getStarterAPI().socialLogin(clientToken,service);
         call.enqueue(new Callback<SocialLogin>() {
             @Override

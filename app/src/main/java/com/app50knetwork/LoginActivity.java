@@ -32,6 +32,7 @@ import java.util.List;
 
 import in.wavelabs.startersdk.ConnectionAPI.AuthApi;
 import in.wavelabs.startersdk.ConnectionAPI.NBOSCallback;
+import in.wavelabs.startersdk.ConnectionAPI.SocialApi;
 import in.wavelabs.startersdk.DataModel.member.NewMemberApiModel;
 import in.wavelabs.startersdk.DataModel.validation.ValidationMessagesApiModel;
 import retrofit2.Response;
@@ -77,7 +78,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         // Set up the login form.
         mEmailView = (EditText) findViewById(R.id.email);
 
-
+        Button linkedInConnect = (Button) findViewById(R.id.linkedInConnect);
+        linkedInConnect.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                linkedInConnect("linkedIn");
+            }
+        });
 
         mPasswordView = (EditText) findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -130,7 +137,35 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         }
     }
+    private void linkedInConnect(String service){
+        SocialApi.socialLogin(LoginActivity.this,LoginActivity.this, service, new NBOSCallback<NewMemberApiModel>() {
 
+            @Override
+            public void onSuccess(Response<NewMemberApiModel> response) {
+
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+
+            }
+
+            @Override
+            public void onValidationError(List<ValidationMessagesApiModel> validationError) {
+
+            }
+
+            @Override
+            public void authenticationError(String authenticationError) {
+
+            }
+
+            @Override
+            public void unknownError(String unknownError) {
+
+            }
+        });
+    }
     /**
      * Attempts to sign in or register the account specified by the login form.
      * If there are form errors (invalid email, missing fields, etc.), the

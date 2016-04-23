@@ -22,7 +22,7 @@ public class MyApplicaiton extends Application{
         super.onCreate();
         // Initialize the SDK before executing any other operations,
         // especially, if you're using Facebook UI elements.
-        WaveLabsSdk.SdkInitialize(getApplicationContext());
+        WaveLabsSdk.SdkInitialize(this);
         WaveLabsSdk.generateKeyHash(getApplicationContext(),"com.app50knetwork" );
 
         //generateKeyHash(getApplicationContext(),"com.app50knetwork");
