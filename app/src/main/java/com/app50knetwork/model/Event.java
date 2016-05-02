@@ -3,7 +3,6 @@ package com.app50knetwork.model;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * Created by ashkumar on 4/16/2016.
@@ -21,12 +20,18 @@ public class Event implements Serializable {
     public String website;
     @SerializedName("image_url")
     public String imageUrl;
+    /*
     @SerializedName("start_date")
     public String startDate;
     @SerializedName("start_time")
     public Date startTime;
     @SerializedName("end_time")
     public Date endTime;
+    */
+    @SerializedName("schedule_time")
+    public String scheduleTime;
+    @SerializedName("schedule_date")
+    public String scheudleDate;
 
     public long getId() {
         return id;
@@ -100,6 +105,7 @@ public class Event implements Serializable {
         this.imageUrl = imageUrl;
     }
 
+    /*
     public String getStartDate() {
         return startDate;
     }
@@ -124,7 +130,21 @@ public class Event implements Serializable {
         this.endTime = endTime;
     }
 
+    */
 
+    public String getScheduleTime() {
+        return scheduleTime;
+    }
 
+    public void setScheduleTime(String scheduleTime) {
+        this.scheduleTime = scheduleTime;
+    }
 
+    public String getScheudleDate() {
+        return scheudleDate;
+    }
+
+    public void setScheudleDate(String scheudleDate) {
+        this.scheudleDate = scheudleDate;
+    }
 }

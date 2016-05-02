@@ -43,6 +43,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //getSupportActionBar().setElevation(0);
         //getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#EFEFEF")));

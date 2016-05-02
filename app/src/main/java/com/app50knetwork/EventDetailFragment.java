@@ -86,10 +86,11 @@ public class EventDetailFragment extends Fragment {
 
         DateFormat toFormat = new SimpleDateFormat("K:MM a", Locale.ENGLISH);
         toFormat.setTimeZone(TimeZone.getTimeZone("Asia/Kolkata"));
-        String startTimeStr = toFormat.format(event.getStartTime());
-        String endTimeStr = toFormat.format(event.getEndTime());
+        //String startTimeStr = toFormat.format(event.getStartTime());
+        //String endTimeStr = toFormat.format(event.getEndTime());
         eventTime =(TextView)view.findViewById(R.id.eventTime);
-        eventTime.setText(startTimeStr +" "+endTimeStr);
+        //eventTime.setText(startTimeStr +" "+endTimeStr);
+        eventTime.setText(event.getScheduleTime().replace("-", " - "));
         eventAddress =(TextView)view.findViewById(R.id.eventAddress);
         eventAddress.setText(event.getAddress());
         eventContactDetails =(TextView)view.findViewById(R.id.contactDetails);

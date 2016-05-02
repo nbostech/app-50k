@@ -18,12 +18,7 @@ import com.app50knetwork.model.Event;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
@@ -53,6 +48,7 @@ public class MyEventViewAdapter extends RecyclerView.Adapter<MyEventViewAdapter.
         //holder.mIdView.setText(mValues.get(position).name);
         holder.mContentView.setText(mValues.get(position).getName());
         holder.mEventAddress.setText(mValues.get(position).getAddress());
+        /*
         String dateStr = mValues.get(position).getStartDate();
         try {
             DateFormat fromFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
@@ -68,7 +64,13 @@ public class MyEventViewAdapter extends RecyclerView.Adapter<MyEventViewAdapter.
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        */
+        String dateStr = mValues.get(position).getScheudleDate();
+        String[] dateStrArr = dateStr.split(" ");
 
+
+        holder.mEventDate.setText(dateStrArr[1]);
+        holder.mEventMonth.setText(dateStrArr[0]);
 
 
         Context context = holder.cardView.getContext();

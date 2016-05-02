@@ -17,8 +17,8 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,17 +28,18 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"
-            android:windowSoftInputMode="stateHidden"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.app50knetwork.MainActivity" />
         </activity>
         <activity
             android:name=".RegisterActivity"
-            android:windowSoftInputMode="stateHidden"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.app50knetwork.MainActivity" />
@@ -46,13 +47,28 @@
         <activity
             android:name=".InvestorMainActivity"
             android:label="@string/title_activity_investor_main"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+
         <meta-data
             android:name="in.wavelabs.startersdk.WAVELABS_CLIENT_ID"
             android:value="@string/wavelabs_app_id" />
         <meta-data
             android:name="in.wavelabs.startersdk.WAVELABS_CLIENT_SECRET"
             android:value="@string/wavelabs_app_secret" />
+
+        <activity
+            android:name=".StartupMainActivity"
+            android:label="@string/title_activity_startup_main"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CompanyProfileActivity"
+            android:parentActivityName=".StartupMainActivity"
+            android:label="@string/title_activity_company_profile"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.app50knetwork.StartupMainActivity" />
+        </activity>
     </application>
 
 </manifest>

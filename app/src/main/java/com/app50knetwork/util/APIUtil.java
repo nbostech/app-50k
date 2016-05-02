@@ -29,4 +29,11 @@ public interface APIUtil {
     @Headers("Content-Type: application/json")
     @POST(AppConstants.userAppSignup)
     Call<User> createUser(@Header("Authorization") String authorization, @Body AppUser user);
+
+    @Headers("Content-Type: text/html")
+    @GET(AppConstants.aboutUsURL)
+    Call<ResponseBody> getAboutUs(@Header("Authorization") String authorization);
+
+
+
 }

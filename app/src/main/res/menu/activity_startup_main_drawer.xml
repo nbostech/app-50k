@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <group
+        android:id="@+id/nav_sSettingsG"
+        android:checkableBehavior="all">
+        <item
+            android:id="@+id/nav_sSettings"
+            android:title="Settings" />
+    </group>
+    <group
+        android:id="@+id/nav_sMyNetworkG"
+        android:checkableBehavior="all">
+        <item
+            android:id="@+id/nav_sMyNetwork"
+            android:title="My Network" />
+    </group>
+    <group
+        android:id="@+id/nav_s50keventsG"
+        android:checkableBehavior="all">
+        <item
+            android:id="@+id/nav_s50kevents"
+            android:title="50k Events" />
+    </group>
+    <group
+        android:id="@+id/nav_s50kinvestorsG"
+        android:checkableBehavior="all">
+        <item
+            android:id="@+id/nav_s50kinvestors"
+            android:title="50k Investors" />
+    </group>
+    <group
+        android:id="@+id/nav_sBlogG"
+        android:checkableBehavior="all">
+        <item
+            android:id="@+id/nav_sBlog"
+            android:title="Blog" />
+    </group>
+
+    <group
+        android:id="@+id/nav_sAboutusG"
+        android:checkableBehavior="all">
+        <item
+            android:id="@+id/nav_sAboutus"
+            android:title="About 50k" />
+    </group>
+
+    <group
+        android:id="@+id/nav_sEditProfileG"
+        android:checkableBehavior="all">
+        <item
+            android:id="@+id/nav_sEditProfile"
+            android:title="Edit Profile" />
+    </group>
+
+    <group
+        android:id="@+id/nav_sSignOutG"
+        android:checkableBehavior="all">
+        <item
+            android:id="@+id/nav_sSignOut"
+            android:title="Sign Out" />
+    </group>
+
+    <group
+        android:id="@+id/nav_sHomeG"
+        android:checkableBehavior="all">
+        <item
+            android:id="@+id/nav_sHome"
+            android:title="Home" />
+    </group>
+
+
+</menu>

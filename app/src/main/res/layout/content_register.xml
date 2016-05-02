@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
 
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.app50knetwork.RegisterActivity"
     tools:showIn="@layout/activity_register">
@@ -22,8 +22,8 @@
     <ImageView
         android:id="@+id/logoDashboardRegister"
         android:layout_gravity="center_horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_centerHorizontal="true"
         android:src="@drawable/ic_logo_nodp"
         />
@@ -32,9 +32,12 @@
             android:layout_width="match_parent"
             android:layout_below="@+id/logoDashboardRegister"
             android:layout_height="wrap_content"
-            android:background="#FFF"
-            android:orientation="vertical">
+            android:background="@drawable/rounded_layout"
+            android:orientation="vertical"
 
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingBottom="16dp"
+            android:paddingRight="@dimen/activity_horizontal_margin">
 
 
             <RadioGroup

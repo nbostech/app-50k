@@ -4,45 +4,38 @@ import android.content.Context;
 import android.util.Log;
 
 import com.app50knetwork.model.AppCallback;
-import com.app50knetwork.model.Event;
 import com.app50knetwork.util.RestUtil;
 
-import java.util.List;
-
 import in.wavelabs.startersdk.Utils.Prefrences;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 /**
- * Created by ashkumar on 4/16/2016.
+ * Created by ashkumar on 4/29/2016.
  */
-public class EventAPI {
+public class AppAPI {
 
-    public static void getEvents(final Context context, final AppCallback appCallback){
+    public static void getAboutUs(final Context context, final AppCallback appCallback) {
         String token = Prefrences.getClientToken(context);
-        Call<List<Event>> eventListCall = RestUtil.getAPIUtil().getEvents(token);
-
-        eventListCall.enqueue(new Callback<List<Event>>() {
+        Call<ResponseBody> aboutUsRes = RestUtil.getAPIUtil().getAboutUs(token);
+        aboutUsRes.enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<List<Event>> call, Response<List<Event>> response) {
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.code() == 200) {
-                    Log.d("response",response.code()+"");
-                    Log.d("response",response.body().toString());
+                    Log.d("response", response.code() + "");
+                    Log.d("response", response.body().toString());
                     appCallback.onSuccess(response);
-                }else{
+                } else {
                     appCallback.onSuccess(response);
                 }
-
             }
 
             @Override
-            public void onFailure(Call<List<Event>> call, Throwable t) {
-
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
                 appCallback.onFailure(t);
             }
         });
-
     }
-
 }

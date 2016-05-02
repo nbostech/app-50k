@@ -5,21 +5,21 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link LandingFragment.OnFragmentInteractionListener} interface
+ * {@link StartupLandingFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link LandingFragment#newInstance} factory method to
+ * Use the {@link StartupLandingFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class LandingFragment extends Fragment {
+public class StartupLandingFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -29,13 +29,9 @@ public class LandingFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    ImageView investorImageViewBtn;
-    ImageView startUpImageViewBtn;
-
-
     private OnFragmentInteractionListener mListener;
 
-    public LandingFragment() {
+    public StartupLandingFragment() {
         // Required empty public constructor
     }
 
@@ -45,11 +41,11 @@ public class LandingFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment LandingFragment.
+     * @return A new instance of fragment StartupLandingFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static LandingFragment newInstance(String param1, String param2) {
-        LandingFragment fragment = new LandingFragment();
+    public static StartupLandingFragment newInstance(String param1, String param2) {
+        StartupLandingFragment fragment = new StartupLandingFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -70,38 +66,21 @@ public class LandingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
-        // Inflate the layout for this fragmentg
-        View view = inflater.inflate(R.layout.fragment_landing, container, false);
-        ((MainActivity) getActivity()).getSupportActionBar().setTitle("");
-        investorImageViewBtn = (ImageView) view.findViewById(R.id.investorImageView);
-        startUpImageViewBtn = (ImageView) view.findViewById(R.id.startUpImageView);
-
-        investorImageViewBtn.setOnClickListener(new View.OnClickListener() {
+        View view = inflater.inflate(R.layout.fragment_startup_landing, container, false);
+        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), RegisterActivity.class);
-                intent.putExtra("selectedRoleOption","investor");
-                startActivity(intent);
-
-            }
-        });
-
-        startUpImageViewBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 /*
-                Intent intent = new Intent(getActivity(), RegisterActivity.class);
-                intent.putExtra("selectedRoleOption","startUp");
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+                        */
+                Intent intent = new Intent(getActivity(), CompanyProfileActivity.class);
+                intent.putExtra("selectedRoleOption", "startUp");
                 startActivity(intent);
-                */
-                Intent intent = new Intent(getActivity(), StartupMainActivity.class);
-                intent.putExtra("selectedRoleOption","startUp");
-                startActivity(intent);
-
             }
         });
-
+        // Inflate the layout for this fragment
         return view;
     }
 
@@ -134,7 +113,7 @@ public class LandingFragment extends Fragment {
      * fragment to allow an interaction in this fragment to be communicated
      * to the activity and potentially other fragments contained in that
      * activity.
-     * <p/>
+     * <p>
      * See the Android Training lesson <a href=
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.

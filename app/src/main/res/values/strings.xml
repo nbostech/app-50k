@@ -30,4 +30,8 @@
     <string name="networkError">Network Error! Please check your connection</string>
     <string name="wavelabs_app_id">vijaym-app-client</string>
     <string name="wavelabs_app_secret">vijaym-app-secret</string>
+    <string name="title_activity_startup_main">StartupMainActivity</string>
+    <string name="title_activity_company_profile">CompanyProfileActivity</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_startup_base_acitvity">StartupBaseAcitvity</string>
 </resources>

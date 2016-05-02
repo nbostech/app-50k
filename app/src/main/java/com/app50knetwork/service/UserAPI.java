@@ -6,9 +6,9 @@ import android.util.Log;
 import com.app50knetwork.model.AppCallback;
 import com.app50knetwork.model.AppUser;
 import com.app50knetwork.model.User;
-import com.app50knetwork.util.AppPrefrences;
 import com.app50knetwork.util.RestUtil;
 
+import in.wavelabs.startersdk.Utils.Prefrences;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -20,7 +20,7 @@ import retrofit2.Response;
 public class UserAPI {
 
     public static void createUser(final Context context, final AppCallback appCallback, AppUser user){
-        String token = AppPrefrences.getAccessToken(context);
+        String token = Prefrences.getAccessToken(context);
         Call<User> createUserCall = RestUtil.getAPIUtil().createUser(token,user);
         createUserCall.enqueue(new Callback<User>() {
             @Override
@@ -43,7 +43,7 @@ public class UserAPI {
 
 
     public static void getUsers(final Context context,final AppCallback appCallback,String userType){
-        String token = AppPrefrences.getClientToken(context);
+        String token = Prefrences.getClientToken(context);
         Call<ResponseBody>getUsersCall = RestUtil.getAPIUtil().getUsers(token,userType);
         getUsersCall.enqueue(new Callback<ResponseBody>() {
             @Override
