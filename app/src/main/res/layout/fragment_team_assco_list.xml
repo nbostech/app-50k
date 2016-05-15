@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+
+tools:context="com.app50knetwork.TeamTabFragment">
+<android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/teamAssoicateListView"
+        android:name="com.app50knetwork.TeamTabFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        app:layoutManager="LinearLayoutManager"
+        tools:context="com.app50knetwork.TeamTabFragment"
+        tools:listitem="@layout/fragment_team_assco"
+        android:background="#fff" />
+<android.support.design.widget.FloatingActionButton
+    android:id="@+id/addTeamAssociate"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom|end"
+    android:layout_marginBottom="48dp"
+    android:layout_marginRight="26dp"
+
+    android:src="@android:drawable/ic_input_add" />
+
+</FrameLayout>
+

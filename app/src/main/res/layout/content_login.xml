@@ -55,6 +55,7 @@
                 android:hint="@string/prompt_email"
                 android:gravity="center"
                 android:inputType="text"
+                android:text="ashok50k"
                 android:maxLines="1"
                 android:singleLine="true"
                 android:padding="10dp"
@@ -79,6 +80,7 @@
                 android:imeOptions="actionUnspecified"
                 android:inputType="textPassword"
                 android:maxLines="1"
+                android:text="Test@123"
                 android:singleLine="true"
                 android:padding="10dp"
                 android:layout_marginTop="2dp" />

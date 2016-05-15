@@ -1,0 +1,75 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.app50knetwork.CreateStartupDialogFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp">
+        <!-- TODO: Update blank fragment layout -->
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/startUpName"
+            android:background="@drawable/rounded_corner"
+            android:padding="10dp"
+            android:layout_marginTop="2dp"
+            android:hint="Startup Name"
+            android:gravity="center"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/startupEmail"
+            android:padding="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_below="@id/startUpName"
+            android:background="@drawable/rounded_corner"
+            android:hint="Email"
+            android:gravity="center"
+
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/startupContactNo"
+            android:padding="10dp"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/rounded_corner"
+            android:layout_below="@id/startupEmail"
+            android:hint="Contact No"
+            android:gravity="center"
+            />
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:id="@+id/startupFounderName"
+            android:background="@drawable/rounded_corner"
+            android:layout_below="@id/startupContactNo"
+            android:layout_height="100dp"
+            android:hint="Founder"
+            android:gravity="center"/>
+
+
+
+        <Button
+            android:id="@+id/createStartup"
+            android:background="@drawable/button_feedback"
+            style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            android:layout_below="@id/startupFounderName"
+            android:text="CREATE"
+            android:textStyle="bold"
+            android:textColor="#ffffff" />
+
+
+    </RelativeLayout>
+
+</FrameLayout>

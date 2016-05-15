@@ -34,4 +34,6 @@
     <string name="title_activity_company_profile">CompanyProfileActivity</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="title_activity_startup_base_acitvity">StartupBaseAcitvity</string>
+    <string name="title_activity_associate">AssociateActivity</string>
+    <string name="title_activity_edit_associate">EditAssociateActivity</string>
 </resources>

@@ -11,6 +11,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.app50knetwork.model.AppCallback;
+import com.app50knetwork.model.User;
+import com.app50knetwork.service.UserAPI;
+import com.google.gson.JsonObject;
+
 import java.util.List;
 
 import in.wavelabs.startersdk.ConnectionAPI.AuthApi;
@@ -88,7 +93,49 @@ public class LoginActivity extends AppCompatActivity {
 
                 Prefrences.setAccessToken(LoginActivity.this, "Bearer " + response.body().getToken().getAccess_token());
                 Prefrences.setAccessToken(LoginActivity.this, "Bearer " + response.body().getToken().getAccess_token());
+                if(response.isSuccessful()){
 
+                    Prefrences.setAccessToken(getApplicationContext(),"Bearer " + response.body().getToken().getAccess_token());
+
+                    JsonObject uuid = new JsonObject();
+                    uuid.addProperty("uuid",response.body().getMember().getUuid());
+                    UserAPI.login(LoginActivity.this, new AppCallback<List<User>>() {
+                        @Override
+                        public void onSuccess(Response<List<User>> response) {
+                            User user = response.body().get(0);
+
+                            if(user.getUserTypes()!=null && user.getUserTypes().size()>0 &&
+                                    user.getUserTypes().get(0).getName().equalsIgnoreCase("startup")) {
+                                Intent i = new Intent(LoginActivity.this, StartupMainActivity.class);
+                                startActivity(i);
+                            }else if (user.getUserTypes()!=null && user.getUserTypes().size()>0 &&
+                                    user.getUserTypes().get(0).getName().equalsIgnoreCase("investor")){
+                                Intent i = new Intent(LoginActivity.this, InvestorMainActivity.class);
+                                startActivity(i);
+                            }
+
+                        }
+
+                        @Override
+                        public void onFailure(Throwable t) {
+                            Log.d("error",t.getMessage());
+                        }
+
+                        @Override
+                        public void authenticationError(String authenticationError) {
+                            Log.d("error",authenticationError);
+                        }
+
+                        @Override
+                        public void unknowError(String unknowError) {
+                            Log.d("error",unknowError);
+                        }
+                    },uuid);
+
+
+
+
+                }
             }
 
             @Override
@@ -137,9 +184,46 @@ public class LoginActivity extends AppCompatActivity {
                         Log.d("Register",(response.body().getToken().getRefresh_token()));
                         if(response.isSuccessful()){
 
-                            Intent i = new Intent(LoginActivity.this, InvestorMainActivity.class);
+                            Prefrences.setAccessToken(getApplicationContext(),"Bearer " + response.body().getToken().getAccess_token());
 
-                            startActivity(i);
+                            JsonObject uuid = new JsonObject();
+                            uuid.addProperty("uuid",response.body().getMember().getUuid());
+                            UserAPI.login(LoginActivity.this, new AppCallback<List<User>>() {
+                                @Override
+                                public void onSuccess(Response<List<User>> response) {
+                                    User user = response.body().get(0);
+
+                                    if(user.getUserTypes()!=null && user.getUserTypes().size()>0 &&
+                                            user.getUserTypes().get(0).getName().equalsIgnoreCase("startup")) {
+                                        Intent i = new Intent(LoginActivity.this, StartupMainActivity.class);
+                                        startActivity(i);
+                                    }else if (user.getUserTypes()!=null && user.getUserTypes().size()>0 &&
+                                            user.getUserTypes().get(0).getName().equalsIgnoreCase("investor")){
+                                        Intent i = new Intent(LoginActivity.this, InvestorMainActivity.class);
+                                        startActivity(i);
+                                    }
+
+                                }
+
+                                @Override
+                                public void onFailure(Throwable t) {
+                                    Log.d("error",t.getMessage());
+                                }
+
+                                @Override
+                                public void authenticationError(String authenticationError) {
+                                    Log.d("error",authenticationError);
+                                }
+
+                                @Override
+                                public void unknowError(String unknowError) {
+                                    Log.d("error",unknowError);
+                                }
+                            },uuid);
+
+
+
+
                         }
                     }
 

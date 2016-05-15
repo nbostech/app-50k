@@ -62,12 +62,30 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".CompanyProfileActivity"
-            android:parentActivityName=".StartupMainActivity"
             android:label="@string/title_activity_company_profile"
+            android:parentActivityName=".StartupMainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.app50knetwork.StartupMainActivity" />
+        </activity>
+        <activity
+            android:name=".AssociateActivity"
+            android:label="@string/title_activity_associate"
+            android:parentActivityName=".CompanyProfileActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.app50knetwork.CompanyProfileActivity" />
+        </activity>
+        <activity
+            android:name=".EditAssociateActivity"
+            android:label="@string/title_activity_edit_associate"
+            android:parentActivityName=".AssociateActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.app50knetwork.AssociateActivity" />
         </activity>
     </application>
 

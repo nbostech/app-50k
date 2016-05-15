@@ -1,16 +1,125 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.app50knetwork.CompanyProfileActivity$ProfileTabFragment">
+    tools:context="com.app50knetwork.ProfileTabFragment">
 
     <TextView
-        android:id="@+id/section_label"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:id="@+id/companyNameLabel"
+        android:text="STARTUP NAME"
+        android:layout_marginLeft="12dp"
+        android:textAllCaps="true"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:id="@+id/companyName"
+        android:background="@drawable/rounded_corner"
+        android:layout_below="@id/companyNameLabel"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/companyEmailLabel"
+        android:text="EMAIL"
+        android:layout_below="@id/companyName"
+        android:layout_marginLeft="12dp"
+        android:textAllCaps="true"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:id="@+id/companyEmail"
+        android:background="@drawable/rounded_corner"
+        android:padding="10dp"
+        android:layout_below="@id/companyEmailLabel"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/industryLabel"
+        android:text="INDUSTRY"
+        android:layout_marginLeft="12dp"
+        android:textAllCaps="true"
+        android:layout_below="@id/companyEmail"/>
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:id="@+id/industry"
+        android:background="@drawable/rounded_corner"
+        android:layout_below="@id/industryLabel"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/contactNumberLabel"
+        android:text="CONTACT NUMBER"
+        android:layout_below="@id/industry"
+        android:layout_marginLeft="12dp"
+        android:textAllCaps="true"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:id="@+id/contactNumber"
+        android:background="@drawable/rounded_corner"
+        android:layout_below="@id/contactNumberLabel"/>
+
+
+
+    <View
+        android:id="@+id/centerShim"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:visibility="invisible"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/contactNumber"/>
+
+    <!--Set width to match_parent sets maximum width. alignParentLeft aligns
+    the left edge of this view with the left edge of its parent. toLeftOf
+    sets the right edge of this view to align with the left edge of the
+    given view. The result of all three settings is that this view will
+    always take up exactly half of the width of its parent, however wide
+    that may be. -->
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/companyLogoIV"
+        android:layout_toLeftOf="@+id/centerShim"
+        android:layout_below="@id/contactNumber"/>
+
+    <!--Same deal, but on the right -->
+    <Button
+        android:id="@+id/logoUploadBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/centerShim"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_below="@id/contactNumber"
+        android:text="Upload"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_feedback"
+        android:id="@+id/compSubmitBtn"
+        android:text="Create"
+        android:layout_margin="10dp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:layout_below="@id/companyLogoIV"/>
+
 
 </RelativeLayout>
+</ScrollView>

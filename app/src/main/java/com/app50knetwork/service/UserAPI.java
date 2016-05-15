@@ -7,6 +7,9 @@ import com.app50knetwork.model.AppCallback;
 import com.app50knetwork.model.AppUser;
 import com.app50knetwork.model.User;
 import com.app50knetwork.util.RestUtil;
+import com.google.gson.JsonObject;
+
+import java.util.List;
 
 import in.wavelabs.startersdk.Utils.Prefrences;
 import okhttp3.ResponseBody;
@@ -59,6 +62,26 @@ public class UserAPI {
 
             @Override
             public void onFailure(Call call, Throwable t) {
+
+            }
+        });
+    }
+
+    public static void login(final Context context, final AppCallback appCallback, JsonObject uuid){
+        String token =  Prefrences.getAccessToken(context);
+        Call<List<User>>appLogin = RestUtil.getAPIUtil().loginApp(token,uuid);
+        appLogin.enqueue(new Callback<List<User>>() {
+            @Override
+            public void onResponse(Call<List<User>> call, Response<List<User>> response) {
+                if (response.code() == 200) {
+                    appCallback.onSuccess(response);
+                }else{
+                    appCallback.onSuccess(response);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<User>> call, Throwable t) {
 
             }
         });

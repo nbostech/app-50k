@@ -1,8 +1,8 @@
 package com.app50knetwork;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity
 
 
 
-        FragmentManager fragmentManager = getFragmentManager();
+        FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         Fragment landingFragment = LandingFragment.newInstance("","");
         fragmentTransaction.replace(R.id.container, landingFragment, "landingFragment");
@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        FragmentManager fragmentManager = getFragmentManager();
+        FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         if (id == R.id.nav_50kinvestors) {
@@ -154,7 +154,7 @@ public class MainActivity extends AppCompatActivity
     public void onListFragmentInteraction(Event item) {
         Log.d("test",item.name);
 
-        FragmentManager fragmentManager = getFragmentManager();
+        FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         Fragment eventDetailFragment = EventDetailFragment.newInstance(item,"");
         fragmentTransaction.replace(R.id.container, eventDetailFragment, "eventDetailFragment");
@@ -176,7 +176,7 @@ public class MainActivity extends AppCompatActivity
     public void onInvestorListFragmentInteraction(User item) {
         Log.d("test",item.getProfile().getFullName());
 
-        FragmentManager fragmentManager = getFragmentManager();
+        FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         Fragment investorDetailFragment = InvestorDetailFragment.newInstance(item,"");
         fragmentTransaction.replace(R.id.container, investorDetailFragment, "investorDetailFragment");

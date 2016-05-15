@@ -1,6 +1,11 @@
 package com.app50knetwork;
 
+import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,14 +13,22 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import android.util.Log;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
-public class CompanyProfileActivity extends AppCompatActivity {
+import com.app50knetwork.model.AppCallback;
+import com.app50knetwork.model.Associate;
+import com.app50knetwork.model.Company;
+import com.app50knetwork.service.CompanyAPI;
+
+import java.io.File;
+
+import retrofit2.Response;
+
+public class CompanyProfileActivity extends AppCompatActivity implements
+        TeamTabFragment.OnTeamAssocListFragmentInteractionListener,
+        CreateAssociateDialogFragment.OnCreateAssociateDialogFragmentInteractionListener{
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -26,195 +39,147 @@ public class CompanyProfileActivity extends AppCompatActivity {
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
+    static Company company;
 
+
+    static int RESULT_LOAD_IMAGE = 1;
     /**
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
+    public RelativeLayout layout;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_company_profile);
-        //LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        //inflate your activity layout here!
-        //View contentView = inflater.inflate(R.layout.activity_company_profile, null, false);
+        layout = (RelativeLayout) findViewById(R.id.progressBar1);
 
+        company = (Company)getIntent().getSerializableExtra("selectedCompany");
 
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
+        // Set up the section adapter
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.profileTabcontainer);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
+        // Set up the tab layout for viewpager
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
+        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                mViewPager.setCurrentItem(tab.getPosition());
+                Log.d("test",tab.getPosition()+" "+mViewPager.getCurrentItem());
+            }
 
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+
+
+
+    }
+
+
+    private void showEditDialog() {
+        FragmentManager fm = getSupportFragmentManager();
+        CreateAssociateDialogFragment editNameDialog = new CreateAssociateDialogFragment();
+        editNameDialog.show(fm, "fragment_edit_name");
     }
 
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_company_profile, menu);
-        return true;
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
+            Uri selectedImage = data.getData();
+            String[] filePathColumn = { MediaStore.Images.Media.DATA };
+
+            Cursor cursor = getContentResolver().query(selectedImage,
+                    filePathColumn, null, null, null);
+            cursor.moveToFirst();
+
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            String picturePath = cursor.getString(columnIndex);
+            cursor.close();
+
+            ImageView imageView = (ImageView) findViewById(R.id.companyLogoIV);
+            imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+
+            CompanyAPI.uploadMedia(CompanyProfileActivity.this, new AppCallback() {
+                @Override
+                public void onSuccess(Response response) {
+
+                }
+
+                @Override
+                public void onFailure(Throwable t) {
+
+                }
+
+                @Override
+                public void authenticationError(String authenticationError) {
+
+                }
+
+                @Override
+                public void unknowError(String unknowError) {
+
+                }
+            },Long.toString(company.getId()),"company_logo",new File(picturePath));
+
+
+
+        }
+
+
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    public void onTeamAssocListFragmentInteraction(Associate item) {
+        Intent intent = new Intent(CompanyProfileActivity.this, AssociateActivity.class);
+        intent.putExtra("selectedAssociate",item);
+        startActivity(intent);
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+        /*
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        Fragment viewAssociateDetailFragment = ViewAssociateDetailFragment.newInstance(item);
+        fragmentTransaction.replace(R.id.profileTabcontainer, viewAssociateDetailFragment, "viewAssociateDetailFragment");
+        fragmentTransaction.addToBackStack("viewAssociateDetailFragment");
+        fragmentTransaction.commit();
+        */
     }
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class ProfileTabFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private static final String ARG_SECTION_NUMBER = "section_number";
+    @Override
+    public void onCreateAssociateDialogFragmentInteraction(Uri uri) {
 
-        public ProfileTabFragment() {
-        }
-
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static ProfileTabFragment newInstance(int sectionNumber) {
-            ProfileTabFragment fragment = new ProfileTabFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_company_profile_tab, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-            return rootView;
-        }
-    }
-
-    public static class FinancialTabFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private static final String ARG_SECTION_NUMBER = "section_number";
-
-        public FinancialTabFragment() {
-        }
-
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static FinancialTabFragment newInstance(int sectionNumber) {
-            FinancialTabFragment fragment = new FinancialTabFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_company_finfo_tab, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-            return rootView;
-        }
     }
 
 
-    public static class SummaryTabFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private static final String ARG_SECTION_NUMBER = "section_number";
-
-        public SummaryTabFragment() {
-        }
-
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static SummaryTabFragment newInstance(int sectionNumber) {
-            SummaryTabFragment fragment = new SummaryTabFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_company_summary_tab, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-            return rootView;
-        }
-    }
-
-    public static class TeamTabFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private static final String ARG_SECTION_NUMBER = "section_number";
-
-        public TeamTabFragment() {
-        }
-
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static TeamTabFragment newInstance(int sectionNumber) {
-            TeamTabFragment fragment = new TeamTabFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_company_team_tab, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-            return rootView;
-        }
-    }
 
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
@@ -222,9 +187,13 @@ public class CompanyProfileActivity extends AppCompatActivity {
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
+
+
         public SectionsPagerAdapter(FragmentManager fm) {
+
             super(fm);
         }
+
 
         @Override
         public Fragment getItem(int position) {
@@ -237,7 +206,7 @@ public class CompanyProfileActivity extends AppCompatActivity {
             else if (position == 2)
                 return SummaryTabFragment.newInstance(position + 1);
             else if (position == 3)
-                return ProfileTabFragment.newInstance(position + 1);
+                return TeamTabFragment.newInstance(3,position + 1);
             else
                 return ProfileTabFragment.newInstance(position + 1);
         }
@@ -245,7 +214,8 @@ public class CompanyProfileActivity extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 4;
+
+                return 4;
         }
 
         @Override

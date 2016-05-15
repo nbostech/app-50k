@@ -1,8 +1,8 @@
 package com.app50knetwork;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.app50knetwork.model.Company;
 import com.app50knetwork.model.Event;
 import com.app50knetwork.model.User;
 import com.app50knetwork.util.AppConstants;
@@ -23,7 +24,9 @@ import com.app50knetwork.util.AppConstants;
 public class StartupMainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         EventFragment.OnListFragmentInteractionListener,
-        InvestorFragment.OnInvestorListFragmentInteractionListener {
+        StartupLandingFragment.OnStartupListFragmentInteractionListener,
+        InvestorFragment.OnInvestorListFragmentInteractionListener,
+        CreateStartupDialogFragment.OnCreateStartupDialogFragmentInteractionListener {
 
 
     @Override
@@ -34,9 +37,9 @@ public class StartupMainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
 
-        FragmentManager fragmentManager = getFragmentManager();
+        FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        Fragment startupLandingFragment = StartupLandingFragment.newInstance("", "");
+        Fragment startupLandingFragment = StartupLandingFragment.newInstance(3);
         fragmentTransaction.replace(R.id.startUpcontainer, startupLandingFragment, "startupLandingFragment");
         fragmentTransaction.addToBackStack("startupLandingFragment");
         fragmentTransaction.commit();
@@ -91,7 +94,7 @@ public class StartupMainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         Log.d("test", id + "");
-        FragmentManager fragmentManager = getFragmentManager();
+        FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         if (id == R.id.nav_s50kinvestors) {
@@ -139,7 +142,7 @@ public class StartupMainActivity extends AppCompatActivity
     public void onListFragmentInteraction(Event item) {
         Log.d("test", item.name);
 
-        FragmentManager fragmentManager = getFragmentManager();
+        FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         Fragment eventDetailFragment = EventDetailFragment.newInstance(item, "");
         fragmentTransaction.replace(R.id.startUpcontainer, eventDetailFragment, "eventDetailFragment");
@@ -154,12 +157,25 @@ public class StartupMainActivity extends AppCompatActivity
     public void onInvestorListFragmentInteraction(User item) {
         Log.d("test", item.getProfile().getFullName());
 
-        FragmentManager fragmentManager = getFragmentManager();
+        FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         Fragment investorDetailFragment = InvestorDetailFragment.newInstance(item, "");
         fragmentTransaction.replace(R.id.startUpcontainer, investorDetailFragment, "investorDetailFragment");
         fragmentTransaction.addToBackStack("investorDetailFragment");
         fragmentTransaction.commit();
+
+    }
+
+    @Override
+    public void onStartupListFragmentInteraction(Company item) {
+        Log.d("test",item.getProfile().getName());
+        Intent intent = new Intent(StartupMainActivity.this, CompanyProfileActivity.class);
+        intent.putExtra("selectedCompany",item);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onCreateStartupDialogFragmentInteraction(Uri uri) {
 
     }
 }

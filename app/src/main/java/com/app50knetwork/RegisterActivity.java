@@ -66,11 +66,11 @@ public class RegisterActivity extends AppCompatActivity {
         if (selectedRoleOption.equals("investor")) {
             investorRadioBtn.setChecked(true);
             userFullName.setHint("Full name");
-            companyName.setHint("Company name");
+            companyName.setHint("CompanyProfile name");
         } else if (selectedRoleOption.equals("startUp")) {
             startUpRadioBtn.setChecked(true);
             userFullName.setHint("Founder name");
-            companyName.setHint("Startup name");
+            companyName.setHint("CompanyProfile name");
         }
         roleOptionRG.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -78,11 +78,11 @@ public class RegisterActivity extends AppCompatActivity {
 
                 if (checkedId == R.id.investorRB) {
                     userFullName.setHint("Full name");
-                    companyName.setHint("Company name");
+                    companyName.setHint("CompanyProfile name");
 
                 } else if (checkedId == R.id.startupRB) {
                     userFullName.setHint("Founder name");
-                    companyName.setHint("Startup name");
+                    companyName.setHint("CompanyProfile name");
                 }
 
             }
