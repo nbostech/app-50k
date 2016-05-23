@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.app50knetwork.helper.OnTeamAssocListFragmentInteractionListener;
 import com.app50knetwork.model.AppCallback;
 import com.app50knetwork.model.Associate;
 import com.app50knetwork.model.User;
@@ -200,8 +201,5 @@ public class TeamTabFragment extends Fragment {
         mListener = null;
     }
 
-    public interface OnTeamAssocListFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onTeamAssocListFragmentInteraction(Associate item);
-    }
+
 }

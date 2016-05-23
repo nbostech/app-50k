@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.app50knetwork.model.AppCallback;
-import com.app50knetwork.model.Company;
+import com.app50knetwork.model.Associate;
 import com.app50knetwork.service.CompanyAPI;
 
 import retrofit2.Response;
@@ -26,10 +26,11 @@ public class AssociateSummaryTabFragment extends Fragment {
      */
     private static final String ARG_SECTION_NUMBER = "section_number";
 
-    private EditText businessSummaryET;
-    private EditText uspProductUnqinessET;
-    Button compSubmitBtn;
-    Company company;
+    private EditText associateExpAndExpET;
+    private EditText associateSummaryEV;
+    Button associateSubmitBtn;
+    Associate associate;
+    Long companyId;
 
     public AssociateSummaryTabFragment() {
     }
@@ -49,37 +50,39 @@ public class AssociateSummaryTabFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_company_summary_tab, container, false);
-        company =((CompanyProfileActivity)getActivity()).company;
-        businessSummaryET = (EditText)rootView.findViewById(R.id.businessSummary);
-        uspProductUnqinessET = (EditText)rootView.findViewById(R.id.productUniqueness);
+        View rootView = inflater.inflate(R.layout.fragment_associate_summary_tab, container, false);
+        associate =((EditAssociateActivity)getActivity()).associate;
+        companyId = ((EditAssociateActivity) getActivity()).companyId;
 
-        businessSummaryET.setText(((CompanyProfileActivity) getActivity()).company.getProfile().getBusinessSummary());
-        uspProductUnqinessET.setText(((CompanyProfileActivity) getActivity()).company.getProfile().getProductUSP());
+        associateExpAndExpET = (EditText)rootView.findViewById(R.id.associateExpAndExpET);
+        associateSummaryEV = (EditText)rootView.findViewById(R.id.associateSummaryEV);
 
-        compSubmitBtn = (Button) rootView.findViewById(R.id.compSubmitBtn);
+        associateExpAndExpET.setText(((EditAssociateActivity) getActivity()).associate.getExperience());
+        associateSummaryEV.setText(((EditAssociateActivity) getActivity()).associate.getProfileSummary());
 
-        businessSummaryET.addTextChangedListener(new TextWatcher() {
+        associateSubmitBtn = (Button) rootView.findViewById(R.id.associateSubmitBtn);
+
+        associateExpAndExpET.addTextChangedListener(new TextWatcher() {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             public void onTextChanged(CharSequence s, int start, int before, int count) { }
-            public void afterTextChanged(Editable s) { ((CompanyProfileActivity) getActivity()).company.getProfile().setBusinessSummary(new String(s.toString())); }
+            public void afterTextChanged(Editable s) { ((EditAssociateActivity) getActivity()).associate.setExperience(new String(s.toString())); }
         });
-        uspProductUnqinessET.addTextChangedListener(new TextWatcher() {
+        associateSummaryEV.addTextChangedListener(new TextWatcher() {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             public void onTextChanged(CharSequence s, int start, int before, int count) { }
-            public void afterTextChanged(Editable s) { ((CompanyProfileActivity) getActivity()).company.getProfile().setProductUSP(new String(s.toString())); }
+            public void afterTextChanged(Editable s) { ((EditAssociateActivity) getActivity()).associate.setProfileSummary(new String(s.toString())); }
         });
 
 
-        compSubmitBtn.setOnClickListener(new View.OnClickListener() {
+        associateSubmitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                company.getProfile().setPreviousCapital(businessSummaryET.getText().toString());
-                company.getProfile().setMonthlyNetBurn(uspProductUnqinessET.getText().toString());
+                associateExpAndExpET.setText(((EditAssociateActivity) getActivity()).associate.getExperience());
+                associateSummaryEV.setText(((EditAssociateActivity) getActivity()).associate.getProfileSummary());
 
 
-                CompanyAPI.updateCompany(getActivity(), new AppCallback() {
+                CompanyAPI.updateAssoicate(getActivity(), new AppCallback() {
                     @Override
                     public void onSuccess(Response response) {
 
@@ -99,7 +102,7 @@ public class AssociateSummaryTabFragment extends Fragment {
                     public void unknowError(String unknowError) {
 
                     }
-                }, company);
+                }, associate.getId(),associate);
             }
         });
         return rootView;

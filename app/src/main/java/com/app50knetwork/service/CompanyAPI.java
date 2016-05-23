@@ -45,9 +45,9 @@ public class CompanyAPI {
     }
 
 
-    public final static void updateCompany(final Context context, final AppCallback appCallback, Company company){
+    public final static void updateCompanyProfile(final Context context, final AppCallback appCallback, Long companyId,CompanyProfile companyProfile){
         String token = Prefrences.getAccessToken(context);
-        Call<Company> companyCall = RestUtil.getAPIUtil().updateCompany(token,company);
+        Call<Company> companyCall = RestUtil.getAPIUtil().updateCompanyProfile(token,companyId,companyProfile);
         companyCall.enqueue(new Callback<Company>() {
             @Override
             public void onResponse(Call<Company> call, Response<Company> response) {
@@ -132,6 +132,29 @@ public class CompanyAPI {
     public static void createAssoicate(final Context context, final AppCallback appCallback, Long companyId, Associate associate){
         String token = Prefrences.getAccessToken(context);
         Call<Associate> companyCall = RestUtil.getAPIUtil().createAssociate(token,companyId,associate);
+        companyCall.enqueue(new Callback<Associate>() {
+            @Override
+            public void onResponse(Call<Associate> call, Response<Associate> response) {
+                if (response.code() == 200) {
+                    Log.d("response",response.code()+"");
+                    Log.d("response",response.body().toString());
+                    appCallback.onSuccess(response);
+                }else{
+                    appCallback.onSuccess(response);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Associate> call, Throwable t) {
+                appCallback.onFailure(t);
+            }
+        });
+    }
+
+
+    public static void updateAssoicate(final Context context, final AppCallback appCallback,  Long associateId, Associate associate){
+        String token = Prefrences.getAccessToken(context);
+        Call<Associate> companyCall = RestUtil.getAPIUtil().updateAssociate(token,associateId,associate);
         companyCall.enqueue(new Callback<Associate>() {
             @Override
             public void onResponse(Call<Associate> call, Response<Associate> response) {

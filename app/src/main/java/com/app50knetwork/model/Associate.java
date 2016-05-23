@@ -9,6 +9,8 @@ import java.io.Serializable;
  */
 public class Associate implements Serializable{
 
+    @SerializedName("id")
+    private Long id;
     @SerializedName("associate_type")
     private String associateType;
     @SerializedName("name")
@@ -29,6 +31,22 @@ public class Associate implements Serializable{
     private String linkedinProfile;
     @SerializedName("twitter_profile")
     private String twitterProfile;
+    @SerializedName("profile_summary")
+    private String profileSummary;
+    @SerializedName("facebook_profile")
+    private String facebookProfile;
+    @SerializedName("other_profile")
+    private String otherProfile;
+    @SerializedName("profileImage")
+    private MediaFile profileImage;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getAssociateType() {
         return associateType;
@@ -108,5 +126,38 @@ public class Associate implements Serializable{
 
     public void setTwitterProfile(String twitterProfile) {
         this.twitterProfile = twitterProfile;
+    }
+
+
+    public String getProfileSummary() {
+        return profileSummary;
+    }
+
+    public void setProfileSummary(String profileSummary) {
+        this.profileSummary = profileSummary;
+    }
+
+    public String getFacebookProfile() {
+        return facebookProfile;
+    }
+
+    public void setFacebookProfile(String facebookProfile) {
+        this.facebookProfile = facebookProfile;
+    }
+
+    public String getOtherProfile() {
+        return otherProfile;
+    }
+
+    public void setOtherProfile(String otherProfile) {
+        this.otherProfile = otherProfile;
+    }
+
+    public MediaFile getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(MediaFile profileImage) {
+        this.profileImage = profileImage;
     }
 }

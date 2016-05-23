@@ -90,14 +90,16 @@ public class LandingFragment extends Fragment {
         startUpImageViewBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*
+
                 Intent intent = new Intent(getActivity(), RegisterActivity.class);
                 intent.putExtra("selectedRoleOption","startUp");
                 startActivity(intent);
-                */
+
+                /*
                 Intent intent = new Intent(getActivity(), StartupMainActivity.class);
                 intent.putExtra("selectedRoleOption","startUp");
                 startActivity(intent);
+                */
 
             }
         });

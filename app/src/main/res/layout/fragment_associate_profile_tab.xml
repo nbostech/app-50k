@@ -1,89 +1,183 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingBottom="48dp"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.app50knetwork.FinancialTabFragment">
+    tools:context="com.app50knetwork.AssociateProfileTabFragment">
+
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/fundingStageLabel"
-        android:text="STAGE"
+        android:id="@+id/associateNameLabelTV"
+        android:text="NAME"
         android:layout_marginLeft="12dp"
         android:textAllCaps="true"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:id="@+id/associateNameLabelEV"
+        android:background="@drawable/rounded_corner"
+        android:layout_below="@id/associateNameLabelTV"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/associateEmailLabelTV"
+        android:text="EMAIL"
+        android:layout_marginLeft="12dp"
+        android:textAllCaps="true"
+        android:layout_below="@id/associateNameLabelEV"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:id="@+id/associateEmailET"
+        android:background="@drawable/rounded_corner"
+        android:layout_below="@id/associateEmailLabelTV"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/associateTypeLabelTV"
+        android:text="ASSOCIATE TYPE"
+        android:layout_marginLeft="12dp"
+        android:textAllCaps="true"
+        android:layout_below="@id/associateEmailET"/>
 
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:id="@+id/fundingStage"
-        android:layout_below="@id/fundingStageLabel"
+        android:id="@+id/associateTypeS"
+        android:layout_below="@id/associateTypeLabelTV"
         android:background="@drawable/rounded_corner"
         />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/previousCapitalLabel"
-        android:text="PREVIOUS CAPITAL"
+        android:id="@+id/associatePositionLabelTV"
+        android:text="POSITION"
         android:layout_marginLeft="12dp"
         android:textAllCaps="true"
-        android:layout_below="@id/fundingStage"/>
+        android:layout_below="@id/associateTypeS"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:padding="10dp"
-        android:id="@+id/previousCapital"
-        android:background="@drawable/rounded_corner"
-        android:layout_below="@id/previousCapitalLabel"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/monthlyNetBurnLabel"
-        android:text="MONTHLY NET BURN"
-        android:layout_marginLeft="12dp"
-        android:textAllCaps="true"
-        android:layout_below="@id/previousCapital"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:id="@+id/monthlyNetBurn"
+        android:id="@+id/associatePositionET"
         android:background="@drawable/rounded_corner"
         android:padding="10dp"
-        android:layout_below="@id/monthlyNetBurnLabel"/>
+        android:layout_below="@id/associatePositionLabelTV"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/perMoneyValutionLabel"
-        android:text="PRE-MONEY VALUATION"
+        android:id="@+id/associateLocationLabelTV"
+        android:text="LOCATION"
         android:layout_marginLeft="12dp"
         android:textAllCaps="true"
-        android:layout_below="@id/monthlyNetBurn"/>
+        android:layout_below="@id/associatePositionET"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:padding="10dp"
-        android:id="@+id/perMoneyValution"
+        android:id="@+id/associateLocationET"
         android:background="@drawable/rounded_corner"
-        android:layout_below="@id/perMoneyValutionLabel"/>
+        android:layout_below="@id/associateLocationLabelTV"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/associateContactNoLabelTV"
+        android:text="CONTACT NUMBER"
+        android:layout_marginLeft="12dp"
+        android:textAllCaps="true"
+        android:layout_below="@id/associateLocationET"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:id="@+id/associateContactNoET"
+        android:background="@drawable/rounded_corner"
+        android:layout_below="@id/associateContactNoLabelTV"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/associateWebsiteLabelTV"
+        android:text="WEBSITE"
+        android:layout_marginLeft="12dp"
+        android:textAllCaps="true"
+        android:layout_below="@id/associateContactNoET"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:id="@+id/associateWebsiteET"
+        android:background="@drawable/rounded_corner"
+        android:layout_below="@id/associateWebsiteLabelTV"/>
+
+    <View
+        android:id="@+id/centerShim"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:visibility="invisible"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/associateWebsiteET"/>
+
+    <!--Set width to match_parent sets maximum width. alignParentLeft aligns
+    the left edge of this view with the left edge of its parent. toLeftOf
+    sets the right edge of this view to align with the left edge of the
+    given view. The result of all three settings is that this view will
+    always take up exactly half of the width of its parent, however wide
+    that may be. -->
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/associateProfileIV"
+        android:layout_toLeftOf="@+id/centerShim"
+        android:layout_below="@id/associateWebsiteET"/>
+
+    <!--Same deal, but on the right -->
+    <Button
+        android:id="@+id/associateProfileUploadBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/centerShim"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_below="@id/associateWebsiteET"
+        android:text="Upload"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/button_feedback"
-        android:id="@+id/compSubmitBtn"
+        android:id="@+id/associateSubmitBtn"
         android:text="Update"
         android:layout_margin="10dp"
         android:textStyle="bold"
         android:textColor="#ffffff"
-        android:layout_below="@id/perMoneyValution"/>
+        android:layout_below="@id/associateProfileIV"/>
 
 </RelativeLayout>
+</ScrollView>

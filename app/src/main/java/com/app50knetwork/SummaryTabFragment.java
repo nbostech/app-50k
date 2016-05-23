@@ -79,7 +79,7 @@ public class SummaryTabFragment extends Fragment {
                 company.getProfile().setMonthlyNetBurn(uspProductUnqinessET.getText().toString());
 
 
-                CompanyAPI.updateCompany(getActivity(), new AppCallback() {
+                CompanyAPI.updateCompanyProfile(getActivity(), new AppCallback() {
                     @Override
                     public void onSuccess(Response response) {
 
@@ -99,7 +99,7 @@ public class SummaryTabFragment extends Fragment {
                     public void unknowError(String unknowError) {
 
                     }
-                }, company);
+                }, company.getId(),company.getProfile());
             }
         });
         return rootView;

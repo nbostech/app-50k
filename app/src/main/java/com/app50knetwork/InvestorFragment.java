@@ -41,6 +41,7 @@ public class InvestorFragment extends Fragment {
     private OnInvestorListFragmentInteractionListener mListener;
     public List<User> users = null;
     RecyclerView recyclerView = null;
+    Context context;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -74,10 +75,18 @@ public class InvestorFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_investor_list, container, false);
+        if(getActivity() instanceof MainActivity){
+            context = ((MainActivity)getActivity());
+            ((MainActivity)getActivity()).resetActionBar(false,
+                    DrawerLayout.LOCK_MODE_UNLOCKED);
+            ((MainActivity)getActivity()).getSupportActionBar().setTitle("Investors");
+        } else if(getActivity() instanceof StartupMainActivity ){
+            context = ((StartupMainActivity)getActivity());
+            ((StartupMainActivity)getActivity()).resetActionBar(false,
+                    DrawerLayout.LOCK_MODE_UNLOCKED);
+            ((StartupMainActivity)getActivity()).getSupportActionBar().setTitle("Investors");
+        }
 
-        ((MainActivity)getActivity()).resetActionBar(false,
-                DrawerLayout.LOCK_MODE_UNLOCKED);
-        ((MainActivity)getActivity()).getSupportActionBar().setTitle("Investors");
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();

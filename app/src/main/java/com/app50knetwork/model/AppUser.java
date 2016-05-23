@@ -9,12 +9,18 @@ import java.io.Serializable;
  */
 
 public class AppUser implements Serializable{
+
+
     @SerializedName("user_type")
     private String userType;
-    @SerializedName("idn_id")
-    private long idnId;
-    @SerializedName("details")
-    private AppUserDetails details;
+    @SerializedName("uuid")
+    private String uuid;
+    @SerializedName("full_name")
+    private String fullName;
+    @SerializedName("email")
+    private String email;
+    @SerializedName("contact_number")
+    private String contactNumber;
 
     public String getUserType() {
         return userType;
@@ -24,23 +30,36 @@ public class AppUser implements Serializable{
         this.userType = userType;
     }
 
-    public long getIdnId() {
-        return idnId;
+    public String getUuid() {
+        return uuid;
     }
 
-    public void setIdnId(long idnId) {
-        this.idnId = idnId;
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
-    public AppUserDetails getDetails() {
-        return details;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setDetails(AppUserDetails details) {
-        this.details = details;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
+    public String getEmail() {
+        return email;
+    }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
+    public String getContactNumber() {
+        return contactNumber;
+    }
+
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
+    }
 }
 

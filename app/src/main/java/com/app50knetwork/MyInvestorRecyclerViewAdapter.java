@@ -2,7 +2,6 @@ package com.app50knetwork;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,11 +42,12 @@ public class MyInvestorRecyclerViewAdapter extends RecyclerView.Adapter<MyInvest
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        //holder.mIdView.setText(mValues.get(position).getId()+"");
-        Log.d("test11",mValues.get(position).getProfile().getFullName());
         holder.mContentView.setText(mValues.get(position).getProfile().getFullName());
         Context context = holder.mInvestorProfileIView.getContext();
-        Picasso.with(context).load(mValues.get(position).getProfile().getIdnImageUrl()).into(holder.mInvestorProfileIView);
+        if(mValues.get(position).getProfile().getIdnImageUrl()!=null)
+            Picasso.with(context).load(mValues.get(position).getProfile().getIdnImageUrl()).into(holder.mInvestorProfileIView);
+        else
+            Picasso.with(context).load("https://placeholdit.imgix.net/~text?txtsize=15&txt=Company&w=100&h=100").into(holder.mInvestorProfileIView);
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override

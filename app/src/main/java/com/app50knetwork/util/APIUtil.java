@@ -41,6 +41,9 @@ public interface APIUtil {
     @GET(AppConstants.userUrl)
     Call<ResponseBody> getUsers(@Header("Authorization") String authorization, @Query("user_type") String userType);
 
+    @GET(AppConstants.user1Url)
+    Call<ResponseBody> getUserDetails(@Header("Authorization") String authorization, @Path("userId") String userId);
+
     @Headers("Content-Type: application/json")
     @POST(AppConstants.userAppSignupURL)
     Call<User> createUser(@Header("Authorization") String authorization, @Body AppUser user);
@@ -63,8 +66,8 @@ public interface APIUtil {
     @POST(AppConstants.companyURL)
     Call<Company> createCompany(@Header("Authorization") String authorization, @Body CompanyProfile companyProfile);
 
-    @PUT(AppConstants.companyURL)
-    Call<Company> updateCompany(@Header("Authorization") String authorization, @Body Company company);
+    @PUT(AppConstants.companyProfileURL)
+    Call<Company> updateCompanyProfile(@Header("Authorization") String authorization,@Path("companyId") Long companyId, @Body CompanyProfile companyProfile);
 
     @GET(AppConstants.companyURL)
     Call<ArrayList<Company>> getCompanies(@Header("Authorization") String authorization);
@@ -78,14 +81,14 @@ public interface APIUtil {
     @POST(AppConstants.companyAssociatesURL)
     Call<Associate> createAssociate(@Header("Authorization") String authorization, @Path("companyId") Long companyId,@Body Associate associate);
 
-    @PUT(AppConstants.companyAssociateURL)
-    Call<Associate> updateAssociate(@Header("Authorization") String authorization, @Path("companyId") String companyId, @Path("associateId") String associateId);
+    @PUT(AppConstants.associateURL)
+    Call<Associate> updateAssociate(@Header("Authorization") String authorization, @Path("associateId") Long associateId, @Body Associate associate);
 
-    @GET(AppConstants.companyAssociateURL)
-    Call<Associate> getAssociate(@Header("Authorization") String authorization, @Path("companyId") String companyId, @Path("associateId") String associateId);
+    @GET(AppConstants.associateURL)
+    Call<Associate> getAssociate(@Header("Authorization") String authorization,  @Path("associateId") String associateId);
 
-    @DELETE(AppConstants.companyAssociateURL)
-    Call<Associate> deleteAssociate(@Header("Authorization") String authorization, @Path("companyId") String companyId, @Path("associateId") String associateId);
+    @DELETE(AppConstants.associateURL)
+    Call<Associate> deleteAssociate(@Header("Authorization") String authorization, @Path("associateId") String associateId);
 
     @Multipart
     @POST(AppConstants.mediaURL)

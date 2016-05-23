@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,7 +14,6 @@ import android.widget.Toast;
 
 import com.app50knetwork.model.AppCallback;
 import com.app50knetwork.model.AppUser;
-import com.app50knetwork.model.AppUserDetails;
 import com.app50knetwork.service.UserAPI;
 
 import java.util.List;
@@ -51,7 +51,7 @@ public class RegisterActivity extends AppCompatActivity {
         investorRadioBtn = (RadioButton) findViewById(R.id.investorRB);
         startUpRadioBtn = (RadioButton) findViewById(R.id.startupRB);
         userFullName = (EditText) findViewById(R.id.fullname);
-        companyName = (EditText) findViewById(R.id.company);
+        //companyName = (EditText) findViewById(R.id.company);
         email = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.password);
         contactNumber = (EditText) findViewById(R.id.contactNo);
@@ -65,24 +65,20 @@ public class RegisterActivity extends AppCompatActivity {
 
         if (selectedRoleOption.equals("investor")) {
             investorRadioBtn.setChecked(true);
-            userFullName.setHint("Full name");
-            companyName.setHint("CompanyProfile name");
+
         } else if (selectedRoleOption.equals("startUp")) {
             startUpRadioBtn.setChecked(true);
-            userFullName.setHint("Founder name");
-            companyName.setHint("CompanyProfile name");
+
         }
         roleOptionRG.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
 
                 if (checkedId == R.id.investorRB) {
-                    userFullName.setHint("Full name");
-                    companyName.setHint("CompanyProfile name");
+                    selectedRoleOption = "investor";
 
                 } else if (checkedId == R.id.startupRB) {
-                    userFullName.setHint("Founder name");
-                    companyName.setHint("CompanyProfile name");
+                    selectedRoleOption = "startup";
                 }
 
             }
@@ -118,23 +114,11 @@ public class RegisterActivity extends AppCompatActivity {
 
                 AppUser appUser = new AppUser();
 
-                appUser.setIdnId(newMember.getMember().getId());
-                appUser.setUserType("investor");
-                AppUserDetails details = new AppUserDetails();
-                details.setFullName(newMember.getMember().getFirstName()+" "+newMember.getMember().getLastName());
-                details.setCompanyName(companyName.getText().toString());
-                details.setEmail(newMember.getMember().getEmail());
-                details.setContactNumber(newMember.getMember().getPhone()+"");
-                appUser.setDetails(details);
-
-                String requestJson = "{ \"user\":{ " +
-                        "\"user_type\":\"investor\", " +
-                        "\"idn_id\": "+newMember.getMember().getId()+", " +
-                        "\"details\":{ \"email\":\""+newMember.getMember().getEmail()+"\", " +
-                        "\"contact_number\":\""+newMember.getMember().getPhone()+"\", " +
-                        "\"company_name\":\""+companyName.getText().toString()+"\", " +
-                        "\"full_name\":\""+newMember.getMember().getFirstName()+" "+newMember.getMember().getLastName()+"\" } } }";
-
+                appUser.setUuid(newMember.getMember().getUuid());
+                appUser.setContactNumber(contactNumber.getText().toString());
+                appUser.setEmail(newMember.getMember().getEmail());
+                appUser.setFullName(newMember.getMember().getFirstName()+" "+newMember.getMember().getLastName());
+                appUser.setUserType(selectedRoleOption);
 
 
 
@@ -142,25 +126,31 @@ public class RegisterActivity extends AppCompatActivity {
                     UserAPI.createUser(RegisterActivity.this, new AppCallback() {
                         @Override
                         public void onSuccess(Response response) {
+                            Log.d("test","success"+response.code());
                             if (response.isSuccessful()){
-                                Intent intent = new Intent(RegisterActivity.this, InvestorMainActivity.class);
-                                startActivity(intent);
+                                if(selectedRoleOption.equalsIgnoreCase("investor")) {
+                                    Intent intent = new Intent(RegisterActivity.this, InvestorMainActivity.class);
+                                    startActivity(intent);
+                                }else if(selectedRoleOption.equalsIgnoreCase("startup")){
+                                    Intent intent = new Intent(RegisterActivity.this, StartupMainActivity.class);
+                                    startActivity(intent);
+                                }
                             }
                         }
 
                         @Override
                         public void onFailure(Throwable t) {
-
+                            Log.d("test","onFailure"+t.getMessage());
                         }
 
                         @Override
                         public void authenticationError(String authenticationError) {
-
+                            Log.d("test","onFailure"+authenticationError);
                         }
 
                         @Override
                         public void unknowError(String unknowError) {
-
+                            Log.d("test","onFailure"+unknowError);
                         }
                     },appUser);
 

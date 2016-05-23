@@ -4,11 +4,13 @@ package com.app50knetwork.util;
  * Created by ashkumar on 4/16/2016.
  */
 public class AppConstants {
-    public static final String appURL="https://startup-50k.herokuapp.com";
+    public static final String appURL="http://fundr.api.qa1.nbos.in";
     public static final String idnURL="http://api.qa1.nbos.in";
+    public static final String baseURL = appURL+"/api/startup-fundraising/v0";
     public static final String userAppSignupURL = appURL + "/api/startup-fundraising/v0/users/signup";
     public static final String publicEventUrl = appURL + "/api/events/v0/TNT:vijaym/events";
     public static final String userUrl = appURL + "/api/startup-fundraising/v0/users";
+    public static final String user1Url = appURL + "/api/startup-fundraising/v0/users/{userId}";
     public static final String aboutUsURL = appURL + "/api/startup-fundraising/v0/about";
     public static final String companyURL = appURL + "/api/startup-fundraising/v0/companies";
     public static final String companyProfileURL = companyURL + "/{companyId}/profile";
@@ -21,7 +23,7 @@ public class AppConstants {
     public static final String associateTeamTypesURL = appURL +"/api/startup-fundraising/v0/associates/teams";
     public static final String compCategoriesURL = appURL + "/api/startup-fundraising/v0/company/categories";
     public static final String companyAssociatesURL = companyURL + "/{companyId}/associates";
-    public static final String companyAssociateURL = companyURL + "/{companyId}/associates/{associateId}";
+    public static final String associateURL = baseURL + "/associate/{associateId}";
     public static final String userSigninURL = userUrl + "/signin";
 
 

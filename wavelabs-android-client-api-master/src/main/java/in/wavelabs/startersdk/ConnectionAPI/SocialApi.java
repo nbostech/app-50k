@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.Fragment;
 
 import in.wavelabs.startersdk.ConnectionAPI.service.StarterClient;
 import in.wavelabs.startersdk.DataModel.auth.Connect;
@@ -110,7 +109,7 @@ public class SocialApi {
                     i.putExtra("name", service);
                     i.putExtra("url", response.body().getUrl());
                    // context.startActivity(i);
-                    fragment.startActivityForResult(i,10);
+                   fragment.startActivityForResult(i,10);
 
       //              nbosCallback.onSuccess(response);
                 } else if (response.code() == 400) {

@@ -6,84 +6,56 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.app50knetwork.FinancialTabFragment">
+    tools:context="com.app50knetwork.AssociateSummaryTabFragment">
+
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/fundingStageLabel"
-        android:text="STAGE"
+        android:id="@+id/associateExpAndExpLabelTV"
+        android:text="EXPERIENCE AND EXPERTISE"
         android:layout_marginLeft="12dp"
         android:textAllCaps="true"/>
-
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:id="@+id/fundingStage"
-        android:layout_below="@id/fundingStageLabel"
-        android:background="@drawable/rounded_corner"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/previousCapitalLabel"
-        android:text="PREVIOUS CAPITAL"
-        android:layout_marginLeft="12dp"
-        android:textAllCaps="true"
-        android:layout_below="@id/fundingStage"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:padding="10dp"
-        android:id="@+id/previousCapital"
+        android:inputType="text|textMultiLine"
+        android:id="@+id/associateExpAndExpET"
         android:background="@drawable/rounded_corner"
-        android:layout_below="@id/previousCapitalLabel"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/monthlyNetBurnLabel"
-        android:text="MONTHLY NET BURN"
-        android:layout_marginLeft="12dp"
-        android:textAllCaps="true"
-        android:layout_below="@id/previousCapital"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:id="@+id/monthlyNetBurn"
-        android:background="@drawable/rounded_corner"
-        android:padding="10dp"
-        android:layout_below="@id/monthlyNetBurnLabel"/>
+        android:layout_below="@id/associateExpAndExpLabelTV"/>
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/perMoneyValutionLabel"
-        android:text="PRE-MONEY VALUATION"
+        android:id="@+id/associateSummaryLabelTV"
+        android:text="SUMMARY"
         android:layout_marginLeft="12dp"
         android:textAllCaps="true"
-        android:layout_below="@id/monthlyNetBurn"/>
-
+        android:layout_below="@id/associateExpAndExpET"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:padding="10dp"
-        android:id="@+id/perMoneyValution"
+        android:inputType="text|textMultiLine"
+        android:id="@+id/associateSummaryEV"
         android:background="@drawable/rounded_corner"
-        android:layout_below="@id/perMoneyValutionLabel"/>
+        android:layout_below="@id/associateSummaryLabelTV"/>
+
+
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/button_feedback"
-        android:id="@+id/compSubmitBtn"
+        android:id="@+id/associateSubmitBtn"
         android:text="Update"
         android:layout_margin="10dp"
         android:textStyle="bold"
         android:textColor="#ffffff"
-        android:layout_below="@id/perMoneyValution"/>
+        android:layout_below="@id/associateSummaryEV"/>
 
 </RelativeLayout>

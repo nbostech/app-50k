@@ -9,7 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.app50knetwork.TeamTabFragment.OnTeamAssocListFragmentInteractionListener;
+//import com.app50knetwork.TeamTabFragment.OnTeamAssocListFragmentInteractionListener;
+import com.app50knetwork.helper.OnTeamAssocListFragmentInteractionListener;
 import com.app50knetwork.dummy.DummyContent.DummyItem;
 import com.app50knetwork.model.Associate;
 import com.squareup.picasso.Picasso;
@@ -46,9 +47,13 @@ public class TeamAssocRecyclerViewAdapter extends RecyclerView.Adapter<TeamAssoc
         //holder.mIdView.setText(mValues.get(position).getId()+"");
         Log.d("test11",mValues.get(position).getName());
         holder.mContentView.setText(mValues.get(position).getName());
-        Context context = holder.mInvestorProfileIView.getContext();
+        Context context = holder.mAssociateProfileIView.getContext();
         //Picasso.with(context).load(mValues.get(position).getProfile().getIdnImageUrl()).into(holder.mInvestorProfileIView);
-        Picasso.with(context).load("https://placeholdit.imgix.net/~text?txtsize=15&txt=Company&w=60&h=60").into(holder.mInvestorProfileIView);
+        //Picasso.with(context).load("https://placeholdit.imgix.net/~text?txtsize=15&txt=Company&w=60&h=60").into(holder.mAssociateProfileIView);
+        if(mValues.get(position).getProfileImage()!=null)
+            Picasso.with(context).load(mValues.get(position).getProfileImage().getMediaFileURLStr("medium")).into(holder.mAssociateProfileIView);
+        else
+            Picasso.with(context).load("https://placeholdit.imgix.net/~text?txtsize=15&txt=Company&w=100&h=100").into(holder.mAssociateProfileIView);
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,7 +76,7 @@ public class TeamAssocRecyclerViewAdapter extends RecyclerView.Adapter<TeamAssoc
         public final View mView;
         //public final TextView mIdView;
         public final TextView mContentView;
-        public final ImageView mInvestorProfileIView;
+        public final ImageView mAssociateProfileIView;
         public Associate mItem;
 
         public ViewHolder(View view) {
@@ -79,7 +84,7 @@ public class TeamAssocRecyclerViewAdapter extends RecyclerView.Adapter<TeamAssoc
             mView = view;
             //mIdView = (TextView) view.findViewById(R.id.id);
             mContentView = (TextView) view.findViewById(R.id.associateName);
-            mInvestorProfileIView = (ImageView) view.findViewById(R.id.associateProfileIView);
+            mAssociateProfileIView = (ImageView) view.findViewById(R.id.associateProfileIView);
         }
 
         @Override

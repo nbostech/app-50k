@@ -16,20 +16,21 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 
 import com.app50knetwork.model.AppCallback;
-import com.app50knetwork.model.Company;
-import com.app50knetwork.model.Metadata;
+import com.app50knetwork.model.Associate;
+import com.app50knetwork.model.TeamType;
 import com.app50knetwork.service.CompanyAPI;
 import com.app50knetwork.service.MetadataAPI;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import in.wavelabs.startersdk.Utils.Prefrences;
 import retrofit2.Response;
 
 /**
@@ -43,19 +44,23 @@ public class AssociateProfileTabFragment extends Fragment {
     private static final String ARG_SECTION_NUMBER = "section_number";
 
 
+    Spinner associateTeamS;
+    Button associateSubmitBtn;
+    EditText associateNameLabelEV;
+    EditText associateEmailET ;
+    EditText associatePositionET;
+    EditText associateLocationET;
+    EditText associateContactNoET;
+    EditText associateWebsiteET;
+    ImageView associateProfileImageView;
+    Button associateProfileImageUploadBtn;
 
-
-    EditText companyNameET;
-    EditText companyEmailET;
-    EditText contactNumberET;
-    Spinner industryS;
-    Button compSubmitBtn;
-    Button logoUploadBtn;
     private ProgressBar spinner;
-    Company company;
+    Associate associate;
+    Long companyId;
 
-    HashMap<Long,String> categoryMap = new HashMap<Long,String>();
-    ArrayList<String> industryList = new ArrayList<String>();
+    HashMap<Long,String> teamMap = new HashMap<Long,String>();
+    ArrayList<String> teamList = new ArrayList<String>();
     ArrayAdapter<String> adapter;
 
 
@@ -77,41 +82,48 @@ public class AssociateProfileTabFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_company_profile_tab, container, false);
-        company =((CompanyProfileActivity)getActivity()).company;
+        View view = inflater.inflate(R.layout.fragment_associate_profile_tab, container, false);
+        associate =((EditAssociateActivity)getActivity()).associate;
+        companyId = ((EditAssociateActivity) getActivity()).companyId;
 
-        industryS = (Spinner) view.findViewById(R.id.industry);
-        companyEmailET = (EditText) view.findViewById(R.id.companyEmail);
-        companyNameET = (EditText) view.findViewById(R.id.companyName);
-        contactNumberET = (EditText) view.findViewById(R.id.contactNumber);
-        compSubmitBtn = (Button)view.findViewById(R.id.compSubmitBtn);
-        logoUploadBtn = (Button) view.findViewById(R.id.logoUploadBtn);
+        associateTeamS = (Spinner) view.findViewById(R.id.associateTypeS);
+        associateNameLabelEV = (EditText) view.findViewById(R.id.associateNameLabelEV);
+        associateEmailET = (EditText) view.findViewById(R.id.associateEmailET);
+        associatePositionET = (EditText) view.findViewById(R.id.associatePositionET);
+        associateLocationET = (EditText)view.findViewById(R.id.associateLocationET);
+        associateContactNoET = (EditText)view.findViewById(R.id.associateContactNoET);
+        associateWebsiteET = (EditText)view.findViewById(R.id.associateWebsiteET);
+        associateSubmitBtn = (Button)view.findViewById(R.id.associateSubmitBtn);
+        associateProfileImageUploadBtn = (Button) view.findViewById(R.id.associateProfileUploadBtn);
 
+        associateProfileImageView = (ImageView) view.findViewById(R.id.associateProfileIV);
 
-        industryList = new ArrayList<String>(categoryMap.values());
-        industryList.add("select industry");
+        teamList = new ArrayList<String>(teamMap.values());
+        teamList.add("select team");
         adapter =
-                new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,industryList);
-        industryS.setAdapter(adapter);
+                new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,teamList);
+        associateTeamS.setAdapter(adapter);
 
-        if(industryList.size()<=1) {
+        if(teamList.size()<=1) {
             //Activate Progress bar spinner
-            ((RelativeLayout)((CompanyProfileActivity)getActivity()).findViewById(R.id.progressBar1)).setVisibility(View.VISIBLE);
+            ((RelativeLayout)((EditAssociateActivity)getActivity()).findViewById(R.id.progressBar1)).setVisibility(View.VISIBLE);
             getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
                     WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
-            MetadataAPI.getCompCategories(getActivity(), new AppCallback<ArrayList<Metadata>>() {
+            MetadataAPI.getAssociateTypes(getActivity(), new AppCallback<ArrayList<TeamType>>() {
                 @Override
-                public void onSuccess(Response<ArrayList<Metadata>> response) {
-                    categoryMap = Metadata.getMapFromList(response.body());
-                    industryList = new ArrayList<String>(categoryMap.values());
-                    industryList.add(0, "select industry");
+                public void onSuccess(Response<ArrayList<TeamType>> response) {
+                    teamMap = TeamType.getMapFromList(response.body());
+                    teamList = new ArrayList<String>(teamMap.values());
+                    teamList.add(0, "select team");
                     adapter =
-                            new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, industryList);
-                    industryS.setAdapter(adapter);
+                            new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, teamList);
+                    associateTeamS.setAdapter(adapter);
+                    if((((EditAssociateActivity) getActivity()).associate.getAssociateType())!=null)
+                        associateTeamS.setSelection(adapter.getPosition(((EditAssociateActivity) getActivity()).associate.getAssociateType()));
 
                     //Deactivate Progress bar spinner
-                    ((CompanyProfileActivity) getActivity()).layout.setVisibility(View.GONE);
+                    ((EditAssociateActivity) getActivity()).layout.setVisibility(View.GONE);
                     getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 }
 
@@ -134,57 +146,70 @@ public class AssociateProfileTabFragment extends Fragment {
 
 
 
-            compSubmitBtn.setText("UPDATE");
-            companyNameET.setText(((CompanyProfileActivity) getActivity()).company.getProfile().getName());
-            companyEmailET.setText(((CompanyProfileActivity) getActivity()).company.getProfile().getEmail());
-            contactNumberET.setText(((CompanyProfileActivity) getActivity()).company.getProfile().getContactNumber());
+        associateSubmitBtn.setText("UPDATE");
+        associateNameLabelEV.setText(((EditAssociateActivity) getActivity()).associate.getName());
+        associateEmailET.setText(((EditAssociateActivity) getActivity()).associate.getEmail());
+        associatePositionET.setText(((EditAssociateActivity) getActivity()).associate.getPosition());
+        associateLocationET.setText(((EditAssociateActivity) getActivity()).associate.getLocation());
+        associateContactNoET.setText(((EditAssociateActivity) getActivity()).associate.getContactNumber());
+        associateWebsiteET.setText(((EditAssociateActivity) getActivity()).associate.getWebsite());
+        if(associate.getProfileImage()!=null)
+            Picasso.with(associateProfileImageView.getContext()).load(associate.getProfileImage().getMediaFileURLStr("medium")).into(associateProfileImageView);
+        else
+            Picasso.with(associateProfileImageView.getContext()).load("https://placeholdit.imgix.net/~text?txtsize=15&txt=Company&w=100&h=100").into(associateProfileImageView);
 
-
-
-
-        logoUploadBtn.setOnClickListener(new View.OnClickListener() {
+        associateProfileImageUploadBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(
                         Intent.ACTION_PICK,
                         android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 
-                getActivity().startActivityForResult(i, ((CompanyProfileActivity) getActivity()).RESULT_LOAD_IMAGE);
+                getActivity().startActivityForResult(i, ((EditAssociateActivity) getActivity()).RESULT_LOAD_IMAGE);
+
+
             }
         });
 
-
-
-
-        companyNameET.addTextChangedListener(new TextWatcher() {
+        associateNameLabelEV.addTextChangedListener(new TextWatcher() {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             public void onTextChanged(CharSequence s, int start, int before, int count) { }
-            public void afterTextChanged(Editable s) { ((CompanyProfileActivity) getActivity()).company.getProfile().setName(new String(s.toString())); }
+            public void afterTextChanged(Editable s) { ((EditAssociateActivity) getActivity()).associate.setName(new String(s.toString())); }
         });
-        companyEmailET.addTextChangedListener(new TextWatcher() {
+        associateEmailET.addTextChangedListener(new TextWatcher() {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             public void onTextChanged(CharSequence s, int start, int before, int count) { }
-            public void afterTextChanged(Editable s) { ((CompanyProfileActivity) getActivity()).company.getProfile().setEmail(new String(s.toString())); }
+            public void afterTextChanged(Editable s) { ((EditAssociateActivity) getActivity()).associate.setEmail(new String(s.toString())); }
         });
-        contactNumberET.addTextChangedListener(new TextWatcher() {
+        associatePositionET.addTextChangedListener(new TextWatcher() {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             public void onTextChanged(CharSequence s, int start, int before, int count) { }
-            public void afterTextChanged(Editable s) { ((CompanyProfileActivity) getActivity()).company.getProfile().setContactNumber(new String(s.toString())); }
+            public void afterTextChanged(Editable s) { ((EditAssociateActivity) getActivity()).associate.setPosition(new String(s.toString())); }
+        });
+        associateLocationET.addTextChangedListener(new TextWatcher() {
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+            public void onTextChanged(CharSequence s, int start, int before, int count) { }
+            public void afterTextChanged(Editable s) { ((EditAssociateActivity) getActivity()).associate.setLocation(new String(s.toString())); }
+        });
+        associateContactNoET.addTextChangedListener(new TextWatcher() {
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+            public void onTextChanged(CharSequence s, int start, int before, int count) { }
+            public void afterTextChanged(Editable s) { ((EditAssociateActivity) getActivity()).associate.setContactNumber(new String(s.toString())); }
+        });
+        associateWebsiteET.addTextChangedListener(new TextWatcher() {
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+            public void onTextChanged(CharSequence s, int start, int before, int count) { }
+            public void afterTextChanged(Editable s) { ((EditAssociateActivity) getActivity()).associate.setWebsite(new String(s.toString())); }
         });
 
 
-        compSubmitBtn.setOnClickListener(new View.OnClickListener() {
+        associateSubmitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                associate.setAssociateType(associateTeamS.getSelectedItem().toString());
 
 
-                company.getProfile().setEmail(companyEmailET.getText().toString());
-                company.getProfile().setName(companyNameET.getText().toString());
-                company.getProfile().setContactNumber(contactNumberET.getText().toString());
-                company.getProfile().setCategory(industryS.getSelectedItem().toString());
-                company.getProfile().setFounderName(Prefrences.getFirstName(getActivity())+ " "+Prefrences.getLastName(getActivity()));
-
-                CompanyAPI.updateCompany(getActivity(), new AppCallback() {
+                CompanyAPI.updateAssoicate(getActivity(), new AppCallback() {
                     @Override
                     public void onSuccess(Response response) {
 
@@ -204,7 +229,7 @@ public class AssociateProfileTabFragment extends Fragment {
                     public void unknowError(String unknowError) {
 
                     }
-                }, company);
+                },associate.getId(),associate);
             }
         });
 

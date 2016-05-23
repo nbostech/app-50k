@@ -2,28 +2,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="?attr/actionBarSize"
     tools:context="com.app50knetwork.ViewAssociateDetailFragment"
     android:orientation="vertical"
+    android:paddingTop="64dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
     android:background="#fff">
-
     <!-- TODO: Update blank fragment layout -->
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="100dp"
         android:orientation="horizontal"
         android:baselineAligned="false">
         <ImageView
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
+            android:layout_width="160dp"
+            android:layout_height="100dp"
+            android:background="@drawable/border_image"
+            android:padding="4dp"
             android:id="@+id/assoicateImageView"
             android:layout_weight="1"/>
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:padding="8dp"
             android:layout_weight="2">
 
 
@@ -39,7 +43,7 @@
                 android:id="@+id/associateCompanyNameTV" />
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="15dp"/>
+                android:layout_height="10dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -57,6 +61,7 @@
         </LinearLayout>
 
     </LinearLayout>
+
 
     <LinearLayout
         android:orientation="vertical"
@@ -78,32 +83,49 @@
         <Space
             android:layout_width="match_parent"
             android:layout_height="15dp"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dip"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:background="#FF909090" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Location"
-            android:textStyle="bold"
+
             android:id="@+id/associateLocationLabel" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/associateLocationTV" />
+            android:id="@+id/associateLocationTV"
+            android:textStyle="bold"    />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="8dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Profile Summary"
-            android:textStyle="bold"
+            android:text="Website"
             android:id="@+id/associateWebsiteLabel" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/associateWebsiteTV" />
+            android:id="@+id/associateWebsiteTV"
+            android:textStyle="bold"/>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="8dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Profile Summary"
+            android:text="Experience and Expertise"
             android:textStyle="bold"
-            android:id="@+id/associateExpAndExpLabel" />
+            android:id="@+id/associateExpAndExpLabel"
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

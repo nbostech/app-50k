@@ -6,10 +6,12 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -17,6 +19,7 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.app50knetwork.helper.OnTeamAssocListFragmentInteractionListener;
 import com.app50knetwork.model.AppCallback;
 import com.app50knetwork.model.Associate;
 import com.app50knetwork.model.Company;
@@ -27,7 +30,7 @@ import java.io.File;
 import retrofit2.Response;
 
 public class CompanyProfileActivity extends AppCompatActivity implements
-        TeamTabFragment.OnTeamAssocListFragmentInteractionListener,
+        OnTeamAssocListFragmentInteractionListener,
         CreateAssociateDialogFragment.OnCreateAssociateDialogFragmentInteractionListener{
 
     /**
@@ -132,7 +135,8 @@ public class CompanyProfileActivity extends AppCompatActivity implements
             CompanyAPI.uploadMedia(CompanyProfileActivity.this, new AppCallback() {
                 @Override
                 public void onSuccess(Response response) {
-
+                    Snackbar.make(getWindow().getDecorView().getRootView(), "Uploaded successfully", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
                 }
 
                 @Override
@@ -162,6 +166,7 @@ public class CompanyProfileActivity extends AppCompatActivity implements
     public void onTeamAssocListFragmentInteraction(Associate item) {
         Intent intent = new Intent(CompanyProfileActivity.this, AssociateActivity.class);
         intent.putExtra("selectedAssociate",item);
+        intent.putExtra("selectedCompanyId",company.getId());
         startActivity(intent);
 
         /*
@@ -178,6 +183,7 @@ public class CompanyProfileActivity extends AppCompatActivity implements
     public void onCreateAssociateDialogFragmentInteraction(Uri uri) {
 
     }
+
 
 
 
@@ -199,8 +205,18 @@ public class CompanyProfileActivity extends AppCompatActivity implements
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            if (position == 0)
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            if (position == 0) {
+                /*
+                Fragment profileTabFragment = ProfileTabFragment.newInstance(position + 1);
+                fragmentTransaction.replace(R.id.container, profileTabFragment, "profileTabFragment");
+                fragmentTransaction.addToBackStack("profileTabFragment");
+                fragmentTransaction.commit();
+                */
                 return ProfileTabFragment.newInstance(position + 1);
+                //return profileTabFragment;
+            }
             else if (position == 1)
                 return FinancialTabFragment.newInstance(position + 1);
             else if (position == 2)

@@ -16,6 +16,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
@@ -25,6 +26,7 @@ import com.app50knetwork.model.Company;
 import com.app50knetwork.model.Metadata;
 import com.app50knetwork.service.CompanyAPI;
 import com.app50knetwork.service.MetadataAPI;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -53,6 +55,7 @@ public class ProfileTabFragment extends Fragment {
     Button logoUploadBtn;
     private ProgressBar spinner;
     Company company;
+    ImageView imageView;
 
     HashMap<Long,String> categoryMap = new HashMap<Long,String>();
     ArrayList<String> industryList = new ArrayList<String>();
@@ -87,7 +90,7 @@ public class ProfileTabFragment extends Fragment {
         compSubmitBtn = (Button)view.findViewById(R.id.compSubmitBtn);
         logoUploadBtn = (Button) view.findViewById(R.id.logoUploadBtn);
 
-
+        imageView = (ImageView) view.findViewById(R.id.companyLogoIV);
         industryList = new ArrayList<String>(categoryMap.values());
         industryList.add("select industry");
         adapter =
@@ -109,7 +112,8 @@ public class ProfileTabFragment extends Fragment {
                     adapter =
                             new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, industryList);
                     industryS.setAdapter(adapter);
-
+                    if((((CompanyProfileActivity) getActivity()).company.getProfile().getCategory())!=null)
+                        industryS.setSelection(adapter.getPosition(((CompanyProfileActivity) getActivity()).company.getProfile().getCategory()));
                     //Deactivate Progress bar spinner
                     ((CompanyProfileActivity) getActivity()).layout.setVisibility(View.GONE);
                     getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
@@ -134,12 +138,14 @@ public class ProfileTabFragment extends Fragment {
 
 
 
-            compSubmitBtn.setText("UPDATE");
-            companyNameET.setText(((CompanyProfileActivity) getActivity()).company.getProfile().getName());
-            companyEmailET.setText(((CompanyProfileActivity) getActivity()).company.getProfile().getEmail());
-            contactNumberET.setText(((CompanyProfileActivity) getActivity()).company.getProfile().getContactNumber());
-
-
+        compSubmitBtn.setText("UPDATE");
+        companyNameET.setText(((CompanyProfileActivity) getActivity()).company.getProfile().getName());
+        companyEmailET.setText(((CompanyProfileActivity) getActivity()).company.getProfile().getEmail());
+        contactNumberET.setText(((CompanyProfileActivity) getActivity()).company.getProfile().getContactNumber());
+        if(company.getLogoImage()!=null)
+            Picasso.with(imageView.getContext()).load(company.getLogoImage().getMediaFileURLStr("medium")).into(imageView);
+        else
+            Picasso.with(imageView.getContext()).load("https://placeholdit.imgix.net/~text?txtsize=15&txt=Company&w=100&h=100").into(imageView);
 
 
         logoUploadBtn.setOnClickListener(new View.OnClickListener() {
@@ -150,6 +156,8 @@ public class ProfileTabFragment extends Fragment {
                         android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 
                 getActivity().startActivityForResult(i, ((CompanyProfileActivity) getActivity()).RESULT_LOAD_IMAGE);
+
+
             }
         });
 
@@ -184,7 +192,7 @@ public class ProfileTabFragment extends Fragment {
                 company.getProfile().setCategory(industryS.getSelectedItem().toString());
                 company.getProfile().setFounderName(Prefrences.getFirstName(getActivity())+ " "+Prefrences.getLastName(getActivity()));
 
-                CompanyAPI.updateCompany(getActivity(), new AppCallback() {
+                CompanyAPI.updateCompanyProfile(getActivity(), new AppCallback() {
                     @Override
                     public void onSuccess(Response response) {
 
@@ -204,7 +212,7 @@ public class ProfileTabFragment extends Fragment {
                     public void unknowError(String unknowError) {
 
                     }
-                }, company);
+                }, company.getId(),company.getProfile());
             }
         });
 

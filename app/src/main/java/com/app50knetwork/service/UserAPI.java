@@ -39,7 +39,7 @@ public class UserAPI {
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-
+                appCallback.onFailure(t);
             }
         });
     }
@@ -56,6 +56,27 @@ public class UserAPI {
                     Log.d("response",response.body().toString());
                     appCallback.onSuccess(response);
                 }else{
+                    appCallback.onSuccess(response);
+                }
+            }
+
+            @Override
+            public void onFailure(Call call, Throwable t) {
+
+            }
+        });
+    }
+
+    public static void getUserDetails(final Context context,final AppCallback appCallback,String userId){
+        String token = Prefrences.getClientToken(context);
+        Call<ResponseBody>getUsersCall = RestUtil.getAPIUtil().getUserDetails(token,userId);
+        getUsersCall.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.code() == 200) {
+                    appCallback.onSuccess(response);
+                }
+                else{
                     appCallback.onSuccess(response);
                 }
             }

@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.app50knetwork.model.Associate;
+import com.squareup.picasso.Picasso;
 
 
 /**
@@ -92,6 +93,12 @@ public class ViewAssociateDetailFragment extends Fragment {
 
         associateImageView = (ImageView)view.findViewById(R.id.assoicateImageView);
 
+        if(associate.getProfileImage()!=null)
+            Picasso.with(associateImageView.getContext()).load(associate.getProfileImage().getMediaFileURLStr("medium")).into(associateImageView);
+        else
+            Picasso.with(associateImageView.getContext()).load("https://placeholdit.imgix.net/~text?txtsize=15&txt=Company&w=100&h=100").into(associateImageView);
+
+
         associateNameVT = (TextView)view.findViewById(R.id.associateNameTV);
         associateNameVT.setText(associate.getName());
         associateCompanyNameVT = (TextView)view.findViewById(R.id.associateCompanyNameTV);
@@ -106,6 +113,8 @@ public class ViewAssociateDetailFragment extends Fragment {
         associateWebsiteVT.setText(associate.getWebsite());
         associateExpAndExpVT = (TextView)view.findViewById(R.id.associateExpAndExpTV);
         associateExpAndExpVT.setText(associate.getExperience());
+
+
       
         return view;
     }

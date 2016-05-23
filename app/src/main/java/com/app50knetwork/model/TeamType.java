@@ -2,6 +2,9 @@ package com.app50knetwork.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.HashMap;
+import java.util.List;
+
 /**
  * Created by ashkumar on 5/10/2016.
  */
@@ -42,5 +45,14 @@ public class TeamType {
 
     public void setTenantId(String tenantId) {
         this.tenantId = tenantId;
+    }
+
+
+    public static HashMap<Long,String> getMapFromList(List<TeamType> teamTypeList){
+        HashMap<Long, String> teamTMap = new HashMap<Long,String>();
+        for (TeamType teamType:teamTypeList ) {
+            teamTMap.put(teamType.getId(),teamType.getName());
+        }
+        return  teamTMap;
     }
 }

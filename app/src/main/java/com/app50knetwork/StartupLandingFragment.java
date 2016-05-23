@@ -8,7 +8,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +35,7 @@ public class StartupLandingFragment extends Fragment {
     // TODO: Customize parameters
     private int mColumnCount = 1;
 
-    public ArrayList<Company> startupList = null;
+    public ArrayList<Company> startupList = new ArrayList<Company>();
     RecyclerView recyclerView = null;
 
     private OnStartupListFragmentInteractionListener mListener;
@@ -83,14 +82,14 @@ public class StartupLandingFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            if(startupList==null)
+            if(startupList.size()==0)
                 CompanyAPI.getCompanies(getActivity(), new AppCallback<ArrayList<Company>>() {
                     @Override
                     public void onSuccess(Response<ArrayList<Company>> response) {
 
                         startupList = response.body();
-                        Log.d("test",startupList.get(0).getProfile().getName());
-                        if(startupList!=null) {
+
+                        if(startupList.size()>0) {
                             mListener = (OnStartupListFragmentInteractionListener) getActivity();
                             recyclerView.setAdapter(new StartupRecyclerViewAdapter(startupList, mListener));
                         }

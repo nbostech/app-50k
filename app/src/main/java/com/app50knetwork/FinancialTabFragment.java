@@ -62,6 +62,7 @@ public  class FinancialTabFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View rootView = inflater.inflate(R.layout.fragment_company_finfo_tab, container, false);
         company =((CompanyProfileActivity)getActivity()).company;
         previousCapitalET = (EditText) rootView.findViewById(R.id.previousCapital);
@@ -91,7 +92,8 @@ public  class FinancialTabFragment extends Fragment {
                     adapter =
                             new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, stageList);
                     companyStageS.setAdapter(adapter);
-
+                    if((((CompanyProfileActivity) getActivity()).company.getProfile().getFundingStage()!=null))
+                        companyStageS.setSelection(adapter.getPosition(((CompanyProfileActivity) getActivity()).company.getProfile().getFundingStage()));
                     //Deactivate Progress bar spinner
                     ((CompanyProfileActivity) getActivity()).layout.setVisibility(View.GONE);
                     getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
@@ -147,7 +149,7 @@ public  class FinancialTabFragment extends Fragment {
                 company.getProfile().setPerMoneyValuation(preMoneyEvaluationET.getText().toString());
                 company.getProfile().setFundingStage(companyStageS.getSelectedItem().toString());
 
-                CompanyAPI.updateCompany(getActivity(), new AppCallback() {
+                CompanyAPI.updateCompanyProfile(getActivity(), new AppCallback() {
                     @Override
                     public void onSuccess(Response response) {
 
@@ -167,7 +169,7 @@ public  class FinancialTabFragment extends Fragment {
                     public void unknowError(String unknowError) {
 
                     }
-                }, company);
+                }, company.getId(),company.getProfile());
             }
         });
 

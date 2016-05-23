@@ -21,7 +21,7 @@ import retrofit2.Response;
 /**
  * A fragment representing a list of Items.
  * <p/>
- * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
+ * Activities containing this fragment MUST implement the {@link OnEventListFragmentInteractionListener}
  * interface.
  */
 public class EventFragment extends Fragment {
@@ -30,7 +30,7 @@ public class EventFragment extends Fragment {
     private static final String ARG_COLUMN_COUNT = "column-count";
     // TODO: Customize parameters
     private int mColumnCount = 1;
-    private OnListFragmentInteractionListener mListener;
+    private OnEventListFragmentInteractionListener mListener;
     public List<Event> eventList = null;
     RecyclerView recyclerView = null;
 
@@ -85,7 +85,7 @@ public class EventFragment extends Fragment {
                 public void onSuccess(Response<List<Event>> response) {
                     eventList = response.body();
                     if(eventList!=null) {
-                        mListener = (OnListFragmentInteractionListener) getActivity();
+                        mListener = (OnEventListFragmentInteractionListener) getActivity();
                         recyclerView.setAdapter(new MyEventViewAdapter(eventList, mListener));
                     }
                 }
@@ -118,8 +118,8 @@ public class EventFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnListFragmentInteractionListener) {
-            mListener = (OnListFragmentInteractionListener) context;
+        if (context instanceof OnEventListFragmentInteractionListener) {
+            mListener = (OnEventListFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnListFragmentInteractionListener");
@@ -142,8 +142,8 @@ public class EventFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnListFragmentInteractionListener {
+    public interface OnEventListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(Event item);
+        void onEventListFragmentInteraction(Event item);
     }
 }

@@ -3,7 +3,9 @@ package com.app50knetwork.model;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -15,8 +17,7 @@ public class MediaFile implements Serializable {
     private Long id;
     private String extension;
     @SerializedName("mediaFileDetailsList")
-    //private List<MediaFileDetail> mediaFileDetailList = new ArrayList<MediaFileDetail>();
-    private MediaFileDetail mediaFileDetailList;
+    private List<MediaFileDetail> mediaFileDetailList = new ArrayList<MediaFileDetail>();
     @SerializedName("supportedsizes")
     private String supportedSizes;
 
@@ -37,23 +38,18 @@ public class MediaFile implements Serializable {
         this.extension = extension;
     }
 
-    /*
-    public List<MediaFileDetail> getMediaFileDetailList() {
-        return mediaFileDetailList;
-    }
+
 
     public void setMediaFileDetailList(List<MediaFileDetail> mediaFileDetailList) {
         this.mediaFileDetailList = mediaFileDetailList;
     }
-    */
 
-    public MediaFileDetail getMediaFileDetailList() {
+
+    public List<MediaFileDetail> getMediaFileDetailList() {
         return mediaFileDetailList;
     }
 
-    public void setMediaFileDetailList(MediaFileDetail mediaFileDetailList) {
-        this.mediaFileDetailList = mediaFileDetailList;
-    }
+
 
 
     public String getSupportedSizes() {
@@ -64,7 +60,7 @@ public class MediaFile implements Serializable {
         this.supportedSizes = supportedSizes;
     }
 
-    /*
+
     public String getMediaFileURLStr(String mediaType){
         String mediaPath ="";
 
@@ -76,7 +72,7 @@ public class MediaFile implements Serializable {
         return mediaPath;
     }
 
-      */
+
     public Map<String,String> getMediaFileDim(){
         Map<String,String> mediaFileDimMap = new HashMap<String,String>();
         String supSizeStr = getSupportedSizes();

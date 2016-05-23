@@ -1,6 +1,7 @@
 package com.app50knetwork;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -101,6 +102,7 @@ public class CreateAssociateDialogFragment extends DialogFragment{
         associateEmail = (EditText)view.findViewById(R.id.associateEmail);
         associateContactNo = (EditText) view.findViewById(R.id.associateContactNo);
         associateTeamType = (Spinner)view.findViewById(R.id.associateTeamType);
+        associateProfileSummary = (EditText)view.findViewById(R.id.associateProfileSummary);
         createAssociateBtn = (Button)view.findViewById(R.id.createAssociateBtn);
 
         teamTypeList = new ArrayList<String>(teamTypeMap.values());
@@ -168,10 +170,11 @@ public class CreateAssociateDialogFragment extends DialogFragment{
                 associate.setName(associateName.getText().toString());
                 associate.setEmail(associateEmail.getText().toString());
                 associate.setContactNumber(associateContactNo.getText().toString());
-                associate.setExperience(associateProfileSummary.getText().toString());
-                CompanyAPI.createAssoicate(getActivity(), new AppCallback() {
+                associate.setProfileSummary(associateProfileSummary.getText().toString());
+                CompanyAPI.createAssoicate(getActivity(), new AppCallback<Associate>() {
                     @Override
-                    public void onSuccess(Response response) {
+                    public void onSuccess(Response<Associate> response) {
+                        associate = response.body();
                         getDialog().dismiss();
                     }
 
@@ -194,6 +197,16 @@ public class CreateAssociateDialogFragment extends DialogFragment{
         });
 
         return view;
+    }
+
+    @Override
+    public void onDismiss(DialogInterface dialog) {
+        if(associate!=null) {
+            TeamTabFragment f = (TeamTabFragment) getActivity().getSupportFragmentManager().findFragmentByTag("android:switcher:"+R.id.profileTabcontainer+3);
+            f.associates.add(associate);
+            f.recyclerView.getAdapter().notifyDataSetChanged();
+        }
+        dialog.dismiss();
     }
 
     // TODO: Rename method, update argument and hook method into UI event

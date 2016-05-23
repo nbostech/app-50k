@@ -24,7 +24,7 @@ import com.app50knetwork.util.AppConstants;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
-        EventFragment.OnListFragmentInteractionListener,
+        EventFragment.OnEventListFragmentInteractionListener,
         InvestorFragment.OnInvestorListFragmentInteractionListener,
         LandingFragment.OnFragmentInteractionListener {
 
@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         if (id == R.id.nav_50kinvestors) {
-            Fragment investorFragment = InvestorFragment.newInstance(4);
+            Fragment investorFragment = InvestorFragment.newInstance(3);
             fragmentTransaction.replace(R.id.container, investorFragment, "investorFragment");
             fragmentTransaction.addToBackStack("investorFragment");
             fragmentTransaction.commit();
@@ -151,7 +151,7 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    public void onListFragmentInteraction(Event item) {
+    public void onEventListFragmentInteraction(Event item) {
         Log.d("test",item.name);
 
         FragmentManager fragmentManager = getSupportFragmentManager();

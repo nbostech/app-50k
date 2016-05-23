@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.app50knetwork.EventFragment.OnListFragmentInteractionListener;
+import com.app50knetwork.EventFragment.OnEventListFragmentInteractionListener;
 import com.app50knetwork.dummy.DummyContent.DummyItem;
 import com.app50knetwork.model.Event;
 import com.squareup.picasso.Picasso;
@@ -22,15 +22,15 @@ import java.util.List;
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
- * specified {@link OnListFragmentInteractionListener}.
+ * specified {@link OnEventListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
 public class MyEventViewAdapter extends RecyclerView.Adapter<MyEventViewAdapter.ViewHolder> {
 
     private final List<Event> mValues;
-    private final OnListFragmentInteractionListener mListener;
+    private final OnEventListFragmentInteractionListener mListener;
 
-    public MyEventViewAdapter(List<Event> items, OnListFragmentInteractionListener listener) {
+    public MyEventViewAdapter(List<Event> items, OnEventListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -103,7 +103,7 @@ public class MyEventViewAdapter extends RecyclerView.Adapter<MyEventViewAdapter.
 
                     // Notify the active callbacks interface (the activity, if the
                     // fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(holder.mItem);
+                    mListener.onEventListFragmentInteraction(holder.mItem);
 
                 }
             }
