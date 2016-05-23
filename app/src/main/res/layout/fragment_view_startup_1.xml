@@ -1,0 +1,213 @@
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.app50knetwork.ViewStartupFragment"
+    android:background="#fff"
+    android:orientation="vertical">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <View
+        android:id="@+id/centerShim"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:visibility="invisible"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/contactNumber"/>
+
+    <!--Set width to match_parent sets maximum width. alignParentLeft aligns
+    the left edge of this view with the left edge of its parent. toLeftOf
+    sets the right edge of this view to align with the left edge of the
+    given view. The result of all three settings is that this view will
+    always take up exactly half of the width of its parent, however wide
+    that may be. -->
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/companyLogoIV"
+        android:layout_toLeftOf="@id/centerShim"/>
+
+    <!--Same deal, but on the right -->
+    <TextView
+        android:id="@+id/companyNameTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/centerShim"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"/>
+    <TextView
+        android:id="@+id/descriptionTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/centerShim"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_below="@id/companyNameTV"/>
+    <TextView
+        android:id="@+id/categoryTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/centerShim"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_below="@id/descriptionTV"
+        android:drawableLeft="@android:drawable/btn_star_big_off"/>
+
+    <View
+        android:id="@+id/centerShim1"
+        android:layout_height="wrap_content"
+        android:layout_width="1dp"
+        android:visibility="invisible"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/categoryTV"/>
+    <TextView
+        android:id="@+id/companyWebsiteTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/centerShim1"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:background="@color/grey_hex_c0"
+        android:layout_below="@id/categoryTV"/>
+    <TextView
+        android:id="@+id/empStrengthTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/centerShim1"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:background="@color/grey_hex_c0"
+        android:layout_below="@id/categoryTV"/>
+    <TextView
+        android:id="@+id/foundedDateTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/centerShim1"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:background="@color/grey_hex_c0"
+        android:layout_below="@id/companyWebsiteTV"/>
+    <TextView
+        android:id="@+id/locationTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/centerShim1"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:background="@color/grey_hex_c0"
+        android:layout_below="@id/companyWebsiteTV"/>
+
+    <TextView
+        android:id="@+id/financialInfoLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/centerShim1"
+        android:text="Financial Info"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_below="@id/locationTV"/>
+
+    <TextView
+        android:id="@+id/fundingStageTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/centerShim1"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:background="@color/grey_hex_c0"
+        android:layout_below="@id/financialInfoLabel"/>
+
+
+    <TextView
+        android:id="@+id/perviouCapitalTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/centerShim1"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:background="@color/grey_hex_c0"
+        android:layout_below="@id/financialInfoLabel"/>
+    <TextView
+        android:id="@+id/monthlyNetBurnTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/centerShim1"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:background="@color/grey_hex_c0"
+        android:layout_below="@id/fundingStageTV"/>
+    <TextView
+        android:id="@+id/preMoneyValuation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/centerShim1"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:background="@color/grey_hex_c0"
+        android:layout_below="@id/fundingStageTV"/>
+
+
+    <View android:id="@+id/separator"
+        android:background="@color/grey_hex_c0"
+        android:layout_width = "fill_parent"
+        android:layout_height="1dip"
+        android:layout_below="@id/preMoneyValuation"
+        android:layout_centerVertical ="true"
+        android:layout_alignParentTop="true"/>
+    <TextView
+        android:id="@+id/businessSummaryLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Business Summary"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_below="@id/preMoneyValuation"/>
+    <TextView
+        android:id="@+id/businessSummaryTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_below="@id/businessSummaryLabel"/>
+
+    <View android:id="@+id/separator1"
+        android:background="@color/grey_hex_c0"
+        android:layout_width = "fill_parent"
+        android:layout_height="1dip"
+        android:layout_below="@id/businessSummaryTV"
+        android:layout_centerVertical ="true"
+        android:layout_alignParentTop="true"/>
+    <TextView
+        android:id="@+id/uspProductUniquenessLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="USP / Product Uniqueness"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_below="@id/businessSummaryTV"/>
+    <TextView
+        android:id="@+id/uspProductUniqueness"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_below="@id/uspProductUniquenessLabel"/>
+
+
+
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/editStartupBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|bottom"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="26dp"
+        android:layout_marginRight="26dp"
+        android:src="@android:drawable/ic_menu_edit" />
+</RelativeLayout>
