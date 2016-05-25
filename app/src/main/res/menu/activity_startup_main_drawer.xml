@@ -3,19 +3,13 @@
 
 
     <group
-        android:id="@+id/nav_sSettingsG"
+        android:id="@+id/nav_sHomeG"
         android:checkableBehavior="all">
         <item
-            android:id="@+id/nav_sSettings"
-            android:title="Settings" />
+            android:id="@+id/nav_sHome"
+            android:title="Home" />
     </group>
-    <group
-        android:id="@+id/nav_sMyNetworkG"
-        android:checkableBehavior="all">
-        <item
-            android:id="@+id/nav_sMyNetwork"
-            android:title="My Network" />
-    </group>
+
     <group
         android:id="@+id/nav_s50keventsG"
         android:checkableBehavior="all">
@@ -62,13 +56,7 @@
             android:title="Sign Out" />
     </group>
 
-    <group
-        android:id="@+id/nav_sHomeG"
-        android:checkableBehavior="all">
-        <item
-            android:id="@+id/nav_sHome"
-            android:title="Home" />
-    </group>
+
 
 
 </menu>

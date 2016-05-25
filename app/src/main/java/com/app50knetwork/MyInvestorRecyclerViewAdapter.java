@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.app50knetwork.InvestorFragment.OnInvestorListFragmentInteractionListener;
 import com.app50knetwork.dummy.DummyContent.DummyItem;
 import com.app50knetwork.model.User;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -44,11 +43,12 @@ public class MyInvestorRecyclerViewAdapter extends RecyclerView.Adapter<MyInvest
         holder.mItem = mValues.get(position);
         holder.mContentView.setText(mValues.get(position).getProfile().getFullName());
         Context context = holder.mInvestorProfileIView.getContext();
+        /*
         if(mValues.get(position).getProfile().getIdnImageUrl()!=null)
             Picasso.with(context).load(mValues.get(position).getProfile().getIdnImageUrl()).into(holder.mInvestorProfileIView);
         else
             Picasso.with(context).load("https://placeholdit.imgix.net/~text?txtsize=15&txt=Company&w=100&h=100").into(holder.mInvestorProfileIView);
-
+        */
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

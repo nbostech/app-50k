@@ -18,11 +18,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.app50knetwork.helper.OnTeamAssocListFragmentInteractionListener;
+import com.app50knetwork.model.AppCallback;
 import com.app50knetwork.model.Associate;
 import com.app50knetwork.model.Company;
 import com.app50knetwork.model.Event;
 import com.app50knetwork.model.User;
+import com.app50knetwork.service.UserAPI;
 import com.app50knetwork.util.AppConstants;
+
+import retrofit2.Response;
 
 public class StartupMainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
@@ -35,12 +39,14 @@ public class StartupMainActivity extends AppCompatActivity
     ActionBar mActionBar;
     ActionBarDrawerToggle toggle;
     DrawerLayout drawer;
+    User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_startup_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        user = (User)getIntent().getSerializableExtra("user");
 
         setSupportActionBar(toolbar);
         mActionBar = getSupportActionBar();
@@ -120,6 +126,11 @@ public class StartupMainActivity extends AppCompatActivity
             fragmentTransaction.commit();
 
         } else if (id == R.id.nav_sEditProfile) {
+            Fragment editUserFragment = EditUserFragment.newInstance("","");
+            fragmentTransaction.replace(R.id.startUpcontainer, editUserFragment, "editUserFragment");
+            fragmentTransaction.addToBackStack("editUserFragment");
+            fragmentTransaction.commit();
+            
 
         } else if (id == R.id.nav_sAboutus) {
             Fragment about50kFragment = About50kFragment.newInstance();
@@ -136,9 +147,37 @@ public class StartupMainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_sHome) {
 
-        } else if (id == R.id.nav_sSettings) {
+            Fragment startupLandingFragment = StartupLandingFragment.newInstance(3);
+            fragmentTransaction.replace(R.id.startUpcontainer, startupLandingFragment, "startupLandingFragment");
+            fragmentTransaction.addToBackStack("startupLandingFragment");
+            fragmentTransaction.commit();
 
-        } else if (id == R.id.nav_sMyNetwork) {
+        }  else if (id == R.id.nav_sSignOut) {
+
+            UserAPI.logout(StartupMainActivity.this, new AppCallback() {
+                @Override
+                public void onSuccess(Response response) {
+                    if(response.code() == 200){
+                        Intent i = new Intent(StartupMainActivity.this, MainActivity.class);
+                        startActivity(i);
+                    }
+                }
+
+                @Override
+                public void onFailure(Throwable t) {
+
+                }
+
+                @Override
+                public void authenticationError(String authenticationError) {
+
+                }
+
+                @Override
+                public void unknowError(String unknowError) {
+
+                }
+            });
 
         }
 

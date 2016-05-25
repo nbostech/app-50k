@@ -1,12 +1,13 @@
 package com.app50knetwork.model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 
 /**
  * Created by ashkumar on 5/5/2016.
  */
-public class Metadata {
+public class Metadata implements Serializable{
 
     private long id;
     private String name;

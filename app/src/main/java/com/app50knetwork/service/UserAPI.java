@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.app50knetwork.model.AppCallback;
 import com.app50knetwork.model.AppUser;
+import com.app50knetwork.model.Profile;
 import com.app50knetwork.model.User;
 import com.app50knetwork.util.RestUtil;
 import com.google.gson.JsonObject;
@@ -107,4 +108,48 @@ public class UserAPI {
             }
         });
     }
+
+    public static void updateUserProfile(final Context context, final AppCallback appCallback, Profile profile){
+        String token = Prefrences.getAccessToken(context);
+        Call<Profile> createUserCall = RestUtil.getAPIUtil().updateUser(token,profile.getId(),profile);
+        createUserCall.enqueue(new Callback<Profile>() {
+            @Override
+            public void onResponse(Call<Profile> call, Response<Profile> response) {
+                if (response.code() == 200) {
+                    Log.d("response",response.code()+"");
+                    Log.d("response",response.body().toString());
+                    appCallback.onSuccess(response);
+                }else{
+                    appCallback.onSuccess(response);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Profile> call, Throwable t) {
+                appCallback.onFailure(t);
+            }
+        });
+    }
+
+
+    public static void logout(final Context context, final AppCallback appCallback){
+        String token =  Prefrences.getAccessToken(context);
+        Call<ResponseBody>appLogin = RestUtil.getAPIUtil().logoutApp(token);
+        appLogin.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.code() == 200) {
+                    appCallback.onSuccess(response);
+                }else{
+                    appCallback.onSuccess(response);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
+    }
+
 }

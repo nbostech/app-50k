@@ -1,9 +1,9 @@
 package com.app50knetwork;
 
-import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.app50knetwork.model.User;
-import com.squareup.picasso.Picasso;
 
 
 /**
@@ -72,7 +71,7 @@ public class InvestorDetailFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         Log.d("test",user.getProfile().getEmail());
-        Log.d("test",user.getProfile().getCompanyName());
+
 
     }
 
@@ -86,12 +85,11 @@ public class InvestorDetailFragment extends Fragment {
 
         investorImageView =  (ImageView) view.findViewById(R.id.investorImageView);
         Context context = investorImageView.getContext();
-        Log.d("test",user.getProfile().getIdnImageUrl());
-        Picasso.with(context).load(user.getProfile().getIdnImageUrl()).into(investorImageView);
+
         investorFullName =(TextView) view.findViewById(R.id.investorName);
         investorFullName.setText(user.getProfile().getFullName());
         investorCompanyName = (TextView) view.findViewById(R.id.investorCompanyName);
-        investorCompanyName.setText(user.getProfile().getCompanyName());
+
         investorLinkedInLink = (TextView) view.findViewById(R.id.investorLinkedInLink);
         investorLinkedInLink.setText("http://linkedIn.in");
         investorProfileSummary = (TextView) view.findViewById(R.id.investorProfileSummary);

@@ -25,6 +25,7 @@ public class AppConstants {
     public static final String companyAssociatesURL = companyURL + "/{companyId}/associates";
     public static final String associateURL = baseURL + "/associate/{associateId}";
     public static final String userSigninURL = userUrl + "/signin";
+    public static final String userSignoutURL = userUrl +"/signout";
 
 
     public static final String blogURL = "http://50knetwork.com/blog/";

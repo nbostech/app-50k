@@ -7,6 +7,7 @@ import com.app50knetwork.model.CompanyProfile;
 import com.app50knetwork.model.Event;
 import com.app50knetwork.model.MediaFile;
 import com.app50knetwork.model.Metadata;
+import com.app50knetwork.model.Profile;
 import com.app50knetwork.model.TeamType;
 import com.app50knetwork.model.User;
 import com.google.gson.JsonObject;
@@ -47,6 +48,9 @@ public interface APIUtil {
     @Headers("Content-Type: application/json")
     @POST(AppConstants.userAppSignupURL)
     Call<User> createUser(@Header("Authorization") String authorization, @Body AppUser user);
+
+    @PUT(AppConstants.user1Url)
+    Call<Profile> updateUser(@Header("Authorization") String authorization, @Path("userId") Long userId, @Body Profile profile);
 
 
     @GET(AppConstants.aboutUsURL)
@@ -96,5 +100,8 @@ public interface APIUtil {
 
     @POST(AppConstants.userSigninURL)
     Call<List<User>> loginApp(@Header("Authorization") String authorization, @Body JsonObject uuidString);
+
+    @GET(AppConstants.userSignoutURL)
+    Call<ResponseBody> logoutApp(@Header("Authorization") String authorization);
 
 }

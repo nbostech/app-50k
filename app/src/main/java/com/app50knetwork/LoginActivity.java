@@ -345,6 +345,7 @@ public class LoginActivity extends AppCompatActivity implements UserTypeFragment
                                     if(user.getUserTypes()!=null && user.getUserTypes().size()>0 &&
                                             user.getUserTypes().get(0).getName().equalsIgnoreCase("startup")) {
                                         Intent i = new Intent(LoginActivity.this, StartupMainActivity.class);
+                                        i.putExtra("user",user);
                                         startActivity(i);
                                     }else if (user.getUserTypes()!=null && user.getUserTypes().size()>0 &&
                                             user.getUserTypes().get(0).getName().equalsIgnoreCase("investor")){

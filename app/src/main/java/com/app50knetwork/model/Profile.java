@@ -2,10 +2,12 @@ package com.app50knetwork.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Created by ashkumar on 4/16/2016.
  */
-public class Profile {
+public class Profile implements Serializable{
 
     private long id;
     @SerializedName("full_name")
@@ -13,20 +15,22 @@ public class Profile {
     private String email;
     @SerializedName("contact_number")
     private String contactNumber;
-    @SerializedName("company_name")
-    private String companyName;
+    @SerializedName("location")
     private String location;
+    @SerializedName("website")
     private String website;
     @SerializedName("profile_summary")
     private String profileSummary;
-    @SerializedName("profile_links")
-    private String profileLinks;
+    @SerializedName("linkedin_profile")
+    private String linkedInProfile;
+    @SerializedName("facebook_profile")
+    private String facebookProfile;
+    @SerializedName("twitter_profile")
+    private String twitterProfile;
+    @SerializedName("other_profile")
+    private String otherProfile;
     @SerializedName("social_accounts")
     private String socialAccounts;
-    @SerializedName("idn_image_url")
-    private String idnImageUrl;
-    @SerializedName("user_id")
-    private String userId;
 
     public long getId() {
         return id;
@@ -60,13 +64,7 @@ public class Profile {
         this.contactNumber = contactNumber;
     }
 
-    public String getCompanyName() {
-        return companyName;
-    }
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
 
     public String getLocation() {
         return location;
@@ -92,13 +90,7 @@ public class Profile {
         this.profileSummary = profileSummary;
     }
 
-    public String getProfileLinks() {
-        return profileLinks;
-    }
 
-    public void setProfileLinks(String profileLinks) {
-        this.profileLinks = profileLinks;
-    }
 
     public String getSocialAccounts() {
         return socialAccounts;
@@ -108,19 +100,36 @@ public class Profile {
         this.socialAccounts = socialAccounts;
     }
 
-    public String getIdnImageUrl() {
-        return idnImageUrl;
+
+    public String getLinkedInProfile() {
+        return linkedInProfile;
     }
 
-    public void setIdnImageUrl(String idnImageUrl) {
-        this.idnImageUrl = idnImageUrl;
+    public void setLinkedInProfile(String linkedInProfile) {
+        this.linkedInProfile = linkedInProfile;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getFacebookProfile() {
+        return facebookProfile;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setFacebookProfile(String facebookProfile) {
+        this.facebookProfile = facebookProfile;
+    }
+
+    public String getTwitterProfile() {
+        return twitterProfile;
+    }
+
+    public void setTwitterProfile(String twitterProfile) {
+        this.twitterProfile = twitterProfile;
+    }
+
+    public String getOtherProfile() {
+        return otherProfile;
+    }
+
+    public void setOtherProfile(String otherProfile) {
+        this.otherProfile = otherProfile;
     }
 }

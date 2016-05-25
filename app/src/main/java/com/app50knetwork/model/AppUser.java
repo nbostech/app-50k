@@ -11,6 +11,7 @@ import java.io.Serializable;
 public class AppUser implements Serializable{
 
 
+
     @SerializedName("user_type")
     private String userType;
     @SerializedName("uuid")
@@ -21,6 +22,22 @@ public class AppUser implements Serializable{
     private String email;
     @SerializedName("contact_number")
     private String contactNumber;
+    @SerializedName("location")
+    private String location;
+    @SerializedName("website")
+    private String website;
+    @SerializedName("profile_summary")
+    private String profileSummary;
+    @SerializedName("linkedIn_profile")
+    private String linkedInProfile;
+    @SerializedName("facebook_profile")
+    private String facebookProfile;
+    @SerializedName("twitter_profile")
+    private String twitterProfile;
+    @SerializedName("other_profile")
+    private String otherProfile;
+    @SerializedName("social_acounts")
+    private String socialAccounts;
 
     public String getUserType() {
         return userType;
@@ -60,6 +77,70 @@ public class AppUser implements Serializable{
 
     public void setContactNumber(String contactNumber) {
         this.contactNumber = contactNumber;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
+    public String getProfileSummary() {
+        return profileSummary;
+    }
+
+    public void setProfileSummary(String profileSummary) {
+        this.profileSummary = profileSummary;
+    }
+
+    public String getLinkedInProfile() {
+        return linkedInProfile;
+    }
+
+    public void setLinkedInProfile(String linkedInProfile) {
+        this.linkedInProfile = linkedInProfile;
+    }
+
+    public String getFacebookProfile() {
+        return facebookProfile;
+    }
+
+    public void setFacebookProfile(String facebookProfile) {
+        this.facebookProfile = facebookProfile;
+    }
+
+    public String getTwitterProfile() {
+        return twitterProfile;
+    }
+
+    public void setTwitterProfile(String twitterProfile) {
+        this.twitterProfile = twitterProfile;
+    }
+
+    public String getOtherProfile() {
+        return otherProfile;
+    }
+
+    public void setOtherProfile(String otherProfile) {
+        this.otherProfile = otherProfile;
+    }
+
+    public String getSocialAccounts() {
+        return socialAccounts;
+    }
+
+    public void setSocialAccounts(String socialAccounts) {
+        this.socialAccounts = socialAccounts;
     }
 }
 
