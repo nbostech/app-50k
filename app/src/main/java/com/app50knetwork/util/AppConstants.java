@@ -11,7 +11,7 @@ public class AppConstants {
     public static final String publicEventUrl = appURL + "/api/events/v0/TNT:vijaym/events";
     public static final String userUrl = appURL + "/api/startup-fundraising/v0/users";
     public static final String user1Url = appURL + "/api/startup-fundraising/v0/users/{userId}";
-    public static final String aboutUsURL = appURL + "/api/startup-fundraising/v0/about";
+    public static final String aboutUsURL = "http://50knetwork.com/wp-json/wp/v2/pages/35";
     public static final String companyURL = appURL + "/api/startup-fundraising/v0/companies";
     public static final String companyProfileURL = companyURL + "/{companyId}/profile";
     public static final String updateUserProfileURL = userUrl + "/{userId}";
