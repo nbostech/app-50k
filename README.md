@@ -1,2 +1,2 @@
 # app-50k
-https://travis-ci.org/nbostech/app-50k.svg?branch=master
+[![Build Status](https://travis-ci.org/nbostech/app-50k.svg?branch=master)](https://travis-ci.org/nbostech/app-50k)
