@@ -16,6 +16,8 @@ android:
   - extra-google-m2repository
   - addon-google_apis-google-23
   - sys-img-${ANDROID_ABI}-${ANDROID_TARGET}
+before_install:
+  - chmod +x gradlew
 before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
 cache:
