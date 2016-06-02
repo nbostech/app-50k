@@ -5,11 +5,11 @@
     android:background="@color/finestWhite"
     tools:context=".About50kFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+  <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/aboutUsTextView"
-        android:background="@color/finestWhite" />
+        android:textColor="#000"
+        android:textSize="16sp" />
 
 </FrameLayout>
