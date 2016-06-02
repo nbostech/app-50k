@@ -18,11 +18,10 @@ import retrofit2.Response;
 public class AppAPI {
 
     public static void getAboutUs(final Context context, final AppCallback appCallback) {
-        String token = Prefrences.getClientToken(context);
-        Call<ResponseBody> aboutUsRes = RestUtil.getAPIUtil().getAboutUs(token);
-        aboutUsRes.enqueue(new Callback<ResponseBody>() {
+        Call<AboutUs> aboutUsRes = RestUtil.getAPIUtil().getAboutUs();
+        aboutUsRes.enqueue(new Callback<AboutUs>() {
             @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+            public void onResponse(Call<AboutUs> call, Response<AboutUs> response) {
                 if (response.code() == 200) {
                     Log.d("response", response.code() + "");
                     Log.d("response", response.body().toString());
@@ -33,7 +32,7 @@ public class AppAPI {
             }
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
+            public void onFailure(Call<AboutUs> call, Throwable t) {
                 appCallback.onFailure(t);
             }
         });
