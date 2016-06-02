@@ -54,8 +54,7 @@ public interface APIUtil {
 
 
     @GET(AppConstants.aboutUsURL)
-    Call<ResponseBody> getAboutUs(@Header("Authorization") String authorization);
-
+    Call<AboutUs> getAboutUs();
 
     @GET(AppConstants.compCategorieListURL)
     Call<ArrayList<Metadata>> getCategories(@Header("Authorization") String authorization);
