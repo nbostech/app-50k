@@ -1,5 +1,6 @@
 package com.app50knetwork.util;
 
+import com.app50knetwork.model.AboutUs;
 import com.app50knetwork.model.AppUser;
 import com.app50knetwork.model.Associate;
 import com.app50knetwork.model.Company;
