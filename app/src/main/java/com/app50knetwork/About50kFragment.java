@@ -10,8 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.app50knetwork.model.AboutUs;
 import com.app50knetwork.model.AppCallback;
 import com.app50knetwork.service.AppAPI;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import java.io.IOException;
 
@@ -45,16 +51,20 @@ public class About50kFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_about50k, container, false);
         about50KTextView = (TextView) view.findViewById(R.id.aboutUsTextView);
-        AppAPI.getAboutUs(getActivity(), new AppCallback<ResponseBody>() {
+        AppAPI.getAboutUs(getActivity(), new AppCallback<AboutUs>() {
             @Override
-            public void onSuccess(Response<ResponseBody> response) {
+            public void onSuccess(Response<AboutUs> response) {
 
-                try {
-                    Log.d("test", response.body().string());
-                    about50KTextView.setText(Html.fromHtml(response.body().string()));
-                } catch (IOException e) {
-                    Log.d("errror", e.getMessage());
+                Log.d("test", response.body().getContent().getRendered());
+                Document doc = Jsoup.parseBodyFragment(response.body().getContent().getRendered());
+                Elements p= doc.getElementsByTag("p");
+                String pConcatenated="";
+                for (Element x: p) {
+                    pConcatenated+= x.text()+"\n\n";
                 }
+
+                System.out.println(pConcatenated);
+                about50KTextView.setText(pConcatenated);
             }
 
             @Override
