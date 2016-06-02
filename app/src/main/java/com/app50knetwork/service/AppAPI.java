@@ -5,9 +5,9 @@ import android.util.Log;
 
 import com.app50knetwork.model.AppCallback;
 import com.app50knetwork.util.RestUtil;
+import com.app50knetwork.model.AboutUs;
 
 import in.wavelabs.startersdk.Utils.Prefrences;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
