@@ -8,6 +8,6 @@
     android:layout_height="match_parent"
 
     app:layoutManager="LinearLayoutManager"
-    tools:context="com.app50knetwork.InvestorFragment"
+    tools:context="com.wavelabs.com.wavelabs.InvestorFragment"
     tools:listitem="@layout/fragment_investor"
     android:background="#fff" />

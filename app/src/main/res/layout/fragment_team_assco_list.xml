@@ -7,7 +7,7 @@ xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 
-tools:context="com.app50knetwork.TeamTabFragment">
+tools:context="com.wavelabs.com.wavelabs.TeamTabFragment">
 <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -17,7 +17,7 @@ tools:context="com.app50knetwork.TeamTabFragment">
         android:layout_height="match_parent"
 
         app:layoutManager="LinearLayoutManager"
-        tools:context="com.app50knetwork.TeamTabFragment"
+        tools:context="com.wavelabs.com.wavelabs.TeamTabFragment"
         tools:listitem="@layout/fragment_team_assco"
         android:background="#fff" />
 <android.support.design.widget.FloatingActionButton

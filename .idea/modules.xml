@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app-50k.iml" filepath="$PROJECT_DIR$/app-50k.iml" />
-      <module fileurl="file://$PROJECT_DIR$/wavelabs-android-client-api-master/wavelabs-android-client-api-master.iml" filepath="$PROJECT_DIR$/wavelabs-android-client-api-master/wavelabs-android-client-api-master.iml" />
     </modules>
   </component>
 </project>

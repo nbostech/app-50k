@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.app50knetwork">
+    package="com.wavelabs.nfund">
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
     <application
         android:name=".MyApplicaiton"
         android:allowBackup="true"
@@ -33,7 +37,7 @@
             android:windowSoftInputMode="stateHidden">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.app50knetwork.MainActivity" />
+                android:value="com.wavelabs.nfund.MainActivity" />
         </activity>
         <activity
             android:name=".RegisterActivity"
@@ -42,10 +46,10 @@
             android:windowSoftInputMode="stateHidden">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.app50knetwork.MainActivity" />
+                android:value="com.wavelabs.nfund.MainActivity" />
         </activity>
         <activity
-            android:name=".InvestorMainActivity"
+            android:name="com.wavelabs.nfund.InvestorMainActivity"
             android:label="@string/title_activity_investor_main"
             android:theme="@style/AppTheme.NoActionBar" />
 
@@ -53,11 +57,11 @@
             android:name="in.wavelabs.startersdk.WAVELABS_CLIENT_ID"
             android:value="@string/wavelabs_app_id" />
         <meta-data
-            android:name="in.wavelabs.startersdk.WAVELABS_CLIENT_SECRET"
+            android:name="in.wavelabs.idn.WAVELABS_CLIENT_SECRET"
             android:value="@string/wavelabs_app_secret" />
 
         <activity
-            android:name=".StartupMainActivity"
+            android:name="com.wavelabs.nfund.StartupMainActivity"
             android:label="@string/title_activity_startup_main"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -67,7 +71,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.app50knetwork.StartupMainActivity" />
+                android:value="com.wavelabs.nfund.StartupMainActivity" />
         </activity>
         <activity
             android:name=".AssociateActivity"
@@ -76,7 +80,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.app50knetwork.CompanyProfileActivity" />
+                android:value="com.wavelabs.nfund.CompanyProfileActivity" />
         </activity>
         <activity
             android:name=".EditAssociateActivity"
@@ -85,7 +89,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.app50knetwork.AssociateActivity" />
+                android:value="com.wavelabs.nfund.AssociateActivity" />
         </activity>
     </application>
 

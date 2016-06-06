@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
 
     android:layout_height="500dp"
-    tools:context="com.app50knetwork.CreateAssociateDialogFragment">
+    tools:context="com.wavelabs.com.wavelabs.CreateAssociateDialogFragment">
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"

@@ -8,7 +8,7 @@
     android:paddingLeft="8dp"
     android:paddingBottom="8dp"
     android:paddingRight="8dp"
-    tools:context="com.app50knetwork.ViewStartupFragment">
+    tools:context="com.wavelabs.com.wavelabs.ViewStartupFragment">
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
@@ -18,7 +18,7 @@
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context="com.app50knetwork.ViewStartupFragment">
+            tools:context="com.wavelabs.com.wavelabs.ViewStartupFragment">
 
             <!-- TODO: Update blank fragment layout -->
             <LinearLayout
