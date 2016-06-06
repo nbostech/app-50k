@@ -92,7 +92,6 @@ public class LoginActivity extends AppCompatActivity implements UserTypeFragment
 
 
     private void linkedInConnect(String service) {
-        Intent i = new Intent(LoginActivity.this, MainActivity.class);
 
         SocialApi.socialLogin(LoginActivity.this, service, new NBOSCallback<NewMemberApiModel>() {
 
