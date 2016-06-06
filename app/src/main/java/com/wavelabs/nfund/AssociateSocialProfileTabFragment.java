@@ -103,7 +103,7 @@ public class AssociateSocialProfileTabFragment extends Fragment {
                 associate.setOtherProfile(associateSocialOET.getText().toString());
 
 
-                CompanyAPI.updateAssoicate(getActivity(), new NBOSCallback() {
+                CompanyAPI.updateAssoicate(getActivity(),associate.getId(),associate, new NBOSCallback() {
 
                     @Override
                     public void onResponse(Response response) {
@@ -116,7 +116,7 @@ public class AssociateSocialProfileTabFragment extends Fragment {
                     }
 
 
-                }, associate.getId(),associate);
+                });
             }
         });
         return rootView;

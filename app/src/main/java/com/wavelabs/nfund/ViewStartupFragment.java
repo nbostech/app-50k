@@ -152,7 +152,7 @@ public class ViewStartupFragment extends Fragment {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
             if(associates == null)
-                CompanyAPI.getAssociates(getActivity(), new NBOSCallback<ArrayList<Associate>>() {
+                CompanyAPI.getAssociates(getActivity(), company.getId(),new NBOSCallback<ArrayList<Associate>>() {
                     @Override
                     public void onResponse(Response<ArrayList<Associate>> response) {
                         associates = response.body();
@@ -168,7 +168,7 @@ public class ViewStartupFragment extends Fragment {
 
                     }
 
-                }, company.getId());
+                });
 
             else {
                 recyclerView.setAdapter(new TeamAssocRecyclerViewAdapter(associates, mListViewListener,getActivity()));

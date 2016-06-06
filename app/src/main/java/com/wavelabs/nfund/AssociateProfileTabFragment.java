@@ -194,7 +194,7 @@ public class AssociateProfileTabFragment extends Fragment {
                 associate.setAssociateType(associateTeamS.getSelectedItem().toString());
 
 
-                CompanyAPI.updateAssoicate(getActivity(), new NBOSCallback() {
+                CompanyAPI.updateAssoicate(getActivity(), associate.getId(),associate, new NBOSCallback() {
 
                     @Override
                     public void onResponse(Response response) {
@@ -206,7 +206,7 @@ public class AssociateProfileTabFragment extends Fragment {
 
                     }
 
-                },associate.getId(),associate);
+                });
             }
         });
 

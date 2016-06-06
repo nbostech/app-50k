@@ -140,7 +140,7 @@ public  class FinancialTabFragment extends Fragment {
                 company.getProfile().setPerMoneyValuation(preMoneyEvaluationET.getText().toString());
                 company.getProfile().setFundingStage(companyStageS.getSelectedItem().toString());
 
-                CompanyAPI.updateCompanyProfile(getActivity(), new NBOSCallback() {
+                CompanyAPI.updateCompanyProfile(getActivity(),company.getId(),company.getProfile(), new NBOSCallback() {
 
                     @Override
                     public void onResponse(Response response) {
@@ -153,7 +153,7 @@ public  class FinancialTabFragment extends Fragment {
                     }
 
 
-                }, company.getId(),company.getProfile());
+                });
             }
         });
 

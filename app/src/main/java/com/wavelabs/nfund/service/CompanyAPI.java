@@ -27,7 +27,7 @@ import retrofit2.Response;
  */
 public class CompanyAPI {
 
-    public static void createCompany(final Context context, final NBOSCallback nbosCallback, CompanyProfile companyProfile){
+    public static void createCompany(final Context context,CompanyProfile companyProfile, final NBOSCallback nbosCallback){
         String token = Prefrences.getAccessToken(context);
         Call<Company> companyCall = RestUtil.getAPIUtil().createCompany(token,companyProfile);
         companyCall.enqueue(new Callback<Company>() {
@@ -45,7 +45,7 @@ public class CompanyAPI {
     }
 
 
-    public static void updateCompanyProfile(final Context context, final NBOSCallback nbosCallback, Long companyId, CompanyProfile companyProfile){
+    public static void updateCompanyProfile(final Context context, Long companyId, CompanyProfile companyProfile, final NBOSCallback nbosCallback){
         String token = Prefrences.getAccessToken(context);
         Call<Company> companyCall = RestUtil.getAPIUtil().updateCompanyProfile(token,companyId,companyProfile);
         companyCall.enqueue(new Callback<Company>() {
@@ -88,7 +88,7 @@ public class CompanyAPI {
 
     }
 
-    public static void uploadMedia(final Context context, final NBOSCallback nbosCallback,String companyId,String mediaFor,File file){
+    public static void uploadMedia(final Context context,String companyId,String mediaFor,File file, final NBOSCallback nbosCallback){
         String token = Prefrences.getAccessToken(context);
 
         RequestBody idValue =
@@ -129,7 +129,7 @@ public class CompanyAPI {
         });
     }
 
-    public static void createAssoicate(final Context context, final NBOSCallback nbosCallback, Long companyId, Associate associate){
+    public static void createAssoicate(final Context context,Long companyId, Associate associate, final NBOSCallback nbosCallback){
         String token = Prefrences.getAccessToken(context);
         Call<Associate> companyCall = RestUtil.getAPIUtil().createAssociate(token,companyId,associate);
         companyCall.enqueue(new Callback<Associate>() {
@@ -152,7 +152,7 @@ public class CompanyAPI {
     }
 
 
-    public static void updateAssoicate(final Context context, final NBOSCallback nbosCallback,  Long associateId, Associate associate){
+    public static void updateAssoicate(final Context context, Long associateId, Associate associate, final NBOSCallback nbosCallback){
         String token = Prefrences.getAccessToken(context);
         Call<Associate> companyCall = RestUtil.getAPIUtil().updateAssociate(token,associateId,associate);
         companyCall.enqueue(new Callback<Associate>() {
@@ -174,7 +174,7 @@ public class CompanyAPI {
         });
     }
 
-    public static void getAssociates(final Context context, final NBOSCallback<ArrayList<Associate>> nbosCallback, Long companyId){
+    public static void getAssociates(final Context context,Long companyId, final NBOSCallback<ArrayList<Associate>> nbosCallback){
         String token = Prefrences.getAccessToken(context);
         Call<ArrayList<Associate>> companyListCall = RestUtil.getAPIUtil().getAssociates(token,companyId);
 

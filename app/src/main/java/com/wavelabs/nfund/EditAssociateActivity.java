@@ -91,7 +91,7 @@ public class EditAssociateActivity extends AppCompatActivity {
             ImageView imageView = (ImageView) findViewById(R.id.associateProfileIV);
             imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
 
-            CompanyAPI.uploadMedia(EditAssociateActivity.this, new NBOSCallback() {
+            CompanyAPI.uploadMedia(EditAssociateActivity.this,Long.toString(associate.getId()),"associate_profile",new File(picturePath), new NBOSCallback() {
 
 
                 @Override
@@ -106,7 +106,7 @@ public class EditAssociateActivity extends AppCompatActivity {
                 }
 
 
-            },Long.toString(associate.getId()),"associate_profile",new File(picturePath));
+            });
 
 
 

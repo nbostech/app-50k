@@ -82,7 +82,7 @@ public class AssociateSummaryTabFragment extends Fragment {
                 associateSummaryEV.setText(((EditAssociateActivity) getActivity()).associate.getProfileSummary());
 
 
-                CompanyAPI.updateAssoicate(getActivity(), new NBOSCallback() {
+                CompanyAPI.updateAssoicate(getActivity(),associate.getId(),associate, new NBOSCallback() {
 
 
                     @Override
@@ -95,7 +95,7 @@ public class AssociateSummaryTabFragment extends Fragment {
 
                     }
 
-                }, associate.getId(),associate);
+                });
             }
         });
         return rootView;

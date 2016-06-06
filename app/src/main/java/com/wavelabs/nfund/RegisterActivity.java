@@ -120,7 +120,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
                 if (response.isSuccessful()) {
-                    UserAPI.createUser(RegisterActivity.this, new NBOSCallback() {
+                    UserAPI.createUser(RegisterActivity.this, appUser, new NBOSCallback() {
 
 
                         @Override
@@ -142,7 +142,7 @@ public class RegisterActivity extends AppCompatActivity {
                             Log.d("test","onFailure"+t.getMessage());
                         }
 
-                    },appUser);
+                    });
 
 
                 }

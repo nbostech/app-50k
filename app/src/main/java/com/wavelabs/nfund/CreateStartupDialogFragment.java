@@ -103,7 +103,7 @@ public class CreateStartupDialogFragment extends DialogFragment {
                 //companyProfile.setCategory(industryS.getSelectedItem().toString());
                 companyProfile.setFounderName(startupFounderNameET.getText().toString());
 
-                CompanyAPI.createCompany(getActivity(), new NBOSCallback<Company>() {
+                CompanyAPI.createCompany(getActivity(), companyProfile, new NBOSCallback<Company>() {
 
                     @Override
                     public void onResponse(Response<Company> response) {
@@ -117,7 +117,7 @@ public class CreateStartupDialogFragment extends DialogFragment {
                     }
 
 
-                }, companyProfile);
+                });
             }
         });
 

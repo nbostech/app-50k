@@ -132,7 +132,7 @@ public class CompanyProfileActivity extends AppCompatActivity implements
             ImageView imageView = (ImageView) findViewById(R.id.companyLogoIV);
             imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
 
-            CompanyAPI.uploadMedia(CompanyProfileActivity.this, new NBOSCallback() {
+            CompanyAPI.uploadMedia(CompanyProfileActivity.this,Long.toString(company.getId()),"company_logo",new File(picturePath), new NBOSCallback() {
 
                 @Override
                 public void onResponse(Response response) {
@@ -146,7 +146,7 @@ public class CompanyProfileActivity extends AppCompatActivity implements
                 }
 
 
-            },Long.toString(company.getId()),"company_logo",new File(picturePath));
+            });
 
 
 

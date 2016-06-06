@@ -97,7 +97,7 @@ public class InvestorFragment extends Fragment {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
             if(users == null)
-            UserAPI.getUsers(getActivity(), new NBOSCallback<ResponseBody>() {
+            UserAPI.getUsers(getActivity(),"investor", new NBOSCallback<ResponseBody>() {
 
                 @Override
                 public void onResponse(Response<ResponseBody> response) {
@@ -125,7 +125,7 @@ public class InvestorFragment extends Fragment {
                 }
 
 
-            },"investor");
+            });
             else {
                 recyclerView.setAdapter(new MyInvestorRecyclerViewAdapter(users, mListener,getActivity()));
             }

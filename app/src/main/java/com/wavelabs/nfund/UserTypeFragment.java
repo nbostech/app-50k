@@ -168,7 +168,7 @@ public class UserTypeFragment extends DialogFragment {
         appUser.setEmail(((LoginActivity) getActivity()).appUser.getEmail());
         appUser.setFullName(((LoginActivity) getActivity()).appUser.getFullName());
         appUser.setUserType(selectedRoleOption);
-        UserAPI.createUser(((LoginActivity) getActivity()), new NBOSCallback() {
+        UserAPI.createUser(getActivity(),appUser, new NBOSCallback() {
             @Override
             public void onResponse(Response response) {
                 Log.d("test", "success" + response.code());
@@ -188,7 +188,7 @@ public class UserTypeFragment extends DialogFragment {
                 Log.d("test", "onFailure" + t.getMessage());
             }
 
-        }, appUser);
+        });
 
 
     }

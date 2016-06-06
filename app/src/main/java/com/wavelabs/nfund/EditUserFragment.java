@@ -123,7 +123,7 @@ public class EditUserFragment extends Fragment {
                 userProfile.setTwitterProfile(userTwitterProfileET.getText().toString());
                 userProfile.setOtherProfile(userOtherProfileET.getText().toString());
                 userProfile.setSocialAccounts(userSocialAccountET.getText().toString());
-                UserAPI.updateUserProfile(getActivity(), new NBOSCallback() {
+                UserAPI.updateUserProfile(getActivity(),userProfile, new NBOSCallback() {
 
 
                     @Override
@@ -142,7 +142,7 @@ public class EditUserFragment extends Fragment {
                     }
 
 
-                },userProfile);
+                });
             }
         });
 

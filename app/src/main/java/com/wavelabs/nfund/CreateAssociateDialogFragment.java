@@ -163,7 +163,7 @@ public class CreateAssociateDialogFragment extends DialogFragment{
                 associate.setEmail(associateEmail.getText().toString());
                 associate.setContactNumber(associateContactNo.getText().toString());
                 associate.setProfileSummary(associateProfileSummary.getText().toString());
-                CompanyAPI.createAssoicate(getActivity(), new NBOSCallback<Associate>() {
+                CompanyAPI.createAssoicate(getActivity(), ((CompanyProfileActivity) getActivity()).company.getId(), associate, new NBOSCallback<Associate>() {
 
 
                     @Override
@@ -177,7 +177,7 @@ public class CreateAssociateDialogFragment extends DialogFragment{
 
                     }
 
-                }, ((CompanyProfileActivity) getActivity()).company.getId(), associate) ;
+                }) ;
             }
         });
 

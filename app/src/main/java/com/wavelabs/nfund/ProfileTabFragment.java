@@ -185,7 +185,7 @@ public class ProfileTabFragment extends Fragment {
                 company.getProfile().setCategory(industryS.getSelectedItem().toString());
                 company.getProfile().setFounderName(Prefrences.getFirstName(getActivity())+ " "+Prefrences.getLastName(getActivity()));
 
-                CompanyAPI.updateCompanyProfile(getActivity(), new NBOSCallback() {
+                CompanyAPI.updateCompanyProfile(getActivity(), company.getId(),company.getProfile(),new NBOSCallback() {
 
                     @Override
                     public void onResponse(Response response) {
@@ -197,7 +197,7 @@ public class ProfileTabFragment extends Fragment {
 
                     }
 
-                }, company.getId(),company.getProfile());
+                });
             }
         });
 

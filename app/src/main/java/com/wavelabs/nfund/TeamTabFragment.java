@@ -84,7 +84,7 @@ public class TeamTabFragment extends Fragment {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
             if(associates == null)
-                CompanyAPI.getAssociates(getActivity(), new NBOSCallback<ArrayList<Associate>>() {
+                CompanyAPI.getAssociates(getActivity(),((CompanyProfileActivity) getActivity()).company.getId(), new NBOSCallback<ArrayList<Associate>>() {
                     @Override
                     public void onResponse(Response<ArrayList<Associate>> response) {
                         associates = response.body();
@@ -101,7 +101,7 @@ public class TeamTabFragment extends Fragment {
                     }
 
 
-                }, ((CompanyProfileActivity) getActivity()).company.getId());
+                });
 
             else {
                 recyclerView.setAdapter(new TeamAssocRecyclerViewAdapter(associates, mListener,getActivity()));

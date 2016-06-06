@@ -216,12 +216,12 @@ public class LoginActivity extends AppCompatActivity implements UserTypeFragment
                     appUser.setUuid(response.body().getMember().getUuid());
                     uuid = new JsonObject();
                     uuid.addProperty("uuid",response.body().getMember().getUuid());
-                    UserAPI.getUserDetails(LoginActivity.this, new NBOSCallback() {
+                    UserAPI.getUserDetails(LoginActivity.this,appUser.getUuid(), new NBOSCallback() {
                         @Override
                         public void onResponse(Response response) {
                             if(response.code()==200){
                                 Log.d("test","existing linked in user");
-                                UserAPI.login(LoginActivity.this, new NBOSCallback<List<User>>() {
+                                UserAPI.login(LoginActivity.this, uuid, new NBOSCallback<List<User>>() {
                                     @Override
                                     public void onResponse(Response<List<User>> response) {
                                         User user = response.body().get(0);
@@ -243,7 +243,7 @@ public class LoginActivity extends AppCompatActivity implements UserTypeFragment
 
                                     }
 
-                                },uuid);
+                                });
                             }else if(response.code() ==404){
                                 Log.d("test","new linked in user");
                                 FragmentManager fm = getSupportFragmentManager();
@@ -257,7 +257,7 @@ public class LoginActivity extends AppCompatActivity implements UserTypeFragment
 
                         }
 
-                    },appUser.getUuid());
+                    });
 
 
 
@@ -291,7 +291,7 @@ public class LoginActivity extends AppCompatActivity implements UserTypeFragment
 
                             JsonObject uuid = new JsonObject();
                             uuid.addProperty("uuid",response.body().getMember().getUuid());
-                            UserAPI.login(LoginActivity.this, new NBOSCallback<List<User>>() {
+                            UserAPI.login(LoginActivity.this, uuid, new NBOSCallback<List<User>>() {
 
                                 @Override
                                 public void onResponse(Response<List<User>> response) {
@@ -315,7 +315,7 @@ public class LoginActivity extends AppCompatActivity implements UserTypeFragment
                                 }
 
 
-                            },uuid);
+                            });
 
 
 
