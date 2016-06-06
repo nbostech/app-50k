@@ -38,7 +38,7 @@
             android:windowSoftInputMode="stateHidden">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.wavelabs.nfund.MainActivity" />
+                android:value=".MainActivity" />
         </activity>
         <activity
             android:name=".RegisterActivity"
@@ -47,10 +47,10 @@
             android:windowSoftInputMode="stateHidden">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.wavelabs.nfund.MainActivity" />
+                android:value=".MainActivity" />
         </activity>
         <activity
-            android:name="com.wavelabs.nfund.InvestorMainActivity"
+            android:name=".InvestorMainActivity"
             android:label="@string/title_activity_investor_main"
             android:theme="@style/AppTheme.NoActionBar" />
 
@@ -62,7 +62,7 @@
             android:value="@string/wavelabs_app_secret" />
 
         <activity
-            android:name="com.wavelabs.nfund.StartupMainActivity"
+            android:name=".StartupMainActivity"
             android:label="@string/title_activity_startup_main"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -72,7 +72,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.wavelabs.nfund.StartupMainActivity" />
+                android:value=".StartupMainActivity" />
         </activity>
         <activity
             android:name=".AssociateActivity"
@@ -81,7 +81,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.wavelabs.nfund.CompanyProfileActivity" />
+                android:value=".CompanyProfileActivity" />
         </activity>
         <activity
             android:name=".EditAssociateActivity"
@@ -90,7 +90,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.wavelabs.nfund.AssociateActivity" />
+                android:value=".AssociateActivity" />
         </activity>
         <meta-data
             android:name="com.facebook.accountkit.ApplicationName"
