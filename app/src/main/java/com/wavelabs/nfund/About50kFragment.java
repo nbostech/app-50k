@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.wavelabs.R;
 import com.wavelabs.nfund.model.AboutUs;
 import com.wavelabs.nfund.service.AppAPI;
 
