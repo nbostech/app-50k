@@ -39,7 +39,7 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'org.jsoup:jsoup:1.9.2'
     compile 'com.facebook.android:account-kit-sdk:4.12.0'
-    compile 'in.wavelabs:idn:0.0.6'
+    compile 'in.wavelabs:idn:0.0.7'
     compile 'com.afollestad.material-dialogs:core:0.8.5.9'
     compile 'com.facebook.android:account-kit-sdk:4.12.0'
 }
