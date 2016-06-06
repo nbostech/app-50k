@@ -20,13 +20,14 @@
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
+
     <RelativeLayout
-        android:layout_width="match_parent"
         android:id="@+id/container"
-        android:layout_height="match_parent"
-        >
-    <!--<include layout="@layout/content_associate" />-->
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!--<include layout="@layout/content_associate" />-->
     </RelativeLayout>
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/editAssociateBtn"
         android:layout_width="wrap_content"

@@ -28,7 +28,7 @@ import retrofit2.Response;
 /**
  * Created by ashkumar on 5/7/2016.
  */
-public  class FinancialTabFragment extends Fragment {
+public class FinancialTabFragment extends Fragment {
     /**
      * The fragment argument representing the section number for this
      * fragment.
@@ -40,7 +40,7 @@ public  class FinancialTabFragment extends Fragment {
     Spinner companyStageS;
     Button compSubmitBtn;
     Company company;
-    HashMap<Long,String> stageMap = new HashMap<>();
+    HashMap<Long, String> stageMap = new HashMap<>();
     ArrayList<String> stageList = new ArrayList<>();
     ArrayAdapter<String> adapter;
 
@@ -64,11 +64,11 @@ public  class FinancialTabFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_company_finfo_tab, container, false);
-        company =((CompanyProfileActivity)getActivity()).company;
+        company = ((CompanyProfileActivity) getActivity()).company;
         previousCapitalET = (EditText) rootView.findViewById(R.id.previousCapital);
         monthlyNetBurnET = (EditText) rootView.findViewById(R.id.monthlyNetBurn);
         preMoneyEvaluationET = (EditText) rootView.findViewById(R.id.perMoneyValution);
-        compSubmitBtn = (Button)rootView.findViewById(R.id.compSubmitBtn);
+        compSubmitBtn = (Button) rootView.findViewById(R.id.compSubmitBtn);
         companyStageS = (Spinner) rootView.findViewById(R.id.fundingStage);
 
         stageList = new ArrayList<>(stageMap.values());
@@ -77,9 +77,9 @@ public  class FinancialTabFragment extends Fragment {
                 new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, stageList);
         companyStageS.setAdapter(adapter);
 
-        if(stageList.size()<=1) {
+        if (stageList.size() <= 1) {
             //Activate Progress bar spinner
-            ((RelativeLayout)((CompanyProfileActivity)getActivity()).findViewById(R.id.progressBar1)).setVisibility(View.VISIBLE);
+            ((RelativeLayout) ((CompanyProfileActivity) getActivity()).findViewById(R.id.progressBar1)).setVisibility(View.VISIBLE);
             getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
                     WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
@@ -93,7 +93,7 @@ public  class FinancialTabFragment extends Fragment {
                     adapter =
                             new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, stageList);
                     companyStageS.setAdapter(adapter);
-                    if((((CompanyProfileActivity) getActivity()).company.getProfile().getFundingStage()!=null))
+                    if ((((CompanyProfileActivity) getActivity()).company.getProfile().getFundingStage() != null))
                         companyStageS.setSelection(adapter.getPosition(((CompanyProfileActivity) getActivity()).company.getProfile().getFundingStage()));
                     //Deactivate Progress bar spinner
                     ((CompanyProfileActivity) getActivity()).layout.setVisibility(View.GONE);
@@ -108,26 +108,42 @@ public  class FinancialTabFragment extends Fragment {
         }
 
 
-
-
         previousCapitalET.setText(((CompanyProfileActivity) getActivity()).company.getProfile().getPreviousCapital());
         monthlyNetBurnET.setText(((CompanyProfileActivity) getActivity()).company.getProfile().getMonthlyNetBurn());
         preMoneyEvaluationET.setText(((CompanyProfileActivity) getActivity()).company.getProfile().getPerMoneyValuation());
 
         previousCapitalET.addTextChangedListener(new TextWatcher() {
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-            public void onTextChanged(CharSequence s, int start, int before, int count) { }
-            public void afterTextChanged(Editable s) { ((CompanyProfileActivity) getActivity()).company.getProfile().setPreviousCapital(s.toString()); }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            public void afterTextChanged(Editable s) {
+                ((CompanyProfileActivity) getActivity()).company.getProfile().setPreviousCapital(s.toString());
+            }
         });
         monthlyNetBurnET.addTextChangedListener(new TextWatcher() {
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-            public void onTextChanged(CharSequence s, int start, int before, int count) { }
-            public void afterTextChanged(Editable s) { ((CompanyProfileActivity) getActivity()).company.getProfile().setMonthlyNetBurn(s.toString()); }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            public void afterTextChanged(Editable s) {
+                ((CompanyProfileActivity) getActivity()).company.getProfile().setMonthlyNetBurn(s.toString());
+            }
         });
         preMoneyEvaluationET.addTextChangedListener(new TextWatcher() {
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-            public void onTextChanged(CharSequence s, int start, int before, int count) { }
-            public void afterTextChanged(Editable s) { ((CompanyProfileActivity) getActivity()).company.getProfile().setPerMoneyValuation(s.toString()); }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            public void afterTextChanged(Editable s) {
+                ((CompanyProfileActivity) getActivity()).company.getProfile().setPerMoneyValuation(s.toString());
+            }
         });
 
 
@@ -140,7 +156,7 @@ public  class FinancialTabFragment extends Fragment {
                 company.getProfile().setPerMoneyValuation(preMoneyEvaluationET.getText().toString());
                 company.getProfile().setFundingStage(companyStageS.getSelectedItem().toString());
 
-                CompanyAPI.updateCompanyProfile(getActivity(),company.getId(),company.getProfile(), new NBOSCallback() {
+                CompanyAPI.updateCompanyProfile(getActivity(), company.getId(), company.getProfile(), new NBOSCallback() {
 
                     @Override
                     public void onResponse(Response response) {

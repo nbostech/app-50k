@@ -61,7 +61,6 @@ public class EventFragment extends Fragment {
         }
 
 
-
     }
 
     @Override
@@ -79,27 +78,27 @@ public class EventFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            if(eventList==null)
-            EventAPI.getEvents(getActivity(), new NBOSCallback<List<Event>>() {
+            if (eventList == null)
+                EventAPI.getEvents(getActivity(), new NBOSCallback<List<Event>>() {
 
 
-                @Override
-                public void onResponse(Response<List<Event>> response) {
-                    eventList = response.body();
-                    if(eventList!=null) {
-                        mListener = (OnEventListFragmentInteractionListener) getActivity();
-                        recyclerView.setAdapter(new MyEventViewAdapter(eventList, mListener));
+                    @Override
+                    public void onResponse(Response<List<Event>> response) {
+                        eventList = response.body();
+                        if (eventList != null) {
+                            mListener = (OnEventListFragmentInteractionListener) getActivity();
+                            recyclerView.setAdapter(new MyEventViewAdapter(eventList, mListener));
+                        }
                     }
-                }
 
-                @Override
-                public void onFailure(Throwable t) {
+                    @Override
+                    public void onFailure(Throwable t) {
 
-                }
+                    }
 
 
-            });
-            else{
+                });
+            else {
                 recyclerView.setAdapter(new MyEventViewAdapter(eventList, mListener));
             }
 

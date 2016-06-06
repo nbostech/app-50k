@@ -14,11 +14,12 @@ public class RestUtil {
 
     private static final HashMap<Class, Object> apiClients = new HashMap<>();
     private static final String ROOT = AppConstants.appURL;
+
     static {
         setupRestClient(APIUtil.class);
     }
 
-    public static APIUtil getAPIUtil(){
+    public static APIUtil getAPIUtil() {
         return (APIUtil) apiClients.get(APIUtil.class);
     }
 

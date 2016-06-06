@@ -71,25 +71,23 @@ public interface APIUtil {
     Call<Company> createCompany(@Header("Authorization") String authorization, @Body CompanyProfile companyProfile);
 
     @PUT(AppConstants.companyProfileURL)
-    Call<Company> updateCompanyProfile(@Header("Authorization") String authorization,@Path("companyId") Long companyId, @Body CompanyProfile companyProfile);
+    Call<Company> updateCompanyProfile(@Header("Authorization") String authorization, @Path("companyId") Long companyId, @Body CompanyProfile companyProfile);
 
     @GET(AppConstants.companyURL)
     Call<ArrayList<Company>> getCompanies(@Header("Authorization") String authorization);
-
-
 
 
     @GET(AppConstants.companyAssociatesURL)
     Call<ArrayList<Associate>> getAssociates(@Header("Authorization") String authorization, @Path("companyId") Long companyId);
 
     @POST(AppConstants.companyAssociatesURL)
-    Call<Associate> createAssociate(@Header("Authorization") String authorization, @Path("companyId") Long companyId,@Body Associate associate);
+    Call<Associate> createAssociate(@Header("Authorization") String authorization, @Path("companyId") Long companyId, @Body Associate associate);
 
     @PUT(AppConstants.associateURL)
     Call<Associate> updateAssociate(@Header("Authorization") String authorization, @Path("associateId") Long associateId, @Body Associate associate);
 
     @GET(AppConstants.associateURL)
-    Call<Associate> getAssociate(@Header("Authorization") String authorization,  @Path("associateId") String associateId);
+    Call<Associate> getAssociate(@Header("Authorization") String authorization, @Path("associateId") String associateId);
 
     @DELETE(AppConstants.associateURL)
     Call<Associate> deleteAssociate(@Header("Authorization") String authorization, @Path("associateId") String associateId);

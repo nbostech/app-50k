@@ -1,183 +1,186 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content">
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="48dp"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.wavelabs.nfund.AssociateProfileTabFragment">
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/associateNameLabelTV"
-        android:text="NAME"
-        android:layout_marginLeft="12dp"
-        android:textAllCaps="true"/>
-    <EditText
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:padding="10dp"
-        android:id="@+id/associateNameLabelEV"
-        android:background="@drawable/rounded_corner"
-        android:layout_below="@id/associateNameLabelTV"/>
+        android:layout_height="match_parent"
+        android:paddingBottom="48dp"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="com.wavelabs.nfund.AssociateProfileTabFragment">
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/associateEmailLabelTV"
-        android:text="EMAIL"
-        android:layout_marginLeft="12dp"
-        android:textAllCaps="true"
-        android:layout_below="@id/associateNameLabelEV"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:padding="10dp"
-        android:id="@+id/associateEmailET"
-        android:background="@drawable/rounded_corner"
-        android:layout_below="@id/associateEmailLabelTV"/>
+        <TextView
+            android:id="@+id/associateNameLabelTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:text="NAME"
+            android:textAllCaps="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/associateTypeLabelTV"
-        android:text="ASSOCIATE TYPE"
-        android:layout_marginLeft="12dp"
-        android:textAllCaps="true"
-        android:layout_below="@id/associateEmailET"/>
+        <EditText
+            android:id="@+id/associateNameLabelEV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/associateNameLabelTV"
+            android:layout_margin="10dp"
+            android:background="@drawable/rounded_corner"
+            android:padding="10dp" />
 
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:id="@+id/associateTypeS"
-        android:layout_below="@id/associateTypeLabelTV"
-        android:background="@drawable/rounded_corner"
-        />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/associatePositionLabelTV"
-        android:text="POSITION"
-        android:layout_marginLeft="12dp"
-        android:textAllCaps="true"
-        android:layout_below="@id/associateTypeS"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:id="@+id/associatePositionET"
-        android:background="@drawable/rounded_corner"
-        android:padding="10dp"
-        android:layout_below="@id/associatePositionLabelTV"/>
+        <TextView
+            android:id="@+id/associateEmailLabelTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/associateNameLabelEV"
+            android:layout_marginLeft="12dp"
+            android:text="EMAIL"
+            android:textAllCaps="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/associateLocationLabelTV"
-        android:text="LOCATION"
-        android:layout_marginLeft="12dp"
-        android:textAllCaps="true"
-        android:layout_below="@id/associatePositionET"/>
+        <EditText
+            android:id="@+id/associateEmailET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/associateEmailLabelTV"
+            android:layout_margin="10dp"
+            android:background="@drawable/rounded_corner"
+            android:padding="10dp" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:padding="10dp"
-        android:id="@+id/associateLocationET"
-        android:background="@drawable/rounded_corner"
-        android:layout_below="@id/associateLocationLabelTV"/>
+        <TextView
+            android:id="@+id/associateTypeLabelTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/associateEmailET"
+            android:layout_marginLeft="12dp"
+            android:text="ASSOCIATE TYPE"
+            android:textAllCaps="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/associateContactNoLabelTV"
-        android:text="CONTACT NUMBER"
-        android:layout_marginLeft="12dp"
-        android:textAllCaps="true"
-        android:layout_below="@id/associateLocationET"/>
+        <Spinner
+            android:id="@+id/associateTypeS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/associateTypeLabelTV"
+            android:layout_margin="10dp"
+            android:background="@drawable/rounded_corner" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:padding="10dp"
-        android:id="@+id/associateContactNoET"
-        android:background="@drawable/rounded_corner"
-        android:layout_below="@id/associateContactNoLabelTV"/>
+        <TextView
+            android:id="@+id/associatePositionLabelTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/associateTypeS"
+            android:layout_marginLeft="12dp"
+            android:text="POSITION"
+            android:textAllCaps="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/associateWebsiteLabelTV"
-        android:text="WEBSITE"
-        android:layout_marginLeft="12dp"
-        android:textAllCaps="true"
-        android:layout_below="@id/associateContactNoET"/>
+        <EditText
+            android:id="@+id/associatePositionET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/associatePositionLabelTV"
+            android:layout_margin="10dp"
+            android:background="@drawable/rounded_corner"
+            android:padding="10dp" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:padding="10dp"
-        android:id="@+id/associateWebsiteET"
-        android:background="@drawable/rounded_corner"
-        android:layout_below="@id/associateWebsiteLabelTV"/>
+        <TextView
+            android:id="@+id/associateLocationLabelTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/associatePositionET"
+            android:layout_marginLeft="12dp"
+            android:text="LOCATION"
+            android:textAllCaps="true" />
 
-    <View
-        android:id="@+id/centerShim"
-        android:layout_height="wrap_content"
-        android:layout_width="0dp"
-        android:visibility="invisible"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/associateWebsiteET"/>
+        <EditText
+            android:id="@+id/associateLocationET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/associateLocationLabelTV"
+            android:layout_margin="10dp"
+            android:background="@drawable/rounded_corner"
+            android:padding="10dp" />
 
-    <!--Set width to match_parent sets maximum width. alignParentLeft aligns
-    the left edge of this view with the left edge of its parent. toLeftOf
-    sets the right edge of this view to align with the left edge of the
-    given view. The result of all three settings is that this view will
-    always take up exactly half of the width of its parent, however wide
-    that may be. -->
+        <TextView
+            android:id="@+id/associateContactNoLabelTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/associateLocationET"
+            android:layout_marginLeft="12dp"
+            android:text="CONTACT NUMBER"
+            android:textAllCaps="true" />
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/associateProfileIV"
-        android:layout_toLeftOf="@+id/centerShim"
-        android:layout_below="@id/associateWebsiteET"/>
+        <EditText
+            android:id="@+id/associateContactNoET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/associateContactNoLabelTV"
+            android:layout_margin="10dp"
+            android:background="@drawable/rounded_corner"
+            android:padding="10dp" />
 
-    <!--Same deal, but on the right -->
-    <Button
-        android:id="@+id/associateProfileUploadBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/centerShim"
-        android:layout_marginTop="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_below="@id/associateWebsiteET"
-        android:text="Upload"/>
+        <TextView
+            android:id="@+id/associateWebsiteLabelTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/associateContactNoET"
+            android:layout_marginLeft="12dp"
+            android:text="WEBSITE"
+            android:textAllCaps="true" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_feedback"
-        android:id="@+id/associateSubmitBtn"
-        android:text="Update"
-        android:layout_margin="10dp"
-        android:textStyle="bold"
-        android:textColor="#ffffff"
-        android:layout_below="@id/associateProfileIV"/>
+        <EditText
+            android:id="@+id/associateWebsiteET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/associateWebsiteLabelTV"
+            android:layout_margin="10dp"
+            android:background="@drawable/rounded_corner"
+            android:padding="10dp" />
 
-</RelativeLayout>
+        <View
+            android:id="@+id/centerShim"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/associateWebsiteET"
+            android:layout_centerHorizontal="true"
+            android:visibility="invisible" />
+
+        <!--Set width to match_parent sets maximum width. alignParentLeft aligns
+        the left edge of this view with the left edge of its parent. toLeftOf
+        sets the right edge of this view to align with the left edge of the
+        given view. The result of all three settings is that this view will
+        always take up exactly half of the width of its parent, however wide
+        that may be. -->
+
+        <ImageView
+            android:id="@+id/associateProfileIV"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_below="@id/associateWebsiteET"
+            android:layout_toLeftOf="@+id/centerShim" />
+
+        <!--Same deal, but on the right -->
+        <Button
+            android:id="@+id/associateProfileUploadBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/associateWebsiteET"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@+id/centerShim"
+            android:text="Upload" />
+
+        <Button
+            android:id="@+id/associateSubmitBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/associateProfileIV"
+            android:layout_margin="10dp"
+            android:background="@drawable/button_feedback"
+            android:text="Update"
+            android:textColor="#ffffff"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
 </ScrollView>

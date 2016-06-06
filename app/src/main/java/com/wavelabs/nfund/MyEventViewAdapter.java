@@ -96,9 +96,9 @@ public class MyEventViewAdapter extends RecyclerView.Adapter<MyEventViewAdapter.
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("View","clicked");
+                Log.d("View", "clicked");
                 if (null != mListener) {
-                    Log.d("View","clicked1");
+                    Log.d("View", "clicked1");
 
                     // Notify the active callbacks interface (the activity, if the
                     // fragment is attached to one) that an item has been selected.
@@ -127,7 +127,7 @@ public class MyEventViewAdapter extends RecyclerView.Adapter<MyEventViewAdapter.
         public ViewHolder(View view) {
             super(view);
             mView = view;
-           cardView = (CardView)view.findViewById(R.id.card_view);
+            cardView = (CardView) view.findViewById(R.id.card_view);
             //mIdView = mContentView(TextView) view.findViewById(R.id.id);
             mContentView = (TextView) view.findViewById(R.id.content);
             mEventAddress = (TextView) view.findViewById(R.id.eventAddress);

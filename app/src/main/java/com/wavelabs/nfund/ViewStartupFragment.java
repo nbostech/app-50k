@@ -105,23 +105,22 @@ public class ViewStartupFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_view_startup_1, container, false);
         companyLogoIV = (ImageView) view.findViewById(R.id.companyLogoIV);
-        companyNameTV = (TextView)view.findViewById(R.id.companyNameTV);
-        descriptionTV= (TextView)view.findViewById(R.id.descriptionTV);
-        categoryTV=(TextView)view.findViewById(R.id.categoryTV);
-        websiteTV=(TextView)view.findViewById(R.id.companyWebsiteTV);
-        empStrengthTV=(TextView)view.findViewById(R.id.empStrengthTV);
-        foundedDateTV=(TextView)view.findViewById(R.id.foundedDateTV);
-        locationTV=(TextView)view.findViewById(R.id.locationTV);
-        fundingStageTV=(TextView)view.findViewById(R.id.fundingStageTV);
-        previousCapitalTV=(TextView)view.findViewById(R.id.perviouCapitalTV);
-        monthNetBurnTV=(TextView)view.findViewById(R.id.monthlyNetBurnTV);
-        preMoneyValuationTV=(TextView)view.findViewById(R.id.preMoneyValuation);
-        businessSummaryTV=(TextView)view.findViewById(R.id.businessSummaryTV);
-        uspProductUniquenessTV=(TextView)view.findViewById(R.id.uspProductUniqueness);
+        companyNameTV = (TextView) view.findViewById(R.id.companyNameTV);
+        descriptionTV = (TextView) view.findViewById(R.id.descriptionTV);
+        categoryTV = (TextView) view.findViewById(R.id.categoryTV);
+        websiteTV = (TextView) view.findViewById(R.id.companyWebsiteTV);
+        empStrengthTV = (TextView) view.findViewById(R.id.empStrengthTV);
+        foundedDateTV = (TextView) view.findViewById(R.id.foundedDateTV);
+        locationTV = (TextView) view.findViewById(R.id.locationTV);
+        fundingStageTV = (TextView) view.findViewById(R.id.fundingStageTV);
+        previousCapitalTV = (TextView) view.findViewById(R.id.perviouCapitalTV);
+        monthNetBurnTV = (TextView) view.findViewById(R.id.monthlyNetBurnTV);
+        preMoneyValuationTV = (TextView) view.findViewById(R.id.preMoneyValuation);
+        businessSummaryTV = (TextView) view.findViewById(R.id.businessSummaryTV);
+        uspProductUniquenessTV = (TextView) view.findViewById(R.id.uspProductUniqueness);
 
 
-
-        if(company.getLogoImage()!=null)
+        if (company.getLogoImage() != null)
             Picasso.with(companyLogoIV.getContext()).load(company.getLogoImage().getMediaFileURLStr("medium")).into(companyLogoIV);
         else
             Picasso.with(companyLogoIV.getContext()).load("https://placeholdit.imgix.net/~text?txtsize=15&txt=Company&w=100&h=100").into(companyLogoIV);
@@ -140,7 +139,7 @@ public class ViewStartupFragment extends Fragment {
         uspProductUniquenessTV.setText(company.getProfile().getProductUSP());
 
 
-        RecyclerView teamAssociateListViewRCV= (RecyclerView) view.findViewById(R.id.teamAssoicateListView);
+        RecyclerView teamAssociateListViewRCV = (RecyclerView) view.findViewById(R.id.teamAssoicateListView);
 
         // Set the adapter
         if (teamAssociateListViewRCV instanceof RecyclerView) {
@@ -151,13 +150,13 @@ public class ViewStartupFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            if(associates == null)
-                CompanyAPI.getAssociates(getActivity(), company.getId(),new NBOSCallback<ArrayList<Associate>>() {
+            if (associates == null)
+                CompanyAPI.getAssociates(getActivity(), company.getId(), new NBOSCallback<ArrayList<Associate>>() {
                     @Override
                     public void onResponse(Response<ArrayList<Associate>> response) {
                         associates = response.body();
-                        Log.d("test",associates.size()+"");
-                        if(associates !=null) {
+                        Log.d("test", associates.size() + "");
+                        if (associates != null) {
                             mListViewListener = (OnTeamAssocListFragmentInteractionListener) getActivity();
                             recyclerView.setAdapter(new TeamAssocRecyclerViewAdapter(associates, mListViewListener, getActivity()));
                         }
@@ -171,11 +170,10 @@ public class ViewStartupFragment extends Fragment {
                 });
 
             else {
-                recyclerView.setAdapter(new TeamAssocRecyclerViewAdapter(associates, mListViewListener,getActivity()));
+                recyclerView.setAdapter(new TeamAssocRecyclerViewAdapter(associates, mListViewListener, getActivity()));
             }
 
         }
-
 
 
         FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.editStartupBtn);
@@ -187,18 +185,16 @@ public class ViewStartupFragment extends Fragment {
                         .setAction("Action", null).show();
                         */
 
-                Log.d("test",company.getProfile().getName());
+                Log.d("test", company.getProfile().getName());
                 Intent intent = new Intent(getActivity(), CompanyProfileActivity.class);
-                intent.putExtra("selectedCompany",company);
+                intent.putExtra("selectedCompany", company);
                 startActivity(intent);
-
-
 
 
             }
         });
 
-        return  view;
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

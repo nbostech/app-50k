@@ -7,83 +7,86 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.wavelabs.nfund.FinancialTabFragment">
+
     <TextView
+        android:id="@+id/fundingStageLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/fundingStageLabel"
-        android:text="STAGE"
         android:layout_marginLeft="12dp"
-        android:textAllCaps="true"/>
+        android:text="STAGE"
+        android:textAllCaps="true" />
 
     <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
         android:id="@+id/fundingStage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/fundingStageLabel"
-        android:background="@drawable/rounded_corner"
-        />
+        android:layout_margin="10dp"
+        android:background="@drawable/rounded_corner" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/previousCapitalLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fundingStage"
+        android:layout_marginLeft="12dp"
         android:text="PREVIOUS CAPITAL"
-        android:layout_marginLeft="12dp"
-        android:textAllCaps="true"
-        android:layout_below="@id/fundingStage"/>
+        android:textAllCaps="true" />
+
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:padding="10dp"
         android:id="@+id/previousCapital"
-        android:background="@drawable/rounded_corner"
-        android:layout_below="@id/previousCapitalLabel"/>
-    <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/previousCapitalLabel"
+        android:layout_margin="10dp"
+        android:background="@drawable/rounded_corner"
+        android:padding="10dp" />
+
+    <TextView
         android:id="@+id/monthlyNetBurnLabel"
-        android:text="MONTHLY NET BURN"
-        android:layout_marginLeft="12dp"
-        android:textAllCaps="true"
-        android:layout_below="@id/previousCapital"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:id="@+id/monthlyNetBurn"
-        android:background="@drawable/rounded_corner"
-        android:padding="10dp"
-        android:layout_below="@id/monthlyNetBurnLabel"/>
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/perMoneyValutionLabel"
-        android:text="PRE-MONEY VALUATION"
+        android:layout_below="@id/previousCapital"
         android:layout_marginLeft="12dp"
-        android:textAllCaps="true"
-        android:layout_below="@id/monthlyNetBurn"/>
+        android:text="MONTHLY NET BURN"
+        android:textAllCaps="true" />
 
     <EditText
+        android:id="@+id/monthlyNetBurn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/monthlyNetBurnLabel"
         android:layout_margin="10dp"
-        android:padding="10dp"
-        android:id="@+id/perMoneyValution"
         android:background="@drawable/rounded_corner"
-        android:layout_below="@id/perMoneyValutionLabel"/>
+        android:padding="10dp" />
+
+    <TextView
+        android:id="@+id/perMoneyValutionLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/monthlyNetBurn"
+        android:layout_marginLeft="12dp"
+        android:text="PRE-MONEY VALUATION"
+        android:textAllCaps="true" />
+
+    <EditText
+        android:id="@+id/perMoneyValution"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/perMoneyValutionLabel"
+        android:layout_margin="10dp"
+        android:background="@drawable/rounded_corner"
+        android:padding="10dp" />
 
     <Button
+        android:id="@+id/compSubmitBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_feedback"
-        android:id="@+id/compSubmitBtn"
-        android:text="Update"
+        android:layout_below="@id/perMoneyValution"
         android:layout_margin="10dp"
-        android:textStyle="bold"
+        android:background="@drawable/button_feedback"
+        android:text="Update"
         android:textColor="#ffffff"
-        android:layout_below="@id/perMoneyValution"/>
+        android:textStyle="bold" />
 
 </RelativeLayout>

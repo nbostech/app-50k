@@ -50,9 +50,9 @@ public class SummaryTabFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_company_summary_tab, container, false);
-        company =((CompanyProfileActivity)getActivity()).company;
-        businessSummaryET = (EditText)rootView.findViewById(R.id.businessSummary);
-        uspProductUnqinessET = (EditText)rootView.findViewById(R.id.productUniqueness);
+        company = ((CompanyProfileActivity) getActivity()).company;
+        businessSummaryET = (EditText) rootView.findViewById(R.id.businessSummary);
+        uspProductUnqinessET = (EditText) rootView.findViewById(R.id.productUniqueness);
 
         businessSummaryET.setText(((CompanyProfileActivity) getActivity()).company.getProfile().getBusinessSummary());
         uspProductUnqinessET.setText(((CompanyProfileActivity) getActivity()).company.getProfile().getProductUSP());
@@ -60,14 +60,26 @@ public class SummaryTabFragment extends Fragment {
         compSubmitBtn = (Button) rootView.findViewById(R.id.compSubmitBtn);
 
         businessSummaryET.addTextChangedListener(new TextWatcher() {
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-            public void onTextChanged(CharSequence s, int start, int before, int count) { }
-            public void afterTextChanged(Editable s) { ((CompanyProfileActivity) getActivity()).company.getProfile().setBusinessSummary(s.toString()); }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            public void afterTextChanged(Editable s) {
+                ((CompanyProfileActivity) getActivity()).company.getProfile().setBusinessSummary(s.toString());
+            }
         });
         uspProductUnqinessET.addTextChangedListener(new TextWatcher() {
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-            public void onTextChanged(CharSequence s, int start, int before, int count) { }
-            public void afterTextChanged(Editable s) { ((CompanyProfileActivity) getActivity()).company.getProfile().setProductUSP(s.toString()); }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            public void afterTextChanged(Editable s) {
+                ((CompanyProfileActivity) getActivity()).company.getProfile().setProductUSP(s.toString());
+            }
         });
 
 
@@ -79,7 +91,7 @@ public class SummaryTabFragment extends Fragment {
                 company.getProfile().setMonthlyNetBurn(uspProductUnqinessET.getText().toString());
 
 
-                CompanyAPI.updateCompanyProfile(getActivity(), company.getId(),company.getProfile(), new NBOSCallback() {
+                CompanyAPI.updateCompanyProfile(getActivity(), company.getId(), company.getProfile(), new NBOSCallback() {
 
                     @Override
                     public void onResponse(Response response) {

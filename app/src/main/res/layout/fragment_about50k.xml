@@ -5,10 +5,10 @@
     android:background="@color/finestWhite"
     tools:context="com.wavelabs.nfund.About50kFragment">
 
-  <TextView
+    <TextView
+        android:id="@+id/aboutUsTextView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/aboutUsTextView"
         android:textColor="#000"
         android:textSize="16sp" />
 

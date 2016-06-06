@@ -12,10 +12,10 @@
         android:name="com.app50knetwork.StartupLandingFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#fff"
         app:layoutManager="LinearLayoutManager"
         tools:context="com.wavelabs.com.wavelabs.StartupLandingFragment"
-        tools:listitem="@layout/fragment_startup"
-        android:background="#fff" />
+        tools:listitem="@layout/fragment_startup" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/addStartup"

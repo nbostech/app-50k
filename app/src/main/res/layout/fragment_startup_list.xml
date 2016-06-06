@@ -6,8 +6,8 @@
     android:name="com.app50knetwork.StartupLandingFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff"
     android:paddingTop="16dp"
     app:layoutManager="LinearLayoutManager"
     tools:context="com.wavelabs.nfund.StartupLandingFragment"
-    tools:listitem="@layout/fragment_startup"
-    android:background="#fff" />
+    tools:listitem="@layout/fragment_startup" />

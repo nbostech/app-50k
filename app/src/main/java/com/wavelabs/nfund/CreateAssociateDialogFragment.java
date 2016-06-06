@@ -36,7 +36,7 @@ import retrofit2.Response;
  * Use the {@link CreateAssociateDialogFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CreateAssociateDialogFragment extends DialogFragment{
+public class CreateAssociateDialogFragment extends DialogFragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -55,7 +55,7 @@ public class CreateAssociateDialogFragment extends DialogFragment{
     Button createAssociateBtn;
     Associate associate;
 
-    HashMap<Long,String> teamTypeMap = new HashMap<>();
+    HashMap<Long, String> teamTypeMap = new HashMap<>();
     ArrayList<String> teamTypeList = new ArrayList<>();
     ArrayAdapter<String> adapter;
 
@@ -96,14 +96,14 @@ public class CreateAssociateDialogFragment extends DialogFragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =inflater.inflate(R.layout.fragment_create_associate_dialog, container, false);
+        View view = inflater.inflate(R.layout.fragment_create_associate_dialog, container, false);
         getDialog().setTitle("Add");
-        associateName = (EditText)view.findViewById(R.id.associateName);
-        associateEmail = (EditText)view.findViewById(R.id.associateEmail);
+        associateName = (EditText) view.findViewById(R.id.associateName);
+        associateEmail = (EditText) view.findViewById(R.id.associateEmail);
         associateContactNo = (EditText) view.findViewById(R.id.associateContactNo);
-        associateTeamType = (Spinner)view.findViewById(R.id.associateTeamType);
-        associateProfileSummary = (EditText)view.findViewById(R.id.associateProfileSummary);
-        createAssociateBtn = (Button)view.findViewById(R.id.createAssociateBtn);
+        associateTeamType = (Spinner) view.findViewById(R.id.associateTeamType);
+        associateProfileSummary = (EditText) view.findViewById(R.id.associateProfileSummary);
+        createAssociateBtn = (Button) view.findViewById(R.id.createAssociateBtn);
 
         teamTypeList = new ArrayList<>(teamTypeMap.values());
         teamTypeList.add("select industry");
@@ -111,9 +111,9 @@ public class CreateAssociateDialogFragment extends DialogFragment{
                 new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, teamTypeList);
         associateTeamType.setAdapter(adapter);
 
-        if(teamTypeList.size()<=1) {
+        if (teamTypeList.size() <= 1) {
             //Activate Progress bar spinner
-            ((RelativeLayout)((CompanyProfileActivity)getActivity()).findViewById(R.id.progressBar1)).setVisibility(View.VISIBLE);
+            ((RelativeLayout) ((CompanyProfileActivity) getActivity()).findViewById(R.id.progressBar1)).setVisibility(View.VISIBLE);
             getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
                     WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
@@ -123,7 +123,7 @@ public class CreateAssociateDialogFragment extends DialogFragment{
                 public void onResponse(Response<ArrayList<TeamType>> response) {
                     ArrayList<TeamType> teamTypeListRes = response.body();
                     teamTypeList = new ArrayList<>();
-                    for (TeamType t:teamTypeListRes ) {
+                    for (TeamType t : teamTypeListRes) {
                         teamTypeList.add(t.getName());
                     }
                     teamTypeList.add(0, "select team");
@@ -151,10 +151,6 @@ public class CreateAssociateDialogFragment extends DialogFragment{
         associateTeamType.setAdapter(adapter);
 
 
-
-
-
-
         createAssociateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -177,7 +173,7 @@ public class CreateAssociateDialogFragment extends DialogFragment{
 
                     }
 
-                }) ;
+                });
             }
         });
 
@@ -186,8 +182,8 @@ public class CreateAssociateDialogFragment extends DialogFragment{
 
     @Override
     public void onDismiss(DialogInterface dialog) {
-        if(associate!=null) {
-            TeamTabFragment f = (TeamTabFragment) getActivity().getSupportFragmentManager().findFragmentByTag("android:switcher:"+R.id.profileTabcontainer+3);
+        if (associate != null) {
+            TeamTabFragment f = (TeamTabFragment) getActivity().getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.profileTabcontainer + 3);
             f.associates.add(associate);
             f.recyclerView.getAdapter().notifyDataSetChanged();
         }

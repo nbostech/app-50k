@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
+    android:background="#fff"
     app:layoutManager="LinearLayoutManager"
     tools:context="com.wavelabs.nfund.InvestorFragment"
-    tools:listitem="@layout/fragment_investor"
-    android:background="#fff" />
+    tools:listitem="@layout/fragment_investor" />

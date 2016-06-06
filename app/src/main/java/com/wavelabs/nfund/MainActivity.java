@@ -44,17 +44,12 @@ public class MainActivity extends AppCompatActivity
         getSupportActionBar().setTitle("");
 
 
-
-
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        Fragment landingFragment = LandingFragment.newInstance("","");
+        Fragment landingFragment = LandingFragment.newInstance("", "");
         fragmentTransaction.replace(R.id.container, landingFragment, "landingFragment");
         fragmentTransaction.addToBackStack("landingFragment");
         fragmentTransaction.commit();
-
-
-
 
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -74,7 +69,7 @@ public class MainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            if(getFragmentManager().getBackStackEntryCount()==1)
+            if (getFragmentManager().getBackStackEntryCount() == 1)
                 super.onBackPressed();
             else
                 getFragmentManager().popBackStack();
@@ -151,41 +146,38 @@ public class MainActivity extends AppCompatActivity
 
 
     public void onEventListFragmentInteraction(Event item) {
-        Log.d("test",item.name);
+        Log.d("test", item.name);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        Fragment eventDetailFragment = EventDetailFragment.newInstance(item,"");
+        Fragment eventDetailFragment = EventDetailFragment.newInstance(item, "");
         fragmentTransaction.replace(R.id.container, eventDetailFragment, "eventDetailFragment");
         fragmentTransaction.addToBackStack("eventDetailFragment");
         fragmentTransaction.commit();
-
-
 
 
     }
 
     @Override
     public void onFragmentInteraction(Uri uri) {
-        Log.d("Fragment URI",uri.toString());
+        Log.d("Fragment URI", uri.toString());
 
     }
 
     @Override
     public void onInvestorListFragmentInteraction(User item) {
-        Log.d("test",item.getProfile().getFullName());
+        Log.d("test", item.getProfile().getFullName());
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        Fragment investorDetailFragment = InvestorDetailFragment.newInstance(item,"");
+        Fragment investorDetailFragment = InvestorDetailFragment.newInstance(item, "");
         fragmentTransaction.replace(R.id.container, investorDetailFragment, "investorDetailFragment");
         fragmentTransaction.addToBackStack("investorDetailFragment");
         fragmentTransaction.commit();
 
     }
 
-    public void resetActionBar(boolean childAction, int drawerMode)
-    {
+    public void resetActionBar(boolean childAction, int drawerMode) {
         if (childAction) {
 
             toggle.setDrawerIndicatorEnabled(false);

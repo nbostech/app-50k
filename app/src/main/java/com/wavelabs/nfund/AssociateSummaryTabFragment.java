@@ -51,11 +51,11 @@ public class AssociateSummaryTabFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_associate_summary_tab, container, false);
-        associate =((EditAssociateActivity)getActivity()).associate;
+        associate = ((EditAssociateActivity) getActivity()).associate;
         companyId = ((EditAssociateActivity) getActivity()).companyId;
 
-        associateExpAndExpET = (EditText)rootView.findViewById(R.id.associateExpAndExpET);
-        associateSummaryEV = (EditText)rootView.findViewById(R.id.associateSummaryEV);
+        associateExpAndExpET = (EditText) rootView.findViewById(R.id.associateExpAndExpET);
+        associateSummaryEV = (EditText) rootView.findViewById(R.id.associateSummaryEV);
 
         associateExpAndExpET.setText(((EditAssociateActivity) getActivity()).associate.getExperience());
         associateSummaryEV.setText(((EditAssociateActivity) getActivity()).associate.getProfileSummary());
@@ -63,14 +63,26 @@ public class AssociateSummaryTabFragment extends Fragment {
         associateSubmitBtn = (Button) rootView.findViewById(R.id.associateSubmitBtn);
 
         associateExpAndExpET.addTextChangedListener(new TextWatcher() {
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-            public void onTextChanged(CharSequence s, int start, int before, int count) { }
-            public void afterTextChanged(Editable s) { ((EditAssociateActivity) getActivity()).associate.setExperience(s.toString()); }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            public void afterTextChanged(Editable s) {
+                ((EditAssociateActivity) getActivity()).associate.setExperience(s.toString());
+            }
         });
         associateSummaryEV.addTextChangedListener(new TextWatcher() {
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-            public void onTextChanged(CharSequence s, int start, int before, int count) { }
-            public void afterTextChanged(Editable s) { ((EditAssociateActivity) getActivity()).associate.setProfileSummary(s.toString()); }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            public void afterTextChanged(Editable s) {
+                ((EditAssociateActivity) getActivity()).associate.setProfileSummary(s.toString());
+            }
         });
 
 
@@ -82,7 +94,7 @@ public class AssociateSummaryTabFragment extends Fragment {
                 associateSummaryEV.setText(((EditAssociateActivity) getActivity()).associate.getProfileSummary());
 
 
-                CompanyAPI.updateAssoicate(getActivity(),associate.getId(),associate, new NBOSCallback() {
+                CompanyAPI.updateAssoicate(getActivity(), associate.getId(), associate, new NBOSCallback() {
 
 
                     @Override

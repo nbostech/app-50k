@@ -75,16 +75,16 @@ public class InvestorFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_investor_list, container, false);
-        if(getActivity() instanceof MainActivity){
-            context = ((MainActivity)getActivity());
-            ((MainActivity)getActivity()).resetActionBar(false,
+        if (getActivity() instanceof MainActivity) {
+            context = ((MainActivity) getActivity());
+            ((MainActivity) getActivity()).resetActionBar(false,
                     DrawerLayout.LOCK_MODE_UNLOCKED);
-            ((MainActivity)getActivity()).getSupportActionBar().setTitle("Investors");
-        } else if(getActivity() instanceof StartupMainActivity ){
-            context = ((StartupMainActivity)getActivity());
-            ((StartupMainActivity)getActivity()).resetActionBar(false,
+            ((MainActivity) getActivity()).getSupportActionBar().setTitle("Investors");
+        } else if (getActivity() instanceof StartupMainActivity) {
+            context = ((StartupMainActivity) getActivity());
+            ((StartupMainActivity) getActivity()).resetActionBar(false,
                     DrawerLayout.LOCK_MODE_UNLOCKED);
-            ((StartupMainActivity)getActivity()).getSupportActionBar().setTitle("Investors");
+            ((StartupMainActivity) getActivity()).getSupportActionBar().setTitle("Investors");
         }
 
         // Set the adapter
@@ -96,38 +96,38 @@ public class InvestorFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            if(users == null)
-            UserAPI.getUsers(getActivity(),"investor", new NBOSCallback<ResponseBody>() {
+            if (users == null)
+                UserAPI.getUsers(getActivity(), "investor", new NBOSCallback<ResponseBody>() {
 
-                @Override
-                public void onResponse(Response<ResponseBody> response) {
-                    UserDeserializer<User> myDeserializer = new UserDeserializer<>(Profile.class,
-                            new UserDeserializer<Profile>(null, null));
-                    Gson gson = new GsonBuilder().registerTypeAdapter(User.class, myDeserializer).create();
-                    try {
-                        String userJsonStr =response.body().string();
-                        User[] userArr = gson.fromJson(userJsonStr,User[].class);
-                        users = Arrays.asList(userArr);
-                        if(users!=null) {
-                            mListener = (OnInvestorListFragmentInteractionListener) getActivity();
-                            recyclerView.setAdapter(new MyInvestorRecyclerViewAdapter(users, mListener,getActivity()));
+                    @Override
+                    public void onResponse(Response<ResponseBody> response) {
+                        UserDeserializer<User> myDeserializer = new UserDeserializer<>(Profile.class,
+                                new UserDeserializer<Profile>(null, null));
+                        Gson gson = new GsonBuilder().registerTypeAdapter(User.class, myDeserializer).create();
+                        try {
+                            String userJsonStr = response.body().string();
+                            User[] userArr = gson.fromJson(userJsonStr, User[].class);
+                            users = Arrays.asList(userArr);
+                            if (users != null) {
+                                mListener = (OnInvestorListFragmentInteractionListener) getActivity();
+                                recyclerView.setAdapter(new MyInvestorRecyclerViewAdapter(users, mListener, getActivity()));
+                            }
+
+
+                        } catch (IOException e) {
+                            e.printStackTrace();
                         }
-
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
                     }
-                }
 
-                @Override
-                public void onFailure(Throwable t) {
+                    @Override
+                    public void onFailure(Throwable t) {
 
-                }
+                    }
 
 
-            });
+                });
             else {
-                recyclerView.setAdapter(new MyInvestorRecyclerViewAdapter(users, mListener,getActivity()));
+                recyclerView.setAdapter(new MyInvestorRecyclerViewAdapter(users, mListener, getActivity()));
             }
         }
         return view;

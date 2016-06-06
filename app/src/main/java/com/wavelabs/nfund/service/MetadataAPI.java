@@ -20,17 +20,17 @@ import retrofit2.Response;
  */
 public class MetadataAPI {
 
-    public static void getCompCategories(final Context context, final NBOSCallback<ArrayList<Metadata>> nbosCallback){
+    public static void getCompCategories(final Context context, final NBOSCallback<ArrayList<Metadata>> nbosCallback) {
         String token = Prefrences.getClientToken(context);
         Call<ArrayList<Metadata>> categoryList = RestUtil.getAPIUtil().getCategories(token);
         categoryList.enqueue(new Callback<ArrayList<Metadata>>() {
             @Override
             public void onResponse(Call<ArrayList<Metadata>> call, Response<ArrayList<Metadata>> response) {
                 if (response.code() == 200) {
-                    Log.d("response",response.code()+"");
-                    Log.d("response",response.body().toString());
+                    Log.d("response", response.code() + "");
+                    Log.d("response", response.body().toString());
                     nbosCallback.onResponse(response);
-                }else{
+                } else {
                     nbosCallback.onResponse(response);
                 }
             }
@@ -45,17 +45,17 @@ public class MetadataAPI {
     }
 
 
-    public static void getCompStages(final Context context, final NBOSCallback nbosCallback){
+    public static void getCompStages(final Context context, final NBOSCallback nbosCallback) {
         String token = Prefrences.getClientToken(context);
         Call<ArrayList<Metadata>> stageList = RestUtil.getAPIUtil().getStages(token);
         stageList.enqueue(new Callback<ArrayList<Metadata>>() {
             @Override
             public void onResponse(Call<ArrayList<Metadata>> call, Response<ArrayList<Metadata>> response) {
                 if (response.code() == 200) {
-                    Log.d("response",response.code()+"");
-                    Log.d("response",response.body().toString());
+                    Log.d("response", response.code() + "");
+                    Log.d("response", response.body().toString());
                     nbosCallback.onResponse(response);
-                }else{
+                } else {
                     nbosCallback.onResponse(response);
                 }
             }
@@ -67,17 +67,17 @@ public class MetadataAPI {
         });
     }
 
-    public static void getAssociateTypes(final Context context, final NBOSCallback nbosCallback){
+    public static void getAssociateTypes(final Context context, final NBOSCallback nbosCallback) {
         String token = Prefrences.getClientToken(context);
         Call<ArrayList<TeamType>> stageList = RestUtil.getAPIUtil().getAssociateTypes(token);
         stageList.enqueue(new Callback<ArrayList<TeamType>>() {
             @Override
             public void onResponse(Call<ArrayList<TeamType>> call, Response<ArrayList<TeamType>> response) {
                 if (response.code() == 200) {
-                    Log.d("response",response.code()+"");
-                    Log.d("response",response.body().toString());
+                    Log.d("response", response.code() + "");
+                    Log.d("response", response.body().toString());
                     nbosCallback.onResponse(response);
-                }else{
+                } else {
                     nbosCallback.onResponse(response);
                 }
             }
@@ -88,7 +88,6 @@ public class MetadataAPI {
             }
         });
     }
-
 
 
 }

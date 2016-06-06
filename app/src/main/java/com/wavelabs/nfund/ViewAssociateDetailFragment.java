@@ -15,7 +15,7 @@ import com.squareup.picasso.Picasso;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- *
+ * <p>
  * to handle interaction events.
  * Use the {@link ViewAssociateDetailFragment#newInstance} factory method to
  * create an instance of this fragment.
@@ -40,7 +40,6 @@ public class ViewAssociateDetailFragment extends Fragment {
     TextView associateExpAndExpVT;
 
     Associate associate;
-
 
 
     public ViewAssociateDetailFragment() {
@@ -88,34 +87,33 @@ public class ViewAssociateDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_view_associate_detail, container, false);
+        View view = inflater.inflate(R.layout.fragment_view_associate_detail, container, false);
         //associate = ((AssociateActivity)getActivity()).associate;
 
-        associateImageView = (ImageView)view.findViewById(R.id.assoicateImageView);
+        associateImageView = (ImageView) view.findViewById(R.id.assoicateImageView);
 
-        if(associate.getProfileImage()!=null)
+        if (associate.getProfileImage() != null)
             Picasso.with(associateImageView.getContext()).load(associate.getProfileImage().getMediaFileURLStr("medium")).into(associateImageView);
         else
             Picasso.with(associateImageView.getContext()).load("https://placeholdit.imgix.net/~text?txtsize=15&txt=Company&w=100&h=100").into(associateImageView);
 
 
-        associateNameVT = (TextView)view.findViewById(R.id.associateNameTV);
+        associateNameVT = (TextView) view.findViewById(R.id.associateNameTV);
         associateNameVT.setText(associate.getName());
-        associateCompanyNameVT = (TextView)view.findViewById(R.id.associateCompanyNameTV);
+        associateCompanyNameVT = (TextView) view.findViewById(R.id.associateCompanyNameTV);
         associateCompanyNameVT.setText(associate.getAssociateType());
-        associateLinkedInLinkVT = (TextView)view.findViewById(R.id.associateLinkedInLinkTV);
+        associateLinkedInLinkVT = (TextView) view.findViewById(R.id.associateLinkedInLinkTV);
         associateLinkedInLinkVT.setText(associate.getLinkedinProfile());
-        associateProfileSummaryVT = (TextView)view.findViewById(R.id.associateProfileSummaryTV);
+        associateProfileSummaryVT = (TextView) view.findViewById(R.id.associateProfileSummaryTV);
         associateProfileSummaryVT.setText("");
-        associateLocationVT = (TextView)view.findViewById(R.id.associateLocationTV);
+        associateLocationVT = (TextView) view.findViewById(R.id.associateLocationTV);
         associateLocationVT.setText(associate.getLocation());
-        associateWebsiteVT = (TextView)view.findViewById(R.id.associateWebsiteTV);
+        associateWebsiteVT = (TextView) view.findViewById(R.id.associateWebsiteTV);
         associateWebsiteVT.setText(associate.getWebsite());
-        associateExpAndExpVT = (TextView)view.findViewById(R.id.associateExpAndExpTV);
+        associateExpAndExpVT = (TextView) view.findViewById(R.id.associateExpAndExpTV);
         associateExpAndExpVT.setText(associate.getExperience());
 
 
-      
         return view;
     }
 

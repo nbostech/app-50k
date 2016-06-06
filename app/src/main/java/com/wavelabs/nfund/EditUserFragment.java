@@ -48,7 +48,6 @@ public class EditUserFragment extends Fragment {
     View view;
 
 
-
     public EditUserFragment() {
         // Required empty public constructor
     }
@@ -86,7 +85,7 @@ public class EditUserFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_edit_user, container, false);
 
-        userProfile = ((StartupMainActivity)getActivity()).user.getProfile();
+        userProfile = ((StartupMainActivity) getActivity()).user.getProfile();
 
         userNameET = (EditText) view.findViewById(R.id.userNameET);
         userNameET.setText(userProfile.getFullName());
@@ -108,7 +107,7 @@ public class EditUserFragment extends Fragment {
         userOtherProfileET.setText(userProfile.getOtherProfile());
         userSocialAccountET = (EditText) view.findViewById(R.id.userSocialAccountET);
         userSocialAccountET.setText(userProfile.getSocialAccounts());
-        userUdpateBtn = (Button)view.findViewById(R.id.userUpdateBtn);
+        userUdpateBtn = (Button) view.findViewById(R.id.userUpdateBtn);
 
         userUdpateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,12 +122,12 @@ public class EditUserFragment extends Fragment {
                 userProfile.setTwitterProfile(userTwitterProfileET.getText().toString());
                 userProfile.setOtherProfile(userOtherProfileET.getText().toString());
                 userProfile.setSocialAccounts(userSocialAccountET.getText().toString());
-                UserAPI.updateUserProfile(getActivity(),userProfile, new NBOSCallback() {
+                UserAPI.updateUserProfile(getActivity(), userProfile, new NBOSCallback() {
 
 
                     @Override
                     public void onResponse(Response response) {
-                        if(response.code()==200) {
+                        if (response.code() == 200) {
                             Snackbar snackbar = Snackbar
                                     .make(view, "User successfully upated", Snackbar.LENGTH_LONG);
 

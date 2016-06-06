@@ -25,7 +25,7 @@ public class MyInvestorRecyclerViewAdapter extends RecyclerView.Adapter<MyInvest
     private final List<User> mValues;
     private final OnInvestorListFragmentInteractionListener mListener;
 
-    public MyInvestorRecyclerViewAdapter(List<User> items, OnInvestorListFragmentInteractionListener listener,Context context) {
+    public MyInvestorRecyclerViewAdapter(List<User> items, OnInvestorListFragmentInteractionListener listener, Context context) {
         mContext = context;
         mValues = items;
         mListener = listener;

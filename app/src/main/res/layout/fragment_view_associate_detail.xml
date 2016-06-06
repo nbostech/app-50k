@@ -2,60 +2,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.wavelabs.nfund.ViewAssociateDetailFragment"
+    android:background="#fff"
     android:orientation="vertical"
-    android:paddingTop="64dp"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    android:background="#fff">
+    android:paddingTop="64dp"
+    tools:context="com.wavelabs.nfund.ViewAssociateDetailFragment">
     <!-- TODO: Update blank fragment layout -->
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:orientation="horizontal"
-        android:baselineAligned="false">
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
         <ImageView
+            android:id="@+id/assoicateImageView"
             android:layout_width="160dp"
             android:layout_height="100dp"
+            android:layout_weight="1"
             android:background="@drawable/border_image"
-            android:padding="4dp"
-            android:id="@+id/assoicateImageView"
-            android:layout_weight="1"/>
+            android:padding="4dp" />
+
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="8dp"
-            android:layout_weight="2">
+            android:layout_weight="2"
+            android:orientation="vertical"
+            android:padding="8dp">
 
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/associateNameTV"
-                android:text="test"
-                android:textStyle="bold"/>
-            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/associateCompanyNameTV" />
+                android:text="test"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/associateCompanyNameTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="10dp"/>
+                android:layout_height="10dp" />
+
             <TextView
+                android:id="@+id/linkedInLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="LinkedIn:"
-                android:textStyle="bold"
-                android:id="@+id/linkedInLabel" />
+                android:textStyle="bold" />
+
             <TextView
+                android:id="@+id/associateLinkedInLinkTV"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/associateLinkedInLinkTV" />
-
-
+                android:layout_height="wrap_content" />
 
 
         </LinearLayout>
@@ -64,72 +68,82 @@
 
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:paddingTop="6dp">
 
         <TextView
+            android:id="@+id/associateProfileSummaryLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Profile Summary"
-            android:textStyle="bold"
-            android:id="@+id/associateProfileSummaryLabel" />
+            android:textStyle="bold" />
+
         <TextView
+            android:id="@+id/associateProfileSummaryTV"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/associateProfileSummaryTV" />
+            android:layout_height="wrap_content" />
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="15dp"/>
+            android:layout_height="15dp" />
+
         <View
             android:layout_width="match_parent"
             android:layout_height="2dip"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:background="#FF909090" />
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="15dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Location"
 
-            android:id="@+id/associateLocationLabel" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
         <TextView
+            android:id="@+id/associateLocationLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
+            android:text="Location" />
+
+        <TextView
             android:id="@+id/associateLocationTV"
-            android:textStyle="bold"    />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold" />
+
         <Space
             android:layout_width="match_parent"
-            android:layout_height="8dp"/>
+            android:layout_height="8dp" />
+
         <TextView
+            android:id="@+id/associateWebsiteLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Website"
-            android:id="@+id/associateWebsiteLabel" />
+            android:text="Website" />
+
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/associateWebsiteTV"
-            android:textStyle="bold"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold" />
+
         <Space
             android:layout_width="match_parent"
-            android:layout_height="8dp"/>
+            android:layout_height="8dp" />
+
         <TextView
+            android:id="@+id/associateExpAndExpLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Experience and Expertise"
-            android:textStyle="bold"
-            android:id="@+id/associateExpAndExpLabel"
-            />
+            android:textStyle="bold" />
+
         <TextView
+            android:id="@+id/associateExpAndExpTV"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/associateExpAndExpTV" />
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
 

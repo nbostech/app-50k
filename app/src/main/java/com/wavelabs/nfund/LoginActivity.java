@@ -30,16 +30,12 @@ import retrofit2.Response;
 /**
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends AppCompatActivity implements UserTypeFragment.OnUserTypeFragmentInteractionListener{
-
-
+public class LoginActivity extends AppCompatActivity implements UserTypeFragment.OnUserTypeFragmentInteractionListener {
 
 
     // UI references.
-    private EditText mEmailView;
-    private EditText mPasswordView;
-    private View mProgressView;
-    private View mLoginFormView;
+    private EditText mEmailView, mPasswordView;
+    private View mProgressView, mLoginFormView;
     AppUser appUser;
     JsonObject uuid;
 
@@ -95,28 +91,25 @@ public class LoginActivity extends AppCompatActivity implements UserTypeFragment
     }
 
 
+    private void linkedInConnect(String service) {
+        Intent i = new Intent(LoginActivity.this, MainActivity.class);
 
-
-
-    private void linkedInConnect(String service){
-        Intent i = new Intent(LoginActivity.this,MainActivity.class);
-
-        SocialApi.socialLogin(LoginActivity.this,service, new NBOSCallback<NewMemberApiModel>() {
+        SocialApi.socialLogin(LoginActivity.this, service, new NBOSCallback<NewMemberApiModel>() {
 
             @Override
             public void onResponse(Response<NewMemberApiModel> response) {
 
                 Prefrences.setAccessToken(LoginActivity.this, "Bearer " + response.body().getToken().getAccess_token());
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
 
-                    Prefrences.setAccessToken(getApplicationContext(),"Bearer " + response.body().getToken().getAccess_token());
+                    Prefrences.setAccessToken(getApplicationContext(), "Bearer " + response.body().getToken().getAccess_token());
 
-                    if(response.code() ==200) {
+                    if (response.code() == 200) {
                         appUser = new AppUser();
-                        appUser.setFullName(response.body().getMember().getFirstName()+" " +
-                                ""+response.body().getMember().getLastName());
+                        appUser.setFullName(response.body().getMember().getFirstName() + " " +
+                                "" + response.body().getMember().getLastName());
                         appUser.setEmail(response.body().getMember().getEmail());
-                        appUser.setContactNumber(response.body().getMember().getPhone()+"");
+                        appUser.setContactNumber(response.body().getMember().getPhone() + "");
                         appUser.setUuid(response.body().getMember().getUuid());
 
                         FragmentManager fm = getSupportFragmentManager();
@@ -124,53 +117,11 @@ public class LoginActivity extends AppCompatActivity implements UserTypeFragment
                         userTypeFragmentDialogFrag.show(fm, "userTypeFragment");
 
 
-
-                    }else if(response.code()==400){
+                    } else if (response.code() == 400) {
                         login();
                     }
 
-                    Log.d("test",response.body().getMember().getUuid());
-                    /*
-                    JsonObject uuid = new JsonObject();
-                    uuid.addProperty("uuid",response.body().getMember().getUuid());
-                    UserAPI.login(LoginActivity.this, new AppCallback<List<User>>() {
-                        @Override
-                        public void onSuccess(Response<List<User>> response) {
-                            User user = response.body().get(0);
-
-
-
-
-                            if(user.getUserTypes()!=null && user.getUserTypes().size()>0 &&
-                                    user.getUserTypes().get(0).getName().equalsIgnoreCase("startup")) {
-                                Intent i = new Intent(LoginActivity.this, StartupMainActivity.class);
-                                startActivity(i);
-                            }else if (user.getUserTypes()!=null && user.getUserTypes().size()>0 &&
-                                    user.getUserTypes().get(0).getName().equalsIgnoreCase("investor")){
-                                Intent i = new Intent(LoginActivity.this, InvestorMainActivity.class);
-                                startActivity(i);
-                            }
-
-                        }
-
-                        @Override
-                        public void onFailure(Throwable t) {
-                            Log.d("error",t.getMessage());
-                        }
-
-                        @Override
-                        public void authenticationError(String authenticationError) {
-                            Log.d("error",authenticationError);
-                        }
-
-                        @Override
-                        public void unknowError(String unknowError) {
-                            Log.d("error",unknowError);
-                        }
-                    },uuid);
-                    */
-
-
+                    Log.d("test", response.body().getMember().getUuid());
 
 
                 }
@@ -185,18 +136,6 @@ public class LoginActivity extends AppCompatActivity implements UserTypeFragment
         });
     }
 
-
-    private boolean isEmailValid(String email) {
-        //TODO: Replace this with your own logic
-        return email.contains("@");
-    }
-
-    private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
-        return password.length() > 4;
-    }
-
-
     @Override
 
     protected void onActivityResult(final int requestCode, int resultCode, Intent data) {
@@ -207,7 +146,7 @@ public class LoginActivity extends AppCompatActivity implements UserTypeFragment
         SocialApi.authorizeAndConnect(LoginActivity.this, service, code, state, new NBOSCallback<NewMemberApiModel>() {
             @Override
             public void onResponse(Response<NewMemberApiModel> response) {
-                if(response.code()==200) {
+                if (response.code() == 200) {
                     appUser = new AppUser();
                     appUser.setFullName(response.body().getMember().getFirstName() + " " +
                             "" + response.body().getMember().getLastName());
@@ -215,23 +154,23 @@ public class LoginActivity extends AppCompatActivity implements UserTypeFragment
                     appUser.setContactNumber(response.body().getMember().getPhone() + "");
                     appUser.setUuid(response.body().getMember().getUuid());
                     uuid = new JsonObject();
-                    uuid.addProperty("uuid",response.body().getMember().getUuid());
-                    UserAPI.getUserDetails(LoginActivity.this,appUser.getUuid(), new NBOSCallback() {
+                    uuid.addProperty("uuid", response.body().getMember().getUuid());
+                    UserAPI.getUserDetails(LoginActivity.this, appUser.getUuid(), new NBOSCallback() {
                         @Override
                         public void onResponse(Response response) {
-                            if(response.code()==200){
-                                Log.d("test","existing linked in user");
+                            if (response.code() == 200) {
+                                Log.d("test", "existing linked in user");
                                 UserAPI.login(LoginActivity.this, uuid, new NBOSCallback<List<User>>() {
                                     @Override
                                     public void onResponse(Response<List<User>> response) {
                                         User user = response.body().get(0);
 
-                                        if(user.getUserTypes()!=null && user.getUserTypes().size()>0 &&
+                                        if (user.getUserTypes() != null && user.getUserTypes().size() > 0 &&
                                                 user.getUserTypes().get(0).getName().equalsIgnoreCase("startup")) {
                                             Intent i = new Intent(LoginActivity.this, StartupMainActivity.class);
                                             startActivity(i);
-                                        }else if (user.getUserTypes()!=null && user.getUserTypes().size()>0 &&
-                                                user.getUserTypes().get(0).getName().equalsIgnoreCase("investor")){
+                                        } else if (user.getUserTypes() != null && user.getUserTypes().size() > 0 &&
+                                                user.getUserTypes().get(0).getName().equalsIgnoreCase("investor")) {
                                             Intent i = new Intent(LoginActivity.this, InvestorMainActivity.class);
                                             startActivity(i);
                                         }
@@ -244,8 +183,8 @@ public class LoginActivity extends AppCompatActivity implements UserTypeFragment
                                     }
 
                                 });
-                            }else if(response.code() ==404){
-                                Log.d("test","new linked in user");
+                            } else if (response.code() == 404) {
+                                Log.d("test", "new linked in user");
                                 FragmentManager fm = getSupportFragmentManager();
                                 UserTypeFragment userTypeFragmentDialogFrag = new UserTypeFragment();
                                 userTypeFragmentDialogFrag.show(fm, "userTypeFragment");
@@ -260,8 +199,6 @@ public class LoginActivity extends AppCompatActivity implements UserTypeFragment
                     });
 
 
-
-
                 }
             }
 
@@ -277,33 +214,33 @@ public class LoginActivity extends AppCompatActivity implements UserTypeFragment
     }
 
 
-    private void login(){
+    private void login() {
 
-        AuthApi.login(LoginActivity.this, mEmailView.getText().toString(),mPasswordView.getText().toString(),
+        AuthApi.login(LoginActivity.this, mEmailView.getText().toString(), mPasswordView.getText().toString(),
                 new NBOSCallback<NewMemberApiModel>() {
                     @Override
                     public void onResponse(Response<NewMemberApiModel> response) {
-                        Log.d("Register",(response.body().getToken().getAccess_token()));
-                        Log.d("Register",(response.body().getToken().getRefresh_token()));
-                        if(response.isSuccessful()){
+                        Log.d("Register", (response.body().getToken().getAccess_token()));
+                        Log.d("Register", (response.body().getToken().getRefresh_token()));
+                        if (response.isSuccessful()) {
 
-                            Prefrences.setAccessToken(getApplicationContext(),"Bearer " + response.body().getToken().getAccess_token());
+                            Prefrences.setAccessToken(getApplicationContext(), "Bearer " + response.body().getToken().getAccess_token());
 
                             JsonObject uuid = new JsonObject();
-                            uuid.addProperty("uuid",response.body().getMember().getUuid());
+                            uuid.addProperty("uuid", response.body().getMember().getUuid());
                             UserAPI.login(LoginActivity.this, uuid, new NBOSCallback<List<User>>() {
 
                                 @Override
                                 public void onResponse(Response<List<User>> response) {
                                     User user = response.body().get(0);
 
-                                    if(user.getUserTypes()!=null && user.getUserTypes().size()>0 &&
+                                    if (user.getUserTypes() != null && user.getUserTypes().size() > 0 &&
                                             user.getUserTypes().get(0).getName().equalsIgnoreCase("startup")) {
                                         Intent i = new Intent(LoginActivity.this, StartupMainActivity.class);
-                                        i.putExtra("user",user);
+                                        i.putExtra("user", user);
                                         startActivity(i);
-                                    }else if (user.getUserTypes()!=null && user.getUserTypes().size()>0 &&
-                                            user.getUserTypes().get(0).getName().equalsIgnoreCase("investor")){
+                                    } else if (user.getUserTypes() != null && user.getUserTypes().size() > 0 &&
+                                            user.getUserTypes().get(0).getName().equalsIgnoreCase("investor")) {
                                         Intent i = new Intent(LoginActivity.this, InvestorMainActivity.class);
                                         startActivity(i);
                                     }
@@ -311,13 +248,11 @@ public class LoginActivity extends AppCompatActivity implements UserTypeFragment
 
                                 @Override
                                 public void onFailure(Throwable t) {
-                                    Log.d("error",t.getMessage());
+                                    Log.d("error", t.getMessage());
                                 }
 
 
                             });
-
-
 
 
                         }
@@ -325,7 +260,7 @@ public class LoginActivity extends AppCompatActivity implements UserTypeFragment
 
                     @Override
                     public void onFailure(Throwable t) {
-                        Toast.makeText(LoginActivity.this,R.string.networkError, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, R.string.networkError, Toast.LENGTH_SHORT).show();
 
                     }
 

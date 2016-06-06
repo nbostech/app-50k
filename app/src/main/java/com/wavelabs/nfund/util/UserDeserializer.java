@@ -20,6 +20,7 @@ public class UserDeserializer<T> implements JsonDeserializer<T> {
         mNestedClazz = nestedClazz;
         mNestedDeserializer = nestedDeserializer;
     }
+
     @Override
     public T deserialize(JsonElement je, Type type, JsonDeserializationContext jdc) throws JsonParseException {
 

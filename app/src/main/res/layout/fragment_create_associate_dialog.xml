@@ -4,77 +4,77 @@
 
     android:layout_height="500dp"
     tools:context="com.wavelabs.nfund.CreateAssociateDialogFragment">
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="16dp">
-    <!-- TODO: Update blank fragment layout -->
-  <EditText
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:id="@+id/associateName"
-      android:background="@drawable/rounded_corner"
-      android:padding="10dp"
-      android:layout_marginTop="2dp"
-      android:hint="Name"
-      android:gravity="center"
-      />
-    <EditText
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/associateEmail"
-        android:padding="10dp"
-        android:layout_marginTop="2dp"
-        android:layout_below="@id/associateName"
-        android:background="@drawable/rounded_corner"
-        android:hint="Email"
-        android:gravity="center"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp">
+        <!-- TODO: Update blank fragment layout -->
+        <EditText
+            android:id="@+id/associateName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/rounded_corner"
+            android:gravity="center"
+            android:hint="Name"
+            android:padding="10dp" />
 
-        />
+        <EditText
+            android:id="@+id/associateEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/associateName"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/rounded_corner"
+            android:gravity="center"
+            android:hint="Email"
+            android:padding="10dp"
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/associateContactNo"
-        android:padding="10dp"
-        android:layout_marginTop="2dp"
-        android:background="@drawable/rounded_corner"
-        android:layout_below="@id/associateEmail"
-        android:hint="Contact No"
-        android:gravity="center"
-        />
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/associateTeamType"
-        android:background="@drawable/rounded_corner"
-        android:layout_below="@id/associateContactNo"
-        android:layout_margin="2dp"/>
+            />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:id="@+id/associateProfileSummary"
-        android:inputType="text|textMultiLine"
-        android:background="@drawable/rounded_corner"
-        android:layout_below="@id/associateTeamType"
-        android:layout_height="100dp"
-        android:hint="Profile Summary"
-        android:gravity="center"/>
+        <EditText
+            android:id="@+id/associateContactNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/associateEmail"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/rounded_corner"
+            android:gravity="center"
+            android:hint="Contact No"
+            android:padding="10dp" />
 
+        <Spinner
+            android:id="@+id/associateTeamType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/associateContactNo"
+            android:layout_margin="2dp"
+            android:background="@drawable/rounded_corner" />
 
-
-    <Button
-        android:id="@+id/createAssociateBtn"
-        android:background="@drawable/button_feedback"
-        style="?android:textAppearanceSmall"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
-        android:layout_below="@id/associateProfileSummary"
-        android:text="Add"
-        android:textStyle="bold"
-        android:textColor="#ffffff" />
+        <EditText
+            android:id="@+id/associateProfileSummary"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_below="@id/associateTeamType"
+            android:background="@drawable/rounded_corner"
+            android:gravity="center"
+            android:hint="Profile Summary"
+            android:inputType="text|textMultiLine" />
 
 
-</RelativeLayout>
+        <Button
+            android:id="@+id/createAssociateBtn"
+            style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/associateProfileSummary"
+            android:layout_marginTop="26dp"
+            android:background="@drawable/button_feedback"
+            android:text="Add"
+            android:textColor="#ffffff"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
 </FrameLayout>

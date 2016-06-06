@@ -49,7 +49,7 @@ public class InvestorDetailFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param user Parameter 1.
+     * @param user   Parameter 1.
      * @param param2 Parameter 2.
      * @return A new instance of fragment InvestorDetailFragment.
      */
@@ -70,7 +70,7 @@ public class InvestorDetailFragment extends Fragment {
             user = (User) getArguments().getSerializable(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        Log.d("test",user.getProfile().getEmail());
+        Log.d("test", user.getProfile().getEmail());
 
 
     }
@@ -80,13 +80,13 @@ public class InvestorDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_investor_detail, container, false);
         // Inflate the layout for this fragment
-        ((MainActivity)getActivity()).resetActionBar(true,
+        ((MainActivity) getActivity()).resetActionBar(true,
                 DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
 
-        investorImageView =  (ImageView) view.findViewById(R.id.investorImageView);
+        investorImageView = (ImageView) view.findViewById(R.id.investorImageView);
         Context context = investorImageView.getContext();
 
-        investorFullName =(TextView) view.findViewById(R.id.investorName);
+        investorFullName = (TextView) view.findViewById(R.id.investorName);
         investorFullName.setText(user.getProfile().getFullName());
         investorCompanyName = (TextView) view.findViewById(R.id.investorCompanyName);
 
@@ -96,9 +96,7 @@ public class InvestorDetailFragment extends Fragment {
         investorProfileSummary.setText(user.getProfile().getProfileSummary());
 
 
-
-        ((MainActivity)getActivity()).getSupportActionBar().setTitle(user.getProfile().getFullName());
-
+        ((MainActivity) getActivity()).getSupportActionBar().setTitle(user.getProfile().getFullName());
 
 
         return view;

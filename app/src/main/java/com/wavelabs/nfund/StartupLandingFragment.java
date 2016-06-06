@@ -45,7 +45,6 @@ public class StartupLandingFragment extends Fragment {
     }
 
 
-
     public static StartupLandingFragment newInstance(int columnCount) {
         StartupLandingFragment fragment = new StartupLandingFragment();
         Bundle args = new Bundle();
@@ -70,7 +69,7 @@ public class StartupLandingFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_startup_landing, container, false);
 
-        RecyclerView startupListViewRCV= (RecyclerView) view.findViewById(R.id.startupListView);
+        RecyclerView startupListViewRCV = (RecyclerView) view.findViewById(R.id.startupListView);
 
 
         // Set the adapter
@@ -82,14 +81,14 @@ public class StartupLandingFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            if(startupList.size()==0)
+            if (startupList.size() == 0)
                 CompanyAPI.getCompanies(getActivity(), new NBOSCallback<ArrayList<Company>>() {
 
                     @Override
                     public void onResponse(Response<ArrayList<Company>> response) {
                         startupList = response.body();
 
-                        if(startupList.size()>0) {
+                        if (startupList.size() > 0) {
                             mListener = (OnStartupListFragmentInteractionListener) getActivity();
                             recyclerView.setAdapter(new StartupRecyclerViewAdapter(startupList, mListener));
                         }
@@ -102,7 +101,7 @@ public class StartupLandingFragment extends Fragment {
 
 
                 });
-            else{
+            else {
                 recyclerView.setAdapter(new StartupRecyclerViewAdapter(startupList, mListener));
             }
 
@@ -115,15 +114,14 @@ public class StartupLandingFragment extends Fragment {
 
 
                 FragmentManager fm = getActivity().getSupportFragmentManager();
-                CreateStartupDialogFragment dialogFragment = new CreateStartupDialogFragment ();
-                dialogFragment.setTargetFragment(StartupLandingFragment.this,0);
-                dialogFragment.show(fm,"fragment_create_startup_dialog");
+                CreateStartupDialogFragment dialogFragment = new CreateStartupDialogFragment();
+                dialogFragment.setTargetFragment(StartupLandingFragment.this, 0);
+                dialogFragment.show(fm, "fragment_create_startup_dialog");
             }
         });
         // Inflate the layout for this fragment
         return view;
     }
-
 
 
     @Override

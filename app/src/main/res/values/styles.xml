@@ -24,6 +24,7 @@
     <style name="AppTheme.AppBarLightOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
     <style name="AppLoginTheme.Yellow" parent="Theme.AccountKit.Outline">
         <item name="com_accountkit_primary_color">#f4bf56</item>
         <item name="com_accountkit_primary_text_color">@android:color/white</item>

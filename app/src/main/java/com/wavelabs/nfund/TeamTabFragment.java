@@ -57,7 +57,7 @@ public class TeamTabFragment extends Fragment {
         return fragment;
     }
 
-    public static TeamTabFragment newInstance(int columnCount,int sectionNumber) {
+    public static TeamTabFragment newInstance(int columnCount, int sectionNumber) {
         TeamTabFragment fragment = new TeamTabFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
@@ -72,7 +72,7 @@ public class TeamTabFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_team_assco_list, container, false);
         //TextView textView = (TextView) rootView.findViewById(R.id.section_label);
         //textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-        RecyclerView teamAssociateListViewRCV= (RecyclerView) view.findViewById(R.id.teamAssoicateListView);
+        RecyclerView teamAssociateListViewRCV = (RecyclerView) view.findViewById(R.id.teamAssoicateListView);
 
         // Set the adapter
         if (teamAssociateListViewRCV instanceof RecyclerView) {
@@ -83,13 +83,13 @@ public class TeamTabFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            if(associates == null)
-                CompanyAPI.getAssociates(getActivity(),((CompanyProfileActivity) getActivity()).company.getId(), new NBOSCallback<ArrayList<Associate>>() {
+            if (associates == null)
+                CompanyAPI.getAssociates(getActivity(), ((CompanyProfileActivity) getActivity()).company.getId(), new NBOSCallback<ArrayList<Associate>>() {
                     @Override
                     public void onResponse(Response<ArrayList<Associate>> response) {
                         associates = response.body();
-                        Log.d("test",associates.size()+"");
-                        if(associates !=null) {
+                        Log.d("test", associates.size() + "");
+                        if (associates != null) {
                             mListener = (OnTeamAssocListFragmentInteractionListener) getActivity();
                             recyclerView.setAdapter(new TeamAssocRecyclerViewAdapter(associates, mListener, getActivity()));
                         }
@@ -104,7 +104,7 @@ public class TeamTabFragment extends Fragment {
                 });
 
             else {
-                recyclerView.setAdapter(new TeamAssocRecyclerViewAdapter(associates, mListener,getActivity()));
+                recyclerView.setAdapter(new TeamAssocRecyclerViewAdapter(associates, mListener, getActivity()));
             }
                 /*
                 UserAPI.getUsers(getActivity(), new AppCallback<ResponseBody>() {
@@ -163,14 +163,12 @@ public class TeamTabFragment extends Fragment {
                         */
 
                 FragmentManager fm = getActivity().getSupportFragmentManager();
-                CreateAssociateDialogFragment dialogFragment = new CreateAssociateDialogFragment ();
-                dialogFragment.show(fm,"fragment_create_assoiciate_dialog");
+                CreateAssociateDialogFragment dialogFragment = new CreateAssociateDialogFragment();
+                dialogFragment.show(fm, "fragment_create_assoiciate_dialog");
 
 
             }
         });
-
-
 
 
         return view;

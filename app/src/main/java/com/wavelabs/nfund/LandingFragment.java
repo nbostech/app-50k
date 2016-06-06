@@ -81,7 +81,7 @@ public class LandingFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), RegisterActivity.class);
-                intent.putExtra("selectedRoleOption","investor");
+                intent.putExtra("selectedRoleOption", "investor");
                 startActivity(intent);
 
             }
@@ -92,7 +92,7 @@ public class LandingFragment extends Fragment {
             public void onClick(View v) {
 
                 Intent intent = new Intent(getActivity(), RegisterActivity.class);
-                intent.putExtra("selectedRoleOption","startUp");
+                intent.putExtra("selectedRoleOption", "startUp");
                 startActivity(intent);
 
                 /*

@@ -107,9 +107,9 @@ public class UserTypeFragment extends DialogFragment {
         signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createAccount(((LoginActivity)getActivity()).appUser.getFullName(),
-                        ((LoginActivity)getActivity()).appUser.getUuid(), ((LoginActivity)getActivity()).appUser.getEmail(),
-                        ((LoginActivity)getActivity()).appUser.getContactNumber());
+                createAccount(((LoginActivity) getActivity()).appUser.getFullName(),
+                        ((LoginActivity) getActivity()).appUser.getUuid(), ((LoginActivity) getActivity()).appUser.getEmail(),
+                        ((LoginActivity) getActivity()).appUser.getContactNumber());
 
 
             }
@@ -168,7 +168,7 @@ public class UserTypeFragment extends DialogFragment {
         appUser.setEmail(((LoginActivity) getActivity()).appUser.getEmail());
         appUser.setFullName(((LoginActivity) getActivity()).appUser.getFullName());
         appUser.setUserType(selectedRoleOption);
-        UserAPI.createUser(getActivity(),appUser, new NBOSCallback() {
+        UserAPI.createUser(getActivity(), appUser, new NBOSCallback() {
             @Override
             public void onResponse(Response response) {
                 Log.d("test", "success" + response.code());

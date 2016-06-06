@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+
 import com.wavelabs.nfund.model.Associate;
 
 public class AssociateActivity extends AppCompatActivity {
@@ -45,8 +46,8 @@ public class AssociateActivity extends AppCompatActivity {
 
 
                 Intent intent = new Intent(AssociateActivity.this, EditAssociateActivity.class);
-                intent.putExtra("selectedAssociate",associate);
-                intent.putExtra("selectedCompanyId",companyId);
+                intent.putExtra("selectedAssociate", associate);
+                intent.putExtra("selectedCompanyId", companyId);
                 startActivity(intent);
             }
         });

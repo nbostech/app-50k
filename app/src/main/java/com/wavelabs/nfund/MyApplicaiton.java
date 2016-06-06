@@ -14,10 +14,11 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import in.wavelabs.idn.WaveLabsSdk;
+
 /**
  * Created by ashkumar on 4/9/2016.
  */
-public class MyApplicaiton extends Application{
+public class MyApplicaiton extends Application {
 
     @Override
     public void onCreate() {
@@ -26,7 +27,7 @@ public class MyApplicaiton extends Application{
         // especially, if you're using Facebook UI elements.
         WaveLabsSdk.SdkInitialize(this);
         AccountKit.initialize(this);
-        WaveLabsSdk.generateKeyHash(getApplicationContext(),"com.app50knetwork" );
+        WaveLabsSdk.generateKeyHash(getApplicationContext(), "com.app50knetwork");
 
         //generateKeyHash(getApplicationContext(),"com.app50knetwork");
 

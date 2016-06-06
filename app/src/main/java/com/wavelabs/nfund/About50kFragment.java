@@ -42,10 +42,10 @@ public class About50kFragment extends Fragment {
             public void onResponse(Response<AboutUs> response) {
                 Log.d("test", response.body().getContent().getRendered());
                 Document doc = Jsoup.parseBodyFragment(response.body().getContent().getRendered());
-                Elements p= doc.getElementsByTag("p");
-                String pConcatenated="";
-                for (Element x: p) {
-                    pConcatenated+= x.text()+"\n\n";
+                Elements p = doc.getElementsByTag("p");
+                String pConcatenated = "";
+                for (Element x : p) {
+                    pConcatenated += x.text() + "\n\n";
                 }
 
                 System.out.println(pConcatenated);

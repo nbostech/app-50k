@@ -4,9 +4,9 @@ package com.wavelabs.nfund.util;
  * Created by ashkumar on 4/16/2016.
  */
 public class AppConstants {
-    public static final String appURL="http://fundr.api.qa1.nbos.in";
-    public static final String idnURL="http://api.qa1.nbos.in";
-    public static final String baseURL = appURL+"/api/startup-fundraising/v0";
+    public static final String appURL = "http://fundr.api.qa1.nbos.in";
+    public static final String idnURL = "http://api.qa1.nbos.in";
+    public static final String baseURL = appURL + "/api/startup-fundraising/v0";
     public static final String userAppSignupURL = appURL + "/api/startup-fundraising/v0/users/signup";
     public static final String publicEventUrl = appURL + "/api/events/v0/TNT:vijaym/events";
     public static final String userUrl = appURL + "/api/startup-fundraising/v0/users";
@@ -20,12 +20,12 @@ public class AppConstants {
     public static final String logoutURL = idnURL + "/api/identity/v0/auth/logout";
     public static final String compCategorieListURL = appURL + "/api/startup-fundraising/v0/company/categories";
     public static final String compStageListURL = appURL + "/api/startup-fundraising/v0/company/stages";
-    public static final String associateTeamTypesURL = appURL +"/api/startup-fundraising/v0/associates/teams";
+    public static final String associateTeamTypesURL = appURL + "/api/startup-fundraising/v0/associates/teams";
     public static final String compCategoriesURL = appURL + "/api/startup-fundraising/v0/company/categories";
     public static final String companyAssociatesURL = companyURL + "/{companyId}/associates";
     public static final String associateURL = baseURL + "/associate/{associateId}";
     public static final String userSigninURL = userUrl + "/signin";
-    public static final String userSignoutURL = userUrl +"/signout";
+    public static final String userSignoutURL = userUrl + "/signout";
 
 
     public static final String blogURL = "http://50knetwork.com/blog/";

@@ -1,184 +1,203 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content">
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.wavelabs.nfund.EditUserFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/userNameLabelTV"
-        android:text="USER NAME"
-        android:layout_marginLeft="12dp"
-        android:textAllCaps="true"/>
-    <EditText
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/userNameET"
-        android:layout_margin="10dp"
-        android:padding="10dp"
-        android:layout_below="@id/userNameLabelTV"
-        android:background="@drawable/rounded_corner"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/userContactNameLabelTV"
-        android:text="CONTACT NUMBER"
-        android:layout_marginLeft="12dp"
-        android:textAllCaps="true"
-        android:layout_below="@id/userNameET"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/userContactNameET"
-        android:layout_margin="10dp"
-        android:padding="10dp"
-        android:background="@drawable/rounded_corner"
-        android:layout_below="@id/userContactNameLabelTV"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/userLocationLabelTV"
-        android:text="LOCATION"
-        android:layout_marginLeft="12dp"
-        android:textAllCaps="true"
-        android:layout_below="@id/userContactNameET"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/userLocationET"
-        android:layout_margin="10dp"
-        android:padding="10dp"
-        android:background="@drawable/rounded_corner"
-        android:layout_below="@id/userLocationLabelTV"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/userWebsiteLabelTV"
-        android:text="WEBSITE"
-        android:layout_marginLeft="12dp"
-        android:textAllCaps="true"
-        android:layout_below="@id/userLocationET"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/websiteET"
-        android:layout_margin="10dp"
-        android:padding="10dp"
-        android:background="@drawable/rounded_corner"
-        android:layout_below="@id/userWebsiteLabelTV"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/userProfileSummaryLabelTV"
-        android:text="PROFILE SUMMARY"
-        android:layout_marginLeft="12dp"
-        android:textAllCaps="true"
-        android:layout_below="@id/websiteET"
-        />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/userProfileSummaryET"
-        android:layout_margin="10dp"
-        android:padding="10dp"
-        android:background="@drawable/rounded_corner"
-        android:layout_below="@id/userProfileSummaryLabelTV"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/userLinkedInProfileLabelTV"
-        android:text="LINKED IN"
-        android:layout_marginLeft="12dp"
-        android:textAllCaps="true"
-        android:layout_below="@id/userProfileSummaryET"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/userLinkedInProfileET"
-        android:layout_margin="10dp"
-        android:padding="10dp"
-        android:background="@drawable/rounded_corner"
-        android:layout_below="@id/userLinkedInProfileLabelTV"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/userFacebookProfileLabelTV"
-        android:text="FACEBOOK"
-        android:layout_marginLeft="12dp"
-        android:textAllCaps="true"
-        android:layout_below="@id/userLinkedInProfileET"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/userFacebookProfileET"
-        android:layout_margin="10dp"
-        android:padding="10dp"
-        android:background="@drawable/rounded_corner"
-        android:layout_below="@id/userFacebookProfileLabelTV"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/userTwitterProfileLabelTV"
-        android:text="TWITTER"
-        android:layout_marginLeft="12dp"
-        android:textAllCaps="true"
-        android:layout_below="@id/userFacebookProfileET"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/userTwitterProfileET"
-        android:layout_margin="10dp"
-        android:padding="10dp"
-        android:background="@drawable/rounded_corner"
-        android:layout_below="@id/userTwitterProfileLabelTV"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/userOtherProfileLabelTV"
-        android:text="OTHER PROFILE"
-        android:layout_marginLeft="12dp"
-        android:textAllCaps="true"
-        android:layout_below="@id/userTwitterProfileET"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/userOtherProfileET"
-        android:layout_margin="10dp"
-        android:padding="10dp"
-        android:background="@drawable/rounded_corner"
-        android:layout_below="@id/userOtherProfileLabelTV"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/userSocialAccountLabelTV"
-        android:text="SOCIAL ACCOUNT"
-        android:layout_marginLeft="12dp"
-        android:textAllCaps="true"
-        android:layout_below="@id/userOtherProfileET"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/userSocialAccountET"
-        android:layout_margin="10dp"
-        android:padding="10dp"
-        android:background="@drawable/rounded_corner"
-        android:layout_below="@id/userSocialAccountLabelTV"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_feedback"
-        android:id="@+id/userUpdateBtn"
-        android:text="UPDATE"
-        android:layout_margin="10dp"
-        android:textStyle="bold"
-        android:textColor="#ffffff"
-        android:layout_below="@id/userSocialAccountET"/>
+        android:layout_height="match_parent"
+        tools:context="com.wavelabs.nfund.EditUserFragment">
 
-</RelativeLayout>
+        <!-- TODO: Update blank fragment layout -->
+        <TextView
+            android:id="@+id/userNameLabelTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:text="USER NAME"
+            android:textAllCaps="true" />
+
+        <EditText
+            android:id="@+id/userNameET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/userNameLabelTV"
+            android:layout_margin="10dp"
+            android:background="@drawable/rounded_corner"
+            android:padding="10dp" />
+
+        <TextView
+            android:id="@+id/userContactNameLabelTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/userNameET"
+            android:layout_marginLeft="12dp"
+            android:text="CONTACT NUMBER"
+            android:textAllCaps="true" />
+
+        <EditText
+            android:id="@+id/userContactNameET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/userContactNameLabelTV"
+            android:layout_margin="10dp"
+            android:background="@drawable/rounded_corner"
+            android:padding="10dp" />
+
+        <TextView
+            android:id="@+id/userLocationLabelTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/userContactNameET"
+            android:layout_marginLeft="12dp"
+            android:text="LOCATION"
+            android:textAllCaps="true" />
+
+        <EditText
+            android:id="@+id/userLocationET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/userLocationLabelTV"
+            android:layout_margin="10dp"
+            android:background="@drawable/rounded_corner"
+            android:padding="10dp" />
+
+        <TextView
+            android:id="@+id/userWebsiteLabelTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/userLocationET"
+            android:layout_marginLeft="12dp"
+            android:text="WEBSITE"
+            android:textAllCaps="true" />
+
+        <EditText
+            android:id="@+id/websiteET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/userWebsiteLabelTV"
+            android:layout_margin="10dp"
+            android:background="@drawable/rounded_corner"
+            android:padding="10dp" />
+
+        <TextView
+            android:id="@+id/userProfileSummaryLabelTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/websiteET"
+            android:layout_marginLeft="12dp"
+            android:text="PROFILE SUMMARY"
+            android:textAllCaps="true" />
+
+        <EditText
+            android:id="@+id/userProfileSummaryET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/userProfileSummaryLabelTV"
+            android:layout_margin="10dp"
+            android:background="@drawable/rounded_corner"
+            android:padding="10dp" />
+
+        <TextView
+            android:id="@+id/userLinkedInProfileLabelTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/userProfileSummaryET"
+            android:layout_marginLeft="12dp"
+            android:text="LINKED IN"
+            android:textAllCaps="true" />
+
+        <EditText
+            android:id="@+id/userLinkedInProfileET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/userLinkedInProfileLabelTV"
+            android:layout_margin="10dp"
+            android:background="@drawable/rounded_corner"
+            android:padding="10dp" />
+
+        <TextView
+            android:id="@+id/userFacebookProfileLabelTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/userLinkedInProfileET"
+            android:layout_marginLeft="12dp"
+            android:text="FACEBOOK"
+            android:textAllCaps="true" />
+
+        <EditText
+            android:id="@+id/userFacebookProfileET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/userFacebookProfileLabelTV"
+            android:layout_margin="10dp"
+            android:background="@drawable/rounded_corner"
+            android:padding="10dp" />
+
+        <TextView
+            android:id="@+id/userTwitterProfileLabelTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/userFacebookProfileET"
+            android:layout_marginLeft="12dp"
+            android:text="TWITTER"
+            android:textAllCaps="true" />
+
+        <EditText
+            android:id="@+id/userTwitterProfileET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/userTwitterProfileLabelTV"
+            android:layout_margin="10dp"
+            android:background="@drawable/rounded_corner"
+            android:padding="10dp" />
+
+        <TextView
+            android:id="@+id/userOtherProfileLabelTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/userTwitterProfileET"
+            android:layout_marginLeft="12dp"
+            android:text="OTHER PROFILE"
+            android:textAllCaps="true" />
+
+        <EditText
+            android:id="@+id/userOtherProfileET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/userOtherProfileLabelTV"
+            android:layout_margin="10dp"
+            android:background="@drawable/rounded_corner"
+            android:padding="10dp" />
+
+        <TextView
+            android:id="@+id/userSocialAccountLabelTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/userOtherProfileET"
+            android:layout_marginLeft="12dp"
+            android:text="SOCIAL ACCOUNT"
+            android:textAllCaps="true" />
+
+        <EditText
+            android:id="@+id/userSocialAccountET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/userSocialAccountLabelTV"
+            android:layout_margin="10dp"
+            android:background="@drawable/rounded_corner"
+            android:padding="10dp" />
+
+        <Button
+            android:id="@+id/userUpdateBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/userSocialAccountET"
+            android:layout_margin="10dp"
+            android:background="@drawable/button_feedback"
+            android:text="UPDATE"
+            android:textColor="#ffffff"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
 </ScrollView>

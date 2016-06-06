@@ -44,12 +44,12 @@ public class TeamAssocRecyclerViewAdapter extends RecyclerView.Adapter<TeamAssoc
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
         //holder.mIdView.setText(mValues.get(position).getId()+"");
-        Log.d("test11",mValues.get(position).getName());
+        Log.d("test11", mValues.get(position).getName());
         holder.mContentView.setText(mValues.get(position).getName());
         Context context = holder.mAssociateProfileIView.getContext();
         //Picasso.with(context).load(mValues.get(position).getProfile().getIdnImageUrl()).into(holder.mInvestorProfileIView);
         //Picasso.with(context).load("https://placeholdit.imgix.net/~text?txtsize=15&txt=Company&w=60&h=60").into(holder.mAssociateProfileIView);
-        if(mValues.get(position).getProfileImage()!=null)
+        if (mValues.get(position).getProfileImage() != null)
             Picasso.with(context).load(mValues.get(position).getProfileImage().getMediaFileURLStr("medium")).into(holder.mAssociateProfileIView);
         else
             Picasso.with(context).load("https://placeholdit.imgix.net/~text?txtsize=15&txt=Company&w=100&h=100").into(holder.mAssociateProfileIView);

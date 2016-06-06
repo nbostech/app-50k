@@ -46,14 +46,14 @@ public class AssociateProfileTabFragment extends Fragment {
 
     private Spinner associateTeamS;
     private Button associateSubmitBtn;
-    private EditText associateNameLabelEV,associateEmailET,associatePositionET,associateLocationET,associateContactNoET,associateWebsiteET;
+    private EditText associateNameLabelEV, associateEmailET, associatePositionET, associateLocationET, associateContactNoET, associateWebsiteET;
     private ImageView associateProfileImageView;
     private Button associateProfileImageUploadBtn;
     private ProgressBar spinner;
     Associate associate;
     Long companyId;
 
-    HashMap<Long,String> teamMap = new HashMap<>();
+    HashMap<Long, String> teamMap = new HashMap<>();
     ArrayList<String> teamList = new ArrayList<>();
     ArrayAdapter<String> adapter;
 
@@ -77,17 +77,17 @@ public class AssociateProfileTabFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_associate_profile_tab, container, false);
-        associate =((EditAssociateActivity)getActivity()).associate;
+        associate = ((EditAssociateActivity) getActivity()).associate;
         companyId = ((EditAssociateActivity) getActivity()).companyId;
 
         associateTeamS = (Spinner) view.findViewById(R.id.associateTypeS);
         associateNameLabelEV = (EditText) view.findViewById(R.id.associateNameLabelEV);
         associateEmailET = (EditText) view.findViewById(R.id.associateEmailET);
         associatePositionET = (EditText) view.findViewById(R.id.associatePositionET);
-        associateLocationET = (EditText)view.findViewById(R.id.associateLocationET);
-        associateContactNoET = (EditText)view.findViewById(R.id.associateContactNoET);
-        associateWebsiteET = (EditText)view.findViewById(R.id.associateWebsiteET);
-        associateSubmitBtn = (Button)view.findViewById(R.id.associateSubmitBtn);
+        associateLocationET = (EditText) view.findViewById(R.id.associateLocationET);
+        associateContactNoET = (EditText) view.findViewById(R.id.associateContactNoET);
+        associateWebsiteET = (EditText) view.findViewById(R.id.associateWebsiteET);
+        associateSubmitBtn = (Button) view.findViewById(R.id.associateSubmitBtn);
         associateProfileImageUploadBtn = (Button) view.findViewById(R.id.associateProfileUploadBtn);
 
         associateProfileImageView = (ImageView) view.findViewById(R.id.associateProfileIV);
@@ -98,9 +98,9 @@ public class AssociateProfileTabFragment extends Fragment {
                 new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, teamList);
         associateTeamS.setAdapter(adapter);
 
-        if(teamList.size()<=1) {
+        if (teamList.size() <= 1) {
             //Activate Progress bar spinner
-            ((RelativeLayout)((EditAssociateActivity)getActivity()).findViewById(R.id.progressBar1)).setVisibility(View.VISIBLE);
+            ((RelativeLayout) ((EditAssociateActivity) getActivity()).findViewById(R.id.progressBar1)).setVisibility(View.VISIBLE);
             getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
                     WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
@@ -113,7 +113,7 @@ public class AssociateProfileTabFragment extends Fragment {
                     adapter =
                             new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, teamList);
                     associateTeamS.setAdapter(adapter);
-                    if((((EditAssociateActivity) getActivity()).associate.getAssociateType())!=null)
+                    if ((((EditAssociateActivity) getActivity()).associate.getAssociateType()) != null)
                         associateTeamS.setSelection(adapter.getPosition(((EditAssociateActivity) getActivity()).associate.getAssociateType()));
 
                     //Deactivate Progress bar spinner
@@ -130,7 +130,6 @@ public class AssociateProfileTabFragment extends Fragment {
         }
 
 
-
         associateSubmitBtn.setText("UPDATE");
         associateNameLabelEV.setText(((EditAssociateActivity) getActivity()).associate.getName());
         associateEmailET.setText(((EditAssociateActivity) getActivity()).associate.getEmail());
@@ -138,7 +137,7 @@ public class AssociateProfileTabFragment extends Fragment {
         associateLocationET.setText(((EditAssociateActivity) getActivity()).associate.getLocation());
         associateContactNoET.setText(((EditAssociateActivity) getActivity()).associate.getContactNumber());
         associateWebsiteET.setText(((EditAssociateActivity) getActivity()).associate.getWebsite());
-        if(associate.getProfileImage()!=null)
+        if (associate.getProfileImage() != null)
             Picasso.with(associateProfileImageView.getContext()).load(associate.getProfileImage().getMediaFileURLStr("medium")).into(associateProfileImageView);
         else
             Picasso.with(associateProfileImageView.getContext()).load("https://placeholdit.imgix.net/~text?txtsize=15&txt=Company&w=100&h=100").into(associateProfileImageView);
@@ -157,34 +156,70 @@ public class AssociateProfileTabFragment extends Fragment {
         });
 
         associateNameLabelEV.addTextChangedListener(new TextWatcher() {
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-            public void onTextChanged(CharSequence s, int start, int before, int count) { }
-            public void afterTextChanged(Editable s) { ((EditAssociateActivity) getActivity()).associate.setName(s.toString()); }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            public void afterTextChanged(Editable s) {
+                ((EditAssociateActivity) getActivity()).associate.setName(s.toString());
+            }
         });
         associateEmailET.addTextChangedListener(new TextWatcher() {
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-            public void onTextChanged(CharSequence s, int start, int before, int count) { }
-            public void afterTextChanged(Editable s) { ((EditAssociateActivity) getActivity()).associate.setEmail(s.toString()); }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            public void afterTextChanged(Editable s) {
+                ((EditAssociateActivity) getActivity()).associate.setEmail(s.toString());
+            }
         });
         associatePositionET.addTextChangedListener(new TextWatcher() {
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-            public void onTextChanged(CharSequence s, int start, int before, int count) { }
-            public void afterTextChanged(Editable s) { ((EditAssociateActivity) getActivity()).associate.setPosition(s.toString()); }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            public void afterTextChanged(Editable s) {
+                ((EditAssociateActivity) getActivity()).associate.setPosition(s.toString());
+            }
         });
         associateLocationET.addTextChangedListener(new TextWatcher() {
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-            public void onTextChanged(CharSequence s, int start, int before, int count) { }
-            public void afterTextChanged(Editable s) { ((EditAssociateActivity) getActivity()).associate.setLocation(s.toString()); }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            public void afterTextChanged(Editable s) {
+                ((EditAssociateActivity) getActivity()).associate.setLocation(s.toString());
+            }
         });
         associateContactNoET.addTextChangedListener(new TextWatcher() {
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-            public void onTextChanged(CharSequence s, int start, int before, int count) { }
-            public void afterTextChanged(Editable s) { ((EditAssociateActivity) getActivity()).associate.setContactNumber(s.toString()); }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            public void afterTextChanged(Editable s) {
+                ((EditAssociateActivity) getActivity()).associate.setContactNumber(s.toString());
+            }
         });
         associateWebsiteET.addTextChangedListener(new TextWatcher() {
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-            public void onTextChanged(CharSequence s, int start, int before, int count) { }
-            public void afterTextChanged(Editable s) { ((EditAssociateActivity) getActivity()).associate.setWebsite(s.toString()); }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            public void afterTextChanged(Editable s) {
+                ((EditAssociateActivity) getActivity()).associate.setWebsite(s.toString());
+            }
         });
 
 
@@ -194,7 +229,7 @@ public class AssociateProfileTabFragment extends Fragment {
                 associate.setAssociateType(associateTeamS.getSelectedItem().toString());
 
 
-                CompanyAPI.updateAssoicate(getActivity(), associate.getId(),associate, new NBOSCallback() {
+                CompanyAPI.updateAssoicate(getActivity(), associate.getId(), associate, new NBOSCallback() {
 
                     @Override
                     public void onResponse(Response response) {
@@ -212,8 +247,6 @@ public class AssociateProfileTabFragment extends Fragment {
 
         return view;
     }
-
-
 
 
 }

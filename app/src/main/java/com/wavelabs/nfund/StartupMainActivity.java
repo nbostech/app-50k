@@ -46,7 +46,7 @@ public class StartupMainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_startup_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        user = (User)getIntent().getSerializableExtra("user");
+        user = (User) getIntent().getSerializableExtra("user");
 
         setSupportActionBar(toolbar);
         mActionBar = getSupportActionBar();
@@ -126,11 +126,11 @@ public class StartupMainActivity extends AppCompatActivity
             fragmentTransaction.commit();
 
         } else if (id == R.id.nav_sEditProfile) {
-            Fragment editUserFragment = EditUserFragment.newInstance("","");
+            Fragment editUserFragment = EditUserFragment.newInstance("", "");
             fragmentTransaction.replace(R.id.startUpcontainer, editUserFragment, "editUserFragment");
             fragmentTransaction.addToBackStack("editUserFragment");
             fragmentTransaction.commit();
-            
+
 
         } else if (id == R.id.nav_sAboutus) {
             Fragment about50kFragment = new About50kFragment();
@@ -152,13 +152,13 @@ public class StartupMainActivity extends AppCompatActivity
             fragmentTransaction.addToBackStack("startupLandingFragment");
             fragmentTransaction.commit();
 
-        }  else if (id == R.id.nav_sSignOut) {
+        } else if (id == R.id.nav_sSignOut) {
 
             UserAPI.logout(StartupMainActivity.this, new NBOSCallback() {
 
                 @Override
                 public void onResponse(Response response) {
-                    if(response.code() == 200){
+                    if (response.code() == 200) {
                         Intent i = new Intent(StartupMainActivity.this, MainActivity.class);
                         startActivity(i);
                     }
@@ -205,8 +205,7 @@ public class StartupMainActivity extends AppCompatActivity
 
     }
 
-    public void resetActionBar(boolean childAction, int drawerMode)
-    {
+    public void resetActionBar(boolean childAction, int drawerMode) {
         if (childAction) {
 
             toggle.setDrawerIndicatorEnabled(false);

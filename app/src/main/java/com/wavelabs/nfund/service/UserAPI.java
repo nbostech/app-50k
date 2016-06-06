@@ -23,17 +23,17 @@ import retrofit2.Response;
  */
 public class UserAPI {
 
-    public static void createUser(final Context context,  AppUser user, final NBOSCallback nbosCallback){
+    public static void createUser(final Context context, AppUser user, final NBOSCallback nbosCallback) {
         String token = Prefrences.getAccessToken(context);
-        Call<User> createUserCall = RestUtil.getAPIUtil().createUser(token,user);
+        Call<User> createUserCall = RestUtil.getAPIUtil().createUser(token, user);
         createUserCall.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.code() == 200) {
-                    Log.d("response",response.code()+"");
-                    Log.d("response",response.body().toString());
+                    Log.d("response", response.code() + "");
+                    Log.d("response", response.body().toString());
                     nbosCallback.onResponse(response);
-                }else{
+                } else {
                     nbosCallback.onResponse(response);
                 }
             }
@@ -46,17 +46,17 @@ public class UserAPI {
     }
 
 
-    public static void getUsers(final Context context,String userType,final NBOSCallback nbosCallback){
+    public static void getUsers(final Context context, String userType, final NBOSCallback nbosCallback) {
         String token = Prefrences.getClientToken(context);
-        Call<ResponseBody>getUsersCall = RestUtil.getAPIUtil().getUsers(token,userType);
+        Call<ResponseBody> getUsersCall = RestUtil.getAPIUtil().getUsers(token, userType);
         getUsersCall.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.code() == 200) {
-                    Log.d("response",response.code()+"");
-                    Log.d("response",response.body().toString());
+                    Log.d("response", response.code() + "");
+                    Log.d("response", response.body().toString());
                     nbosCallback.onResponse(response);
-                }else{
+                } else {
                     nbosCallback.onResponse(response);
                 }
             }
@@ -68,16 +68,15 @@ public class UserAPI {
         });
     }
 
-    public static void getUserDetails(final Context context,String userId,final NBOSCallback nbosCallback){
+    public static void getUserDetails(final Context context, String userId, final NBOSCallback nbosCallback) {
         String token = Prefrences.getClientToken(context);
-        Call<ResponseBody>getUsersCall = RestUtil.getAPIUtil().getUserDetails(token,userId);
+        Call<ResponseBody> getUsersCall = RestUtil.getAPIUtil().getUserDetails(token, userId);
         getUsersCall.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.code() == 200) {
                     nbosCallback.onResponse(response);
-                }
-                else{
+                } else {
                     nbosCallback.onResponse(response);
                 }
             }
@@ -89,15 +88,15 @@ public class UserAPI {
         });
     }
 
-    public static void login(final Context context, JsonObject uuid, final NBOSCallback nbosCallback){
-        String token =  Prefrences.getAccessToken(context);
-        Call<List<User>>appLogin = RestUtil.getAPIUtil().loginApp(token,uuid);
+    public static void login(final Context context, JsonObject uuid, final NBOSCallback nbosCallback) {
+        String token = Prefrences.getAccessToken(context);
+        Call<List<User>> appLogin = RestUtil.getAPIUtil().loginApp(token, uuid);
         appLogin.enqueue(new Callback<List<User>>() {
             @Override
             public void onResponse(Call<List<User>> call, Response<List<User>> response) {
                 if (response.code() == 200) {
                     nbosCallback.onResponse(response);
-                }else{
+                } else {
                     nbosCallback.onResponse(response);
                 }
             }
@@ -109,17 +108,17 @@ public class UserAPI {
         });
     }
 
-    public static void updateUserProfile(final Context context,Profile profile, final NBOSCallback nbosCallback){
+    public static void updateUserProfile(final Context context, Profile profile, final NBOSCallback nbosCallback) {
         String token = Prefrences.getAccessToken(context);
-        Call<Profile> createUserCall = RestUtil.getAPIUtil().updateUser(token,profile.getId(),profile);
+        Call<Profile> createUserCall = RestUtil.getAPIUtil().updateUser(token, profile.getId(), profile);
         createUserCall.enqueue(new Callback<Profile>() {
             @Override
             public void onResponse(Call<Profile> call, Response<Profile> response) {
                 if (response.code() == 200) {
-                    Log.d("response",response.code()+"");
-                    Log.d("response",response.body().toString());
+                    Log.d("response", response.code() + "");
+                    Log.d("response", response.body().toString());
                     nbosCallback.onResponse(response);
-                }else{
+                } else {
                     nbosCallback.onResponse(response);
                 }
             }
@@ -132,15 +131,15 @@ public class UserAPI {
     }
 
 
-    public static void logout(final Context context, final NBOSCallback nbosCallback){
-        String token =  Prefrences.getAccessToken(context);
-        Call<ResponseBody>appLogin = RestUtil.getAPIUtil().logoutApp(token);
+    public static void logout(final Context context, final NBOSCallback nbosCallback) {
+        String token = Prefrences.getAccessToken(context);
+        Call<ResponseBody> appLogin = RestUtil.getAPIUtil().logoutApp(token);
         appLogin.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.code() == 200) {
                     nbosCallback.onResponse(response);
-                }else{
+                } else {
                     nbosCallback.onResponse(response);
                 }
             }

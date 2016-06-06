@@ -8,13 +8,12 @@
     <LinearLayout
         android:id="@+id/email_login_form"
         android:layout_width="match_parent"
-        android:layout_below="@+id/logoDashboardRegister"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/logoDashboardRegister"
         android:background="@drawable/rounded_layout"
         android:orientation="vertical"
-
-        android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingBottom="16dp"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin">
 
 
@@ -22,43 +21,41 @@
             android:id="@+id/userRoleRBGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_gravity="center_horizontal"
-
-            >
+            android:orientation="horizontal">
 
             <RadioButton
                 android:id="@+id/investorRB"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:checked="true"
-                android:text="Investor"
                 android:gravity="center"
                 android:paddingRight="26dp"
-                />
+                android:text="Investor" />
 
             <RadioButton
                 android:id="@+id/startupRB"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="Startup"
-                android:gravity="center"/>
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Startup" />
         </RadioGroup>
 
 
     </LinearLayout>
+
     <Button
         android:id="@+id/email_sign_up_button"
         style="?android:textAppearanceSmall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/action_sign_up"
-        android:textStyle="bold"
         android:layout_below="@id/logoDashboardRegister"
+        android:layout_marginTop="16dp"
         android:background="@drawable/button_feedback"
-        android:textColor="#ffffff"/>
+        android:text="@string/action_sign_up"
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
 
 </RelativeLayout>

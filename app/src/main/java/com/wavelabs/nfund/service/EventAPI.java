@@ -19,7 +19,7 @@ import retrofit2.Response;
  */
 public class EventAPI {
 
-    public static void getEvents(final Context context, final NBOSCallback appCallback){
+    public static void getEvents(final Context context, final NBOSCallback appCallback) {
         String token = Prefrences.getClientToken(context);
         Call<List<Event>> eventListCall = RestUtil.getAPIUtil().getEvents(token);
 
@@ -27,10 +27,10 @@ public class EventAPI {
             @Override
             public void onResponse(Call<List<Event>> call, Response<List<Event>> response) {
                 if (response.code() == 200) {
-                    Log.d("response",response.code()+"");
-                    Log.d("response",response.body().toString());
+                    Log.d("response", response.code() + "");
+                    Log.d("response", response.body().toString());
                     appCallback.onResponse(response);
-                }else{
+                } else {
                     appCallback.onResponse(response);
                 }
 

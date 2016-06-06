@@ -45,7 +45,7 @@ public class StartupRecyclerViewAdapter extends RecyclerView.Adapter<StartupRecy
         holder.mContentView.setText(mValues.get(position).getProfile().getName());
         Context context = holder.mStartupProfileIView.getContext();
         //Picasso.with(context).load(mValues.get(position).getLogoImage().getMediaFileDetailList().getMediaPath()).into(holder.mStartupProfileIView);
-        if(mValues.get(position).getLogoImage()!=null)
+        if (mValues.get(position).getLogoImage() != null)
             Picasso.with(holder.mStartupProfileIView.getContext()).load(mValues.get(position).getLogoImage().getMediaFileURLStr("medium")).into(holder.mStartupProfileIView);
         else
             Picasso.with(context).load("https://placeholdit.imgix.net/~text?txtsize=15&txt=Company&w=100&h=100").into(holder.mStartupProfileIView);

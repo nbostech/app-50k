@@ -6,7 +6,7 @@
     android:name="com.app50knetwork.EventFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff"
     app:layoutManager="LinearLayoutManager"
     tools:context="com.wavelabs.nfund.EventFragment"
-    tools:listitem="@layout/fragment_event"
-    android:background="#fff" />
+    tools:listitem="@layout/fragment_event" />

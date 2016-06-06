@@ -4,18 +4,17 @@
     android:layout_height="match_parent"
     android:background="#EFEFEF"
     android:orientation="vertical"
-    android:paddingTop="16dp"
-    android:paddingLeft="8dp"
     android:paddingBottom="8dp"
+    android:paddingLeft="8dp"
     android:paddingRight="8dp"
+    android:paddingTop="16dp"
     tools:context="com.wavelabs.nfund.ViewStartupFragment">
 
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
 
-        <RelativeLayout
-            xmlns:tools="http://schemas.android.com/tools"
+        <RelativeLayout xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context="com.wavelabs.com.wavelabs.ViewStartupFragment">
@@ -31,15 +30,15 @@
                     android:id="@+id/companyLogoIV"
                     android:layout_width="60dp"
                     android:layout_height="100dp"
+                    android:layout_weight=".4"
                     android:background="@drawable/border_image"
-                    android:padding="4dp"
-                    android:layout_weight=".4" />
+                    android:padding="4dp" />
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:layout_weight=".6">
+                    android:layout_weight=".6"
+                    android:padding="4dp">
 
                     <TextView
                         android:id="@+id/companyNameTV"
@@ -47,7 +46,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="8dp"
                         android:layout_marginTop="8dp"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/descriptionTV"
@@ -64,9 +63,9 @@
                         android:layout_below="@id/descriptionTV"
                         android:layout_marginLeft="8dp"
                         android:layout_marginTop="8dp"
-                        android:textStyle="bold"
+                        android:drawableLeft="@android:drawable/btn_star_big_off"
                         android:drawablePadding="3dp"
-                        android:drawableLeft="@android:drawable/btn_star_big_off" />
+                        android:textStyle="bold" />
 
 
                 </RelativeLayout>
@@ -75,10 +74,10 @@
             </LinearLayout>
 
             <TableLayout
+                android:id="@+id/tableLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/linerLayout1"
-                android:id="@+id/tableLayout"
                 android:paddingTop="36dp">
 
                 <TableRow
@@ -95,10 +94,10 @@
                         android:layout_weight="1"
                         android:background="@color/finestWhite"
                         android:drawableLeft="@android:drawable/ic_btn_speak_now"
-                        android:singleLine="true"
                         android:drawablePadding="2dp"
                         android:paddingBottom="10dp"
-                        android:paddingTop="10dp" />
+                        android:paddingTop="10dp"
+                        android:singleLine="true" />
 
                     <TextView
 
@@ -110,10 +109,10 @@
                         android:layout_weight="1"
                         android:background="@color/finestWhite"
                         android:drawableLeft="@android:drawable/ic_btn_speak_now"
-                        android:singleLine="true"
                         android:drawablePadding="2dp"
                         android:paddingBottom="10dp"
-                        android:paddingTop="10dp" />
+                        android:paddingTop="10dp"
+                        android:singleLine="true" />
                 </TableRow>
 
                 <TableRow
@@ -130,10 +129,10 @@
                         android:layout_weight="1"
                         android:background="@color/finestWhite"
                         android:drawableLeft="@android:drawable/ic_btn_speak_now"
-                        android:singleLine="true"
                         android:drawablePadding="2dp"
                         android:paddingBottom="10dp"
-                        android:paddingTop="10dp" />
+                        android:paddingTop="10dp"
+                        android:singleLine="true" />
 
                     <TextView
 
@@ -145,10 +144,10 @@
                         android:layout_weight="1"
                         android:background="@color/finestWhite"
                         android:drawableLeft="@android:drawable/ic_btn_speak_now"
-                        android:singleLine="true"
                         android:drawablePadding="2dp"
                         android:paddingBottom="10dp"
-                        android:paddingTop="10dp" />
+                        android:paddingTop="10dp"
+                        android:singleLine="true" />
                 </TableRow>
 
 
@@ -180,10 +179,10 @@
                         android:layout_weight="1"
                         android:background="@color/finestWhite"
                         android:drawableLeft="@android:drawable/ic_btn_speak_now"
-                        android:singleLine="true"
                         android:drawablePadding="2dp"
                         android:paddingBottom="10dp"
-                        android:paddingTop="10dp" />
+                        android:paddingTop="10dp"
+                        android:singleLine="true" />
 
 
                     <TextView
@@ -195,10 +194,10 @@
                         android:layout_weight="1"
                         android:background="@color/finestWhite"
                         android:drawableLeft="@android:drawable/ic_btn_speak_now"
-                        android:singleLine="true"
                         android:drawablePadding="2dp"
                         android:paddingBottom="10dp"
-                        android:paddingTop="10dp" />
+                        android:paddingTop="10dp"
+                        android:singleLine="true" />
 
 
                 </TableRow>
@@ -216,10 +215,10 @@
                         android:layout_weight="1"
                         android:background="@color/finestWhite"
                         android:drawableLeft="@android:drawable/ic_btn_speak_now"
-                        android:singleLine="true"
                         android:drawablePadding="2dp"
                         android:paddingBottom="10dp"
-                        android:paddingTop="10dp" />
+                        android:paddingTop="10dp"
+                        android:singleLine="true" />
 
                     <TextView
                         android:id="@+id/preMoneyValuation"
@@ -230,10 +229,10 @@
                         android:layout_weight="1"
                         android:background="@color/finestWhite"
                         android:drawableLeft="@android:drawable/ic_btn_speak_now"
-                        android:singleLine="true"
                         android:drawablePadding="2dp"
                         android:paddingBottom="10dp"
-                        android:paddingTop="10dp" />
+                        android:paddingTop="10dp"
+                        android:singleLine="true" />
                 </TableRow>
 
                 <View
@@ -302,33 +301,36 @@
                         android:scrollbars="vertical" />
                 </TableRow>
             </TableLayout>
+
             <View
+                android:id="@+id/viewHR"
                 android:layout_width="match_parent"
                 android:layout_height="2dip"
+                android:layout_below="@id/tableLayout"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
-                android:background="#FF909090"
-                android:id="@+id/viewHR"
-                android:layout_below="@id/tableLayout"/>
+                android:background="#FF909090" />
+
             <TextView
                 android:id="@+id/TeamLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/viewHR"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
-                android:layout_below="@id/viewHR"
                 android:text="Team"
                 android:textStyle="bold" />
+
             <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 xmlns:tools="http://schemas.android.com/tools"
                 android:id="@+id/teamAssoicateListView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layoutManager="LinearLayoutManager"
-                tools:listitem="@layout/fragment_team_assco"
                 android:layout_below="@id/TeamLabel"
-                android:background="#EFEFEF" />
+                android:background="#EFEFEF"
+                app:layoutManager="LinearLayoutManager"
+                tools:listitem="@layout/fragment_team_assco" />
 
         </RelativeLayout>
     </ScrollView>

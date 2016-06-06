@@ -86,19 +86,14 @@ public class RegisterActivity extends AppCompatActivity {
                 createAccount(userFullName.getText().toString(), "", email.getText().toString(), email.getText().toString(), password.getText().toString());
 
 
-
-
             }
 
         });
 
 
-
-
     }
 
     private void createAccount(String firstName, String lastName, String username, String email, String password) {
-
 
 
         AuthApi.createAccount(RegisterActivity.this, email, username, firstName, lastName, password, new NBOSCallback<NewMemberApiModel>() {
@@ -114,9 +109,8 @@ public class RegisterActivity extends AppCompatActivity {
                 appUser.setUuid(newMember.getMember().getUuid());
                 appUser.setContactNumber(contactNumber.getText().toString());
                 appUser.setEmail(newMember.getMember().getEmail());
-                appUser.setFullName(newMember.getMember().getFirstName()+" "+newMember.getMember().getLastName());
+                appUser.setFullName(newMember.getMember().getFirstName() + " " + newMember.getMember().getLastName());
                 appUser.setUserType(selectedRoleOption);
-
 
 
                 if (response.isSuccessful()) {
@@ -125,12 +119,12 @@ public class RegisterActivity extends AppCompatActivity {
 
                         @Override
                         public void onResponse(Response response) {
-                            Log.d("test","success"+response.code());
-                            if (response.isSuccessful()){
-                                if(selectedRoleOption.equalsIgnoreCase("investor")) {
+                            Log.d("test", "success" + response.code());
+                            if (response.isSuccessful()) {
+                                if (selectedRoleOption.equalsIgnoreCase("investor")) {
                                     Intent intent = new Intent(RegisterActivity.this, InvestorMainActivity.class);
                                     startActivity(intent);
-                                }else if(selectedRoleOption.equalsIgnoreCase("startup")){
+                                } else if (selectedRoleOption.equalsIgnoreCase("startup")) {
                                     Intent intent = new Intent(RegisterActivity.this, StartupMainActivity.class);
                                     startActivity(intent);
                                 }
@@ -139,7 +133,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                         @Override
                         public void onFailure(Throwable t) {
-                            Log.d("test","onFailure"+t.getMessage());
+                            Log.d("test", "onFailure" + t.getMessage());
                         }
 
                     });

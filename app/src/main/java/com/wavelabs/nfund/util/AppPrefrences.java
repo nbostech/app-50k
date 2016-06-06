@@ -10,6 +10,7 @@ public class AppPrefrences {
 
 
     static SharedPreferences sharedPreferences;
+
     public SharedPreferences getSharedPreferences(Context context) {
         sharedPreferences = context.getSharedPreferences("library", Context.MODE_PRIVATE);
         return sharedPreferences;
@@ -20,42 +21,51 @@ public class AppPrefrences {
         return sharedPreferences.getLong("userId", 0);
     }
 
-    public static void  setUserId(Context context,long userId) {
+    public static void setUserId(Context context, long userId) {
         sharedPreferences = context.getSharedPreferences("library", Context.MODE_PRIVATE);
         sharedPreferences.edit().putLong("userId", userId).apply();
     }
-    public static void setFirstName(Context context,String firstName) {
+
+    public static void setFirstName(Context context, String firstName) {
         sharedPreferences = context.getSharedPreferences("library", Context.MODE_PRIVATE);
         sharedPreferences.edit().putString("firstName", firstName).apply();
     }
+
     public static String getFirstName(Context context) {
         sharedPreferences = context.getSharedPreferences("library", Context.MODE_PRIVATE);
         return sharedPreferences.getString("firstName", "");
     }
-    public static void setLastName(Context context,String lastName) {
+
+    public static void setLastName(Context context, String lastName) {
         sharedPreferences = context.getSharedPreferences("library", Context.MODE_PRIVATE);
         sharedPreferences.edit().putString("lastName", lastName).apply();
     }
+
     public static String getLastName(Context context) {
         sharedPreferences = context.getSharedPreferences("library", Context.MODE_PRIVATE);
         return sharedPreferences.getString("lastName", "");
     }
-    public static void setEmailId(Context context,String accessToken) {
+
+    public static void setEmailId(Context context, String accessToken) {
         sharedPreferences = context.getSharedPreferences("library", Context.MODE_PRIVATE);
         sharedPreferences.edit().putString("emailId", accessToken).apply();
     }
+
     public static String getEmailId(Context context) {
         sharedPreferences = context.getSharedPreferences("library", Context.MODE_PRIVATE);
         return sharedPreferences.getString("emailId", "");
     }
-    public static void setPhoneNumber(Context context,Long phoneNumber) {
+
+    public static void setPhoneNumber(Context context, Long phoneNumber) {
         sharedPreferences = context.getSharedPreferences("library", Context.MODE_PRIVATE);
         sharedPreferences.edit().putLong("phoneNumber", phoneNumber).apply();
     }
+
     public static Long getPhoneNumber(Context context) {
         sharedPreferences = context.getSharedPreferences("library", Context.MODE_PRIVATE);
         return sharedPreferences.getLong("phoneNumber", 0);
     }
+
     public static void setClientToken(Context context, String clientToken) {
         sharedPreferences = context.getSharedPreferences("library", Context.MODE_PRIVATE);
         sharedPreferences.edit().putString("clientToken", clientToken).apply();
@@ -65,6 +75,7 @@ public class AppPrefrences {
         sharedPreferences = context.getSharedPreferences("library", Context.MODE_PRIVATE);
         return sharedPreferences.getString("clientToken", "");
     }
+
     public static String getDescription(Context context) {
         sharedPreferences = context.getSharedPreferences("library", Context.MODE_PRIVATE);
         return sharedPreferences.getString("description", "");
@@ -89,7 +100,6 @@ public class AppPrefrences {
         sharedPreferences = context.getSharedPreferences("library", Context.MODE_PRIVATE);
         return sharedPreferences.getString("refreshToken", "");
     }
-
 
 
 }

@@ -87,11 +87,11 @@ public class CreateStartupDialogFragment extends DialogFragment {
         View view = inflater.inflate(R.layout.fragment_create_startup_dialog, container, false);
 
         getDialog().setTitle("Startup");
-        startupNameET = (EditText)view.findViewById(R.id.startUpName);
-        startupEmailET = (EditText)view.findViewById(R.id.startupEmail);
-        startupContactET = (EditText)view.findViewById(R.id.startupContactNo);
-        startupFounderNameET = (EditText)view.findViewById(R.id.startupFounderName);
-        createStartupBtn = (Button)view.findViewById(R.id.createStartup);
+        startupNameET = (EditText) view.findViewById(R.id.startUpName);
+        startupEmailET = (EditText) view.findViewById(R.id.startupEmail);
+        startupContactET = (EditText) view.findViewById(R.id.startupContactNo);
+        startupFounderNameET = (EditText) view.findViewById(R.id.startupFounderName);
+        createStartupBtn = (Button) view.findViewById(R.id.createStartup);
 
         createStartupBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,7 +127,7 @@ public class CreateStartupDialogFragment extends DialogFragment {
 
     @Override
     public void onDismiss(DialogInterface dialog) {
-        Log.d("test","dialog dismiss");
+        Log.d("test", "dialog dismiss");
 
         StartupLandingFragment f = (StartupLandingFragment) getActivity().getSupportFragmentManager().findFragmentByTag("startupLandingFragment");
 
@@ -160,7 +160,6 @@ public class CreateStartupDialogFragment extends DialogFragment {
         super.onDetach();
         mListener = null;
     }
-
 
 
     /**

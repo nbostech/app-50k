@@ -16,13 +16,13 @@ import android.widget.Toast;
 public class InvestorMainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private Boolean exit = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_investor_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

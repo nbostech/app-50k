@@ -75,7 +75,7 @@ public class EventDetailFragment extends Fragment {
             event = (Event) getArguments().getSerializable(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        Log.d("test",event.getName());
+        Log.d("test", event.getName());
     }
 
     @Override
@@ -88,22 +88,21 @@ public class EventDetailFragment extends Fragment {
         toFormat.setTimeZone(TimeZone.getTimeZone("Asia/Kolkata"));
         //String startTimeStr = toFormat.format(event.getStartTime());
         //String endTimeStr = toFormat.format(event.getEndTime());
-        eventTime =(TextView)view.findViewById(R.id.eventTime);
+        eventTime = (TextView) view.findViewById(R.id.eventTime);
         //eventTime.setText(startTimeStr +" "+endTimeStr);
         eventTime.setText(event.getScheduleTime().replace("-", " - "));
-        eventAddress =(TextView)view.findViewById(R.id.eventAddress);
+        eventAddress = (TextView) view.findViewById(R.id.eventAddress);
         eventAddress.setText(event.getAddress());
-        eventContactDetails =(TextView)view.findViewById(R.id.contactDetails);
-        eventContactDetails.setText(event.getContactPerson()+System.getProperty("line.separator")+event.getContactNumber());
-        eventWebSite =(TextView)view.findViewById(R.id.eventWebSite);
+        eventContactDetails = (TextView) view.findViewById(R.id.contactDetails);
+        eventContactDetails.setText(event.getContactPerson() + System.getProperty("line.separator") + event.getContactNumber());
+        eventWebSite = (TextView) view.findViewById(R.id.eventWebSite);
         eventWebSite.setText(event.getWebsite());
-        eventDescription =(TextView)view.findViewById(R.id.eventDescription);
+        eventDescription = (TextView) view.findViewById(R.id.eventDescription);
         eventDescription.setText(event.getDescription());
-        eventKnowMoreBtn = (Button)view.findViewById(R.id.knowMoreBtn);
+        eventKnowMoreBtn = (Button) view.findViewById(R.id.knowMoreBtn);
 
-        eventImageView = (ImageView)view.findViewById(R.id.eventImageView);
+        eventImageView = (ImageView) view.findViewById(R.id.eventImageView);
         Picasso.with(eventImageView.getContext()).load("http://p-r-i.org/wp-content/uploads/2012/09/Meetings.jpg").into(eventImageView);
-
 
 
         eventKnowMoreBtn.setOnClickListener(new View.OnClickListener() {
