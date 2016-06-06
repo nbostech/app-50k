@@ -44,17 +44,11 @@ public class AssociateProfileTabFragment extends Fragment {
     private static final String ARG_SECTION_NUMBER = "section_number";
 
 
-    Spinner associateTeamS;
-    Button associateSubmitBtn;
-    EditText associateNameLabelEV;
-    EditText associateEmailET ;
-    EditText associatePositionET;
-    EditText associateLocationET;
-    EditText associateContactNoET;
-    EditText associateWebsiteET;
-    ImageView associateProfileImageView;
-    Button associateProfileImageUploadBtn;
-
+    private Spinner associateTeamS;
+    private Button associateSubmitBtn;
+    private EditText associateNameLabelEV,associateEmailET,associatePositionET,associateLocationET,associateContactNoET,associateWebsiteET;
+    private ImageView associateProfileImageView;
+    private Button associateProfileImageUploadBtn;
     private ProgressBar spinner;
     Associate associate;
     Long companyId;

@@ -28,11 +28,10 @@ public class MainActivity extends AppCompatActivity
         InvestorFragment.OnInvestorListFragmentInteractionListener,
         LandingFragment.OnFragmentInteractionListener {
 
-    ImageView investorImageViewBtn;
-    ImageView startUpImageViewBtn;
-    ActionBar mActionBar;
-    ActionBarDrawerToggle toggle;
-    DrawerLayout drawer;
+    private ImageView investorImageViewBtn, startUpImageViewBtn;
+    private ActionBar mActionBar;
+    private ActionBarDrawerToggle toggle;
+    private DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,7 +130,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_portfolio) {
 
         } else if (id == R.id.nav_aboutus) {
-            Fragment about50kFragment = About50kFragment.newInstance();
+            Fragment about50kFragment = new About50kFragment();
             fragmentTransaction.replace(R.id.container, about50kFragment, "about50kFragment");
             fragmentTransaction.addToBackStack("about50kFragment");
             fragmentTransaction.commit();

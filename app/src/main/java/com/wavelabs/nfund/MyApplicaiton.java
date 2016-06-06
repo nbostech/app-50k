@@ -8,6 +8,8 @@ import android.content.pm.Signature;
 import android.util.Base64;
 import android.util.Log;
 
+import com.facebook.accountkit.AccountKit;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -23,6 +25,7 @@ public class MyApplicaiton extends Application{
         // Initialize the SDK before executing any other operations,
         // especially, if you're using Facebook UI elements.
         WaveLabsSdk.SdkInitialize(this);
+        AccountKit.initialize(this);
         WaveLabsSdk.generateKeyHash(getApplicationContext(),"com.app50knetwork" );
 
         //generateKeyHash(getApplicationContext(),"com.app50knetwork");

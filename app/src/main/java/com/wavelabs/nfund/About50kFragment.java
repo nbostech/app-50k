@@ -20,26 +20,15 @@ import org.jsoup.select.Elements;
 import in.wavelabs.idn.ConnectionAPI.NBOSCallback;
 import retrofit2.Response;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class About50kFragment extends Fragment {
 
 
-    TextView about50KTextView;
+    private TextView about50KTextView;
 
     public About50kFragment() {
         // Required empty public constructor
     }
 
-
-    public static About50kFragment newInstance() {
-        About50kFragment fragment = new About50kFragment();
-
-        return fragment;
-
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

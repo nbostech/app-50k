@@ -133,7 +133,7 @@ public class StartupMainActivity extends AppCompatActivity
             
 
         } else if (id == R.id.nav_sAboutus) {
-            Fragment about50kFragment = About50kFragment.newInstance();
+            Fragment about50kFragment = new About50kFragment();
             fragmentTransaction.replace(R.id.startUpcontainer, about50kFragment, "about50kFragment");
             fragmentTransaction.addToBackStack("about50kFragment");
             fragmentTransaction.commit();
