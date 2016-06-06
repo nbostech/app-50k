@@ -8,6 +8,6 @@
     android:layout_height="match_parent"
     android:paddingTop="16dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context="com.wavelabs.com.wavelabs.StartupLandingFragment"
+    tools:context="com.wavelabs.nfund.StartupLandingFragment"
     tools:listitem="@layout/fragment_startup"
     android:background="#fff" />
