@@ -52,7 +52,7 @@ public class EditAssociateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_associate);
         associate = (Associate) getIntent().getSerializableExtra("selectedAssociate");
-        companyId = (Long)getIntent().getLongExtra("selectedCompanyId",new Long(0));
+        companyId = (Long)getIntent().getLongExtra("selectedCompanyId", 0L);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

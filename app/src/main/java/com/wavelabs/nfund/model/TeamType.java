@@ -49,7 +49,7 @@ public class TeamType {
 
 
     public static HashMap<Long,String> getMapFromList(List<TeamType> teamTypeList){
-        HashMap<Long, String> teamTMap = new HashMap<Long,String>();
+        HashMap<Long, String> teamTMap = new HashMap<>();
         for (TeamType teamType:teamTypeList ) {
             teamTMap.put(teamType.getId(),teamType.getName());
         }

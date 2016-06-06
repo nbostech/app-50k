@@ -14,9 +14,9 @@ public class Company implements Serializable{
 
     private MediaFile logoImage;
     private MediaFile brandImage;
-    private List<String> addressList = new ArrayList<String>();
-    private List<String> documentsList = new ArrayList<String>();
-    private List<Associate> associates = new ArrayList<Associate>();
+    private List<String> addressList = new ArrayList<>();
+    private List<String> documentsList = new ArrayList<>();
+    private List<Associate> associates = new ArrayList<>();
 
     public Long getId() {
         return id;

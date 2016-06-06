@@ -27,7 +27,7 @@ public class AssociateActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         associate = (Associate) getIntent().getSerializableExtra("selectedAssociate");
-        companyId = (Long)getIntent().getLongExtra("selectedCompanyId",new Long(0));
+        companyId = getIntent().getLongExtra("selectedCompanyId", 0L);
 
 
         FragmentManager fragmentManager = getSupportFragmentManager();

@@ -35,7 +35,7 @@ public class StartupLandingFragment extends Fragment {
     // TODO: Customize parameters
     private int mColumnCount = 1;
 
-    public ArrayList<Company> startupList = new ArrayList<Company>();
+    public ArrayList<Company> startupList = new ArrayList<>();
     RecyclerView recyclerView = null;
 
     private OnStartupListFragmentInteractionListener mListener;

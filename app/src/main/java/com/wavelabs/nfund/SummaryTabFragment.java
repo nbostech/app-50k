@@ -62,12 +62,12 @@ public class SummaryTabFragment extends Fragment {
         businessSummaryET.addTextChangedListener(new TextWatcher() {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             public void onTextChanged(CharSequence s, int start, int before, int count) { }
-            public void afterTextChanged(Editable s) { ((CompanyProfileActivity) getActivity()).company.getProfile().setBusinessSummary(new String(s.toString())); }
+            public void afterTextChanged(Editable s) { ((CompanyProfileActivity) getActivity()).company.getProfile().setBusinessSummary(s.toString()); }
         });
         uspProductUnqinessET.addTextChangedListener(new TextWatcher() {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             public void onTextChanged(CharSequence s, int start, int before, int count) { }
-            public void afterTextChanged(Editable s) { ((CompanyProfileActivity) getActivity()).company.getProfile().setProductUSP(new String(s.toString())); }
+            public void afterTextChanged(Editable s) { ((CompanyProfileActivity) getActivity()).company.getProfile().setProductUSP(s.toString()); }
         });
 
 

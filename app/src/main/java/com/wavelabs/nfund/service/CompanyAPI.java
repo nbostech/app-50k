@@ -27,7 +27,7 @@ import retrofit2.Response;
  */
 public class CompanyAPI {
 
-    public final static void createCompany(final Context context, final NBOSCallback nbosCallback, CompanyProfile companyProfile){
+    public static void createCompany(final Context context, final NBOSCallback nbosCallback, CompanyProfile companyProfile){
         String token = Prefrences.getAccessToken(context);
         Call<Company> companyCall = RestUtil.getAPIUtil().createCompany(token,companyProfile);
         companyCall.enqueue(new Callback<Company>() {
@@ -45,7 +45,7 @@ public class CompanyAPI {
     }
 
 
-    public final static void updateCompanyProfile(final Context context, final NBOSCallback nbosCallback, Long companyId,CompanyProfile companyProfile){
+    public static void updateCompanyProfile(final Context context, final NBOSCallback nbosCallback, Long companyId, CompanyProfile companyProfile){
         String token = Prefrences.getAccessToken(context);
         Call<Company> companyCall = RestUtil.getAPIUtil().updateCompanyProfile(token,companyId,companyProfile);
         companyCall.enqueue(new Callback<Company>() {

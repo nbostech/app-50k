@@ -101,8 +101,8 @@ public class InvestorFragment extends Fragment {
 
                 @Override
                 public void onResponse(Response<ResponseBody> response) {
-                    UserDeserializer<User> myDeserializer = new UserDeserializer<User>(Profile.class,
-                            new UserDeserializer<Profile>(null,null));
+                    UserDeserializer<User> myDeserializer = new UserDeserializer<>(Profile.class,
+                            new UserDeserializer<Profile>(null, null));
                     Gson gson = new GsonBuilder().registerTypeAdapter(User.class, myDeserializer).create();
                     try {
                         String userJsonStr =response.body().string();

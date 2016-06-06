@@ -17,7 +17,7 @@ public class MediaFile implements Serializable {
     private Long id;
     private String extension;
     @SerializedName("mediaFileDetailsList")
-    private List<MediaFileDetail> mediaFileDetailList = new ArrayList<MediaFileDetail>();
+    private List<MediaFileDetail> mediaFileDetailList = new ArrayList<>();
     @SerializedName("supportedsizes")
     private String supportedSizes;
 
@@ -74,7 +74,7 @@ public class MediaFile implements Serializable {
 
 
     public Map<String,String> getMediaFileDim(){
-        Map<String,String> mediaFileDimMap = new HashMap<String,String>();
+        Map<String,String> mediaFileDimMap = new HashMap<>();
         String supSizeStr = getSupportedSizes();
         String[] supSizeArr = supSizeStr.split(",");
         for (String dimStr:supSizeArr ) {

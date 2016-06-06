@@ -59,8 +59,8 @@ public class AssociateProfileTabFragment extends Fragment {
     Associate associate;
     Long companyId;
 
-    HashMap<Long,String> teamMap = new HashMap<Long,String>();
-    ArrayList<String> teamList = new ArrayList<String>();
+    HashMap<Long,String> teamMap = new HashMap<>();
+    ArrayList<String> teamList = new ArrayList<>();
     ArrayAdapter<String> adapter;
 
 
@@ -98,10 +98,10 @@ public class AssociateProfileTabFragment extends Fragment {
 
         associateProfileImageView = (ImageView) view.findViewById(R.id.associateProfileIV);
 
-        teamList = new ArrayList<String>(teamMap.values());
+        teamList = new ArrayList<>(teamMap.values());
         teamList.add("select team");
         adapter =
-                new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,teamList);
+                new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, teamList);
         associateTeamS.setAdapter(adapter);
 
         if(teamList.size()<=1) {
@@ -114,10 +114,10 @@ public class AssociateProfileTabFragment extends Fragment {
                 @Override
                 public void onResponse(Response<ArrayList<TeamType>> response) {
                     teamMap = TeamType.getMapFromList(response.body());
-                    teamList = new ArrayList<String>(teamMap.values());
+                    teamList = new ArrayList<>(teamMap.values());
                     teamList.add(0, "select team");
                     adapter =
-                            new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, teamList);
+                            new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, teamList);
                     associateTeamS.setAdapter(adapter);
                     if((((EditAssociateActivity) getActivity()).associate.getAssociateType())!=null)
                         associateTeamS.setSelection(adapter.getPosition(((EditAssociateActivity) getActivity()).associate.getAssociateType()));
@@ -165,32 +165,32 @@ public class AssociateProfileTabFragment extends Fragment {
         associateNameLabelEV.addTextChangedListener(new TextWatcher() {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             public void onTextChanged(CharSequence s, int start, int before, int count) { }
-            public void afterTextChanged(Editable s) { ((EditAssociateActivity) getActivity()).associate.setName(new String(s.toString())); }
+            public void afterTextChanged(Editable s) { ((EditAssociateActivity) getActivity()).associate.setName(s.toString()); }
         });
         associateEmailET.addTextChangedListener(new TextWatcher() {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             public void onTextChanged(CharSequence s, int start, int before, int count) { }
-            public void afterTextChanged(Editable s) { ((EditAssociateActivity) getActivity()).associate.setEmail(new String(s.toString())); }
+            public void afterTextChanged(Editable s) { ((EditAssociateActivity) getActivity()).associate.setEmail(s.toString()); }
         });
         associatePositionET.addTextChangedListener(new TextWatcher() {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             public void onTextChanged(CharSequence s, int start, int before, int count) { }
-            public void afterTextChanged(Editable s) { ((EditAssociateActivity) getActivity()).associate.setPosition(new String(s.toString())); }
+            public void afterTextChanged(Editable s) { ((EditAssociateActivity) getActivity()).associate.setPosition(s.toString()); }
         });
         associateLocationET.addTextChangedListener(new TextWatcher() {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             public void onTextChanged(CharSequence s, int start, int before, int count) { }
-            public void afterTextChanged(Editable s) { ((EditAssociateActivity) getActivity()).associate.setLocation(new String(s.toString())); }
+            public void afterTextChanged(Editable s) { ((EditAssociateActivity) getActivity()).associate.setLocation(s.toString()); }
         });
         associateContactNoET.addTextChangedListener(new TextWatcher() {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             public void onTextChanged(CharSequence s, int start, int before, int count) { }
-            public void afterTextChanged(Editable s) { ((EditAssociateActivity) getActivity()).associate.setContactNumber(new String(s.toString())); }
+            public void afterTextChanged(Editable s) { ((EditAssociateActivity) getActivity()).associate.setContactNumber(s.toString()); }
         });
         associateWebsiteET.addTextChangedListener(new TextWatcher() {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             public void onTextChanged(CharSequence s, int start, int before, int count) { }
-            public void afterTextChanged(Editable s) { ((EditAssociateActivity) getActivity()).associate.setWebsite(new String(s.toString())); }
+            public void afterTextChanged(Editable s) { ((EditAssociateActivity) getActivity()).associate.setWebsite(s.toString()); }
         });
 
 

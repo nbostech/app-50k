@@ -29,7 +29,7 @@ public class Metadata implements Serializable{
     }
 
     public static HashMap<Long,String> getMapFromList(List<Metadata> metadataList){
-        HashMap<Long, String> metadataMap = new HashMap<Long,String>();
+        HashMap<Long, String> metadataMap = new HashMap<>();
         for (Metadata metadata:metadataList ) {
             metadataMap.put(metadata.getId(),metadata.getName());
         }

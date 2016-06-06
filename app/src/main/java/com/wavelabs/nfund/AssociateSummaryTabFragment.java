@@ -65,12 +65,12 @@ public class AssociateSummaryTabFragment extends Fragment {
         associateExpAndExpET.addTextChangedListener(new TextWatcher() {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             public void onTextChanged(CharSequence s, int start, int before, int count) { }
-            public void afterTextChanged(Editable s) { ((EditAssociateActivity) getActivity()).associate.setExperience(new String(s.toString())); }
+            public void afterTextChanged(Editable s) { ((EditAssociateActivity) getActivity()).associate.setExperience(s.toString()); }
         });
         associateSummaryEV.addTextChangedListener(new TextWatcher() {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             public void onTextChanged(CharSequence s, int start, int before, int count) { }
-            public void afterTextChanged(Editable s) { ((EditAssociateActivity) getActivity()).associate.setProfileSummary(new String(s.toString())); }
+            public void afterTextChanged(Editable s) { ((EditAssociateActivity) getActivity()).associate.setProfileSummary(s.toString()); }
         });
 
 

@@ -74,22 +74,22 @@ public class AssociateSocialProfileTabFragment extends Fragment {
         associateSocialFBET.addTextChangedListener(new TextWatcher() {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             public void onTextChanged(CharSequence s, int start, int before, int count) { }
-            public void afterTextChanged(Editable s) { ((EditAssociateActivity) getActivity()).associate.setFacebookProfile(new String(s.toString())); }
+            public void afterTextChanged(Editable s) { ((EditAssociateActivity) getActivity()).associate.setFacebookProfile(s.toString()); }
         });
         associateSocialLIET.addTextChangedListener(new TextWatcher() {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             public void onTextChanged(CharSequence s, int start, int before, int count) { }
-            public void afterTextChanged(Editable s) { ((EditAssociateActivity) getActivity()).associate.setLinkedinProfile(new String(s.toString())); }
+            public void afterTextChanged(Editable s) { ((EditAssociateActivity) getActivity()).associate.setLinkedinProfile(s.toString()); }
         });
         associateSocialTET.addTextChangedListener(new TextWatcher() {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             public void onTextChanged(CharSequence s, int start, int before, int count) { }
-            public void afterTextChanged(Editable s) { ((EditAssociateActivity) getActivity()).associate.setTwitterProfile(new String(s.toString())); }
+            public void afterTextChanged(Editable s) { ((EditAssociateActivity) getActivity()).associate.setTwitterProfile(s.toString()); }
         });
         associateSocialOET.addTextChangedListener(new TextWatcher() {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             public void onTextChanged(CharSequence s, int start, int before, int count) { }
-            public void afterTextChanged(Editable s) { ((EditAssociateActivity) getActivity()).associate.setOtherProfile(new String(s.toString())); }
+            public void afterTextChanged(Editable s) { ((EditAssociateActivity) getActivity()).associate.setOtherProfile(s.toString()); }
         });
 
 

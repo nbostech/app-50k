@@ -55,8 +55,8 @@ public class CreateAssociateDialogFragment extends DialogFragment{
     Button createAssociateBtn;
     Associate associate;
 
-    HashMap<Long,String> teamTypeMap = new HashMap<Long,String>();
-    ArrayList<String> teamTypeList = new ArrayList<String>();
+    HashMap<Long,String> teamTypeMap = new HashMap<>();
+    ArrayList<String> teamTypeList = new ArrayList<>();
     ArrayAdapter<String> adapter;
 
     private OnCreateAssociateDialogFragmentInteractionListener mListener;
@@ -105,10 +105,10 @@ public class CreateAssociateDialogFragment extends DialogFragment{
         associateProfileSummary = (EditText)view.findViewById(R.id.associateProfileSummary);
         createAssociateBtn = (Button)view.findViewById(R.id.createAssociateBtn);
 
-        teamTypeList = new ArrayList<String>(teamTypeMap.values());
+        teamTypeList = new ArrayList<>(teamTypeMap.values());
         teamTypeList.add("select industry");
         adapter =
-                new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,teamTypeList);
+                new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, teamTypeList);
         associateTeamType.setAdapter(adapter);
 
         if(teamTypeList.size()<=1) {
@@ -122,13 +122,13 @@ public class CreateAssociateDialogFragment extends DialogFragment{
                 @Override
                 public void onResponse(Response<ArrayList<TeamType>> response) {
                     ArrayList<TeamType> teamTypeListRes = response.body();
-                    teamTypeList = new ArrayList<String>();
+                    teamTypeList = new ArrayList<>();
                     for (TeamType t:teamTypeListRes ) {
                         teamTypeList.add(t.getName());
                     }
                     teamTypeList.add(0, "select team");
                     adapter =
-                            new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, teamTypeList);
+                            new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, teamTypeList);
                     associateTeamType.setAdapter(adapter);
 
                     //Deactivate Progress bar spinner
@@ -144,10 +144,10 @@ public class CreateAssociateDialogFragment extends DialogFragment{
 
             });
         }
-        teamTypeList = new ArrayList<String>();
+        teamTypeList = new ArrayList<>();
         teamTypeList.add(0, "select team");
         adapter =
-                new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, teamTypeList);
+                new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, teamTypeList);
         associateTeamType.setAdapter(adapter);
 
 

@@ -57,8 +57,8 @@ public class ProfileTabFragment extends Fragment {
     Company company;
     ImageView imageView;
 
-    HashMap<Long,String> categoryMap = new HashMap<Long,String>();
-    ArrayList<String> industryList = new ArrayList<String>();
+    HashMap<Long,String> categoryMap = new HashMap<>();
+    ArrayList<String> industryList = new ArrayList<>();
     ArrayAdapter<String> adapter;
 
 
@@ -91,10 +91,10 @@ public class ProfileTabFragment extends Fragment {
         logoUploadBtn = (Button) view.findViewById(R.id.logoUploadBtn);
 
         imageView = (ImageView) view.findViewById(R.id.companyLogoIV);
-        industryList = new ArrayList<String>(categoryMap.values());
+        industryList = new ArrayList<>(categoryMap.values());
         industryList.add("select industry");
         adapter =
-                new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,industryList);
+                new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, industryList);
         industryS.setAdapter(adapter);
 
         if(industryList.size()<=1) {
@@ -109,10 +109,10 @@ public class ProfileTabFragment extends Fragment {
                 @Override
                 public void onResponse(Response<ArrayList<Metadata>> response) {
                     categoryMap = Metadata.getMapFromList(response.body());
-                    industryList = new ArrayList<String>(categoryMap.values());
+                    industryList = new ArrayList<>(categoryMap.values());
                     industryList.add(0, "select industry");
                     adapter =
-                            new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, industryList);
+                            new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, industryList);
                     industryS.setAdapter(adapter);
                     if((((CompanyProfileActivity) getActivity()).company.getProfile().getCategory())!=null)
                         industryS.setSelection(adapter.getPosition(((CompanyProfileActivity) getActivity()).company.getProfile().getCategory()));
@@ -160,17 +160,17 @@ public class ProfileTabFragment extends Fragment {
         companyNameET.addTextChangedListener(new TextWatcher() {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             public void onTextChanged(CharSequence s, int start, int before, int count) { }
-            public void afterTextChanged(Editable s) { ((CompanyProfileActivity) getActivity()).company.getProfile().setName(new String(s.toString())); }
+            public void afterTextChanged(Editable s) { ((CompanyProfileActivity) getActivity()).company.getProfile().setName(s.toString()); }
         });
         companyEmailET.addTextChangedListener(new TextWatcher() {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             public void onTextChanged(CharSequence s, int start, int before, int count) { }
-            public void afterTextChanged(Editable s) { ((CompanyProfileActivity) getActivity()).company.getProfile().setEmail(new String(s.toString())); }
+            public void afterTextChanged(Editable s) { ((CompanyProfileActivity) getActivity()).company.getProfile().setEmail(s.toString()); }
         });
         contactNumberET.addTextChangedListener(new TextWatcher() {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             public void onTextChanged(CharSequence s, int start, int before, int count) { }
-            public void afterTextChanged(Editable s) { ((CompanyProfileActivity) getActivity()).company.getProfile().setContactNumber(new String(s.toString())); }
+            public void afterTextChanged(Editable s) { ((CompanyProfileActivity) getActivity()).company.getProfile().setContactNumber(s.toString()); }
         });
 
 

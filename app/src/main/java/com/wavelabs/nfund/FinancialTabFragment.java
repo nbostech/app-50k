@@ -40,8 +40,8 @@ public  class FinancialTabFragment extends Fragment {
     Spinner companyStageS;
     Button compSubmitBtn;
     Company company;
-    HashMap<Long,String> stageMap = new HashMap<Long,String>();
-    ArrayList<String> stageList = new ArrayList<String>();
+    HashMap<Long,String> stageMap = new HashMap<>();
+    ArrayList<String> stageList = new ArrayList<>();
     ArrayAdapter<String> adapter;
 
     public FinancialTabFragment() {
@@ -71,10 +71,10 @@ public  class FinancialTabFragment extends Fragment {
         compSubmitBtn = (Button)rootView.findViewById(R.id.compSubmitBtn);
         companyStageS = (Spinner) rootView.findViewById(R.id.fundingStage);
 
-        stageList = new ArrayList<String>(stageMap.values());
+        stageList = new ArrayList<>(stageMap.values());
         stageList.add(0, "select stage");
         adapter =
-                new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, stageList);
+                new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, stageList);
         companyStageS.setAdapter(adapter);
 
         if(stageList.size()<=1) {
@@ -88,10 +88,10 @@ public  class FinancialTabFragment extends Fragment {
                 @Override
                 public void onResponse(Response<ArrayList<Metadata>> response) {
                     stageMap = Metadata.getMapFromList(response.body());
-                    stageList = new ArrayList<String>(stageMap.values());
+                    stageList = new ArrayList<>(stageMap.values());
                     stageList.add(0, "select stage");
                     adapter =
-                            new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, stageList);
+                            new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, stageList);
                     companyStageS.setAdapter(adapter);
                     if((((CompanyProfileActivity) getActivity()).company.getProfile().getFundingStage()!=null))
                         companyStageS.setSelection(adapter.getPosition(((CompanyProfileActivity) getActivity()).company.getProfile().getFundingStage()));
@@ -117,17 +117,17 @@ public  class FinancialTabFragment extends Fragment {
         previousCapitalET.addTextChangedListener(new TextWatcher() {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             public void onTextChanged(CharSequence s, int start, int before, int count) { }
-            public void afterTextChanged(Editable s) { ((CompanyProfileActivity) getActivity()).company.getProfile().setPreviousCapital(new String(s.toString())); }
+            public void afterTextChanged(Editable s) { ((CompanyProfileActivity) getActivity()).company.getProfile().setPreviousCapital(s.toString()); }
         });
         monthlyNetBurnET.addTextChangedListener(new TextWatcher() {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             public void onTextChanged(CharSequence s, int start, int before, int count) { }
-            public void afterTextChanged(Editable s) { ((CompanyProfileActivity) getActivity()).company.getProfile().setMonthlyNetBurn(new String(s.toString())); }
+            public void afterTextChanged(Editable s) { ((CompanyProfileActivity) getActivity()).company.getProfile().setMonthlyNetBurn(s.toString()); }
         });
         preMoneyEvaluationET.addTextChangedListener(new TextWatcher() {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             public void onTextChanged(CharSequence s, int start, int before, int count) { }
-            public void afterTextChanged(Editable s) { ((CompanyProfileActivity) getActivity()).company.getProfile().setPerMoneyValuation(new String(s.toString())); }
+            public void afterTextChanged(Editable s) { ((CompanyProfileActivity) getActivity()).company.getProfile().setPerMoneyValuation(s.toString()); }
         });
 
 
