@@ -1,17 +1,18 @@
 package com.wavelabs.nfund.util;
 
+import com.google.gson.JsonObject;
 import com.wavelabs.nfund.model.AboutUs;
 import com.wavelabs.nfund.model.AppUser;
 import com.wavelabs.nfund.model.Associate;
 import com.wavelabs.nfund.model.Company;
 import com.wavelabs.nfund.model.CompanyProfile;
+import com.wavelabs.nfund.model.DomainExp;
 import com.wavelabs.nfund.model.Event;
 import com.wavelabs.nfund.model.MediaFile;
 import com.wavelabs.nfund.model.Metadata;
 import com.wavelabs.nfund.model.Profile;
 import com.wavelabs.nfund.model.TeamType;
 import com.wavelabs.nfund.model.User;
-import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,6 +68,8 @@ public interface APIUtil {
     Call<ArrayList<TeamType>> getAssociateTypes(@Header("Authorization") String authorization);
 
 
+
+
     @POST(AppConstants.companyURL)
     Call<Company> createCompany(@Header("Authorization") String authorization, @Body CompanyProfile companyProfile);
 
@@ -101,5 +104,11 @@ public interface APIUtil {
 
     @GET(AppConstants.userSignoutURL)
     Call<ResponseBody> logoutApp(@Header("Authorization") String authorization);
+
+    @GET(AppConstants.tenantInfo)
+    Call<ResponseBody> getTenantInfo(@Header("Authorization") String authorization);
+
+    @GET(AppConstants.domainExpListURL)
+    Call<List<DomainExp>> getDomainExpList(@Header("Authorization") String authorization);
 
 }

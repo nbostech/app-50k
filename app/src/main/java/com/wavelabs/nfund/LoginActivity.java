@@ -86,6 +86,16 @@ public class LoginActivity extends AppCompatActivity implements UserTypeFragment
             }
         });
 
+        Button testBtn = (Button)findViewById(R.id.testBtn);
+        testBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fm = getSupportFragmentManager();
+                UserTypeFragment userTypeFragmentDialogFrag = new UserTypeFragment();
+                userTypeFragmentDialogFrag.show(fm, "userTypeFragment");
+            }
+        });
+
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
     }

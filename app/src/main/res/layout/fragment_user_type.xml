@@ -2,15 +2,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:padding="10dp"
     tools:context="com.wavelabs.nfund.UserTypeFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
-        android:id="@+id/email_login_form"
+        android:id="@+id/radioGroupLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/logoDashboardRegister"
-        android:background="@drawable/rounded_layout"
         android:orientation="vertical"
         android:paddingBottom="16dp"
         android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -46,13 +45,80 @@
 
 
     </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fullNameLabel"
+        android:text="FULL NAME"
+        android:layout_below="@id/radioGroupLayout"
+        android:layout_marginLeft="12dp"
+        android:textAllCaps="true"
+        />
+    <EditText
+        android:id="@+id/fullname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Full name"
+        android:imeActionId="@+id/login"
+        android:imeActionLabel="@string/action_sign_up"
+        android:imeOptions="actionUnspecified"
+        android:inputType="text"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:gravity="center"
+        android:background="@drawable/rounded_corner"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:layout_below="@id/fullNameLabel"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/areaOfInterestLabel"
+        android:text="Area of Interest"
+        android:layout_below="@id/fullname"
+        android:layout_marginLeft="12dp"
+        android:textAllCaps="true"/>
+    <com.wavelabs.nfund.helper.MultiSelectionSpinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:id="@+id/areaOfInterest"
+        android:background="@drawable/rounded_corner"
+        android:layout_below="@id/areaOfInterestLabel"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/domainExpLabel"
+        android:text="Domain Expertise"
+        android:layout_below="@id/areaOfInterest"
+        android:layout_marginLeft="12dp"
+        android:textAllCaps="true"/>
+    <com.wavelabs.nfund.helper.MultiSelectionSpinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:id="@+id/domainExp0"
+        android:background="@drawable/rounded_corner"
+        android:layout_below="@id/domainExpLabel"/>
+    <com.wavelabs.nfund.helper.MultiSelectionSpinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+
+        android:padding="10dp"
+        android:id="@+id/domainExp1"
+        android:background="@drawable/rounded_corner"
+        android:layout_below="@id/domainExp0"/>
+
 
     <Button
         android:id="@+id/email_sign_up_button"
         style="?android:textAppearanceSmall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/logoDashboardRegister"
+        android:layout_below="@id/domainExp1"
         android:layout_marginTop="16dp"
         android:background="@drawable/button_feedback"
         android:text="@string/action_sign_up"

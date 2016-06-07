@@ -1,6 +1,7 @@
 package com.wavelabs.nfund.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -34,5 +35,12 @@ public class Metadata implements Serializable{
             metadataMap.put(metadata.getId(),metadata.getName());
         }
         return  metadataMap;
+    }
+    public static List<String> getListValues(List<Metadata> metadataList){
+        List<String> metadataList1 = new ArrayList<String>();
+        for (Metadata metadata:metadataList ) {
+            metadataList1.add(metadata.getName());
+        }
+        return  metadataList1;
     }
 }

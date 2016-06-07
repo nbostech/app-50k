@@ -2,6 +2,8 @@ package com.wavelabs.nfund.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import org.json.JSONArray;
+
 import java.io.Serializable;
 
 /**
@@ -38,6 +40,10 @@ public class AppUser implements Serializable{
     private String otherProfile;
     @SerializedName("social_acounts")
     private String socialAccounts;
+    @SerializedName("areaofInterests")
+    private JSONArray areaofInterests;
+    @SerializedName("domainExpertises")
+    private JSONArray domainExpertises;
 
     public String getUserType() {
         return userType;
@@ -141,6 +147,22 @@ public class AppUser implements Serializable{
 
     public void setSocialAccounts(String socialAccounts) {
         this.socialAccounts = socialAccounts;
+    }
+
+    public JSONArray getAreaofInterests() {
+        return areaofInterests;
+    }
+
+    public void setAreaofInterests(JSONArray areaofInterests) {
+        this.areaofInterests = areaofInterests;
+    }
+
+    public JSONArray getDomainExpertises() {
+        return domainExpertises;
+    }
+
+    public void setDomainExpertises(JSONArray domainExpertises) {
+        this.domainExpertises = domainExpertises;
     }
 }
 

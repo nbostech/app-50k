@@ -27,6 +27,9 @@ public class AppConstants {
     public static final String userSigninURL = userUrl + "/signin";
     public static final String userSignoutURL = userUrl + "/signout";
 
+    public static final String tenantInfo =appURL+"/api/startup-fundraising/v0/tenantInfo";
+    public static final String domainExpListURL = appURL+"/api/startup-fundraising/v0/domain_expertises/types";
+
 
     public static final String blogURL = "http://50knetwork.com/blog/";
 
