@@ -6,7 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.wavelabs.nfund.AssociateSocialProfileTabFragment">
+    tools:context="com.wavelabs.fundr.AssociateSocialProfileTabFragment">
 
     <TextView
         android:id="@+id/associateSocialFBLabelTV"

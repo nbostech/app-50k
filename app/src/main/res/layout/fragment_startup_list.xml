@@ -9,5 +9,5 @@
     android:background="#fff"
     android:paddingTop="16dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context="com.wavelabs.nfund.StartupLandingFragment"
+    tools:context="com.wavelabs.fundr.StartupLandingFragment"
     tools:listitem="@layout/fragment_startup" />

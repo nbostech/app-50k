@@ -9,5 +9,5 @@
 
     android:background="#fff"
     app:layoutManager="LinearLayoutManager"
-    tools:context="com.wavelabs.nfund.InvestorFragment"
+    tools:context="com.wavelabs.fundr.InvestorFragment"
     tools:listitem="@layout/fragment_investor" />

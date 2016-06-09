@@ -8,7 +8,7 @@
     android:paddingLeft="8dp"
     android:paddingRight="8dp"
     android:paddingTop="16dp"
-    tools:context="com.wavelabs.nfund.ViewStartupFragment">
+    tools:context="com.wavelabs.fundr.ViewStartupFragment">
 
     <ScrollView
         android:layout_width="fill_parent"

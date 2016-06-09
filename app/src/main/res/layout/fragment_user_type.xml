@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context="com.wavelabs.nfund.UserTypeFragment">
+    tools:context="com.wavelabs.fundr.UserTypeFragment">
 
 <RelativeLayout
     android:layout_width="match_parent"
@@ -128,7 +128,7 @@
         android:layout_below="@id/contactNumber"
         android:layout_marginLeft="12dp"
         android:textAllCaps="true"/>
-    <com.wavelabs.nfund.helper.MultiSelectionSpinner
+    <com.wavelabs.fundr.helper.MultiSelectionSpinner
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_margin="10dp"
@@ -144,7 +144,7 @@
         android:layout_below="@id/areaOfInterest"
         android:layout_marginLeft="12dp"
         android:textAllCaps="true"/>
-    <com.wavelabs.nfund.helper.MultiSelectionSpinner
+    <com.wavelabs.fundr.helper.MultiSelectionSpinner
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_margin="10dp"
@@ -152,7 +152,7 @@
         android:id="@+id/domainExp0"
         android:background="@drawable/rounded_corner"
         android:layout_below="@id/domainExpLabel"/>
-    <com.wavelabs.nfund.helper.MultiSelectionSpinner
+    <com.wavelabs.fundr.helper.MultiSelectionSpinner
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_margin="10dp"
