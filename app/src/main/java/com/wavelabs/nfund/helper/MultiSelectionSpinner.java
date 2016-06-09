@@ -147,7 +147,7 @@ public class MultiSelectionSpinner extends Spinner implements DialogInterface.On
     }
 
     public List<String> getSelectedStrings() {
-        List<String> selection = new LinkedList<String>();
+        List<String> selection = new LinkedList<>();
         for (int i = 0; i < _items.length; ++i) {
             if (mSelection[i]) {
                 selection.add(_items[i]);
@@ -157,7 +157,7 @@ public class MultiSelectionSpinner extends Spinner implements DialogInterface.On
     }
 
     public List<Integer> getSelectedIndicies() {
-        List<Integer> selection = new LinkedList<Integer>();
+        List<Integer> selection = new LinkedList<>();
         for (int i = 0; i < _items.length; ++i) {
             if (mSelection[i]) {
                 selection.add(i);

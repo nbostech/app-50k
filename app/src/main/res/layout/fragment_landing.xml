@@ -35,7 +35,7 @@
             android:layout_weight="1"
             android:clickable="true"
             android:paddingLeft="@dimen/nav_header_vertical_spacing"
-            android:src="@drawable/ic_investor" />
+            android:src="@mipmap/ic_investor" />
 
         <ImageView
             android:id="@+id/startUpImageView"
@@ -45,7 +45,7 @@
             android:layout_weight="1"
             android:clickable="true"
             android:paddingRight="@dimen/nav_header_vertical_spacing"
-            android:src="@drawable/ic_startup" />
+            android:src="@mipmap/ic_startup" />
 
     </RelativeLayout>
 

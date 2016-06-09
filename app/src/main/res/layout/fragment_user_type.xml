@@ -1,11 +1,14 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp"
     tools:context="com.wavelabs.nfund.UserTypeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
     <LinearLayout
         android:id="@+id/radioGroupLayout"
         android:layout_width="match_parent"
@@ -57,14 +60,13 @@
     <EditText
         android:id="@+id/fullname"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:hint="Full name"
         android:imeActionId="@+id/login"
         android:imeActionLabel="@string/action_sign_up"
         android:imeOptions="actionUnspecified"
-        android:inputType="text"
+        android:inputType="textPersonName"
         android:maxLines="1"
-        android:singleLine="true"
         android:gravity="center"
         android:background="@drawable/rounded_corner"
         android:layout_margin="10dp"
@@ -73,14 +75,62 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/emailLabel"
+        android:text="Email"
+        android:layout_below="@id/fullname"
+        android:layout_marginLeft="12dp"
+        android:textAllCaps="true"
+        />
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:hint="Email"
+        android:imeActionId="@+id/login"
+        android:imeActionLabel="@string/action_sign_up"
+        android:imeOptions="actionUnspecified"
+        android:inputType="textEmailAddress"
+        android:maxLines="1"
+        android:gravity="center"
+        android:background="@drawable/rounded_corner"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:layout_below="@id/emailLabel"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/contactNumberLabel"
+        android:text="Contact Number"
+        android:layout_below="@id/email"
+        android:layout_marginLeft="12dp"
+        android:textAllCaps="true"
+        />
+    <EditText
+        android:id="@+id/contactNumber"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:hint="Contact Number"
+        android:imeActionId="@+id/login"
+        android:imeActionLabel="@string/action_sign_up"
+        android:imeOptions="actionUnspecified"
+        android:inputType="phone"
+        android:maxLines="1"
+        android:gravity="center"
+        android:background="@drawable/rounded_corner"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:layout_below="@id/contactNumberLabel"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/areaOfInterestLabel"
         android:text="Area of Interest"
-        android:layout_below="@id/fullname"
+        android:layout_below="@id/contactNumber"
         android:layout_marginLeft="12dp"
         android:textAllCaps="true"/>
     <com.wavelabs.nfund.helper.MultiSelectionSpinner
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_margin="10dp"
         android:padding="10dp"
         android:id="@+id/areaOfInterest"
@@ -96,7 +146,7 @@
         android:textAllCaps="true"/>
     <com.wavelabs.nfund.helper.MultiSelectionSpinner
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_margin="10dp"
         android:padding="10dp"
         android:id="@+id/domainExp0"
@@ -104,9 +154,8 @@
         android:layout_below="@id/domainExpLabel"/>
     <com.wavelabs.nfund.helper.MultiSelectionSpinner
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_margin="10dp"
-
         android:padding="10dp"
         android:id="@+id/domainExp1"
         android:background="@drawable/rounded_corner"
@@ -126,3 +175,4 @@
         android:textStyle="bold" />
 
 </RelativeLayout>
+</ScrollView>

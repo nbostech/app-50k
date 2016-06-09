@@ -46,5 +46,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:src="@drawable/color_strip" />
+        android:src="@mipmap/color_strip" />
 </LinearLayout>

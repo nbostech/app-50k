@@ -27,6 +27,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="networkError">Network Error! Please check your connection</string>
+    <!--<string name="wavelabs_app_id">sample-app-client</string>-->
+    <!--<string name="wavelabs_app_secret">sample-app-secret</string>-->
     <string name="wavelabs_app_id">50k-app-client</string>
     <string name="wavelabs_app_secret">50k-app-secret</string>
     <string name="title_activity_startup_main">StartupMainActivity</string>
@@ -35,6 +37,8 @@
     <string name="title_activity_startup_base_acitvity">StartupBaseAcitvity</string>
     <string name="title_activity_associate">AssociateActivity</string>
     <string name="title_activity_edit_associate">EditAssociateActivity</string>
-    <string name="client_token">08c86b5bfbbc6bae452efede6a581137</string>
-    <string name="fb_app_id">1156227224396474</string>
+    <!--<string name="ak_client_token">08c86b5bfbbc6bae452efede6a581137</string>-->
+    <!--<string name="ak_app_id">1156227224396474</string>-->
+    <string name="ak_client_token">d5e1ac44c3cb5984533411dae12116da</string>
+    <string name="ak_app_id">285438828469639</string>
 </resources>

@@ -6,6 +6,7 @@ import android.util.Log;
 import com.wavelabs.nfund.model.AppUser;
 import com.wavelabs.nfund.model.Profile;
 import com.wavelabs.nfund.model.User;
+import com.wavelabs.nfund.model.UuidModel;
 import com.wavelabs.nfund.util.RestUtil;
 import com.google.gson.JsonObject;
 
@@ -88,9 +89,11 @@ public class UserAPI {
         });
     }
 
-    public static void login(final Context context, JsonObject uuid, final NBOSCallback nbosCallback) {
+    public static void login(final Context context, String uuid, final NBOSCallback nbosCallback) {
+        UuidModel uuidModel = new UuidModel();
+        uuidModel.setUuid(uuid);
         String token = Prefrences.getAccessToken(context);
-        Call<List<User>> appLogin = RestUtil.getAPIUtil().loginApp(token, uuid);
+        Call<List<User>> appLogin = RestUtil.getAPIUtil().loginApp(token, uuidModel);
         appLogin.enqueue(new Callback<List<User>>() {
             @Override
             public void onResponse(Call<List<User>> call, Response<List<User>> response) {

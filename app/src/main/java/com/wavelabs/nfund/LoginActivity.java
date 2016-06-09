@@ -1,6 +1,8 @@
 package com.wavelabs.nfund;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -9,16 +11,23 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.facebook.accountkit.AccountKitLoginResult;
+import com.facebook.accountkit.ui.AccountKitActivity;
+import com.facebook.accountkit.ui.AccountKitConfiguration;
+import com.facebook.accountkit.ui.LoginType;
 import com.wavelabs.nfund.model.AppUser;
 import com.wavelabs.nfund.model.User;
 import com.wavelabs.nfund.service.UserAPI;
 import com.google.gson.JsonObject;
 
 import java.util.List;
+import java.util.UUID;
 
 import in.wavelabs.idn.ConnectionAPI.AuthApi;
 import in.wavelabs.idn.ConnectionAPI.NBOSCallback;
@@ -28,17 +37,13 @@ import in.wavelabs.idn.Utils.Prefrences;
 import retrofit2.Response;
 
 /**
- * A login screen that offers login via email/password.
+ * A login screen that offers login via AccountKit.
  */
-public class LoginActivity extends AppCompatActivity implements UserTypeFragment.OnUserTypeFragmentInteractionListener {
+public class LoginActivity extends AppCompatActivity {
 
-
-    // UI references.
-    private EditText mEmailView, mPasswordView;
-    private View mProgressView, mLoginFormView;
-    AppUser appUser;
-    JsonObject uuid;
-
+    private static final int FRAMEWORK_REQUEST_CODE = 1;
+    private String initialStateParam;
+    Dialog LoadingDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,164 +55,98 @@ public class LoginActivity extends AppCompatActivity implements UserTypeFragment
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        //getSupportActionBar().hide();
-        // Set up the login form.
-        mEmailView = (EditText) findViewById(R.id.email);
-
-        Button linkedInConnect = (Button) findViewById(R.id.linkedInConnect);
-        linkedInConnect.setOnClickListener(new OnClickListener() {
-            /*
+        Button accountKitConnect = (Button) findViewById(R.id.loginWithPhone);
+        accountKitConnect.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fm = getSupportFragmentManager();
-                UserTypeFragment userTypeFragmentDialogFrag = new UserTypeFragment ();
-                userTypeFragmentDialogFrag.show(fm,"userTypeFragment");
-            }
-            */
-
-
-            @Override
-            public void onClick(View v) {
-                linkedInConnect("linkedIn");
-            }
-
-        });
-
-        mPasswordView = (EditText) findViewById(R.id.password);
-
-
-        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
-        mEmailSignInButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                login();
+                onLogin(LoginType.PHONE);
             }
         });
 
-        Button testBtn = (Button)findViewById(R.id.testBtn);
-        testBtn.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentManager fm = getSupportFragmentManager();
-                UserTypeFragment userTypeFragmentDialogFrag = new UserTypeFragment();
-                userTypeFragmentDialogFrag.show(fm, "userTypeFragment");
-            }
-        });
+    }
+    private void onLogin(final LoginType loginType) {
+        final Intent intent = new Intent(LoginActivity.this, AccountKitActivity.class);
+        final AccountKitConfiguration.AccountKitConfigurationBuilder configurationBuilder
+                = new AccountKitConfiguration.AccountKitConfigurationBuilder(loginType, AccountKitActivity.ResponseType.CODE);
+        configurationBuilder.setFacebookNotificationsEnabled(true);
+        configurationBuilder.setReadPhoneStateEnabled(true);
+        configurationBuilder.setReceiveSMS(true);
 
-        mLoginFormView = findViewById(R.id.login_form);
-        mProgressView = findViewById(R.id.login_progress);
+        initialStateParam = UUID.randomUUID().toString();
+        configurationBuilder.setInitialAuthState(initialStateParam);
+        intent.putExtra(AccountKitActivity.ACCOUNT_KIT_ACTIVITY_CONFIGURATION,
+                configurationBuilder.build());
+        startActivityForResult(intent, FRAMEWORK_REQUEST_CODE);
     }
 
-
-    private void linkedInConnect(String service) {
-
-        SocialApi.socialLogin(LoginActivity.this, service, new NBOSCallback<NewMemberApiModel>() {
-
-            @Override
-            public void onResponse(Response<NewMemberApiModel> response) {
-
-                Prefrences.setAccessToken(LoginActivity.this, "Bearer " + response.body().getToken().getAccess_token());
-                if (response.isSuccessful()) {
-
-                    Prefrences.setAccessToken(getApplicationContext(), "Bearer " + response.body().getToken().getAccess_token());
-
-                    if (response.code() == 200) {
-                        appUser = new AppUser();
-                        appUser.setFullName(response.body().getMember().getFirstName() + " " +
-                                "" + response.body().getMember().getLastName());
-                        appUser.setEmail(response.body().getMember().getEmail());
-                        appUser.setContactNumber(response.body().getMember().getPhone() + "");
-                        appUser.setUuid(response.body().getMember().getUuid());
-
-                        FragmentManager fm = getSupportFragmentManager();
-                        UserTypeFragment userTypeFragmentDialogFrag = new UserTypeFragment();
-                        userTypeFragmentDialogFrag.show(fm, "userTypeFragment");
-
-
-                    } else if (response.code() == 400) {
-                        login();
-                    }
-
-                    Log.d("test", response.body().getMember().getUuid());
-
-
-                }
-            }
-
-            @Override
-            public void onFailure(Throwable t) {
-
-            }
-
-
-        });
-    }
 
     @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == FRAMEWORK_REQUEST_CODE) {
+            final AccountKitLoginResult loginResult =
+                    data.getParcelableExtra(AccountKitLoginResult.RESULT_KEY);
+            final String toastMessage;
+            if (loginResult.getError() != null) {
+                toastMessage = loginResult.getError().getErrorType().getMessage();
+               // Toast.makeText(LoginActivity.this,toastMessage,Toast.LENGTH_SHORT).show();
+            } else if (loginResult.wasCancelled()) {
+                toastMessage = "Login Cancelled";
+             //   Toast.makeText(LoginActivity.this,toastMessage,Toast.LENGTH_SHORT).show();
+            } else {
+                final String authorizationCode = loginResult.getAuthorizationCode();
+                final long tokenRefreshIntervalInSeconds = loginResult.getTokenRefreshIntervalInSeconds();
+                if (authorizationCode != null) {
+                    toastMessage = String.format(
+                            "Success:%s...",
+                            authorizationCode.substring(0, 10));
+                   // Toast.makeText(LoginActivity.this,toastMessage,Toast.LENGTH_SHORT).show();
 
-    protected void onActivityResult(final int requestCode, int resultCode, Intent data) {
+                    accountKitConnect("accountKit",authorizationCode, loginResult.getFinalAuthorizationState());
+                } else {
+                    toastMessage = "Unknown response type";
+                 //   Toast.makeText(LoginActivity.this,toastMessage,Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+    }
 
-        String service = data.getStringExtra("service");
-        String code = data.getStringExtra("code");
-        String state = data.getStringExtra("state");
+    private void accountKitConnect(String service, String code,String state){
         SocialApi.authorizeAndConnect(LoginActivity.this, service, code, state, new NBOSCallback<NewMemberApiModel>() {
+
             @Override
             public void onResponse(Response<NewMemberApiModel> response) {
+                Log.d("Register", (response.body().getToken().getAccess_token()));
+                Log.d("Register", (response.body().getToken().getRefresh_token()));
+                if (response.isSuccessful()) {
+                    Prefrences.setAccessToken(getApplicationContext(), "Bearer " + response.body().getToken().getAccess_token());
+                    loginTok50k(response.body().getMember().getUuid());
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+
+            }
+        });
+
+    }
+
+    private void loginTok50k(final String uuid){
+        UserAPI.getUserDetails(LoginActivity.this, uuid, new NBOSCallback() {
+            @Override
+            public void onResponse(Response response) {
                 if (response.code() == 200) {
-                    appUser = new AppUser();
-                    appUser.setFullName(response.body().getMember().getFirstName() + " " +
-                            "" + response.body().getMember().getLastName());
-                    appUser.setEmail(response.body().getMember().getEmail());
-                    appUser.setContactNumber(response.body().getMember().getPhone() + "");
-                    appUser.setUuid(response.body().getMember().getUuid());
-                    uuid = new JsonObject();
-                    uuid.addProperty("uuid", response.body().getMember().getUuid());
-                    UserAPI.getUserDetails(LoginActivity.this, appUser.getUuid(), new NBOSCallback() {
-                        @Override
-                        public void onResponse(Response response) {
-                            if (response.code() == 200) {
-                                Log.d("test", "existing linked in user");
-                                UserAPI.login(LoginActivity.this, uuid, new NBOSCallback<List<User>>() {
-                                    @Override
-                                    public void onResponse(Response<List<User>> response) {
-                                        User user = response.body().get(0);
-
-                                        if (user.getUserTypes() != null && user.getUserTypes().size() > 0 &&
-                                                user.getUserTypes().get(0).getName().equalsIgnoreCase("startup")) {
-                                            Intent i = new Intent(LoginActivity.this, StartupMainActivity.class);
-                                            startActivity(i);
-                                        } else if (user.getUserTypes() != null && user.getUserTypes().size() > 0 &&
-                                                user.getUserTypes().get(0).getName().equalsIgnoreCase("investor")) {
-                                            Intent i = new Intent(LoginActivity.this, InvestorMainActivity.class);
-                                            startActivity(i);
-                                        }
-
-                                    }
-
-                                    @Override
-                                    public void onFailure(Throwable t) {
-
-                                    }
-
-                                });
-                            } else if (response.code() == 404) {
-                                Log.d("test", "new linked in user");
-                                FragmentManager fm = getSupportFragmentManager();
-                                UserTypeFragment userTypeFragmentDialogFrag = new UserTypeFragment();
-                                userTypeFragmentDialogFrag.show(fm, "userTypeFragment");
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(Throwable t) {
-
-                        }
-
-                    });
-
-
+                    Log.d("test", "existing user");
+                    existingUserLogin(uuid);
+                } else if (response.code() == 404) {
+                    Log.d("test", "new user");
+                    FragmentManager fm = getSupportFragmentManager();
+                    UserTypeFragment userTypeFragmentDialogFrag = new UserTypeFragment();
+                    Bundle args = new Bundle();
+                    args.putString("uuid", uuid);
+                    userTypeFragmentDialogFrag.setArguments(args);
+                    userTypeFragmentDialogFrag.show(fm, "userTypeFragment");
                 }
             }
 
@@ -216,72 +155,45 @@ public class LoginActivity extends AppCompatActivity implements UserTypeFragment
 
             }
 
+        });
+    }
+
+    private void existingUserLogin(String uuid){
+        UserAPI.login(LoginActivity.this, uuid, new NBOSCallback<List<User>>() {
+            @Override
+            public void onResponse(Response<List<User>> response) {
+                User user = response.body().get(0);
+
+                if (user.getUserTypes() != null && user.getUserTypes().size() > 0 &&
+                        user.getUserTypes().get(0).getName().equalsIgnoreCase("startup")) {
+                    Intent i = new Intent(LoginActivity.this, StartupMainActivity.class);
+                    startActivity(i);
+                } else if (user.getUserTypes() != null && user.getUserTypes().size() > 0 &&
+                        user.getUserTypes().get(0).getName().equalsIgnoreCase("investor")) {
+                    Intent i = new Intent(LoginActivity.this, InvestorMainActivity.class);
+                    startActivity(i);
+                }
+
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+
+            }
 
         });
-
-
     }
+    public void showLoadingDialog() {
 
+        LoadingDialog = new Dialog(LoginActivity.this);
+        LoadingDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        LoadingDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
 
-    private void login() {
+        LoadingDialog.setContentView(R.layout.loading_dialog);
 
-        AuthApi.login(LoginActivity.this, mEmailView.getText().toString(), mPasswordView.getText().toString(),
-                new NBOSCallback<NewMemberApiModel>() {
-                    @Override
-                    public void onResponse(Response<NewMemberApiModel> response) {
-                        Log.d("Register", (response.body().getToken().getAccess_token()));
-                        Log.d("Register", (response.body().getToken().getRefresh_token()));
-                        if (response.isSuccessful()) {
-
-                            Prefrences.setAccessToken(getApplicationContext(), "Bearer " + response.body().getToken().getAccess_token());
-
-                            JsonObject uuid = new JsonObject();
-                            uuid.addProperty("uuid", response.body().getMember().getUuid());
-                            UserAPI.login(LoginActivity.this, uuid, new NBOSCallback<List<User>>() {
-
-                                @Override
-                                public void onResponse(Response<List<User>> response) {
-                                    User user = response.body().get(0);
-
-                                    if (user.getUserTypes() != null && user.getUserTypes().size() > 0 &&
-                                            user.getUserTypes().get(0).getName().equalsIgnoreCase("startup")) {
-                                        Intent i = new Intent(LoginActivity.this, StartupMainActivity.class);
-                                        i.putExtra("user", user);
-                                        startActivity(i);
-                                    } else if (user.getUserTypes() != null && user.getUserTypes().size() > 0 &&
-                                            user.getUserTypes().get(0).getName().equalsIgnoreCase("investor")) {
-                                        Intent i = new Intent(LoginActivity.this, InvestorMainActivity.class);
-                                        startActivity(i);
-                                    }
-                                }
-
-                                @Override
-                                public void onFailure(Throwable t) {
-                                    Log.d("error", t.getMessage());
-                                }
-
-
-                            });
-
-
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Throwable t) {
-                        Toast.makeText(LoginActivity.this, R.string.networkError, Toast.LENGTH_SHORT).show();
-
-                    }
-
-                });
-
-
-    }
-
-
-    @Override
-    public void onUserTypeFragmentInteraction(Uri uri) {
-
+        LoadingDialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        LoadingDialog.setCancelable(false);
+        LoadingDialog.setCanceledOnTouchOutside(false);
+        LoadingDialog.show();
     }
 }
-

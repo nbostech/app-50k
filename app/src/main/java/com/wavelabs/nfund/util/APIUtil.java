@@ -13,6 +13,7 @@ import com.wavelabs.nfund.model.Metadata;
 import com.wavelabs.nfund.model.Profile;
 import com.wavelabs.nfund.model.TeamType;
 import com.wavelabs.nfund.model.User;
+import com.wavelabs.nfund.model.UuidModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -100,7 +101,7 @@ public interface APIUtil {
     Call<MediaFile> uploadMedia(@Header("Authorization") String authorization, @Part("id") RequestBody companyId, @Part("media_for") RequestBody mediaType, @Part MultipartBody.Part file);
 
     @POST(AppConstants.userSigninURL)
-    Call<List<User>> loginApp(@Header("Authorization") String authorization, @Body JsonObject uuidString);
+    Call<List<User>> loginApp(@Header("Authorization") String authorization, @Body UuidModel uuidString);
 
     @GET(AppConstants.userSignoutURL)
     Call<ResponseBody> logoutApp(@Header("Authorization") String authorization);
