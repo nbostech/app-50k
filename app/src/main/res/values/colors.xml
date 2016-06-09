@@ -4,5 +4,7 @@
     <color name="colorPrimaryDark">#000D3A</color>
     <color name="colorAccent">#FF4081</color>
     <color name="hard_grey">#58585a</color>
+    <color name="white">#FFF</color>
+
     <color name="authButtonColor">#EA5153</color>
 </resources>

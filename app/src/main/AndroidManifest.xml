@@ -98,6 +98,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.wavelabs.fundr.AssociateActivity" />
         </activity>
+        <activity
+            android:name="com.thefinestartist.finestwebview.FinestWebViewActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="sensor"
+            android:theme="@style/FinestWebViewTheme.Light" />
 
         <meta-data
             android:name="com.facebook.accountkit.ApplicationName"

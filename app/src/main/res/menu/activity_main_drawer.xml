@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/nav_sHomeG"
+        android:checkableBehavior="all">
+        <item
+            android:id="@+id/nav_sHome"
+            android:title="Home" />
+    </group>
 
     <group
         android:id="@+id/nav_aboutusG"

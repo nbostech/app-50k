@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -18,6 +19,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
+import com.thefinestartist.finestwebview.FinestWebView;
 import com.wavelabs.fundr.model.Event;
 import com.wavelabs.fundr.model.User;
 import com.wavelabs.fundr.util.AppConstants;
@@ -107,8 +109,12 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-        if (id == R.id.nav_50kinvestors) {
+        if(id == R.id.nav_sHome) {
+            Fragment landingFragment = LandingFragment.newInstance("", "");
+            fragmentTransaction.replace(R.id.container, landingFragment, "landingFragment");
+            fragmentTransaction.addToBackStack("landingFragment");
+            fragmentTransaction.commit();
+        } else if (id == R.id.nav_50kinvestors) {
             Fragment investorFragment = InvestorFragment.newInstance(3);
             fragmentTransaction.replace(R.id.container, investorFragment, "investorFragment");
             fragmentTransaction.addToBackStack("investorFragment");
@@ -130,13 +136,12 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.addToBackStack("about50kFragment");
             fragmentTransaction.commit();
         } else if (id == R.id.nav_blog) {
-
-            Intent intent = new Intent();
-            intent.setAction(Intent.ACTION_VIEW);
-            intent.addCategory(Intent.CATEGORY_BROWSABLE);
-            intent.setData(Uri.parse(AppConstants.blogURL));
-            startActivity(intent);
-
+            new FinestWebView.Builder(MainActivity.this)
+                    .iconDefaultColor(ContextCompat.getColor(MainActivity.this,R.color.white))
+                    .toolbarColor(ContextCompat.getColor(MainActivity.this,R.color.colorPrimary))
+                    .titleColor(ContextCompat.getColor(MainActivity.this,R.color.colorAccent))
+                    .statusBarColor(ContextCompat.getColor(MainActivity.this,R.color.colorPrimaryDark))
+                    .show(AppConstants.blogURL);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
