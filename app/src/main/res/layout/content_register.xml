@@ -10,7 +10,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
 
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.wavelabs.nfund.RegisterActivity"
+    tools:context="com.wavelabs.fundr.RegisterActivity"
     tools:showIn="@layout/activity_register">
 
     <ScrollView

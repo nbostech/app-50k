@@ -37,4 +37,6 @@
     <string name="title_activity_edit_associate">EditAssociateActivity</string>
     <string name="client_token">08c86b5bfbbc6bae452efede6a581137</string>
     <string name="fb_app_id">1156227224396474</string>
+    <string name="ak_client_token">d5e1ac44c3cb5984533411dae12116da</string>
+    <string name="ak_app_id">285438828469639</string>
 </resources>

@@ -6,7 +6,7 @@ android {
     buildToolsVersion "23.0.3"
 
     defaultConfig {
-        applicationId 'com.wavelabs.nfund'
+        applicationId 'com.wavelabs.fundr'
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
@@ -26,6 +26,7 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
+    compile 'com.facebook.android:account-kit-sdk:4.12.0'
     compile 'com.android.support:design:23.4.0'
     compile 'com.android.support:recyclerview-v7:23.4.0'
     compile 'com.squareup.okhttp3:okhttp:3.3.1'
@@ -41,5 +42,5 @@ dependencies {
     compile 'com.facebook.android:account-kit-sdk:4.12.0'
     compile 'in.wavelabs:idn:0.0.7'
     compile 'com.afollestad.material-dialogs:core:0.8.5.9'
-    compile 'com.facebook.android:account-kit-sdk:4.12.0'
+    compile 'com.android.support:support-v4:23.4.0'
 }

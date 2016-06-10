@@ -8,5 +8,5 @@
     android:layout_height="match_parent"
     android:background="#fff"
     app:layoutManager="LinearLayoutManager"
-    tools:context="com.wavelabs.nfund.EventFragment"
+    tools:context="com.wavelabs.fundr.EventFragment"
     tools:listitem="@layout/fragment_event" />

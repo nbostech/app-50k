@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#010E40"
     android:fitsSystemWindows="true"
-    tools:context="com.wavelabs.nfund.RegisterActivity">
+    tools:context="com.wavelabs.fundr.RegisterActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

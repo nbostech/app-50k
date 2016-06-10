@@ -7,7 +7,7 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="64dp"
-    tools:context="com.wavelabs.nfund.ViewAssociateDetailFragment">
+    tools:context="com.wavelabs.fundr.ViewAssociateDetailFragment">
     <!-- TODO: Update blank fragment layout -->
 
 
