@@ -73,6 +73,7 @@ public class MyInvestorRecyclerViewAdapter extends RecyclerView.Adapter<MyInvest
         public final ImageView mInvestorProfileIView;
         public User mItem;
 
+
         public ViewHolder(View view) {
             super(view);
             mView = view;

@@ -25,7 +25,6 @@ import com.wavelabs.fundr.model.User;
 import com.wavelabs.fundr.model.UuidModel;
 import com.wavelabs.fundr.service.UserAPI;
 
-import java.util.List;
 import java.util.UUID;
 
 import in.wavelabs.idn.ConnectionAPI.AuthApi;
@@ -188,59 +187,11 @@ public class LoginActivity extends AppCompatActivity  {
             SocialApi.authorizeAndConnect(LoginActivity.this, service, code, state, new NBOSCallback<NewMemberApiModel>() {
                 @Override
                 public void onResponse(Response<NewMemberApiModel> response) {
-                    if (response.code() == 200) {
-                        appUser = new AppUser();
-                        appUser.setFullName(response.body().getMember().getFirstName() + " " +
-                                "" + response.body().getMember().getLastName());
-                        appUser.setEmail(response.body().getMember().getEmail());
-                        appUser.setContactNumber(response.body().getMember().getPhone() + "");
-                        appUser.setUuid(response.body().getMember().getUuid());
-                        uuid = new UuidModel();
-                        uuid.setUuid(response.body().getMember().getUuid());
-                        UserAPI.getUserDetails(LoginActivity.this, appUser.getUuid(), new NBOSCallback() {
-                            @Override
-                            public void onResponse(Response response) {
-                                if (response.code() == 200) {
-                                    Log.d("test", "existing linked in user");
-                                    UserAPI.login(LoginActivity.this, uuid, new NBOSCallback<List<User>>() {
-                                        @Override
-                                        public void onResponse(Response<List<User>> response) {
-                                            User user = response.body().get(0);
-
-                                            if (user.getUserTypes() != null && user.getUserTypes().size() > 0 &&
-                                                    user.getUserTypes().get(0).getName().equalsIgnoreCase("startup")) {
-                                                Intent i = new Intent(LoginActivity.this, StartupMainActivity.class);
-                                                startActivity(i);
-                                            } else if (user.getUserTypes() != null && user.getUserTypes().size() > 0 &&
-                                                    user.getUserTypes().get(0).getName().equalsIgnoreCase("investor")) {
-                                                Intent i = new Intent(LoginActivity.this, InvestorMainActivity.class);
-                                                startActivity(i);
-                                            }
-
-                                        }
-
-                                        @Override
-                                        public void onFailure(Throwable t) {
-
-                                        }
-
-                                    });
-                                } else if (response.code() == 404) {
-                                    Log.d("test", "new linked in user");
-                                    FragmentManager fm = getSupportFragmentManager();
-                                    UserTypeFragment userTypeFragmentDialogFrag = new UserTypeFragment();
-                                    userTypeFragmentDialogFrag.show(fm, "userTypeFragment");
-                                }
-                            }
-
-                            @Override
-                            public void onFailure(Throwable t) {
-
-                            }
-
-                        });
-
-
+                    if (response.isSuccessful()) {
+                        Prefrences.setAccessToken(getApplicationContext(), "Bearer " + response.body().getToken().getAccess_token());
+                        Prefrences.setRefreshToken(getApplicationContext(),response.body().getToken().getRefresh_token());
+                        Prefrences.setUserId(getApplicationContext(),response.body().getMember().getId());
+                        loginTok50k(response.body().getMember().getUuid());
                     }
                 }
 
@@ -256,11 +207,11 @@ public class LoginActivity extends AppCompatActivity  {
 
 
 
-
-
     private void login() {
+        String email = mEmailView.getText().toString();
+        String password = mPasswordView.getText().toString();
 
-        AuthApi.login(LoginActivity.this, mEmailView.getText().toString(), mPasswordView.getText().toString(),
+        AuthApi.login(LoginActivity.this,email,password,
                 new NBOSCallback<NewMemberApiModel>() {
                     @Override
                     public void onResponse(Response<NewMemberApiModel> response) {
@@ -270,40 +221,14 @@ public class LoginActivity extends AppCompatActivity  {
 
                             Prefrences.setAccessToken(getApplicationContext(), "Bearer " + response.body().getToken().getAccess_token());
 
-                            uuid = new UuidModel();
-                            uuid.setUuid(response.body().getMember().getUuid());
-                            UserAPI.login(LoginActivity.this, uuid, new NBOSCallback<User>() {
-
-                                @Override
-                                public void onResponse(Response<User> response) {
-                                    User user = response.body();
-
-                                    if (user.getUserTypes() != null && user.getUserTypes().size() > 0 &&
-                                            user.getUserTypes().get(0).getName().equalsIgnoreCase("startup")) {
-                                        Intent i = new Intent(LoginActivity.this, StartupMainActivity.class);
-                                        i.putExtra("user", user);
-                                        startActivity(i);
-                                    } else if (user.getUserTypes() != null && user.getUserTypes().size() > 0 &&
-                                            user.getUserTypes().get(0).getName().equalsIgnoreCase("investor")) {
-                                        Intent i = new Intent(LoginActivity.this, InvestorMainActivity.class);
-                                        startActivity(i);
-                                    }
-                                }
-
-                                @Override
-                                public void onFailure(Throwable t) {
-                                    Log.d("error", t.getMessage());
-                                }
-
-
-                            });
-
+                            loginTok50k(response.body().getMember().getUuid());
 
                         }
                     }
 
                     @Override
                     public void onFailure(Throwable t) {
+                        Log.e("test",t.getMessage());
                         Toast.makeText(LoginActivity.this, R.string.networkError, Toast.LENGTH_SHORT).show();
 
                     }
@@ -321,6 +246,8 @@ public class LoginActivity extends AppCompatActivity  {
                 Log.d("Register", (response.body().getToken().getRefresh_token()));
                 if (response.isSuccessful()) {
                     Prefrences.setAccessToken(getApplicationContext(), "Bearer " + response.body().getToken().getAccess_token());
+                    Prefrences.setRefreshToken(getApplicationContext(),response.body().getToken().getRefresh_token());
+                    Prefrences.setUserId(getApplicationContext(),response.body().getMember().getId());
                     loginTok50k(response.body().getMember().getUuid());
                 }
             }
@@ -339,6 +266,8 @@ public class LoginActivity extends AppCompatActivity  {
             public void onResponse(Response response) {
                 if (response.code() == 200) {
                     Log.d("test", "existing user");
+                    uuid = new UuidModel();
+                    uuid.setUuid(uuidStr);
                     existingUserLogin(uuid);
                 } else if (response.code() == 404) {
                     Log.d("test", "new user");
@@ -360,10 +289,10 @@ public class LoginActivity extends AppCompatActivity  {
     }
 
     private void existingUserLogin(UuidModel uuid){
-        UserAPI.login(LoginActivity.this, uuid, new NBOSCallback<List<User>>() {
+        UserAPI.login(LoginActivity.this, uuid, new NBOSCallback<User>() {
             @Override
-            public void onResponse(Response<List<User>> response) {
-                User user = response.body().get(0);
+            public void onResponse(Response<User> response) {
+                User user = response.body();
 
                 if (user.getUserTypes() != null && user.getUserTypes().size() > 0 &&
                         user.getUserTypes().get(0).getName().equalsIgnoreCase("startup")) {

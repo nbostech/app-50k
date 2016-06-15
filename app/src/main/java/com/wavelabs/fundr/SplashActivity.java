@@ -4,6 +4,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.wavelabs.fundr.model.User;
+import com.wavelabs.fundr.model.UuidModel;
+import com.wavelabs.fundr.service.UserAPI;
+
+import in.wavelabs.idn.ConnectionAPI.NBOSCallback;
+import in.wavelabs.idn.ConnectionAPI.UsersApi;
+import in.wavelabs.idn.DataModel.member.MemberApiModel;
+import in.wavelabs.idn.Utils.Prefrences;
+import retrofit2.Response;
+
 /**
  * Created by ashkumar on 6/6/2016.
  */
@@ -27,43 +37,50 @@ public class SplashActivity extends AppCompatActivity{
                                     "Bearer " + response.body().getAccess_token());
                             Prefrences.setAccessToken(getApplicationContext(),
                                     response.body().getRefresh_token());
+*/
+        String accessToken = Prefrences.getAccessToken(this);
+        if(accessToken!=null && accessToken.length()> 0 && Prefrences.getUserId(this) >0) {
+            UsersApi.getUserProfile(SplashActivity.this, new NBOSCallback<MemberApiModel>() {
+                @Override
+                public void onResponse(Response<MemberApiModel> response) {
+                    UuidModel uuid = new UuidModel();
+                    uuid.setUuid(response.body().getUuid());
+                    UserAPI.login(SplashActivity.this,uuid, new NBOSCallback<User>() {
+                        @Override
+                        public void onResponse(Response<User> response) {
+                            User user = response.body();
 
-                            UsersApi.getUserProfile(SplashActivity.this, new NBOSCallback<MemberApiModel>() {
-                                @Override
-                                public void onResponse(Response<MemberApiModel> response) {
-                                    JsonObject uuid = new JsonObject();
-                                    uuid.addProperty("uuid", response.body().getUuid());
-                                    UserAPI.login(SplashActivity.this, new NBOSCallback<User>() {
-                                        @Override
-                                        public void onResponse(Response<User> response) {
-                                            User user = response.body();
+                            if (user.getUserTypes() != null && user.getUserTypes().size() > 0 &&
+                                    user.getUserTypes().get(0).getName().equalsIgnoreCase("startup")) {
+                                Intent i = new Intent(SplashActivity.this, StartupMainActivity.class);
+                                i.putExtra("user", user);
+                                startActivity(i);
+                            } else if (user.getUserTypes() != null && user.getUserTypes().size() > 0 &&
+                                    user.getUserTypes().get(0).getName().equalsIgnoreCase("investor")) {
+                                Intent i = new Intent(SplashActivity.this, InvestorMainActivity.class);
+                                startActivity(i);
+                            }
+                        }
 
-                                            if (user.getUserTypes() != null && user.getUserTypes().size() > 0 &&
-                                                    user.getUserTypes().get(0).getName().equalsIgnoreCase("startup")) {
-                                                Intent i = new Intent(SplashActivity.this, StartupMainActivity.class);
-                                                i.putExtra("user", user);
-                                                startActivity(i);
-                                            } else if (user.getUserTypes() != null && user.getUserTypes().size() > 0 &&
-                                                    user.getUserTypes().get(0).getName().equalsIgnoreCase("investor")) {
-                                                Intent i = new Intent(SplashActivity.this, InvestorMainActivity.class);
-                                                startActivity(i);
-                                            }
-                                        }
+                        @Override
+                        public void onFailure(Throwable t) {
 
-                                        @Override
-                                        public void onFailure(Throwable t) {
+                        }
+                    });
+                }
 
-                                        }
-                                    }, uuid);
-                                }
+                @Override
+                public void onFailure(Throwable t) {
 
-                                @Override
-                                public void onFailure(Throwable t) {
+                }
+            });
+        }else {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }
 
-                                }
-                            });
-
-
+/*
                         }
 
                         @Override
@@ -82,8 +99,10 @@ public class SplashActivity extends AppCompatActivity{
             finish();
         }
         */
+        /*
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
         finish();
+        */
     }
 }

@@ -229,7 +229,7 @@ public class StartupMainActivity extends AppCompatActivity
         */
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        Fragment viewStartupFragment = ViewStartupFragment.newInstance(item, "");
+        Fragment viewStartupFragment = ViewStartupFragment.newInstance(item, "startup");
         fragmentTransaction.replace(R.id.startUpcontainer, viewStartupFragment, "viewStartupFragment");
         fragmentTransaction.addToBackStack("viewStartupFragment");
         fragmentTransaction.commit();

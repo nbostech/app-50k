@@ -17,12 +17,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.wavelabs.fundr.helper.OnTeamAssocListFragmentInteractionListener;
+import com.wavelabs.fundr.model.Associate;
+import com.wavelabs.fundr.model.Company;
 import com.wavelabs.fundr.model.User;
 
 
 public class InvestorMainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,InvestorFragment.OnInvestorListFragmentInteractionListener,
-InvestorDetailFragment.OnFragmentInteractionListener{
+InvestorDetailFragment.OnFragmentInteractionListener,
+DealBankFragment.OnDealBankListFragIListener,
+FundingProgressFragment.OnFundProgFragIListener,ViewStartupFragment.OnViewStartupFragmentInteractionListener,
+        OnTeamAssocListFragmentInteractionListener{
     private Boolean exit = false;
     private ActionBarDrawerToggle toggle;
     private DrawerLayout drawer;
@@ -103,13 +109,22 @@ InvestorDetailFragment.OnFragmentInteractionListener{
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         int id = item.getItemId();
 
         if (id == R.id.nav_iMonthlyEvents) {
             // Handle the camera action
         } else if (id == R.id.nav_iDealBank) {
-
+            Fragment dealBankFragment = DealBankFragment.newInstance(1);
+            fragmentTransaction.replace(R.id.investorContainer, dealBankFragment, "dealBankFragment");
+            fragmentTransaction.addToBackStack("dealBankFragment");
+            fragmentTransaction.commit();
         } else if (id == R.id.nav_iFundingProgress) {
+            Fragment fundingProgressFragment = FundingProgressFragment.newInstance(1);
+            fragmentTransaction.replace(R.id.investorContainer, fundingProgressFragment, "fundingProgressFragment");
+            fragmentTransaction.addToBackStack("fundingProgressFragment");
+            fragmentTransaction.commit();
 
         } else if (id == R.id.nav_iInvestors) {
 
@@ -151,6 +166,37 @@ InvestorDetailFragment.OnFragmentInteractionListener{
 
     @Override
     public void onFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onDealBankListFragInteraction(Company item) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        Fragment viewStartupFragment = ViewStartupFragment.newInstance(item, "dealbank");
+        fragmentTransaction.replace(R.id.investorContainer, viewStartupFragment, "viewStartupFragment");
+        fragmentTransaction.addToBackStack("viewStartupFragment");
+        fragmentTransaction.commit();
+
+    }
+
+    @Override
+    public void onFundProgFragInteraction(Company item) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        Fragment viewStartupFragment = ViewStartupFragment.newInstance(item, "fundingprogress");
+        fragmentTransaction.replace(R.id.investorContainer, viewStartupFragment, "viewStartupFragment");
+        fragmentTransaction.addToBackStack("viewStartupFragment");
+        fragmentTransaction.commit();
+    }
+
+    @Override
+    public void onViewStartupFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onTeamAssocListFragmentInteraction(Associate item) {
 
     }
 }

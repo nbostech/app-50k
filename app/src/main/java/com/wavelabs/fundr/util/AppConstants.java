@@ -8,7 +8,7 @@ public class AppConstants {
     public static final String idnURL = "http://api.qa1.nbos.in";
     public static final String baseURL = appURL + "/api/startup-fundraising/v0";
     public static final String userAppSignupURL = appURL + "/api/startup-fundraising/v0/users/signup";
-    public static final String publicEventUrl = appURL + "/api/events/v0/TNT:vijaym/events";
+    public static final String publicEventUrl = appURL + "/api/events/v0/events";
     public static final String userUrl = appURL + "/api/startup-fundraising/v0/users";
     public static final String user1Url = appURL + "/api/startup-fundraising/v0/users/{userId}";
     public static final String aboutUsURL = "http://50knetwork.com/wp-json/wp/v2/pages/35";

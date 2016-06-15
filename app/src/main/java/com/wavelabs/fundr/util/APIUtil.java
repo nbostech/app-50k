@@ -23,7 +23,6 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
-import retrofit2.http.Field;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
@@ -78,7 +77,7 @@ public interface APIUtil {
     Call<Company> updateCompanyProfile(@Header("Authorization") String authorization, @Path("companyId") Long companyId, @Body CompanyProfile companyProfile);
 
     @GET(AppConstants.companyURL)
-    Call<ArrayList<Company>> getCompanies(@Header("Authorization") String authorization, @Field("company_type") String companyType);
+    Call<ArrayList<Company>> getCompanies(@Header("Authorization") String authorization, @Query("company_type") String companyType);
 
 
     @GET(AppConstants.companyAssociatesURL)

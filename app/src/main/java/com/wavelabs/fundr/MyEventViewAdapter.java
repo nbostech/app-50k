@@ -1,21 +1,18 @@
 package com.wavelabs.fundr;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.wavelabs.fundr.dummy.DummyContent.DummyItem;
 import com.wavelabs.fundr.model.Event;
-import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
 
 import java.util.List;
 
@@ -74,24 +71,13 @@ public class MyEventViewAdapter extends RecyclerView.Adapter<MyEventViewAdapter.
 
         Context context = holder.cardView.getContext();
         //Picasso.with(context).load(mValues.get(position).getImageUrl()).into(new Target() {
-        Picasso.with(context).load("http://p-r-i.org/wp-content/uploads/2012/09/Meetings.jpg").into(new Target() {
-            @Override
-            public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-                BitmapDrawable bitmapDrawable = new BitmapDrawable(bitmap);
-                bitmapDrawable.setAlpha(80);
-                holder.cardView.setBackground(bitmapDrawable);
-            }
+        if(mValues.get(position).getImageUrl() != null){
+            Picasso.with(context).load(mValues.get(position).getImageUrl()).into(holder.imageView);
 
-            @Override
-            public void onBitmapFailed(Drawable errorDrawable) {
+        } else {
+            Picasso.with(context).load("http://p-r-i.org/wp-content/uploads/2012/09/Meetings.jpg").into(holder.imageView);
 
-            }
-
-            @Override
-            public void onPrepareLoad(Drawable placeHolderDrawable) {
-
-            }
-        });
+        }
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,21 +100,23 @@ public class MyEventViewAdapter extends RecyclerView.Adapter<MyEventViewAdapter.
         return mValues.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        public final View mView;
-        public CardView cardView;
+     class ViewHolder extends RecyclerView.ViewHolder {
+         final View mView;
+         CardView cardView;
+        ImageView imageView;
         //public final TextView mIdView;
-        public final TextView mContentView;
-        public final TextView mEventAddress;
-        public final TextView mEventDate;
-        public final TextView mEventMonth;
-        public Event mItem;
+         final TextView mContentView;
+         final TextView mEventAddress;
+         final TextView mEventDate;
+         final TextView mEventMonth;
+         Event mItem;
 
-        public ViewHolder(View view) {
+         public ViewHolder(View view) {
             super(view);
             mView = view;
             cardView = (CardView) view.findViewById(R.id.card_view);
             //mIdView = mContentView(TextView) view.findViewById(R.id.id);
+            imageView = (ImageView) view.findViewById(R.id.eventBackground);
             mContentView = (TextView) view.findViewById(R.id.content);
             mEventAddress = (TextView) view.findViewById(R.id.eventAddress);
             mEventDate = (TextView) view.findViewById(R.id.eventDate);

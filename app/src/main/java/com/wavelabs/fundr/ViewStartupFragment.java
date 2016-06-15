@@ -2,9 +2,11 @@ package com.wavelabs.fundr;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,11 +18,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.wavelabs.fundr.helper.OnTeamAssocListFragmentInteractionListener;
 import com.wavelabs.fundr.model.Associate;
 import com.wavelabs.fundr.model.Company;
 import com.wavelabs.fundr.service.CompanyAPI;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +49,7 @@ public class ViewStartupFragment extends Fragment {
     private Company company;
     private String mParam2;
     private int mColumnCount = 3;
+    Snackbar snackbar;
 
     ImageView companyLogoIV;
     TextView companyNameTV;
@@ -176,6 +179,7 @@ public class ViewStartupFragment extends Fragment {
         }
 
 
+
         FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.editStartupBtn);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -193,6 +197,10 @@ public class ViewStartupFragment extends Fragment {
 
             }
         });
+        if(!mParam2.equalsIgnoreCase("startup")){
+            fab.setVisibility(View.INVISIBLE);
+        }
+
 
         return view;
     }
@@ -201,6 +209,51 @@ public class ViewStartupFragment extends Fragment {
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onViewStartupFragmentInteraction(uri);
+        }
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        if(mParam2.equalsIgnoreCase("dealbank")){
+            snackbar = Snackbar
+                    .make(getView(), "", Snackbar.LENGTH_INDEFINITE)
+                    .setAction("Add to favourite", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                        }
+                    });
+
+// Changing message text color
+            snackbar.setActionTextColor(Color.RED);
+
+
+// Changing action button text color
+            View sbView = snackbar.getView();
+            TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+            textView.setTextColor(Color.WHITE);
+
+            snackbar.show();
+        }
+        if(mParam2.equalsIgnoreCase("fundingprogress")){
+            snackbar = Snackbar
+                    .make(getView(), "", Snackbar.LENGTH_INDEFINITE)
+                    .setAction("I'm Interested", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                        }
+                    });
+
+// Changing message text color
+            snackbar.setActionTextColor(Color.RED);
+
+// Changing action button text color
+            View sbView = snackbar.getView();
+            TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+            textView.setTextColor(Color.WHITE);
+            snackbar.show();
         }
     }
 
@@ -216,10 +269,18 @@ public class ViewStartupFragment extends Fragment {
     }
 
     @Override
+    public void onStop(){
+        super.onStop();
+        snackbar.dismiss();
+    }
+
+    @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
+
     }
+
 
     /**
      * This interface must be implemented by activities that contain this

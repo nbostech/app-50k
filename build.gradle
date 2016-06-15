@@ -3,9 +3,6 @@
 buildscript {
     repositories {
         jcenter()
-        maven {
-            url 'https://dl.bintray.com/wavelabs/maven'
-        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.1.0'
@@ -19,9 +16,6 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
-        maven {
-            url 'https://dl.bintray.com/wavelabs/maven'
-        }
     }
 }
 

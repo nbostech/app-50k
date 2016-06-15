@@ -95,7 +95,7 @@ public class DealBankFragment extends Fragment {
                     }
 
 
-                },"");
+                },"deal_bank");
             else {
                 recyclerView.setAdapter(new DealBankRecyclerViewAdapter(dealBankList, mListener));
             }

@@ -13,6 +13,11 @@ public class User implements Serializable{
     private Profile profile;
     private List<Metadata> userTypes;
     private List<CompanyProfile> startupCompanies;
+    private List<CompanyProfile> wishlistCompanies;
+    private List<CompanyProfile> protifolioCompanies;
+    private List<Metadata> areaOfInterests;
+    private List<DomainExp> domainExpertises;
+
 
     public long getId() {
         return id;
@@ -52,5 +57,37 @@ public class User implements Serializable{
 
     public void setStartupCompanies(List<CompanyProfile> startupCompanies) {
         this.startupCompanies = startupCompanies;
+    }
+
+    public List<CompanyProfile> getWishlistCompanies() {
+        return wishlistCompanies;
+    }
+
+    public void setWishlistCompanies(List<CompanyProfile> wishlistCompanies) {
+        this.wishlistCompanies = wishlistCompanies;
+    }
+
+    public List<CompanyProfile> getProtifolioCompanies() {
+        return protifolioCompanies;
+    }
+
+    public void setProtifolioCompanies(List<CompanyProfile> protifolioCompanies) {
+        this.protifolioCompanies = protifolioCompanies;
+    }
+
+    public List<Metadata> getAreaOfInterests() {
+        return areaOfInterests;
+    }
+
+    public void setAreaOfInterests(List<Metadata> areaOfInterests) {
+        this.areaOfInterests = areaOfInterests;
+    }
+
+    public List<DomainExp> getDomainExpertises() {
+        return domainExpertises;
+    }
+
+    public void setDomainExpertises(List<DomainExp> domainExpertises) {
+        this.domainExpertises = domainExpertises;
     }
 }
