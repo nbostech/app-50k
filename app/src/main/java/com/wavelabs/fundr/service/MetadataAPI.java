@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.wavelabs.idn.ConnectionAPI.NBOSCallback;
-import in.wavelabs.idn.Utils.Prefrences;
+import in.wavelabs.idn.utils.TokenPrefrences;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -23,7 +23,7 @@ import retrofit2.Response;
 public class MetadataAPI {
 
     public static void getCompCategories(final Context context, final NBOSCallback<ArrayList<Metadata>> nbosCallback) {
-        String token = Prefrences.getClientToken(context);
+        String token = TokenPrefrences.getClientToken(context);
         Call<ArrayList<Metadata>> categoryList = RestUtil.getAPIUtil().getCategories(token);
         categoryList.enqueue(new Callback<ArrayList<Metadata>>() {
             @Override
@@ -48,7 +48,7 @@ public class MetadataAPI {
 
 
     public static void getCompStages(final Context context, final NBOSCallback nbosCallback) {
-        String token = Prefrences.getClientToken(context);
+        String token = TokenPrefrences.getClientToken(context);
         Call<ArrayList<Metadata>> stageList = RestUtil.getAPIUtil().getStages(token);
         stageList.enqueue(new Callback<ArrayList<Metadata>>() {
             @Override
@@ -70,7 +70,7 @@ public class MetadataAPI {
     }
 
     public static void getAssociateTypes(final Context context, final NBOSCallback nbosCallback) {
-        String token = Prefrences.getClientToken(context);
+        String token = TokenPrefrences.getClientToken(context);
         Call<ArrayList<TeamType>> stageList = RestUtil.getAPIUtil().getAssociateTypes(token);
         stageList.enqueue(new Callback<ArrayList<TeamType>>() {
             @Override
@@ -93,7 +93,7 @@ public class MetadataAPI {
 
 
     public static void getDomainExps(final Context context, final NBOSCallback nbosCallback) {
-        String token = Prefrences.getClientToken(context);
+        String token = TokenPrefrences.getClientToken(context);
         Call<List<DomainExp>> stageList = RestUtil.getAPIUtil().getDomainExpList(token);
         stageList.enqueue(new Callback<List<DomainExp>>() {
             @Override

@@ -12,12 +12,12 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.nbos.modules.identity.v0.NewMemberApiModel;
 import com.wavelabs.fundr.model.AppUser;
 import com.wavelabs.fundr.service.UserAPI;
 
 import in.wavelabs.idn.ConnectionAPI.AuthApi;
 import in.wavelabs.idn.ConnectionAPI.NBOSCallback;
-import in.wavelabs.idn.DataModel.member.NewMemberApiModel;
 import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity {

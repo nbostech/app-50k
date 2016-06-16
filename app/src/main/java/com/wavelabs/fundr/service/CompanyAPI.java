@@ -14,7 +14,7 @@ import java.io.File;
 import java.util.ArrayList;
 
 import in.wavelabs.idn.ConnectionAPI.NBOSCallback;
-import in.wavelabs.idn.Utils.Prefrences;
+import in.wavelabs.idn.utils.TokenPrefrences;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -28,7 +28,7 @@ import retrofit2.Response;
 public class CompanyAPI {
 
     public static void createCompany(final Context context, CompanyProfile companyProfile, final NBOSCallback nbosCallback) {
-        String token = Prefrences.getAccessToken(context);
+        String token = TokenPrefrences.getAccessToken(context);
         Call<Company> companyCall = RestUtil.getAPIUtil().createCompany(token, companyProfile);
         companyCall.enqueue(new Callback<Company>() {
             @Override
@@ -46,7 +46,7 @@ public class CompanyAPI {
 
 
     public static void updateCompanyProfile(final Context context, Long companyId, CompanyProfile companyProfile, final NBOSCallback nbosCallback) {
-        String token = Prefrences.getAccessToken(context);
+        String token = TokenPrefrences.getAccessToken(context);
         Call<Company> companyCall = RestUtil.getAPIUtil().updateCompanyProfile(token, companyId, companyProfile);
         companyCall.enqueue(new Callback<Company>() {
             @Override
@@ -63,7 +63,7 @@ public class CompanyAPI {
     }
 
     public static void getCompanies(final Context context, final NBOSCallback nbosCallback,String companyType) {
-        String token = Prefrences.getAccessToken(context);
+        String token = TokenPrefrences.getAccessToken(context);
         Call<ArrayList<Company>> companyListCall = RestUtil.getAPIUtil().getCompanies(token,companyType);
 
         companyListCall.enqueue(new Callback<ArrayList<Company>>() {
@@ -89,7 +89,7 @@ public class CompanyAPI {
     }
 
     public static void uploadMedia(final Context context, String companyId, String mediaFor, File file, final NBOSCallback nbosCallback) {
-        String token = Prefrences.getAccessToken(context);
+        String token = TokenPrefrences.getAccessToken(context);
 
         RequestBody idValue =
                 RequestBody.create(
@@ -130,7 +130,7 @@ public class CompanyAPI {
     }
 
     public static void createAssoicate(final Context context, Long companyId, Associate associate, final NBOSCallback nbosCallback) {
-        String token = Prefrences.getAccessToken(context);
+        String token = TokenPrefrences.getAccessToken(context);
         Call<Associate> companyCall = RestUtil.getAPIUtil().createAssociate(token, companyId, associate);
         companyCall.enqueue(new Callback<Associate>() {
             @Override
@@ -153,7 +153,7 @@ public class CompanyAPI {
 
 
     public static void updateAssoicate(final Context context, Long associateId, Associate associate, final NBOSCallback nbosCallback) {
-        String token = Prefrences.getAccessToken(context);
+        String token = TokenPrefrences.getAccessToken(context);
         Call<Associate> companyCall = RestUtil.getAPIUtil().updateAssociate(token, associateId, associate);
         companyCall.enqueue(new Callback<Associate>() {
             @Override
@@ -175,7 +175,7 @@ public class CompanyAPI {
     }
 
     public static void getAssociates(final Context context, Long companyId, final NBOSCallback<ArrayList<Associate>> nbosCallback) {
-        String token = Prefrences.getAccessToken(context);
+        String token = TokenPrefrences.getAccessToken(context);
         Call<ArrayList<Associate>> companyListCall = RestUtil.getAPIUtil().getAssociates(token, companyId);
 
         companyListCall.enqueue(new Callback<ArrayList<Associate>>() {

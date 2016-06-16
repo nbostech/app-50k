@@ -4,14 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.nbos.modules.identity.v0.MemberApiModel;
 import com.wavelabs.fundr.model.User;
 import com.wavelabs.fundr.model.UuidModel;
 import com.wavelabs.fundr.service.UserAPI;
 
 import in.wavelabs.idn.ConnectionAPI.NBOSCallback;
 import in.wavelabs.idn.ConnectionAPI.UsersApi;
-import in.wavelabs.idn.DataModel.member.MemberApiModel;
-import in.wavelabs.idn.Utils.Prefrences;
+import in.wavelabs.idn.utils.TokenPrefrences;
 import retrofit2.Response;
 
 /**
@@ -24,7 +24,7 @@ public class SplashActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
 
         /*
-        String refreshToken = Prefrences.getRefreshToken(this);
+        String refreshToken = TokenPrefrences.getRefreshToken(this);
         if(refreshToken!=null && refreshToken.length()>0) {
             UserAPI.getUserAccessToken(this, WaveLabsSdk.getClientId(this,
                     WaveLabsSdk.APPLICATION_ID_PROPERTY),
@@ -33,14 +33,16 @@ public class SplashActivity extends AppCompatActivity{
                     new NBOSCallback<TokenApiModel>() {
                         @Override
                         public void onResponse(Response<TokenApiModel> response) {
-                            Prefrences.setAccessToken(getApplicationContext(),
+                            TokenPrefrences.setAccessToken(getApplicationContext(),
                                     "Bearer " + response.body().getAccess_token());
-                            Prefrences.setAccessToken(getApplicationContext(),
+                            TokenPrefrences.setAccessToken(getApplicationContext(),
                                     response.body().getRefresh_token());
 */
-        String accessToken = Prefrences.getAccessToken(this);
-        if(accessToken!=null && accessToken.length()> 0 && Prefrences.getUserId(this) >0) {
-            UsersApi.getUserProfile(SplashActivity.this, new NBOSCallback<MemberApiModel>() {
+        String accessToken = TokenPrefrences.getAccessToken(this);
+        if(accessToken!=null && accessToken.length()> 0) {
+
+//        if(accessToken!=null && accessToken.length()> 0 && TokenPrefrences.getUserId(this) >0) {
+            UsersApi.getUserProfile(SplashActivity.this,"{uuidHere}", new NBOSCallback<MemberApiModel>() {
                 @Override
                 public void onResponse(Response<MemberApiModel> response) {
                     UuidModel uuid = new UuidModel();

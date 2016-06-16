@@ -31,7 +31,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import in.wavelabs.idn.ConnectionAPI.NBOSCallback;
-import in.wavelabs.idn.Utils.Prefrences;
+import in.wavelabs.idn.utils.TokenPrefrences;
 import retrofit2.Response;
 
 /**
@@ -196,7 +196,7 @@ public class ProfileTabFragment extends Fragment {
                 company.getProfile().setName(companyNameET.getText().toString());
                 company.getProfile().setContactNumber(contactNumberET.getText().toString());
                 company.getProfile().setCategory(industryS.getSelectedItem().toString());
-                company.getProfile().setFounderName(Prefrences.getFirstName(getActivity()) + " " + Prefrences.getLastName(getActivity()));
+               // company.getProfile().setFounderName(Prefrences.getFirstName(getActivity()) + " " + Prefrences.getLastName(getActivity()));
 
                 CompanyAPI.updateCompanyProfile(getActivity(), company.getId(), company.getProfile(), new NBOSCallback() {
 

@@ -9,7 +9,7 @@ import com.wavelabs.fundr.util.RestUtil;
 import java.util.List;
 
 import in.wavelabs.idn.ConnectionAPI.NBOSCallback;
-import in.wavelabs.idn.Utils.Prefrences;
+import in.wavelabs.idn.utils.TokenPrefrences;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -20,7 +20,7 @@ import retrofit2.Response;
 public class EventAPI {
 
     public static void getEvents(final Context context, final NBOSCallback appCallback) {
-        String token = Prefrences.getClientToken(context);
+        String token = TokenPrefrences.getClientToken(context);
         Call<List<Event>> eventListCall = RestUtil.getAPIUtil().getEvents(token);
 
         eventListCall.enqueue(new Callback<List<Event>>() {

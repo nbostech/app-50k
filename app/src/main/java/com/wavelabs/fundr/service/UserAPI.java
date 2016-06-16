@@ -10,7 +10,7 @@ import com.wavelabs.fundr.model.UuidModel;
 import com.wavelabs.fundr.util.RestUtil;
 
 import in.wavelabs.idn.ConnectionAPI.NBOSCallback;
-import in.wavelabs.idn.Utils.Prefrences;
+import in.wavelabs.idn.utils.TokenPrefrences;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -22,7 +22,7 @@ import retrofit2.Response;
 public class UserAPI {
 
     public static void createUser(final Context context, AppUser user, final NBOSCallback nbosCallback) {
-        String token = Prefrences.getAccessToken(context);
+        String token = TokenPrefrences.getAccessToken(context);
         Call<User> createUserCall = RestUtil.getAPIUtil().createUser(token, user);
         createUserCall.enqueue(new Callback<User>() {
             @Override
@@ -45,7 +45,7 @@ public class UserAPI {
 
 
     public static void getUsers(final Context context, String userType, final NBOSCallback nbosCallback) {
-        String token = Prefrences.getClientToken(context);
+        String token = TokenPrefrences.getClientToken(context);
         Call<ResponseBody> getUsersCall = RestUtil.getAPIUtil().getUsers(token, userType);
         getUsersCall.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -67,7 +67,7 @@ public class UserAPI {
     }
 
     public static void getUserDetails(final Context context, String userId, final NBOSCallback nbosCallback) {
-        String token = Prefrences.getClientToken(context);
+        String token = TokenPrefrences.getClientToken(context);
         Call<ResponseBody> getUsersCall = RestUtil.getAPIUtil().getUserDetails(token, userId);
         getUsersCall.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -87,7 +87,7 @@ public class UserAPI {
     }
 
     public static void login(final Context context, UuidModel uuid, final NBOSCallback nbosCallback) {
-        String token = Prefrences.getAccessToken(context);
+        String token = TokenPrefrences.getAccessToken(context);
         Call<User> appLogin = RestUtil.getAPIUtil().loginApp(token, uuid);
         appLogin.enqueue(new Callback<User>() {
             @Override
@@ -107,7 +107,7 @@ public class UserAPI {
     }
 
     public static void updateUserProfile(final Context context, Profile profile, final NBOSCallback nbosCallback) {
-        String token = Prefrences.getAccessToken(context);
+        String token = TokenPrefrences.getAccessToken(context);
         Call<Profile> createUserCall = RestUtil.getAPIUtil().updateUser(token, profile.getId(), profile);
         createUserCall.enqueue(new Callback<Profile>() {
             @Override
@@ -130,7 +130,7 @@ public class UserAPI {
 
 
     public static void logout(final Context context, final NBOSCallback nbosCallback) {
-        String token = Prefrences.getAccessToken(context);
+        String token = TokenPrefrences.getAccessToken(context);
         Call<ResponseBody> appLogin = RestUtil.getAPIUtil().logoutApp(token);
         appLogin.enqueue(new Callback<ResponseBody>() {
             @Override

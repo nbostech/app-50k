@@ -2,15 +2,18 @@ apply plugin: 'com.android.application'
 
 android {
 
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion 24
+    buildToolsVersion '24.0.0'
 
     defaultConfig {
         applicationId 'com.wavelabs.fundr'
         minSdkVersion 15
-        targetSdkVersion 23
+        targetSdkVersion 24
         versionCode 1
         versionName "1.0"
+        jackOptions {
+            enabled true
+        }
     }
     buildTypes {
         release {
@@ -21,14 +24,17 @@ android {
     lintOptions {
         abortOnError false
     }
+    dexOptions {
+        incremental true
+    }
+
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.facebook.android:account-kit-sdk:4.12.0'
-    compile 'com.facebook.android:account-kit-sdk:4.12.0'
-    compile 'com.android.support:design:23.4.0'
-    compile 'com.android.support:recyclerview-v7:23.4.0'
+    compile 'com.android.support:design:24.0.0'
+    compile 'com.android.support:recyclerview-v7:24.0.0'
     compile 'com.squareup.okhttp3:okhttp:3.3.1'
     compile 'com.google.code.gson:gson:2.6.2'
     compile 'com.squareup.retrofit2:retrofit:2.0.2'
@@ -36,11 +42,11 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp-urlconnection:3.3.1'
     compile 'com.squareup.okhttp3:logging-interceptor:3.3.1'
     compile 'com.thefinestartist:finestwebview:1.2.7'
-    compile 'com.android.support:cardview-v7:23.4.0'
+    compile 'com.android.support:cardview-v7:24.0.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'org.jsoup:jsoup:1.9.2'
-    compile 'in.wavelabs:idn:0.0.7'
+    compile 'in.wavelabs:idn:0.0.9'
     compile 'com.afollestad.material-dialogs:core:0.8.5.9'
-    compile 'com.android.support:support-v4:23.4.0'
+    compile 'com.android.support:support-v4:24.0.0'
     testCompile 'junit:junit:4.12'
 }

@@ -20,6 +20,8 @@ import com.facebook.accountkit.AccountKitLoginResult;
 import com.facebook.accountkit.ui.AccountKitActivity;
 import com.facebook.accountkit.ui.AccountKitConfiguration;
 import com.facebook.accountkit.ui.LoginType;
+import com.nbos.modules.identity.v0.NewMemberApiModel;
+import com.nbos.modules.identity.v0.SocialConnectUrlResponse;
 import com.wavelabs.fundr.model.AppUser;
 import com.wavelabs.fundr.model.User;
 import com.wavelabs.fundr.model.UuidModel;
@@ -30,9 +32,7 @@ import java.util.UUID;
 import in.wavelabs.idn.ConnectionAPI.AuthApi;
 import in.wavelabs.idn.ConnectionAPI.NBOSCallback;
 import in.wavelabs.idn.ConnectionAPI.SocialApi;
-import in.wavelabs.idn.DataModel.auth.social.SocialLogin;
-import in.wavelabs.idn.DataModel.member.NewMemberApiModel;
-import in.wavelabs.idn.Utils.Prefrences;
+import in.wavelabs.idn.utils.TokenPrefrences;
 import retrofit2.Response;
 
 /**
@@ -82,10 +82,10 @@ public class LoginActivity extends AppCompatActivity  {
 
             @Override
             public void onClick(View v) {
-                SocialApi.socialLogin(LoginActivity.this, "linkedIn", new NBOSCallback<SocialLogin>() {
+                SocialApi.socialLogin(LoginActivity.this, "linkedIn", new NBOSCallback<SocialConnectUrlResponse>() {
 
                     @Override
-                    public void onResponse(Response<SocialLogin> response) {
+                    public void onResponse(Response<SocialConnectUrlResponse> response) {
 
                     }
 
@@ -188,9 +188,9 @@ public class LoginActivity extends AppCompatActivity  {
                 @Override
                 public void onResponse(Response<NewMemberApiModel> response) {
                     if (response.isSuccessful()) {
-                        Prefrences.setAccessToken(getApplicationContext(), "Bearer " + response.body().getToken().getAccess_token());
-                        Prefrences.setRefreshToken(getApplicationContext(),response.body().getToken().getRefresh_token());
-                        Prefrences.setUserId(getApplicationContext(),response.body().getMember().getId());
+                        TokenPrefrences.setAccessToken(getApplicationContext(), "Bearer " + response.body().getToken().getAccess_token());
+                        TokenPrefrences.setRefreshToken(getApplicationContext(),response.body().getToken().getRefresh_token());
+                       //s TokenPrefrences.setUserId(getApplicationContext(),response.body().getMember().getId());
                         loginTok50k(response.body().getMember().getUuid());
                     }
                 }
@@ -219,7 +219,7 @@ public class LoginActivity extends AppCompatActivity  {
                         Log.d("Register", (response.body().getToken().getRefresh_token()));
                         if (response.isSuccessful()) {
 
-                            Prefrences.setAccessToken(getApplicationContext(), "Bearer " + response.body().getToken().getAccess_token());
+                            TokenPrefrences.setAccessToken(getApplicationContext(), "Bearer " + response.body().getToken().getAccess_token());
 
                             loginTok50k(response.body().getMember().getUuid());
 
@@ -245,9 +245,9 @@ public class LoginActivity extends AppCompatActivity  {
                 Log.d("Register", (response.body().getToken().getAccess_token()));
                 Log.d("Register", (response.body().getToken().getRefresh_token()));
                 if (response.isSuccessful()) {
-                    Prefrences.setAccessToken(getApplicationContext(), "Bearer " + response.body().getToken().getAccess_token());
-                    Prefrences.setRefreshToken(getApplicationContext(),response.body().getToken().getRefresh_token());
-                    Prefrences.setUserId(getApplicationContext(),response.body().getMember().getId());
+                    TokenPrefrences.setAccessToken(getApplicationContext(), "Bearer " + response.body().getToken().getAccess_token());
+                    TokenPrefrences.setRefreshToken(getApplicationContext(),response.body().getToken().getRefresh_token());
+                    //TokenPrefrences.setUserId(getApplicationContext(),response.body().getMember().getId());
                     loginTok50k(response.body().getMember().getUuid());
                 }
             }
