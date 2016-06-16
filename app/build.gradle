@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
 
     compileSdkVersion 24
-    buildToolsVersion '24.0.0'
+    buildToolsVersion '24'
 
     defaultConfig {
         applicationId 'com.wavelabs.fundr'
@@ -23,9 +23,6 @@ android {
     }
     lintOptions {
         abortOnError false
-    }
-    dexOptions {
-        incremental true
     }
 
 }
