@@ -99,9 +99,9 @@ public class UserTypeFragment extends DialogFragment {
         selectedRoleOption = "investor";
 //        if(((LoginActivity) getActivity()).appUser != null)
 //            userNameET.setText(((LoginActivity) getActivity()).appUser.getFullName());
-        MetadataAPI.getCompCategories(getActivity(), new NBOSCallback<ArrayList<Metadata>>() {
+        MetadataAPI.getCompCategories(getActivity(), new NBOSCallback<List<Metadata>>() {
             @Override
-            public void onResponse(Response<ArrayList<Metadata>> response) {
+            public void onResponse(Response<List<Metadata>> response) {
 
                 areaOfInterestS.setItems(Metadata.getListValues(response.body()));
             }

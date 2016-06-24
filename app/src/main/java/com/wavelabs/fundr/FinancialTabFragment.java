@@ -21,6 +21,7 @@ import com.wavelabs.fundr.service.MetadataAPI;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import in.wavelabs.idn.ConnectionAPI.NBOSCallback;
 import retrofit2.Response;
@@ -83,10 +84,10 @@ public class FinancialTabFragment extends Fragment {
             getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
                     WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
-            MetadataAPI.getCompStages(getActivity(), new NBOSCallback<ArrayList<Metadata>>() {
+            MetadataAPI.getCompStages(getActivity(), new NBOSCallback<List<Metadata>>() {
 
                 @Override
-                public void onResponse(Response<ArrayList<Metadata>> response) {
+                public void onResponse(Response<List<Metadata>> response) {
                     stageMap = Metadata.getMapFromList(response.body());
                     stageList = new ArrayList<>(stageMap.values());
                     stageList.add(0, "select stage");

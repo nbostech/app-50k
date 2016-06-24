@@ -24,7 +24,7 @@ import com.wavelabs.fundr.model.Associate;
 import com.wavelabs.fundr.model.Company;
 import com.wavelabs.fundr.service.CompanyAPI;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.List;
 
 import in.wavelabs.idn.ConnectionAPI.NBOSCallback;
@@ -154,9 +154,9 @@ public class ViewStartupFragment extends Fragment {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
             if (associates == null)
-                CompanyAPI.getAssociates(getActivity(), company.getId(), new NBOSCallback<ArrayList<Associate>>() {
+                CompanyAPI.getAssociates(getActivity(), company.getId(), new NBOSCallback<List<Associate>>() {
                     @Override
-                    public void onResponse(Response<ArrayList<Associate>> response) {
+                    public void onResponse(Response<List<Associate>> response) {
                         associates = response.body();
                         Log.d("test", associates.size() + "");
                         if (associates != null) {

@@ -77,10 +77,10 @@ public class FundingProgressFragment extends Fragment {
             }
 
             if (fundingProgList.size() == 0)
-                CompanyAPI.getCompanies(getActivity(), new NBOSCallback<ArrayList<Company>>() {
+                CompanyAPI.getCompanies(getActivity(), new NBOSCallback<List<Company>>() {
 
                     @Override
-                    public void onResponse(Response<ArrayList<Company>> response) {
+                    public void onResponse(Response<List<Company>> response) {
                         fundingProgList = response.body();
 
                         if (fundingProgList.size() > 0) {

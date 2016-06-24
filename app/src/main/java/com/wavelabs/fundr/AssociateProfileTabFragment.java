@@ -29,6 +29,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import in.wavelabs.idn.ConnectionAPI.NBOSCallback;
 import retrofit2.Response;
@@ -104,9 +105,9 @@ public class AssociateProfileTabFragment extends Fragment {
             getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
                     WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
-            MetadataAPI.getAssociateTypes(getActivity(), new NBOSCallback<ArrayList<TeamType>>() {
+            MetadataAPI.getAssociateTypes(getActivity(), new NBOSCallback<List<TeamType>>() {
                 @Override
-                public void onResponse(Response<ArrayList<TeamType>> response) {
+                public void onResponse(Response<List<TeamType>> response) {
                     teamMap = TeamType.getMapFromList(response.body());
                     teamList = new ArrayList<>(teamMap.values());
                     teamList.add(0, "select team");

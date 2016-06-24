@@ -29,6 +29,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import in.wavelabs.idn.ConnectionAPI.NBOSCallback;
 import in.wavelabs.idn.utils.TokenPrefrences;
@@ -101,11 +102,11 @@ public class ProfileTabFragment extends Fragment {
             getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
                     WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
-            MetadataAPI.getCompCategories(getActivity(), new NBOSCallback<ArrayList<Metadata>>() {
+            MetadataAPI.getCompCategories(getActivity(), new NBOSCallback<List<Metadata>>() {
 
 
                 @Override
-                public void onResponse(Response<ArrayList<Metadata>> response) {
+                public void onResponse(Response<List<Metadata>> response) {
                     categoryMap = Metadata.getMapFromList(response.body());
                     industryList = new ArrayList<>(categoryMap.values());
                     industryList.add(0, "select industry");

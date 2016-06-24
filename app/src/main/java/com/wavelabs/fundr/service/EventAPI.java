@@ -19,7 +19,7 @@ import retrofit2.Response;
  */
 public class EventAPI {
 
-    public static void getEvents(final Context context, final NBOSCallback appCallback) {
+    public static void getEvents(final Context context, final NBOSCallback<List<Event>> appCallback) {
         String token = TokenPrefrences.getClientToken(context);
         Call<List<Event>> eventListCall = RestUtil.getAPIUtil().getEvents(token);
 

@@ -3,6 +3,7 @@ package com.wavelabs.fundr.service;
 import android.content.Context;
 import android.util.Log;
 
+import com.thefinestartist.utils.content.Res;
 import com.wavelabs.fundr.model.AppUser;
 import com.wavelabs.fundr.model.Profile;
 import com.wavelabs.fundr.model.User;
@@ -21,7 +22,7 @@ import retrofit2.Response;
  */
 public class UserAPI {
 
-    public static void createUser(final Context context, AppUser user, final NBOSCallback nbosCallback) {
+    public static void createUser(final Context context, AppUser user, final NBOSCallback<User> nbosCallback) {
         String token = TokenPrefrences.getAccessToken(context);
         Call<User> createUserCall = RestUtil.getAPIUtil().createUser(token, user);
         createUserCall.enqueue(new Callback<User>() {
@@ -44,7 +45,7 @@ public class UserAPI {
     }
 
 
-    public static void getUsers(final Context context, String userType, final NBOSCallback nbosCallback) {
+    public static void getUsers(final Context context, String userType, final NBOSCallback<ResponseBody> nbosCallback) {
         String token = TokenPrefrences.getClientToken(context);
         Call<ResponseBody> getUsersCall = RestUtil.getAPIUtil().getUsers(token, userType);
         getUsersCall.enqueue(new Callback<ResponseBody>() {
@@ -66,7 +67,7 @@ public class UserAPI {
         });
     }
 
-    public static void getUserDetails(final Context context, String userId, final NBOSCallback nbosCallback) {
+    public static void getUserDetails(final Context context, String userId, final NBOSCallback<ResponseBody> nbosCallback) {
         String token = TokenPrefrences.getClientToken(context);
         Call<ResponseBody> getUsersCall = RestUtil.getAPIUtil().getUserDetails(token, userId);
         getUsersCall.enqueue(new Callback<ResponseBody>() {
@@ -86,7 +87,7 @@ public class UserAPI {
         });
     }
 
-    public static void login(final Context context, UuidModel uuid, final NBOSCallback nbosCallback) {
+    public static void login(final Context context, UuidModel uuid, final NBOSCallback<User> nbosCallback) {
         String token = TokenPrefrences.getAccessToken(context);
         Call<User> appLogin = RestUtil.getAPIUtil().loginApp(token, uuid);
         appLogin.enqueue(new Callback<User>() {
@@ -106,7 +107,7 @@ public class UserAPI {
         });
     }
 
-    public static void updateUserProfile(final Context context, Profile profile, final NBOSCallback nbosCallback) {
+    public static void updateUserProfile(final Context context, Profile profile, final NBOSCallback<Profile> nbosCallback) {
         String token = TokenPrefrences.getAccessToken(context);
         Call<Profile> createUserCall = RestUtil.getAPIUtil().updateUser(token, profile.getId(), profile);
         createUserCall.enqueue(new Callback<Profile>() {
@@ -129,7 +130,7 @@ public class UserAPI {
     }
 
 
-    public static void logout(final Context context, final NBOSCallback nbosCallback) {
+    public static void logout(final Context context, final NBOSCallback<ResponseBody> nbosCallback) {
         String token = TokenPrefrences.getAccessToken(context);
         Call<ResponseBody> appLogin = RestUtil.getAPIUtil().logoutApp(token);
         appLogin.enqueue(new Callback<ResponseBody>() {

@@ -8,7 +8,7 @@ import com.wavelabs.fundr.model.Metadata;
 import com.wavelabs.fundr.model.TeamType;
 import com.wavelabs.fundr.util.RestUtil;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.List;
 
 import in.wavelabs.idn.ConnectionAPI.NBOSCallback;
@@ -22,12 +22,12 @@ import retrofit2.Response;
  */
 public class MetadataAPI {
 
-    public static void getCompCategories(final Context context, final NBOSCallback<ArrayList<Metadata>> nbosCallback) {
+    public static void getCompCategories(final Context context, final NBOSCallback<List<Metadata>> nbosCallback) {
         String token = TokenPrefrences.getClientToken(context);
-        Call<ArrayList<Metadata>> categoryList = RestUtil.getAPIUtil().getCategories(token);
-        categoryList.enqueue(new Callback<ArrayList<Metadata>>() {
+        Call<List<Metadata>> categoryList = RestUtil.getAPIUtil().getCategories(token);
+        categoryList.enqueue(new Callback<List<Metadata>>() {
             @Override
-            public void onResponse(Call<ArrayList<Metadata>> call, Response<ArrayList<Metadata>> response) {
+            public void onResponse(Call<List<Metadata>> call, Response<List<Metadata>> response) {
                 if (response.code() == 200) {
                     Log.d("response", response.code() + "");
                     Log.d("response", response.body().toString());
@@ -38,7 +38,7 @@ public class MetadataAPI {
             }
 
             @Override
-            public void onFailure(Call<ArrayList<Metadata>> call, Throwable t) {
+            public void onFailure(Call<List<Metadata>> call, Throwable t) {
                 nbosCallback.onFailure(t);
             }
 
@@ -47,12 +47,12 @@ public class MetadataAPI {
     }
 
 
-    public static void getCompStages(final Context context, final NBOSCallback nbosCallback) {
+    public static void getCompStages(final Context context, final NBOSCallback<List<Metadata>> nbosCallback) {
         String token = TokenPrefrences.getClientToken(context);
-        Call<ArrayList<Metadata>> stageList = RestUtil.getAPIUtil().getStages(token);
-        stageList.enqueue(new Callback<ArrayList<Metadata>>() {
+        Call<List<Metadata>> stageList = RestUtil.getAPIUtil().getStages(token);
+        stageList.enqueue(new Callback<List<Metadata>>() {
             @Override
-            public void onResponse(Call<ArrayList<Metadata>> call, Response<ArrayList<Metadata>> response) {
+            public void onResponse(Call<List<Metadata>> call, Response<List<Metadata>> response) {
                 if (response.code() == 200) {
                     Log.d("response", response.code() + "");
                     Log.d("response", response.body().toString());
@@ -63,18 +63,18 @@ public class MetadataAPI {
             }
 
             @Override
-            public void onFailure(Call<ArrayList<Metadata>> call, Throwable t) {
+            public void onFailure(Call<List<Metadata>> call, Throwable t) {
                 nbosCallback.onFailure(t);
             }
         });
     }
 
-    public static void getAssociateTypes(final Context context, final NBOSCallback nbosCallback) {
+    public static void getAssociateTypes(final Context context, final NBOSCallback<List<TeamType>> nbosCallback) {
         String token = TokenPrefrences.getClientToken(context);
-        Call<ArrayList<TeamType>> stageList = RestUtil.getAPIUtil().getAssociateTypes(token);
-        stageList.enqueue(new Callback<ArrayList<TeamType>>() {
+        Call<List<TeamType>> stageList = RestUtil.getAPIUtil().getAssociateTypes(token);
+        stageList.enqueue(new Callback<List<TeamType>>() {
             @Override
-            public void onResponse(Call<ArrayList<TeamType>> call, Response<ArrayList<TeamType>> response) {
+            public void onResponse(Call<List<TeamType>> call, Response<List<TeamType>> response) {
                 if (response.code() == 200) {
                     Log.d("response", response.code() + "");
                     Log.d("response", response.body().toString());
@@ -85,14 +85,14 @@ public class MetadataAPI {
             }
 
             @Override
-            public void onFailure(Call<ArrayList<TeamType>> call, Throwable t) {
+            public void onFailure(Call<List<TeamType>> call, Throwable t) {
                 nbosCallback.onFailure(t);
             }
         });
     }
 
 
-    public static void getDomainExps(final Context context, final NBOSCallback nbosCallback) {
+    public static void getDomainExps(final Context context, final NBOSCallback<List<DomainExp>> nbosCallback) {
         String token = TokenPrefrences.getClientToken(context);
         Call<List<DomainExp>> stageList = RestUtil.getAPIUtil().getDomainExpList(token);
         stageList.enqueue(new Callback<List<DomainExp>>() {

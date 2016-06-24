@@ -13,6 +13,7 @@ import com.wavelabs.fundr.model.Company;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
@@ -22,10 +23,10 @@ import java.util.ArrayList;
 public class StartupRecyclerViewAdapter extends RecyclerView.Adapter<StartupRecyclerViewAdapter.ViewHolder> {
 
 
-    private final ArrayList<Company> mValues;
+    private final List<Company> mValues;
     private final StartupLandingFragment.OnStartupListFragmentInteractionListener mListener;
 
-    public StartupRecyclerViewAdapter(ArrayList<Company> items, StartupLandingFragment.OnStartupListFragmentInteractionListener listener) {
+    public StartupRecyclerViewAdapter(List<Company> items, StartupLandingFragment.OnStartupListFragmentInteractionListener listener) {
 
         mValues = items;
         mListener = listener;

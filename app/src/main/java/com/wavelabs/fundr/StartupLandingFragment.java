@@ -16,6 +16,7 @@ import com.wavelabs.fundr.model.Company;
 import com.wavelabs.fundr.service.CompanyAPI;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import in.wavelabs.idn.ConnectionAPI.NBOSCallback;
 import retrofit2.Response;
@@ -35,7 +36,7 @@ public class StartupLandingFragment extends Fragment {
     // TODO: Customize parameters
     private int mColumnCount = 1;
 
-    public ArrayList<Company> startupList = new ArrayList<>();
+    public List<Company> startupList = new ArrayList<>();
     RecyclerView recyclerView = null;
 
     private OnStartupListFragmentInteractionListener mListener;
@@ -82,10 +83,10 @@ public class StartupLandingFragment extends Fragment {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
             if (startupList.size() == 0)
-                CompanyAPI.getCompanies(getActivity(), new NBOSCallback<ArrayList<Company>>() {
+                CompanyAPI.getCompanies(getActivity(), new NBOSCallback<List<Company>>() {
 
                     @Override
-                    public void onResponse(Response<ArrayList<Company>> response) {
+                    public void onResponse(Response<List<Company>> response) {
                         startupList = response.body();
 
                         if (startupList.size() > 0) {

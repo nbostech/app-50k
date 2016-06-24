@@ -14,7 +14,7 @@ import com.wavelabs.fundr.model.TeamType;
 import com.wavelabs.fundr.model.User;
 import com.wavelabs.fundr.model.UuidModel;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.List;
 
 import okhttp3.MultipartBody;
@@ -59,13 +59,13 @@ public interface APIUtil {
     Call<AboutUs> getAboutUs();
 
     @GET(AppConstants.compCategorieListURL)
-    Call<ArrayList<Metadata>> getCategories(@Header("Authorization") String authorization);
+    Call<List<Metadata>> getCategories(@Header("Authorization") String authorization);
 
     @GET(AppConstants.compStageListURL)
-    Call<ArrayList<Metadata>> getStages(@Header("Authorization") String authorization);
+    Call<List<Metadata>> getStages(@Header("Authorization") String authorization);
 
     @GET(AppConstants.associateTeamTypesURL)
-    Call<ArrayList<TeamType>> getAssociateTypes(@Header("Authorization") String authorization);
+    Call<List<TeamType>> getAssociateTypes(@Header("Authorization") String authorization);
 
 
 
@@ -77,11 +77,11 @@ public interface APIUtil {
     Call<Company> updateCompanyProfile(@Header("Authorization") String authorization, @Path("companyId") Long companyId, @Body CompanyProfile companyProfile);
 
     @GET(AppConstants.companyURL)
-    Call<ArrayList<Company>> getCompanies(@Header("Authorization") String authorization, @Query("company_type") String companyType);
+    Call<List<Company>> getCompanies(@Header("Authorization") String authorization, @Query("company_type") String companyType);
 
 
     @GET(AppConstants.companyAssociatesURL)
-    Call<ArrayList<Associate>> getAssociates(@Header("Authorization") String authorization, @Path("companyId") Long companyId);
+    Call<List<Associate>> getAssociates(@Header("Authorization") String authorization, @Path("companyId") Long companyId);
 
     @POST(AppConstants.companyAssociatesURL)
     Call<Associate> createAssociate(@Header("Authorization") String authorization, @Path("companyId") Long companyId, @Body Associate associate);

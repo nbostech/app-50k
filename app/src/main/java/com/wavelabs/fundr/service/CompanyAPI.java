@@ -11,7 +11,7 @@ import com.wavelabs.fundr.model.MediaFile;
 import com.wavelabs.fundr.util.RestUtil;
 
 import java.io.File;
-import java.util.ArrayList;
+import java.util.List;
 
 import in.wavelabs.idn.ConnectionAPI.NBOSCallback;
 import in.wavelabs.idn.utils.TokenPrefrences;
@@ -27,7 +27,7 @@ import retrofit2.Response;
  */
 public class CompanyAPI {
 
-    public static void createCompany(final Context context, CompanyProfile companyProfile, final NBOSCallback nbosCallback) {
+    public static void createCompany(final Context context, CompanyProfile companyProfile, final NBOSCallback<Company> nbosCallback) {
         String token = TokenPrefrences.getAccessToken(context);
         Call<Company> companyCall = RestUtil.getAPIUtil().createCompany(token, companyProfile);
         companyCall.enqueue(new Callback<Company>() {
@@ -45,7 +45,7 @@ public class CompanyAPI {
     }
 
 
-    public static void updateCompanyProfile(final Context context, Long companyId, CompanyProfile companyProfile, final NBOSCallback nbosCallback) {
+    public static void updateCompanyProfile(final Context context, Long companyId, CompanyProfile companyProfile, final NBOSCallback<Company> nbosCallback) {
         String token = TokenPrefrences.getAccessToken(context);
         Call<Company> companyCall = RestUtil.getAPIUtil().updateCompanyProfile(token, companyId, companyProfile);
         companyCall.enqueue(new Callback<Company>() {
@@ -62,13 +62,13 @@ public class CompanyAPI {
 
     }
 
-    public static void getCompanies(final Context context, final NBOSCallback nbosCallback,String companyType) {
+    public static void getCompanies(final Context context, final NBOSCallback <List<Company>> nbosCallback,String companyType) {
         String token = TokenPrefrences.getAccessToken(context);
-        Call<ArrayList<Company>> companyListCall = RestUtil.getAPIUtil().getCompanies(token,companyType);
+        Call<List<Company>> companyListCall = RestUtil.getAPIUtil().getCompanies(token,companyType);
 
-        companyListCall.enqueue(new Callback<ArrayList<Company>>() {
+        companyListCall.enqueue(new Callback<List<Company>>() {
             @Override
-            public void onResponse(Call<ArrayList<Company>> call, Response<ArrayList<Company>> response) {
+            public void onResponse(Call<List<Company>> call, Response<List<Company>> response) {
 
                 if (response.code() == 200) {
 
@@ -80,7 +80,7 @@ public class CompanyAPI {
             }
 
             @Override
-            public void onFailure(Call<ArrayList<Company>> call, Throwable t) {
+            public void onFailure(Call<List<Company>> call, Throwable t) {
 
                 nbosCallback.onFailure(t);
             }
@@ -88,7 +88,7 @@ public class CompanyAPI {
 
     }
 
-    public static void uploadMedia(final Context context, String companyId, String mediaFor, File file, final NBOSCallback nbosCallback) {
+    public static void uploadMedia(final Context context, String companyId, String mediaFor, File file, final NBOSCallback<MediaFile> nbosCallback) {
         String token = TokenPrefrences.getAccessToken(context);
 
         RequestBody idValue =
@@ -129,7 +129,7 @@ public class CompanyAPI {
         });
     }
 
-    public static void createAssoicate(final Context context, Long companyId, Associate associate, final NBOSCallback nbosCallback) {
+    public static void createAssoicate(final Context context, Long companyId, Associate associate, final NBOSCallback<Associate> nbosCallback) {
         String token = TokenPrefrences.getAccessToken(context);
         Call<Associate> companyCall = RestUtil.getAPIUtil().createAssociate(token, companyId, associate);
         companyCall.enqueue(new Callback<Associate>() {
@@ -152,7 +152,7 @@ public class CompanyAPI {
     }
 
 
-    public static void updateAssoicate(final Context context, Long associateId, Associate associate, final NBOSCallback nbosCallback) {
+    public static void updateAssoicate(final Context context, Long associateId, Associate associate, final NBOSCallback<Associate> nbosCallback) {
         String token = TokenPrefrences.getAccessToken(context);
         Call<Associate> companyCall = RestUtil.getAPIUtil().updateAssociate(token, associateId, associate);
         companyCall.enqueue(new Callback<Associate>() {
@@ -174,13 +174,13 @@ public class CompanyAPI {
         });
     }
 
-    public static void getAssociates(final Context context, Long companyId, final NBOSCallback<ArrayList<Associate>> nbosCallback) {
+    public static void getAssociates(final Context context, Long companyId, final NBOSCallback<List<Associate>> nbosCallback) {
         String token = TokenPrefrences.getAccessToken(context);
-        Call<ArrayList<Associate>> companyListCall = RestUtil.getAPIUtil().getAssociates(token, companyId);
+        Call<List<Associate>> companyListCall = RestUtil.getAPIUtil().getAssociates(token, companyId);
 
-        companyListCall.enqueue(new Callback<ArrayList<Associate>>() {
+        companyListCall.enqueue(new Callback<List<Associate>>() {
             @Override
-            public void onResponse(Call<ArrayList<Associate>> call, Response<ArrayList<Associate>> response) {
+            public void onResponse(Call<List<Associate>> call, Response<List<Associate>> response) {
 
                 if (response.code() == 200) {
 
@@ -192,7 +192,7 @@ public class CompanyAPI {
             }
 
             @Override
-            public void onFailure(Call<ArrayList<Associate>> call, Throwable t) {
+            public void onFailure(Call<List<Associate>> call, Throwable t) {
 
                 nbosCallback.onFailure(t);
             }

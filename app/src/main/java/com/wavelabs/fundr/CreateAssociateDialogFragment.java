@@ -23,6 +23,7 @@ import com.wavelabs.fundr.service.MetadataAPI;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import in.wavelabs.idn.ConnectionAPI.NBOSCallback;
 import retrofit2.Response;
@@ -117,11 +118,11 @@ public class CreateAssociateDialogFragment extends DialogFragment {
             getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
                     WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
-            MetadataAPI.getAssociateTypes(getActivity(), new NBOSCallback<ArrayList<TeamType>>() {
+            MetadataAPI.getAssociateTypes(getActivity(), new NBOSCallback<List<TeamType>>() {
 
                 @Override
-                public void onResponse(Response<ArrayList<TeamType>> response) {
-                    ArrayList<TeamType> teamTypeListRes = response.body();
+                public void onResponse(Response<List<TeamType>> response) {
+                    List<TeamType> teamTypeListRes = response.body();
                     teamTypeList = new ArrayList<>();
                     for (TeamType t : teamTypeListRes) {
                         teamTypeList.add(t.getName());
